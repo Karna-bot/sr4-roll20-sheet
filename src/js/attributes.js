@@ -14,7 +14,7 @@ const sheetAttributes = {
   astral_initiative: ['intuition', 'astral_initiative_modifier'],
   matrix_initiative: [],
 
-  derivedAttributes: ['memory', 'composure', 'defense', 'soak', 'overflow', 'judge_intentions', 'lift_carry'],
+  derivedAttributes: ['memory', 'composure', 'soak', 'overflow', 'judge_intentions', 'lift_carry'],
   lift_carry: ['body', 'strength', 'lift_carry_modifier'],
   overflow: ['body', 'overflow_modifier'],
   soak: ['body', 'soak_modifier', 'soak_temp', `soak_temp_flag`],
@@ -28,8 +28,8 @@ const sheetAttributes = {
   stun: ['stun_modifier', 'willpower'],
   matrix: ['matrix_modifier', 'device_rating'],
 
-  stunCharacters: ['grunt', 'pc'],
-  physicalCharacters: ['grunt', 'pc', 'vehicle'],
+  stunCharacters: ['grunt', 'spirit', 'pc'],
+  physicalCharacters: ['grunt', 'spirit', 'pc', 'vehicle'],
   matrixCharacters: ['vehicle', 'host', 'sprite'],
   matrixAttributes: ['attack', 'sleaze', 'data_processing', 'firewall'],
 

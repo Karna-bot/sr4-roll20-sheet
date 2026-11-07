@@ -418,3 +418,34 @@ on("change:repeating_weapon", () => {
             });
         });
     });
+
+
+// ---------------------------------------------------------------- SPIRIT
+// Attribut d'un esprit = Force + décalage propre à l'attribut (champs *_offset).
+// Règles perso : bonus à la défense (base Réaction) selon l'état de l'esprit,
+// +50 % matérialisé, +100 % en astral. Le bonus est arrondi par SPIRIT_ROUND.
+const SPIRIT_ATTRIBUTES = ['body', 'agility', 'reaction', 'strength', 'charisma', 'intuition', 'logic', 'willpower']
+const SPIRIT_DEFENSE_BONUS = {astral: 1, materialized: 0.5, other: 0}
+const SPIRIT_ROUND = Math.ceil
+
+const updateSpiritAttributes = () => {
+  const offsets = SPIRIT_ATTRIBUTES.concat(['edge']).map(attr => `${attr}_offset`)
+  getAttrs(['sheet_type', 'force'].concat(offsets), v => {
+    if (v.sheet_type !== 'spirit') return
+    const force = parseInt(v.force) || 0
+    const update = {magic: force, magic_base: force, essence: force, edge: force + (parseInt(v.edge_offset) || 0)}
+    SPIRIT_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = force + (parseInt(v[`${attr}_offset`]) || 0))
+    setAttrs(update)
+  })
+}
+
+const updateDefense = () => {
+  getAttrs(sheetAttributes.defense.concat(['sheet_type', 'spirit_state']), v => {
+    const isSpirit = v.sheet_type === 'spirit'
+    const rate = isSpirit ? (SPIRIT_DEFENSE_BONUS[v.spirit_state] || 0) : 0
+    delete v.sheet_type
+    delete v.spirit_state
+    const attrs = processingFunctions.shadowrun.attributeFactory(v)
+    setAttrs({defense: attrs.total + SPIRIT_ROUND(attrs.reaction * rate)})
+  })
+}

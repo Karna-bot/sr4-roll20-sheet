@@ -400,4 +400,12 @@
     ,"os":"os"
     ,"response":"response"
     ,"signal":"signal"
+    ,"spirit": "Spirit"
+    ,"spiritstate": "State"
+    ,"astral": "Astral"
+    ,"materialized": "Materialized"
+    ,"otherstate": "Other"
+    ,"spirittype": "Type"
+    ,"services": "Services"
+    ,"forceoffsets": "Attribute = Force +"
 }

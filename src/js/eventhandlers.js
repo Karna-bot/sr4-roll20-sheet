@@ -80,3 +80,8 @@
 
   on("change:default_attribute", eventinfo => updateDefaultAttribute(eventinfo.newValue))
 
+  on('change:force change:sheet_type change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
+
+  on('change:sheet_type', eventinfo => { if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'}) })
+
+  on(`change:${sheetAttributes.defense.join(' change:')} change:spirit_state change:sheet_type`, () => updateDefense())

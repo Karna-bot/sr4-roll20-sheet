@@ -23,7 +23,7 @@
 	input(name='attr_stats_toggle' type='hidden' value='settings')
 	
 	//- ATTRIBUTES
-	.grunt.attribute
+	.grunt.spirit.attribute
 		each val in coreAttributeArray
 			- const attrName = val.toLowerCase();
 			+npcAttributeButton(attrName, '@{'+attrName+'}+@{attribute_roll}')
@@ -68,14 +68,14 @@
 			h1.settings(data-i18n='bonuses') Bonuses
 			//- PROFESSIONAL RATINGS
 			input(name='attr_pr' type='hidden' value='')
-			.rows.grunt
+			.rows.grunt.spirit
 				h2(data-i18n='pr') Professional Rating
 				span(name='attr_pr' style='margin-left: 2%;')
 				label.settings(data-i18n-title='pr' title='Professional Rating')
 					input(name='attr_pr' title='@{pr}' type='number')
 			
 			//- INITAITIVE
-			each val, key in {'Initiative': ['initiative', 'initiative', 'grunt'], 'Astral Initiative': ['astral', 'astralinitiative', 'grunt hide-magic'], 'Matrix Initiative': ['matrix', 'matrixinitiative', 'grunt vehicle sprite host']}
+			each val, key in {'Initiative': ['initiative', 'initiative', 'grunt spirit'], 'Astral Initiative': ['astral', 'astralinitiative', 'grunt spirit hide-magic'], 'Matrix Initiative': ['matrix', 'matrixinitiative', 'grunt vehicle sprite host']}
 				.rows(class=val[2])
 					if key == 'Initiative'
 						button(data-i18n=val[1] name=key type='roll' value="@{gm_toggle} &{template:rolls}{{header=^{initiative}}}{{base=^{base}}}{{dice=[[((@{reaction}+@{intuition}+@{initiative_dice_modifier})d6>5cf0)+(@{initiative})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}") #{key}
@@ -89,7 +89,7 @@
 					span.settings(data-i18n='d6') d6
 			
 			//- MOVEMENT
-			.rows.grunt
+			.rows.grunt.spirit
 				h2(data-i18n='movement') Movement
 				- const movementObject = {'walk': ' / ', 'run': ' / + ', 'movement_mod': ''}
 				each val, key in movementObject
@@ -104,7 +104,7 @@
 					span #{val}
 			
 			//- CONDITION MONITORS
-			.rows.grunt
+			.rows.grunt.spirit
 				button(data-i18n='conditionmonitorps' name='act_cond_reset' type='action') Condition Monitor (P/S)
 				+conditionMonitor(['physical', 'stun'])
 			.rows.vehicle
@@ -169,6 +169,40 @@
 					label.settings(data-i18n-title=val[0] title=val[0])
 						input.character-type(name='attr_flag_special' title='@{flag_special}' type='radio' value=val[1])
 						h2(data-i18n=val[0]) key
+			//- SPIRIT
+			.rows.spirit
+				h1(data-i18n='spirit') Spirit
+			.rows.spirit
+				h2(data-i18n='force') Force
+				label.settings(data-i18n-title='force' title='Force')
+					input(name='attr_force' placeholder='6' title='@{force}' type='number' value='')
+				span(name='attr_force')
+			.rows.spirit
+				h2(data-i18n='spiritstate') State
+				select(name='attr_spirit_state' title='@{spirit_state}')
+					option(value='astral' data-i18n='astral' selected) Astral
+					option(value='materialized' data-i18n='materialized') Materialized
+					option(value='other' data-i18n='otherstate') Other
+			.rows.spirit
+				h2(data-i18n='spirittype') Type
+				label.settings(data-i18n-title='spirittype' title='Type')
+					input(name='attr_spirit_type' placeholder='Spirit of Air' title='@{spirit_type}' type='text' value='')
+				span(name='attr_spirit_type')
+			.rows.spirit
+				h2(data-i18n='services') Services
+				label.settings(data-i18n-title='services' title='Services')
+					input(name='attr_services' placeholder='1' title='@{services}' type='number' value='')
+				span(name='attr_services')
+			.rows.spirit
+				h2(data-i18n='forceoffsets') Attribute = Force +
+			each val in coreAttributeArray.concat(['Edge'])
+				- const attrName = val.toLowerCase();
+				- const abbreviation = attrName.slice(0,1);
+				.rows.spirit
+					h2(data-i18n=abbreviation) #{abbreviation}
+					label.settings(data-i18n-title=attrName title=val)
+						input(name=`attr_${attrName}_offset` placeholder='0' title=`@{${attrName}_offset}` type='number' value='0')
+					span(name=`attr_${attrName}_offset`)
 			.rows.vehicle
 				label.settings(data-i18n-title=drone title='Drone')
 					input.character-type(name='attr_flag_drone' title='@{flag_drone}' type='checkbox' value='drone')
@@ -176,7 +210,7 @@
 
 	.end.body
 		//- TEXTBOXES
-		each val, key in {'Qualities': 'grunt', 'Augmentations': 'grunt', 'Gear': 'grunt vehicle', 'Programs': 'vehicle', 'Modifications': 'vehicle', 'Powers': 'grunt hide-magic', 'Weakness': 'grunt hide-magic'}
+		each val, key in {'Qualities': 'grunt', 'Augmentations': 'grunt', 'Gear': 'grunt spirit vehicle', 'Programs': 'vehicle', 'Modifications': 'vehicle', 'Powers': 'grunt spirit hide-magic', 'Weakness': 'grunt spirit hide-magic'}
 			- const attrName = key === 'Qualities' ? 'quality' : key.toLowerCase();
 			input(name=`attr_${attrName}` type='hidden' value='')
 			.textrow(class=val)
@@ -200,7 +234,7 @@
 
 		//- SKILLS
 		each val, key in {'active': ['skills', 'Agility', 'Physical'],'knowledge':['knowledgeskills', 'Logic', 'Mental'], 'language': ['languageskills', 'Charisma', 'Social']}
-			.rows.grunt.repeating.inline-repeating
+			.rows.grunt.spirit.repeating.inline-repeating
 				h1(data-i18n=val[0]) #{val[0]}
 				fieldset(class=`repeating_${key}`)
 
@@ -241,7 +275,7 @@
 							input(name='attr_specialization' placeholder='specializations' title=`@{repeating_${key}`+'_${x}_specialization}' type='text')
 
 		//- WEAPONS
-		.rows.grunt.vehicle.repeating.weapons
+		.rows.grunt.spirit.vehicle.repeating.weapons
 			h1(data-i18n='weapons') Weapons
 			fieldset(class='repeating_weapon')
 				input(name='attr_flag' title='Settings toggle' type='checkbox' checked)
@@ -270,7 +304,7 @@
 					span (c)
 
 		//- SPELLS
-		.rows.grunt.repeating.spells.hide-magic
+		.rows.grunt.spirit.repeating.spells.hide-magic
 			h1(data-i18n='spells') Spells
 			fieldset(class='repeating_NPCspell')
 				input(name='attr_flag' title='Settings toggle' type='checkbox' checked)
