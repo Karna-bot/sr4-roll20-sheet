@@ -133,7 +133,7 @@
 		}
 	}
 
-	/* Essence, Magie et Résonance n'existent pas sur une fiche d'esprit */
+	//- Essence, Magic and Resonance do not exist on a spirit sheet
 	input[name='attr_sheet_type'][value='spirit'] ~ .sheet-npc .sheet-grunt-only {
 		display: none !important;
 	}
