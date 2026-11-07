@@ -10,6 +10,7 @@ input.character-type(name='attr_flag_special' type='hidden' value='mundane')
 - const imageSource = 'https://raw.githubusercontent.com/clevett/roll20-character-sheets/shadowrun4ev1/Shadowrun4thEdition/src/imgs';
 
 include src/pug/_variables.pug
+include src/pug/_spirit-types.pug
 
 //- MIXINS
 include src/pug/_mixins.pug
@@ -37,6 +38,8 @@ script(type="text/worker")
   include src/js/Classes/PrimaryArmor.js
 
   include src/js/processingFunctions.js
+
+  include src/js/spirit-types.js
 
   include src/js/scripts.js
 

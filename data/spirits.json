@@ -1,0 +1,826 @@
+{
+  "Air": {
+    "attrMod": {
+      "body": -2,
+      "agility": 3,
+      "reaction": 4,
+      "strength": -3,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Flight",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Elemental Attack",
+      "Engulf",
+      "Materialization",
+      "Movement",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Fear",
+      "Guard",
+      "Noxious Breath",
+      "Psychokinesis",
+      "Search"
+    ],
+    "weaponName": "Wind Blast",
+    "weaponDV": "S",
+    "reach": 0,
+    "greatPower": "Storm"
+  },
+  "Beasts": {
+    "attrMod": {
+      "body": 2,
+      "agility": 1,
+      "reaction": 2,
+      "strength": 2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Enhanced Senses",
+      "Fear",
+      "Materialization",
+      "Movement",
+      "Natural Weapon",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Concealment",
+      "Confusion",
+      "Guard",
+      "Noxious Breath",
+      "Search",
+      "Venom"
+    ],
+    "weaponName": "Claws / Bite",
+    "weaponDV": "P",
+    "reach": 0,
+    "greatPower": "Paralyzing Howl"
+  },
+  "Earth": {
+    "attrMod": {
+      "body": 4,
+      "agility": -2,
+      "reaction": 0,
+      "strength": 4,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Astral Form",
+      "Binding",
+      "Engulf",
+      "Guard",
+      "Materialization",
+      "Movement",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Elemental Attack",
+      "Fear",
+      "Search"
+    ],
+    "weaponName": "Crushing Blow",
+    "weaponDV": "P",
+    "reach": 1,
+    "greatPower": "Earthquake"
+  },
+  "Fire": {
+    "attrMod": {
+      "body": 1,
+      "agility": 2,
+      "reaction": 3,
+      "strength": -2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Flight",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Confusion",
+      "Elemental Attack",
+      "Energy Aura",
+      "Engulf",
+      "Materialization",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Fear",
+      "Guard",
+      "Noxious Breath",
+      "Search"
+    ],
+    "weaponName": "Flame Touch",
+    "weaponDV": "P",
+    "reach": 0,
+    "greatPower": "Storm"
+  },
+  "Man": {
+    "attrMod": {
+      "body": 1,
+      "agility": 0,
+      "reaction": 2,
+      "strength": -2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Perception",
+      "Spellcasting",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Enhanced Senses",
+      "Guard",
+      "Influence",
+      "Materialization",
+      "Sapience",
+      "Search"
+    ],
+    "optionalPowers": [
+      "Fear",
+      "Innate Spell",
+      "Movement",
+      "Psychokinesis"
+    ],
+    "weaponName": "Unarmed Strike",
+    "weaponDV": "S",
+    "reach": 0,
+    "greatPower": "Compulsion"
+  },
+  "Water": {
+    "attrMod": {
+      "body": 2,
+      "agility": 0,
+      "reaction": 2,
+      "strength": 0,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Swimming",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Elemental Attack",
+      "Engulf",
+      "Materialization",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Fear",
+      "Guard",
+      "Noxious Breath",
+      "Search"
+    ],
+    "weaponName": "Water Lash",
+    "weaponDV": "S",
+    "reach": 0,
+    "greatPower": "Storm"
+  },
+  "Guardian": {
+    "attrMod": {
+      "body": 1,
+      "agility": 2,
+      "reaction": 3,
+      "strength": 2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Blades",
+      "Clubs",
+      "Counterspelling",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Astral Form",
+      "Fear",
+      "Guard",
+      "Magical Guard",
+      "Materialization",
+      "Movement",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Animal Control",
+      "Concealment",
+      "Elemental Attack",
+      "Natural Weaponry",
+      "Psychokinesis",
+      "Skill"
+    ],
+    "weaponName": "Natural Weaponry / Blade",
+    "weaponDV": "P",
+    "reach": 1,
+    "greatPower": "Endowment"
+  },
+  "Guidance": {
+    "attrMod": {
+      "body": 3,
+      "agility": -1,
+      "reaction": 2,
+      "strength": 1,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Arcana",
+      "Assensing",
+      "Astral Combat",
+      "Counterspelling",
+      "Dodge",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Astral Form",
+      "Confusion",
+      "Divining",
+      "Guard",
+      "Magical Guard",
+      "Materialization",
+      "Sapience",
+      "Search",
+      "Shadow Cloak"
+    ],
+    "optionalPowers": [
+      "Engulf",
+      "Enhanced Senses",
+      "Fear",
+      "Influence"
+    ],
+    "weaponName": "Magical Touch",
+    "weaponDV": "S",
+    "reach": 0,
+    "greatPower": "Astral Gateway"
+  },
+  "Plant": {
+    "attrMod": {
+      "body": 3,
+      "agility": -1,
+      "reaction": 2,
+      "strength": 4,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Counterspelling",
+      "Dodge",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Astral Form",
+      "Concealment",
+      "Engulf",
+      "Fear",
+      "Guard",
+      "Magical Guard",
+      "Materialization",
+      "Sapience",
+      "Silence"
+    ],
+    "optionalPowers": [
+      "Accident",
+      "Confusion",
+      "Movement",
+      "Noxious Breath",
+      "Search"
+    ],
+    "weaponName": "Thorns / Branches",
+    "weaponDV": "P",
+    "reach": 1,
+    "greatPower": "Regeneration"
+  },
+  "Task": {
+    "attrMod": {
+      "body": 2,
+      "agility": 1,
+      "reaction": 1,
+      "strength": 2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Crafts",
+      "Dodge",
+      "Perception",
+      "Technical Skills",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Binding",
+      "Materialization",
+      "Movement",
+      "Movement (Self)",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Concealment",
+      "Enhanced Senses",
+      "Influence",
+      "Psychokinesis",
+      "Search",
+      "Skill"
+    ],
+    "weaponName": "Tool Strike",
+    "weaponDV": "S",
+    "reach": 0,
+    "greatPower": "Endowment"
+  },
+  "Insect_Soldier": {
+    "attrMod": {
+      "body": 2,
+      "agility": 0,
+      "reaction": 1,
+      "strength": 3,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Counterspelling",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Fear",
+      "Hive Mind",
+      "Inhabitation",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Concealment",
+      "Binding",
+      "Magical Guard",
+      "Noxious Breath",
+      "Skill",
+      "Venom"
+    ],
+    "weaponName": "Mandibles",
+    "weaponDV": "P",
+    "reach": 1
+  },
+  "Insect_Scout": {
+    "attrMod": {
+      "body": 0,
+      "agility": 2,
+      "reaction": 2,
+      "strength": 0,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Infiltration",
+      "Perception",
+      "Shadowing",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Concealment",
+      "Enhanced Senses",
+      "Hive Mind",
+      "Inhabitation",
+      "Movement",
+      "Sapience",
+      "Search"
+    ],
+    "optionalPowers": [
+      "Confusion",
+      "Guard",
+      "Natural Weapon",
+      "Noxious Breath"
+    ],
+    "weaponName": "Scout Mandibles",
+    "weaponDV": "P",
+    "reach": 0
+  },
+  "Insect_Caretaker": {
+    "attrMod": {
+      "body": 2,
+      "agility": 1,
+      "reaction": 0,
+      "strength": 1,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Leadership",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Guard",
+      "Hive Mind",
+      "Inhabitation",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Binding",
+      "Confusion",
+      "Enhanced Senses"
+    ],
+    "weaponName": "Mandibles",
+    "weaponDV": "P",
+    "reach": 0
+  },
+  "Insect_Nymph": {
+    "attrMod": {
+      "body": -1,
+      "agility": 0,
+      "reaction": 3,
+      "strength": -1,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Perception",
+      "Spellcasting",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Enhanced Senses",
+      "Hive Mind",
+      "Inhabitation",
+      "Innate Spell",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Compulsion",
+      "Fear"
+    ],
+    "weaponName": "Nymph Strike",
+    "weaponDV": "S",
+    "reach": 0
+  },
+  "Insect_Worker": {
+    "attrMod": {
+      "body": 3,
+      "agility": 0,
+      "reaction": 1,
+      "strength": 2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Enhanced Senses",
+      "Hive Mind",
+      "Inhabitation",
+      "Movement",
+      "Sapience",
+      "Search"
+    ],
+    "optionalPowers": [
+      "Concealment",
+      "Venom",
+      "Skill"
+    ],
+    "weaponName": "Heavy Mandibles",
+    "weaponDV": "P",
+    "reach": 0
+  },
+  "Toxic_Fire_Nuclear": {
+    "attrMod": {
+      "body": 1,
+      "agility": 2,
+      "reaction": 3,
+      "strength": -2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Flight",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Elemental Attack (Radiation)",
+      "Energy Aura",
+      "Engulf",
+      "Materialization",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Confusion",
+      "Fear",
+      "Noxious Breath",
+      "Search"
+    ],
+    "weaponName": "Radioactive Touch",
+    "weaponDV": "P",
+    "reach": 0
+  },
+  "Toxic_Air_Smog": {
+    "attrMod": {
+      "body": -2,
+      "agility": 3,
+      "reaction": 4,
+      "strength": -3,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Flight",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Elemental Attack",
+      "Engulf",
+      "Materialization",
+      "Movement",
+      "Noxious Breath",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Fear",
+      "Guard",
+      "Psychokinesis",
+      "Search"
+    ],
+    "weaponName": "Toxic Gale",
+    "weaponDV": "S",
+    "reach": 0
+  },
+  "Toxic_Earth_Sludge": {
+    "attrMod": {
+      "body": 3,
+      "agility": -1,
+      "reaction": 2,
+      "strength": 3,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Astral Form",
+      "Binding",
+      "Engulf",
+      "Materialization",
+      "Movement",
+      "Sapience",
+      "Search"
+    ],
+    "optionalPowers": [
+      "Accident",
+      "Concealment",
+      "Confusion",
+      "Elemental Attack",
+      "Fear",
+      "Guard"
+    ],
+    "weaponName": "Corrosive Sludge",
+    "weaponDV": "P",
+    "reach": 1
+  },
+  "Toxic_Water_Pollution": {
+    "attrMod": {
+      "body": 2,
+      "agility": 0,
+      "reaction": 2,
+      "strength": 0,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Swimming",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Confusion",
+      "Elemental Attack",
+      "Engulf",
+      "Materialization",
+      "Sapience"
+    ],
+    "optionalPowers": [
+      "Fear",
+      "Guard",
+      "Noxious Breath",
+      "Search"
+    ],
+    "weaponName": "Polluted Lash",
+    "weaponDV": "S",
+    "reach": 0
+  },
+  "Toxic_Man_Harrow": {
+    "attrMod": {
+      "body": 0,
+      "agility": 2,
+      "reaction": 3,
+      "strength": -2,
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 0
+    },
+    "ip": 2,
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Dodge",
+      "Perception",
+      "Spellcasting",
+      "Unarmed Combat"
+    ],
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Enhanced Senses",
+      "Fear",
+      "Influence",
+      "Materialization",
+      "Sapience",
+      "Search"
+    ],
+    "optionalPowers": [
+      "Guard",
+      "Innate Spell",
+      "Movement",
+      "Psychokinesis"
+    ],
+    "weaponName": "Spiteful Strike",
+    "weaponDV": "S",
+    "reach": 0
+  }
+}

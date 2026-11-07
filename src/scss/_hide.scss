@@ -63,6 +63,11 @@
 		@extend %display-inline-block; 
 	}
 
+	//- Spirit sheet: attribute modifiers are always visible under each attribute
+	input[name='attr_sheet_type'][value='spirit'] ~ .sheet-npc .sheet-attribute.sheet-spirit label.sheet-settings[data-i18n-title='modifier'] {
+		@extend %display-inline-block;
+	}
+
 		/*** TOGGLE ***/
 		input.sheet-settings-toggle:checked ~ div.sheet-display,
 	    input.sheet-settings-toggle:checked ~ .sheet-attr-col .sheet-attr-und div.sheet-display,

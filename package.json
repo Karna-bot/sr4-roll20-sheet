@@ -10,6 +10,7 @@
   "scripts": {
     "compile:pug": "pug Shadowrun4thEdition.pug -o . -P",
     "compile:sass": "sass --no-source-map Shadowrun4thEdition.scss Shadowrun4thEdition.css",
-    "build": "npm-run-all compile:pug compile:sass"
+    "generate:spirits": "node tools/generate-spirits.js",
+    "build": "npm-run-all generate:spirits compile:pug compile:sass"
   }
 }
