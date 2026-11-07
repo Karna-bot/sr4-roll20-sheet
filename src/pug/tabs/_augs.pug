@@ -20,5 +20,5 @@
                 - const type = val === 'Augmentations' ? 'text' : 'number';
                 - const placeholder = val === 'Augmentations' ? 'name' : '0';
                 label(data-i18n-title=val title=val)
-                  input(name=`attr_${attrName}` placeholder=placeholder title=`@{repeating_augementations_`+'${x}'+`_${attrName}}` type=type value='')
+                  input(name=`attr_${attrName}` placeholder=placeholder title=`@{repeating_augementations_`+'${x}'+`_${attrName}}` type=type step=(attrName === 'essence' ? '0.01' : false) value='')
               +repeatingSectionNotes('augementations')

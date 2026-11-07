@@ -41,7 +41,7 @@
 		h1(data-i18n='ess') ess
 		span(name='attr_essence')
 		label.settings(data-i18n-title='essence' title='essence')
-			input(name='attr_essence' placeholder='6' title='@{essence}' type='number' value='6')
+			input(name='attr_essence' placeholder='6' title='@{essence}' type='number' step='0.01' value='6')
 		each val, key in {'magic': 'magic', 'force': 'magic', 'resonance': 'resonance'}
 			- const abbreviation = key.slice(0,1);
 			h1(class='hide-'+val data-i18n=abbreviation) #{abbreviation}
