@@ -38,15 +38,15 @@
 		label.settings(data-i18n-title='edge' title='edge')
 				input(name='attr_edge' placeholder='3' title='@{edge}' type='number' value='3')
 		//- ESSENCE
-		h1(data-i18n='ess') ess
-		span(name='attr_essence')
-		label.settings(data-i18n-title='essence' title='essence')
+		h1.grunt-only(data-i18n='ess') ess
+		span.grunt-only(name='attr_essence')
+		label.settings.grunt-only(data-i18n-title='essence' title='essence')
 			input(name='attr_essence' placeholder='6' title='@{essence}' type='number' step='0.01' value='6')
-		each val, key in {'magic': 'magic', 'force': 'magic', 'resonance': 'resonance'}
+		each val, key in {'magic': 'magic', 'resonance': 'resonance'}
 			- const abbreviation = key.slice(0,1);
-			h1(class='hide-'+val data-i18n=abbreviation) #{abbreviation}
-			span(class='hide-'+val name='attr_'+key)
-			label.settings(class='hide-'+val data-i18n-title=key title=key)
+			h1.grunt-only(class='hide-'+val data-i18n=abbreviation) #{abbreviation}
+			span.grunt-only(class='hide-'+val name='attr_'+key)
+			label.settings.grunt-only(class='hide-'+val data-i18n-title=key title=key)
 				input(name='attr_'+key placeholder='6' title='@{'+key+'}' type='number' value='6')
 	.host.attribute
 		+hostSprite(hostObject, 'host_rating')
