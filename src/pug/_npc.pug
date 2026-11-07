@@ -185,9 +185,10 @@
 					option(value='other' data-i18n='otherstate') Other
 			.rows.spirit
 				h2(data-i18n='spirittype') Type
-				label.settings(data-i18n-title='spirittype' title='Type')
-					input(name='attr_spirit_type' placeholder='Spirit of Air' title='@{spirit_type}' type='text' value='')
-				span(name='attr_spirit_type')
+				select(name='attr_spirit_type' title='@{spirit_type}')
+					option(value='custom' data-i18n='customtype' selected) Custom
+					each val in spiritTypes
+						option(value=val[0]) #{val[1]}
 			.rows.spirit
 				h2(data-i18n='services') Services
 				label.settings(data-i18n-title='services' title='Services')

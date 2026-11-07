@@ -406,6 +406,7 @@
     ,"materialized": "Materialized"
     ,"otherstate": "Other"
     ,"spirittype": "Type"
+    ,"customtype": "Custom"
     ,"services": "Services"
     ,"forceoffsets": "Attribute = Force +"
 }

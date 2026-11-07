@@ -85,3 +85,5 @@
   on('change:sheet_type', eventinfo => { if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'}) })
 
   on(`change:${sheetAttributes.defense.join(' change:')} change:spirit_state change:sheet_type`, () => updateDefense())
+
+  on('change:spirit_type', eventinfo => applySpiritType(eventinfo.newValue))
