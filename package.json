@@ -1,0 +1,15 @@
+{
+  "name": "sr4-sheet",
+  "private": true,
+  "devDependencies": {
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.77.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "compile:pug": "pug Shadowrun4thEdition.pug -o . -P",
+    "compile:sass": "sass --no-source-map Shadowrun4thEdition.scss Shadowrun4thEdition.css",
+    "build": "npm-run-all compile:pug compile:sass"
+  }
+}
