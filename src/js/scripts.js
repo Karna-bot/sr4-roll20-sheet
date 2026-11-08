@@ -243,13 +243,14 @@ const resetConditionTrack = eventinfo => {
 
 //Calculate Matrix Initiatve.
 const updateMatrixInitiative = () => {
-  getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle"], v => {
+  getAttrs(["sheet_type", "data_processing", "veh_response", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle"], v => {
     const sheetType = v.sheet_type;
     const edgeFlag = v.edge_toggle === "@{edge}" ? true : false;
 
     v = processingFunctions.parseIntegers(v);
 
-    let base = v.data_processing;
+    //- vehicle / drone node: Pilot + Response (deck statistics)
+    let base = sheetType === "vehicle" ? v.veh_response : v.data_processing;
     base += sheetType === "sprite" ? v.level : sheetType === "vehicle" ? v.pilot : sheetType === "host" ? v.host_rating : v.intuition;
 
     const total = base + v.matrix_mod_modifier;
@@ -472,4 +473,63 @@ const applyTradition = key => {
     update.drain_attribute_2 = `@{${tradition.drain[1]}}`
   }
   setAttrs(update)
+}
+
+// ---------------------------------------------------------------- VEHICLE / DRONE CONTROL
+// Dice pools depend on who controls the vehicle: manual, remote control, jumped-in rigger, autonomous (Pilot).
+// Jumped-in: Control Rig bonus (+ Hot-sim bonus) added to every pool, threshold -1 (displayed only).
+// Manual with AR subscription: +1 die. Initiative: see the table in docs/VEHICULES.md.
+const VEHICLE_FIELDS = ['sheet_type', 'veh_mode', 'veh_interface', 'veh_ar', 'veh_response', 'veh_command', 'veh_op_reaction', 'veh_op_agility',
+  'veh_op_intuition', 'veh_op_init', 'veh_op_ip', 'veh_sk_piloting', 'veh_sk_gunnery', 'veh_sk_dodge', 'veh_sk_melee', 'veh_sk_perception',
+  'veh_sk_infiltration', 'veh_as_maneuver', 'veh_as_targeting', 'veh_as_defense', 'veh_as_clearsight', 'veh_as_covert', 'veh_bonus_rig',
+  'veh_bonus_hot', 'pilot', 'sensor', 'body', 'ballistic', 'impact']
+
+const vehiclePools = v => {
+  const n = key => parseInt(v[key]) || 0
+  const mode = v.veh_mode || 'manual'
+  const hot = v.veh_interface === 'hot'
+  const jumped = mode === 'jumped'
+  const bonus = jumped ? n('veh_bonus_rig') + (hot ? n('veh_bonus_hot') : 0) : (mode === 'manual' && v.veh_ar === '1' ? 1 : 0)
+  const command = n('veh_command'), pilot = n('pilot'), sensor = n('sensor'), response = n('veh_response')
+  const reaction = n('veh_op_reaction'), agility = n('veh_op_agility'), intuition = n('veh_op_intuition')
+  // main attribute of each mode (before skill)
+  const drive = {manual: reaction, remote: command, jumped: response, autonomous: pilot}[mode]
+  const skill = key => n(`veh_sk_${key}`)
+  const pools = {
+    maneuver: mode === 'autonomous' ? pilot + n('veh_as_maneuver') : drive + skill('piloting'),
+    gunnery: {manual: agility, remote: command, jumped: sensor, autonomous: pilot}[mode] + (mode === 'autonomous' ? n('veh_as_targeting') : skill('gunnery')),
+    defense_ranged: drive,
+    defense_melee: drive + (mode === 'autonomous' ? n('veh_as_defense') : skill('melee')),
+    full_defense: drive + (mode === 'autonomous' ? n('veh_as_defense') : skill('dodge')),
+    perception: mode === 'autonomous' ? sensor + n('veh_as_clearsight')
+      : mode === 'manual' ? intuition + skill('perception')
+      : mode === 'jumped' ? sensor + Math.min(skill('perception'), intuition)
+      : sensor + skill('perception'),
+    infiltration: {manual: agility, remote: command, jumped: response, autonomous: pilot}[mode] + (mode === 'autonomous' ? n('veh_as_covert') : skill('infiltration')),
+    resist_ballistic: n('body') + n('ballistic'),
+    resist_impact: n('body') + n('impact')
+  }
+  Object.keys(pools).forEach(key => {
+    // resistance tests do not use the control bonus
+    pools[key] = Math.max(0, pools[key] + (key.startsWith('resist') ? 0 : bonus))
+  })
+
+  let init, ip
+  if (mode === 'autonomous') { init = pilot + response; ip = 3 }
+  else if (mode === 'jumped') { init = response + intuition; ip = hot ? 3 : 2 }
+  else if (mode === 'remote') { init = n('veh_op_init'); ip = v.veh_interface === 'ar' ? n('veh_op_ip') : (hot ? 3 : 2) }
+  else { init = reaction + intuition; ip = n('veh_op_ip') }
+
+  const note = (jumped || mode === 'autonomous' ? 'Threshold -1. ' : '') + (jumped ? `Control: +${bonus} dice.` : (bonus ? `AR: +${bonus} die.` : ''))
+  return {pools, init, ip: Math.max(1, ip), note: note.trim()}
+}
+
+const updateVehicleControl = () => {
+  getAttrs(VEHICLE_FIELDS, v => {
+    if (v.sheet_type !== 'vehicle') return
+    const result = vehiclePools(v)
+    const update = {veh_init: result.init, veh_ip: result.ip, initiative_passes_base: result.ip, veh_note: result.note}
+    Object.keys(result.pools).forEach(key => update[`veh_pool_${key}`] = result.pools[key])
+    setAttrs(update)
+  })
 }

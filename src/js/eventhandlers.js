@@ -68,7 +68,7 @@
 
 	on('change:astral_dice_modifier change:edge_toggle', () => updateAstralInitiativeDice())
 
-	on('change:host_rating change:data_processing change:pilot change:intuition change:matrix_initiative_modifier change:level change:matrix_dice_modifier change:edge_toggle', () => updateMatrixInitiative())
+	on('change:host_rating change:data_processing change:veh_response change:pilot change:intuition change:matrix_initiative_modifier change:level change:matrix_dice_modifier change:edge_toggle', () => updateMatrixInitiative())
 
   on("clicked:cond_reset", () => resetNpcCondition()); 
 
@@ -89,3 +89,5 @@
   on('change:spirit_type', eventinfo => applySpiritType(eventinfo.newValue))
 
   on('change:tradition', eventinfo => applyTradition(eventinfo.newValue))
+
+  on(VEHICLE_FIELDS.map(attr => `change:${attr}`).join(' '), () => updateVehicleControl())

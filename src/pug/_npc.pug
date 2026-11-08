@@ -113,6 +113,43 @@
 			.rows.host.sprite
 				button(data-i18n='conditionmonitorm' name='act_cond_reset' type='action') Condition Monitor (M)
 				span(name='attr_matrix_max')
+
+			//- VEHICLE / DRONE CONTROL
+			.rows.vehicle
+				h1(data-i18n='vh_control') Control
+			.rows.vehicle
+				h2(data-i18n='vh_controlmode') Control mode
+				select(name='attr_veh_mode' title='@{veh_mode}')
+					each val in [['manual', 'vh_manual', 'Manual'], ['remote', 'vh_remote', 'Remote control'], ['jumped', 'vh_jumped', 'Jumped-in rigger'], ['autonomous', 'vh_autonomous', 'Autonomous (Pilot)']]
+						option(value=val[0] data-i18n=val[1]) #{val[2]}
+			.rows.vehicle
+				h2(data-i18n='vh_interface') Interface
+				select(name='attr_veh_interface' title='@{veh_interface}')
+					each val in [['ar', 'vh_ar', 'AR'], ['cold', 'vh_cold', 'VR cold-sim'], ['hot', 'vh_hot', 'VR hot-sim']]
+						option(value=val[0] data-i18n=val[1]) #{val[2]}
+			.rows.vehicle
+				h2(data-i18n='vh_arsubscribed') AR subscribed (manual)
+				label(data-i18n-title='vh_arsubscribed' title='AR subscribed')
+					input(name='attr_veh_ar' title='@{veh_ar}' type='checkbox' value='1')
+			.rows.vehicle
+				span(name='attr_veh_note')
+			.rows.vehicle
+				button(name='roll_vh_initiative' type='roll' value!=`@{gm_toggle} &{template:rolls}{{header=^{initiative}}}{{base=^{base}}}{{dice=[[((@{veh_init}+@{modifiers_toggle})d6>5cf0)+(@{veh_init})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}`) Initiative
+				span(name='attr_veh_init')
+				span +
+				span(name='attr_veh_ip')
+				span(data-i18n='vh_ip') IP
+			each val in vehicleRolls
+				.rows.vehicle
+					+rollButton(val[1], '^{base}', '@{veh_pool_' + val[0] + '}')
+					span(name='attr_veh_pool_' + val[0])
+			.rows.vehicle
+				h1.settings(data-i18n='vh_controlstats') Control statistics
+			each val in vehicleInputs
+				.rows.vehicle
+					h2.settings(data-i18n=val[1]) #{val[2]}
+					label.settings(data-i18n-title=val[1] title=val[2])
+						input(name='attr_' + val[0] placeholder='0' title='@{' + val[0] + '}' type='number' value=val[3])
 			
 			//- PAIN TOLERANCE
 			.grunt.pain-tolerance
