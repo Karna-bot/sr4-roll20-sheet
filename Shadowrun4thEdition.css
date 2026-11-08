@@ -3040,7 +3040,7 @@ input[name=attr_stats_toggle]:not([value=settings]) ~ div.sheet-attribute .sheet
 input[name=attr_stats_toggle]:not([value=settings]) ~ div.sheet-attribute .sheet-settings.sheet-hide-resonance,
 input[name=attr_stats_toggle]:not([value=settings]) ~ div.sheet-body .sheet-settings.sheet-hide-magic,
 input[name=attr_stats_toggle]:not([value=settings]) ~ div.sheet-body .sheet-settings.sheet-hide-resonance, input[name=attr_sheet_type][value=host] ~ .sheet-npc .sheet-column:nth-of-type(2),
-input[name=attr_sheet_type][value=sprite] ~ .sheet-npc .sheet-column:nth-of-type(1n+2), .sheet-sprite, .sheet-host, .sheet-grunt, div.sheet-weapon-range,
+input[name=attr_sheet_type][value=sprite] ~ .sheet-npc .sheet-column:nth-of-type(1n+2), .sheet-sprite, .sheet-host, .sheet-spirit, .sheet-grunt, div.sheet-weapon-range,
 div.sheet-weapon-melee, .sheet-hide-resonance, .sheet-hide-magic, input.sheet-settings-toggle[value=display] ~ .sheet-settings, input.sheet-settings-toggle:checked ~ div.sheet-display,
 input.sheet-settings-toggle:checked ~ .sheet-attr-col .sheet-attr-und div.sheet-display,
 input.sheet-settings-toggle ~ .sheet-attr-lim div.sheet-settings,
@@ -3068,16 +3068,17 @@ input.sheet-settings-toggle[value=display] ~ div.sheet-settings-grid, div.sheet-
   display: inline;
 }
 
-input[name=attr_sheet_type][value=vehicle] ~ .sheet-npc .sheet-attribute.sheet-vehicle, input[name=attr_sheet_type][value=sprite] ~ .sheet-npc .sheet-attribute.sheet-sprite, input[name=attr_sheet_type][value=host] ~ .sheet-npc .sheet-attribute.sheet-host, input[name=attr_sheet_type][value=grunt] ~ .sheet-npc .sheet-attribute.sheet-grunt, .sheet-pc h2, .sheet-pc h3, .sheet-pc .sheet-tabs, .sheet-pc div.sheet-skill-box div.sheet-row-long, .sheet-npc div.sheet-tabs, .sheet-npc div.sheet-mid {
+input[name=attr_sheet_type][value=vehicle] ~ .sheet-npc .sheet-attribute.sheet-vehicle, input[name=attr_sheet_type][value=sprite] ~ .sheet-npc .sheet-attribute.sheet-sprite, input[name=attr_sheet_type][value=host] ~ .sheet-npc .sheet-attribute.sheet-host, input[name=attr_sheet_type][value=spirit] ~ .sheet-npc .sheet-attribute.sheet-spirit, input[name=attr_sheet_type][value=grunt] ~ .sheet-npc .sheet-attribute.sheet-grunt, .sheet-pc h2, .sheet-pc h3, .sheet-pc .sheet-tabs, .sheet-pc div.sheet-skill-box div.sheet-row-long, .sheet-npc div.sheet-tabs, .sheet-npc div.sheet-mid {
   display: inline-grid;
 }
 
 input[name=attr_flag_matrix][value=matrix] ~ div.sheet-matrix, input[name=attr_sheet_type][value=vehicle] ~ .sheet-npc .sheet-rows.sheet-vehicle,
 input[name=attr_sheet_type][value=vehicle] ~ .sheet-npc .sheet-textrow.sheet-vehicle, input[name=attr_sheet_type][value=sprite] ~ .sheet-npc .sheet-rows.sheet-sprite,
 input[name=attr_sheet_type][value=sprite] ~ .sheet-npc .sheet-textrow.sheet-sprite, input[name=attr_sheet_type][value=host] ~ .sheet-npc .sheet-rows.sheet-host,
-input[name=attr_sheet_type][value=host] ~ .sheet-npc .sheet-textrow.sheet-host, input[name=attr_sheet_type][value=grunt] ~ .sheet-npc .sheet-rows.sheet-grunt,
+input[name=attr_sheet_type][value=host] ~ .sheet-npc .sheet-textrow.sheet-host, input[name=attr_sheet_type][value=spirit] ~ .sheet-npc .sheet-rows.sheet-spirit,
+input[name=attr_sheet_type][value=spirit] ~ .sheet-npc .sheet-textrow.sheet-spirit, input[name=attr_sheet_type][value=grunt] ~ .sheet-npc .sheet-rows.sheet-grunt,
 input[name=attr_sheet_type][value=grunt] ~ .sheet-npc .sheet-textrow.sheet-grunt, input.sheet-tab-switch[value=range] ~ .sheet-weapon-range,
-input.sheet-tab-switch[value=melee] ~ .sheet-weapon-melee, input[name=attr_flag_special][value=resonance] ~ .sheet-npc .sheet-hide-resonance, .sheet-character-type[value=resonance] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-resonance, input[name=attr_flag_special][value=magic] ~ .sheet-npc .sheet-hide-magic, .sheet-character-type[value=magic] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-magic, input.sheet-settings-toggle[value=settings] ~ .sheet-settings, input[name=attr_stats_toggle][value=settings] ~ .sheet-attribute .sheet-settings,
+input.sheet-tab-switch[value=melee] ~ .sheet-weapon-melee, input[name=attr_flag_special][value=resonance] ~ .sheet-npc .sheet-hide-resonance, .sheet-character-type[value=resonance] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-resonance, input[name=attr_flag_special][value=magic] ~ .sheet-npc .sheet-hide-magic, .sheet-character-type[value=magic] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-magic, input.sheet-settings-toggle[value=settings] ~ .sheet-settings, input[name=attr_sheet_type][value=spirit] ~ .sheet-npc .sheet-attribute.sheet-spirit label.sheet-settings[data-i18n-title=modifier], input[name=attr_stats_toggle][value=settings] ~ .sheet-attribute .sheet-settings,
 input[name=attr_stats_toggle][value=settings] ~ .sheet-body .sheet-column .sheet-settings,
 input[name=attr_stats_toggle][value=settings] ~ .sheet-body .sheet-textrow .sheet-settings, .sheet-options_toggle[value=vehicle] ~ .sheet-vehicle, .sheet-options_toggle[value=matrix] ~ .sheet-matrix, .sheet-options_toggle[value=magic] ~ .sheet-magic, .sheet-options_toggle[value=social] ~ .sheet-social, .sheet-options_toggle[value=options] ~ .sheet-options, .sheet-options_toggle[value=gear] ~ .sheet-gear, .sheet-options_toggle[value=core] ~ .sheet-core, .sheet-options_toggle[value=augs] ~ .sheet-augs, .sheet-options_toggle[value=arms] ~ .sheet-arms, input[name=attr_sheet_type]:not([value=pc]) ~ .sheet-npc,
 input[name=attr_sheet_type][value=pc] ~ .sheet-pc, .sheet-display-flag:checked ~ .sheet-collapsable .sheet-desc-lifestyle, .sheet-optional-flag:not([value="0"]) + .sheet-optional, .sheet-npc div.sheet-mid div.sheet-column,
@@ -3114,6 +3115,10 @@ input.sheet-collapse-flag:checked ~ div.sheet-collapse {
 /* OLD WAY TO SHOW & HIDE THINGS */
 /***** PC WEAPONS *****/
 /***** NPC TYPES *****/
+input[name=attr_sheet_type][value=spirit] ~ .sheet-npc .sheet-grunt-only {
+  display: none !important;
+}
+
 /* SHOW AND HIDE MAGIC AND RESONANCE SPECIFIC ATTRIBUTES BASED ON RADIO TOGGLE */
 input[name=attr_stats_toggle]:not([value=settings]) ~ div.sheet-body div.sheet-grunt.sheet-pain-tolerance {
   display: none;

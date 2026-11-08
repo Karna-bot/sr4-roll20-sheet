@@ -20,5 +20,6 @@ const SPIRIT_TYPES = {
   toxic_air_smog: {offsets: [-2, 3, 4, -3, 0, 0, 0, 0], powers: "Accident, Astral Form, Elemental Attack, Engulf, Materialization, Movement, Noxious Breath, Sapience"},
   toxic_earth_sludge: {offsets: [3, -1, 2, 3, 0, 0, 0, 0], powers: "Astral Form, Binding, Engulf, Materialization, Movement, Sapience, Search"},
   toxic_water_pollution: {offsets: [2, 0, 2, 0, 0, 0, 0, 0], powers: "Accident, Astral Form, Confusion, Elemental Attack, Engulf, Materialization, Sapience"},
-  toxic_man_harrow: {offsets: [0, 2, 3, -2, 0, 0, 0, 0], powers: "Accident, Astral Form, Concealment, Confusion, Enhanced Senses, Fear, Influence, Materialization, Sapience, Search"}
+  toxic_man_harrow: {offsets: [0, 2, 3, -2, 0, 0, 0, 0], powers: "Accident, Astral Form, Concealment, Confusion, Enhanced Senses, Fear, Influence, Materialization, Sapience, Search"},
+  cicak: {offsets: [1, 3, 2, 0, 0, 0, 0, 0], powers: "Astral Form, Banishing Resistance, Fey Glamour, Materialization, Movement, Natural Weapon, Sapience, Vanishing, Wall Walking"}
 }
