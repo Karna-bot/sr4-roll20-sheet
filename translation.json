@@ -407,6 +407,7 @@
     ,"otherstate": "Other"
     ,"spirittype": "Type"
     ,"customtype": "Custom"
+    ,"tradition": "Tradition"
     ,"services": "Services"
     ,"forceoffsets": "Attribute = Force +"
 }

@@ -460,3 +460,16 @@ const applySpiritType = type => {
     setAttrs(update)
   })
 }
+
+// Tradition (onglet Magie) : preremplit les attributs de resistance au drain et la liste des esprits.
+// "custom" ne modifie rien : le MJ peut creer sa propre tradition.
+const applyTradition = key => {
+  const tradition = TRADITIONS[key]
+  if (!tradition) return
+  const update = {tradition_spirits: tradition.spirits}
+  if (tradition.drain) {
+    update.drain_attribute_1 = `@{${tradition.drain[0]}}`
+    update.drain_attribute_2 = `@{${tradition.drain[1]}}`
+  }
+  setAttrs(update)
+}

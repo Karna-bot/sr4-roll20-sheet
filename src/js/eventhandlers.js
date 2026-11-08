@@ -87,3 +87,5 @@
   on(`change:${sheetAttributes.defense.join(' change:')} change:spirit_state change:sheet_type`, () => updateDefense())
 
   on('change:spirit_type', eventinfo => applySpiritType(eventinfo.newValue))
+
+  on('change:tradition', eventinfo => applyTradition(eventinfo.newValue))

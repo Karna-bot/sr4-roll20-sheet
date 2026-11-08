@@ -21,6 +21,13 @@
         .right-tri
     .border-box
       .pc-box.medium-box
+        .row-long.tradition
+          h3(data-i18n='tradition') Tradition
+          select(name='attr_tradition' title='@{tradition}')
+            option(value='custom' data-i18n='customtype' selected) Custom
+            each val in traditionTypes
+              option(value=val[0]) #{val[1]}
+          span(name='attr_tradition_spirits')
         +fadeDrainSection('drain')
         input.magic-toggle(name='attr_magic_toggle' type='hidden' value='spells')
         .row-long.headers

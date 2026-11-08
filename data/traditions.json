@@ -1,0 +1,299 @@
+{
+  "Trad GM (Toutes libertés)": {
+    "drainAttribute": "Willpower + Logic (Free Choice)",
+    "spiritType": "Materialization / Possession",
+    "spirits": {
+      "combat": "Guardian",
+      "detection": "Air",
+      "health": "Beasts",
+      "illusion": "Guidance",
+      "manipulation": "Man"
+    }
+  },
+  "Aboriginal": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Air",
+      "detection": "Earth",
+      "health": "Beasts",
+      "illusion": "Guidance",
+      "manipulation": "Man"
+    }
+  },
+  "Aztec": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Air",
+      "health": "Plant",
+      "illusion": "Beasts",
+      "manipulation": "Earth"
+    }
+  },
+  "Black Magic": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Air",
+      "health": "Beasts",
+      "illusion": "Guidance",
+      "manipulation": "Earth"
+    }
+  },
+  "Buddhist": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Water",
+      "health": "Earth",
+      "illusion": "Guidance",
+      "manipulation": "Air"
+    }
+  },
+  "Chaos Magic": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Air",
+      "health": "Earth",
+      "illusion": "Water",
+      "manipulation": "Man"
+    }
+  },
+  "Christian Theurgy": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Water",
+      "health": "Air",
+      "illusion": "Earth",
+      "manipulation": "Guidance"
+    }
+  },
+  "Druidic": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Beasts",
+      "detection": "Earth",
+      "health": "Plant",
+      "illusion": "Water",
+      "manipulation": "Air"
+    }
+  },
+  "Egyptian": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Possession",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Earth",
+      "health": "Air",
+      "illusion": "Guidance",
+      "manipulation": "Water"
+    }
+  },
+  "Hermetic": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Air",
+      "health": "Man",
+      "illusion": "Water",
+      "manipulation": "Earth"
+    }
+  },
+  "Hindu": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Beasts",
+      "detection": "Water",
+      "health": "Plant",
+      "illusion": "Air",
+      "manipulation": "Earth"
+    }
+  },
+  "Insect": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Inhabitation",
+    "spirits": {
+      "combat": "Insect_Soldier",
+      "detection": "Insect_Scout",
+      "health": "Insect_Caretaker",
+      "illusion": "Insect_Nymph",
+      "manipulation": "Insect_Worker"
+    }
+  },
+  "Islamic": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Air",
+      "health": "Earth",
+      "illusion": "Guidance",
+      "manipulation": "Water"
+    }
+  },
+  "Norse": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Water",
+      "health": "Earth",
+      "illusion": "Air",
+      "manipulation": "Guardian"
+    }
+  },
+  "Path of the Wheel": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Earth",
+      "detection": "Guidance",
+      "health": "Air",
+      "illusion": "Water",
+      "manipulation": "Fire"
+    }
+  },
+  "Psionic": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Possession",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Air",
+      "health": "Man",
+      "illusion": "Guidance",
+      "manipulation": "Task"
+    }
+  },
+  "Qabbalistic": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Possession",
+    "spirits": {
+      "combat": "Air",
+      "detection": "Earth",
+      "health": "Fire",
+      "illusion": "Water",
+      "manipulation": "Task"
+    }
+  },
+  "Rastafarian": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Possession",
+    "spirits": {
+      "combat": "Man",
+      "detection": "Beasts",
+      "health": "Plant",
+      "illusion": "Water",
+      "manipulation": "Guidance"
+    }
+  },
+  "Shamanic": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Beasts",
+      "detection": "Water",
+      "health": "Earth",
+      "illusion": "Air",
+      "manipulation": "Man"
+    }
+  },
+  "Shinto": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Air",
+      "detection": "Water",
+      "health": "Plant",
+      "illusion": "Beasts",
+      "manipulation": "Man"
+    }
+  },
+  "Toxic": {
+    "drainAttribute": "Willpower + Intuition / Logic",
+    "spiritType": "Materialization / Possession",
+    "spirits": {
+      "combat": "Toxic_Fire_Nuclear",
+      "detection": "Toxic_Air_Smog",
+      "health": "Toxic_Earth_Sludge",
+      "illusion": "Toxic_Water_Pollution",
+      "manipulation": "Toxic_Man_Harrow"
+    }
+  },
+  "Traditional or Hedge Witchcraft": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Possession",
+    "spirits": {
+      "combat": "Earth",
+      "detection": "Water",
+      "health": "Plant",
+      "illusion": "Air",
+      "manipulation": "Task"
+    }
+  },
+  "Voodoo": {
+    "drainAttribute": "Willpower + Charisma",
+    "spiritType": "Possession",
+    "spirits": {
+      "combat": "Guardian",
+      "detection": "Water",
+      "health": "Man",
+      "illusion": "Guidance",
+      "manipulation": "Task"
+    }
+  },
+  "Wicca (Gardnerian)": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Water",
+      "health": "Plant",
+      "illusion": "Air",
+      "manipulation": "Earth"
+    }
+  },
+  "Wicca (Goddess)": {
+    "drainAttribute": "Willpower + Intuition",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Water",
+      "health": "Plant",
+      "illusion": "Air",
+      "manipulation": "Earth"
+    }
+  },
+  "Wuxing": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Fire",
+      "detection": "Earth",
+      "health": "Plant",
+      "illusion": "Water",
+      "manipulation": "Guidance"
+    }
+  },
+  "Zoroastrian": {
+    "drainAttribute": "Willpower + Logic",
+    "spiritType": "Materialization",
+    "spirits": {
+      "combat": "Guardian",
+      "detection": "Fire",
+      "health": "Earth",
+      "illusion": "Water",
+      "manipulation": "Man"
+    }
+  }
+}
