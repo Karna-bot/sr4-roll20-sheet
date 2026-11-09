@@ -88,6 +88,17 @@
 						input(min='0' max='4' name='attr_'+val[0]+'_dice_modifier' placeholder='0' title='@{'+val[0]+'_dice_modifier}' type='number' value='0')
 					span.settings(data-i18n='d6') d6
 			
+			//- INITIATIVE PASSES (grunt and spirit; vehicles show veh_ip in their control block)
+			.rows.grunt.spirit
+				h2(data-i18n='Initiative Passes') Initiative Passes
+				label.settings(data-i18n-title='Initiative Passes' title='Initiative Passes')
+					input(name='attr_initiative_passes_base' placeholder='1' title='@{initiative_passes_base}' type='number')
+				span.settings +
+				label.settings(data-i18n-title='modifier' title='modifier')
+					input(name='attr_initiative_passes_modifier' placeholder='0' title='@{initiative_passes_modifier}' type='number')
+				span.settings.tiny-span() =
+				span(name='attr_initiative_passes' title='@{initiative_passes}')
+
 			//- MOVEMENT
 			.rows.grunt.spirit
 				h2(data-i18n='movement') Movement
@@ -137,6 +148,7 @@
 				button(name='roll_vh_initiative' type='roll' value!=`@{gm_toggle} &{template:rolls}{{header=^{initiative}}}{{base=^{base}}}{{dice=[[((@{veh_init}+@{modifiers_toggle})d6>5cf0)+(@{veh_init})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}`) Initiative
 				span(name='attr_veh_init')
 				span +
+				input(name='attr_veh_ip' type='hidden' value='1')
 				span(name='attr_veh_ip')
 				span(data-i18n='vh_ip') IP
 			each val in vehicleRolls

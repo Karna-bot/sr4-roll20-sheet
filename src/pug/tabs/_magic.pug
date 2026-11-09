@@ -90,6 +90,24 @@
                     input(name='attr_dicepool_modifier' title=`@{${repeatingRitualSection}_dicepool_modifier}` type='number')
                 +repeatingSectionNotes('ritual')
 
+  .pc-row.initiation
+    .header.right-header
+      h1(data-i18n='initiationsubmersion') Initiation and Submersion
+      .right-tri
+    .border-box
+      .pc-box.medium-box
+        .row-long
+          h3(data-i18n='initiate') Initiate
+          input(name='attr_initiate' placeholder='0' style='width: 15%' title='@{initiate}' type='number')
+          h3(data-i18n='submersion') Submersion
+          input(name='attr_submersion' placeholder='0' style='width: 15%' title='@{submersion}' type='number')
+        .row-long
+          h3(data-i18n='metamagic') Metamagic
+          textarea(name='attr_metamagic' placeholder='Metamagic' style='width: 90%' title='@{metamagic}')
+        .row-long
+          h3(data-i18n='echos') Echoes
+          textarea(name='attr_echos' placeholder='Echoes' style='width: 90%' title='@{echos}')
+
   .pc-row.powers
     .header.right-header
       h1(data-i18n='adeptpowers') Adept Powers or Other Abilities

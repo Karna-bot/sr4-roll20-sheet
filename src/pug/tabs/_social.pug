@@ -66,3 +66,21 @@
               input(type="number" name="attr_connection" min="1" placeholder="8" title="@{repeating_contacts_${x}_name}")
               input(type="number" name="attr_favors" placeholder="+2" title="@{repeating_contacts_${x}_name}")
               +repeatingSectionNotes('contacts')
+  .pc-row
+    .header.right-header
+      h1(data-i18n="characterbackground") Character Background
+      .right-tri
+    .border-box.background
+      .pc-box.small-box
+        .row-long
+          h3(data-i18n="concept") Concept
+          input(name="attr_concept" placeholder="Concept" style="width: 85%" title="@{concept}" type="text")
+        .row-long
+          h3(data-i18n="description") Description
+          textarea(name="attr_description" placeholder="Description" style="width: 92%; height: 90px" title="@{description}")
+        .row-long
+          h3(data-i18n="background") Background
+          textarea(name="attr_background" placeholder="Background" style="width: 92%; height: 120px" title="@{background}")
+        .row-long
+          h3(data-i18n="notes") Notes
+          textarea(name="attr_character_notes" placeholder="Notes" style="width: 92%; height: 90px" title="@{character_notes}")
