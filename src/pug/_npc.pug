@@ -88,14 +88,14 @@
 						input(min='0' max='4' name='attr_'+val[0]+'_dice_modifier' placeholder='0' title='@{'+val[0]+'_dice_modifier}' type='number' value='0')
 					span.settings(data-i18n='d6') d6
 			
-			//- INITIATIVE PASSES (grunt and spirit; vehicles show veh_ip in their control block)
-			.rows.grunt.spirit
+			//- INITIATIVE PASSES (grunt, spirit and vehicle; for a vehicle the base is rewritten by the operator/mode calculation)
+			.rows.grunt.spirit.vehicle
 				h2(data-i18n='Initiative Passes') Initiative Passes
 				label.settings(data-i18n-title='Initiative Passes' title='Initiative Passes')
-					input(name='attr_initiative_passes_base' placeholder='1' title='@{initiative_passes_base}' type='number')
+					input(name='attr_initiative_passes_base' placeholder='1' title='@{initiative_passes_base}' type='number' value='1')
 				span.settings +
 				label.settings(data-i18n-title='modifier' title='modifier')
-					input(name='attr_initiative_passes_modifier' placeholder='0' title='@{initiative_passes_modifier}' type='number')
+					input(name='attr_initiative_passes_modifier' placeholder='0' title='@{initiative_passes_modifier}' type='number' value='0')
 				span.settings.tiny-span() =
 				span(name='attr_initiative_passes' title='@{initiative_passes}')
 
