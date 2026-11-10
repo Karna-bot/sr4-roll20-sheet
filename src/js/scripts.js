@@ -243,7 +243,7 @@ const resetConditionTrack = eventinfo => {
 
 //Calculate Matrix Initiatve.
 const updateMatrixInitiative = () => {
-  getAttrs(["sheet_type", "data_processing", "veh_response", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle"], v => {
+  getAttrs(["sheet_type", "data_processing", "veh_response", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle", "sprite_init_mult"], v => {
     const sheetType = v.sheet_type;
     const edgeFlag = v.edge_toggle === "@{edge}" ? true : false;
 
@@ -252,6 +252,9 @@ const updateMatrixInitiative = () => {
     //- vehicle / drone node: Pilot + Response (deck statistics)
     let base = sheetType === "vehicle" ? v.veh_response : v.data_processing;
     base += sheetType === "sprite" ? v.level : sheetType === "vehicle" ? v.pilot : sheetType === "host" ? v.host_rating : v.intuition;
+
+    //- sprite: Matrix initiative = Level x multiplier of its type (Chummer), no Data Processing
+    if (sheetType === "sprite" && v.sprite_init_mult > 0) base = v.level * v.sprite_init_mult;
 
     const total = base + v.matrix_mod_modifier;
 
@@ -439,6 +442,35 @@ const updateSpiritAttributes = () => {
     const update = {edge: force + (parseInt(v.edge_offset) || 0)}
     SPIRIT_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = force + (parseInt(v[`${attr}_offset`]) || 0))
     if (SPIRIT_PASSES[v.spirit_state]) update.initiative_passes_base = SPIRIT_PASSES[v.spirit_state]
+    setAttrs(update)
+  })
+}
+
+// Sprite : Charisme, Intuition, Logique, Edge = Niveau + decalage propre a l'attribut (champs *_offset).
+// Corps, Agilite, Reaction, Force et Volonte n'existent pas pour un sprite (0 dans Chummer).
+const SPRITE_ATTRIBUTES = ['charisma', 'intuition', 'logic']
+
+const updateSpriteAttributes = () => {
+  const offsets = SPRITE_ATTRIBUTES.concat(['edge']).map(attr => `${attr}_offset`)
+  getAttrs(['sheet_type', 'level'].concat(offsets), v => {
+    if (v.sheet_type !== 'sprite') return
+    const level = parseInt(v.level) || 0
+    const update = {edge: level + (parseInt(v.edge_offset) || 0)}
+    SPRITE_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = level + (parseInt(v[`${attr}_offset`]) || 0))
+    setAttrs(update)
+  })
+}
+
+const applySpriteType = type => {
+  const sprite = SPRITE_TYPES[type]
+  if (!sprite) return
+  getAttrs(['sheet_type'], v => {
+    if (v.sheet_type !== 'sprite') return
+    const update = {
+      powers: sprite.powers, edge_offset: 0, sprite_init_mult: sprite.initMult,
+      sprite_info: `Skills (rating = Level): ${sprite.skills}. Complex forms: ${sprite.forms}. Optional: ${sprite.optionalForms}.`
+    }
+    SPRITE_ATTRIBUTES.forEach((attr, i) => update[`${attr}_offset`] = sprite.offsets[i])
     setAttrs(update)
   })
 }

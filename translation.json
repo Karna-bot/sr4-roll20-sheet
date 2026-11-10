@@ -461,5 +461,9 @@
     ,"vh_pilot_auto": "Best Pilot skill"
     ,"tradition": "Tradition"
     ,"services": "Services"
+    ,"spritetype": "Type"
+    ,"spriteinit": "Initiative = Level x"
+    ,"leveloffsets": "Attribute = Level +"
+    ,"spriteinfo": "Skills and Forms"
     ,"forceoffsets": "Attribute = Force +"
 }

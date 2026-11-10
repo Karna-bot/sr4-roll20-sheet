@@ -68,7 +68,7 @@
 
 	on('change:astral_dice_modifier change:edge_toggle', () => updateAstralInitiativeDice())
 
-	on('change:host_rating change:data_processing change:veh_response change:pilot change:intuition change:matrix_initiative_modifier change:level change:matrix_dice_modifier change:edge_toggle', () => updateMatrixInitiative())
+	on('change:host_rating change:data_processing change:veh_response change:pilot change:intuition change:matrix_initiative_modifier change:level change:sprite_init_mult change:sheet_type change:matrix_dice_modifier change:edge_toggle', () => updateMatrixInitiative())
 
   on("clicked:cond_reset", () => resetNpcCondition()); 
 
@@ -82,7 +82,14 @@
 
   on('change:force change:sheet_type change:spirit_state change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
 
-  on('change:sheet_type', eventinfo => { if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'}) })
+  on('change:level change:sheet_type change:edge_offset ' + SPRITE_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpriteAttributes())
+
+  on('change:sprite_type', eventinfo => applySpriteType(eventinfo.newValue))
+
+  on('change:sheet_type', eventinfo => {
+    if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'})
+    if (eventinfo.newValue === 'sprite') setAttrs({flag_special: 'resonance'})
+  })
 
   on(`change:${sheetAttributes.defense.join(' change:')} change:spirit_state change:sheet_type`, () => updateDefense())
 

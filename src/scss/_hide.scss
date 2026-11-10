@@ -64,6 +64,7 @@
 	}
 
 	//- Spirit sheet: attribute modifiers are always visible under each attribute
+	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-attribute.sheet-sprite label.sheet-settings[data-i18n-title='modifier'],
 	input[name='attr_sheet_type'][value='spirit'] ~ .sheet-npc .sheet-attribute.sheet-spirit label.sheet-settings[data-i18n-title='modifier'] {
 		@extend %display-inline-block;
 	}
@@ -138,13 +139,14 @@
 		}
 	}
 
-	//- Essence, Magic and Resonance do not exist on a spirit sheet
+	//- Essence, Magic and Resonance do not exist on a spirit or sprite sheet
+	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-grunt-only,
 	input[name='attr_sheet_type'][value='spirit'] ~ .sheet-npc .sheet-grunt-only {
 		display: none !important;
 	}
 
 	input[name='attr_sheet_type'][value='host'] ~ .sheet-npc .sheet-column:nth-of-type(2),
-	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-column:nth-of-type(1n+2)  { 
+	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-column:nth-of-type(2)  { 
 		@extend %display-none;
 	}
 

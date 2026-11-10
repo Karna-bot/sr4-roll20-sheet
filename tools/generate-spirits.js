@@ -50,3 +50,23 @@ fs.writeFileSync(path.join(root, 'src', 'pug', '_tradition-types.pug'),
   '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
   '- const traditionTypes = [' + usable.map(([n]) => `['${slug(n)}', '${n.replace(/'/g, "\\'")}']`).join(', ') + '];\n')
 console.log(`${usable.length} traditions generees`)
+
+// ---- SPRITES (fiche type sprite) : data/sprites.json -> src/js/sprite-types.js, src/pug/_sprite-types.pug
+// Attribut = Niveau + decalage (charisme, intuition, logique ; les autres attributs d'un sprite valent 0 d'apres Chummer).
+const sprites = JSON.parse(fs.readFileSync(path.join(root, 'data', 'sprites.json'), 'utf8'))
+const SPRITE_ATTRS = ['charisma', 'intuition', 'logic']
+const list = a => JSON.stringify((a || []).join(', '))
+fs.writeFileSync(path.join(root, 'src', 'js', 'sprite-types.js'), [
+  '// FICHIER GENERE par tools/generate-spirits.js depuis data/sprites.json : ne pas modifier a la main.',
+  '// Attribut = Niveau + decalage ; ordre des decalages : ' + SPRITE_ATTRS.join(', ') + '. initMult : initiative matricielle = Niveau x initMult.',
+  'const SPRITE_TYPES = {',
+  Object.entries(sprites).map(([name, s]) =>
+    `  ${key(name)}: {offsets: [${SPRITE_ATTRS.map(a => (s.attrMod || {})[a] || 0).join(', ')}], initMult: ${s.initMult || 1}, powers: ${list(s.powers)}, skills: ${list(s.skills)}, forms: ${list(s.complexForms)}, optionalForms: ${list(s.optionalComplexForms)}}`
+  ).join(',\n'),
+  '}',
+  ''
+].join('\n'))
+fs.writeFileSync(path.join(root, 'src', 'pug', '_sprite-types.pug'),
+  '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
+  '- const spriteTypes = [' + Object.keys(sprites).map(n => `['${key(n)}', '${label(n)}']`).join(', ') + '];\n')
+console.log(`${Object.keys(sprites).length} types de sprites generes`)

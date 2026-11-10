@@ -1,0 +1,303 @@
+{
+  "Code": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 2
+    },
+    "initMult": 2,
+    "source": "UN",
+    "skills": [
+      "Computer",
+      "Data Search",
+      "Electronic Warfare"
+    ],
+    "powers": [
+      "Info Sortilege",
+      "Probability Distribution"
+    ],
+    "complexForms": [
+      "Browse",
+      "Decrypt",
+      "Edit",
+      "Encrypt"
+    ],
+    "optionalComplexForms": [
+      "Analyze",
+      "Corrupt",
+      "Data Bomb",
+      "Scan"
+    ]
+  },
+  "Courier": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": 1
+    },
+    "initMult": 3,
+    "source": "SR4",
+    "skills": [
+      "Computer",
+      "Data Search",
+      "Hacking"
+    ],
+    "powers": [
+      "Cookie",
+      "Hash"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Edit",
+      "Encrypt",
+      "Stealth",
+      "Track"
+    ],
+    "optionalComplexForms": [
+      "Browse",
+      "Command",
+      "Decrypt",
+      "Exploit",
+      "Scan"
+    ]
+  },
+  "Crack": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": 0
+    },
+    "initMult": 3,
+    "source": "SR4",
+    "skills": [
+      "Computer",
+      "Electronic Warfare",
+      "Hacking"
+    ],
+    "powers": [
+      "Suppression"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Exploit",
+      "Stealth"
+    ],
+    "optionalComplexForms": [
+      "Decrypt",
+      "Defuse",
+      "Edit",
+      "Scan",
+      "Spoof"
+    ]
+  },
+  "Data": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 0,
+      "logic": -2
+    },
+    "initMult": 2,
+    "source": "SR4",
+    "skills": [
+      "Computer",
+      "Data Search",
+      "Electronic Warfare"
+    ],
+    "powers": [
+      "Steganography",
+      "Watermark"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Browse",
+      "Edit",
+      "Decrypt"
+    ],
+    "optionalComplexForms": [
+      "Defuse",
+      "Encrypt",
+      "Sniffer",
+      "Stealth",
+      "Linguasoft"
+    ]
+  },
+  "Fault": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 2,
+      "logic": 1
+    },
+    "initMult": 3,
+    "source": "SR4",
+    "skills": [
+      "Computer",
+      "Cybercombat",
+      "Hacking"
+    ],
+    "powers": [
+      "Electron Storm"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Armor",
+      "Attack",
+      "Stealth"
+    ],
+    "optionalComplexForms": [
+      "Black Hammer",
+      "Blackout",
+      "Exploit",
+      "Medic"
+    ]
+  },
+  "Machine": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 2
+    },
+    "initMult": 2,
+    "source": "SR4",
+    "skills": [
+      "Computer",
+      "Electronic Warfare",
+      "Hardware"
+    ],
+    "powers": [
+      "Diagnostics",
+      "Gremlins",
+      "Stability"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Command"
+    ],
+    "optionalComplexForms": [
+      "Decrypt",
+      "Edit",
+      "Medic",
+      null
+    ]
+  },
+  "Paladin": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 2,
+      "logic": 2
+    },
+    "initMult": 1,
+    "source": "UN",
+    "skills": [
+      "Computer",
+      "Cybercombat",
+      "Hacking"
+    ],
+    "powers": [
+      "Castling",
+      "Hardening"
+    ],
+    "complexForms": [
+      "Armor",
+      "Disarm",
+      "Medic",
+      "Shield"
+    ],
+    "optionalComplexForms": [
+      "Analyze",
+      "Attack",
+      "Blackout",
+      "Expert Defense"
+    ]
+  },
+  "Sleuth": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": -1,
+      "logic": 2
+    },
+    "initMult": 3,
+    "source": "UN",
+    "skills": [
+      "Computer",
+      "Data Search",
+      "Electronic Warfare",
+      "Hacking"
+    ],
+    "powers": [
+      "Cookie",
+      "Traceroute"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Browse",
+      "Sniffer",
+      "Spoof",
+      "Stealth",
+      "Track"
+    ],
+    "optionalComplexForms": [
+      "Command",
+      "Decrypt",
+      "Exploit",
+      "Scan"
+    ]
+  },
+  "Tank": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": 1
+    },
+    "initMult": 2,
+    "source": "UN",
+    "skills": [
+      "Cybercombat"
+    ],
+    "powers": [
+      "Assault"
+    ],
+    "complexForms": [
+      "Attack",
+      "Attack",
+      "Blackout",
+      "Nuke"
+    ],
+    "optionalComplexForms": [
+      "Armor",
+      "Black Hammer",
+      "Cascading",
+      "Medic",
+      "Shield"
+    ]
+  },
+  "Tutor": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": 0
+    },
+    "initMult": 2,
+    "source": "UN",
+    "skills": [
+      "Computer",
+      "Hardware",
+      "Instruction",
+      "Software"
+    ],
+    "powers": [
+      "Proficiency",
+      "Stability"
+    ],
+    "complexForms": [
+      "Analyze",
+      "Browse"
+    ],
+    "optionalComplexForms": [
+      "Command",
+      "Edit",
+      "Activesoft",
+      "Knowsoft",
+      "Linguasoft"
+    ]
+  }
+}
