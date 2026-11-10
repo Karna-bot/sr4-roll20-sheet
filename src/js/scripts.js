@@ -428,14 +428,17 @@ on("change:repeating_weapon", () => {
 const SPIRIT_ATTRIBUTES = ['body', 'agility', 'reaction', 'strength', 'charisma', 'intuition', 'logic', 'willpower']
 const SPIRIT_DEFENSE_BONUS = {astral: 1, materialized: 0.5, other: 0}
 const SPIRIT_ROUND = Math.ceil
+// Passes d'initiative selon l'état : 3 en astral, 2 matérialisé ('other' : valeur laissée telle quelle)
+const SPIRIT_PASSES = {astral: 3, materialized: 2}
 
 const updateSpiritAttributes = () => {
   const offsets = SPIRIT_ATTRIBUTES.concat(['edge']).map(attr => `${attr}_offset`)
-  getAttrs(['sheet_type', 'force'].concat(offsets), v => {
+  getAttrs(['sheet_type', 'force', 'spirit_state'].concat(offsets), v => {
     if (v.sheet_type !== 'spirit') return
     const force = parseInt(v.force) || 0
     const update = {edge: force + (parseInt(v.edge_offset) || 0)}
     SPIRIT_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = force + (parseInt(v[`${attr}_offset`]) || 0))
+    if (SPIRIT_PASSES[v.spirit_state]) update.initiative_passes_base = SPIRIT_PASSES[v.spirit_state]
     setAttrs(update)
   })
 }
@@ -482,7 +485,7 @@ const applyTradition = key => {
 const VEHICLE_FIELDS = ['sheet_type', 'veh_mode', 'veh_interface', 'veh_ar', 'veh_response', 'veh_command', 'veh_op_reaction', 'veh_op_agility',
   'veh_op_intuition', 'veh_op_init', 'veh_op_ip', 'veh_sk_piloting', 'veh_sk_gunnery', 'veh_sk_dodge', 'veh_sk_melee', 'veh_sk_perception',
   'veh_sk_infiltration', 'veh_as_maneuver', 'veh_as_targeting', 'veh_as_defense', 'veh_as_clearsight', 'veh_as_covert', 'veh_bonus_rig',
-  'veh_bonus_hot', 'pilot', 'sensor', 'body', 'ballistic', 'impact']
+  'veh_bonus_hot', 'pilot', 'sensor', 'body', 'ballistic']
 
 const vehiclePools = v => {
   const n = key => parseInt(v[key]) || 0
@@ -506,8 +509,7 @@ const vehiclePools = v => {
       : mode === 'jumped' ? sensor + Math.min(skill('perception'), intuition)
       : sensor + skill('perception'),
     infiltration: {manual: agility, remote: command, jumped: response, autonomous: pilot}[mode] + (mode === 'autonomous' ? n('veh_as_covert') : skill('infiltration')),
-    resist_ballistic: n('body') + n('ballistic'),
-    resist_impact: n('body') + n('impact')
+    resist: n('body') + n('ballistic')
   }
   Object.keys(pools).forEach(key => {
     // resistance tests do not use the control bonus
@@ -522,6 +524,15 @@ const vehiclePools = v => {
 
   const note = (jumped || mode === 'autonomous' ? 'Threshold -1. ' : '') + (jumped ? `Control: +${bonus} dice.` : (bonus ? `AR: +${bonus} die.` : ''))
   return {pools, init, ip: Math.max(1, ip), note: note.trim()}
+}
+
+// Un véhicule n'a qu'un seul type de blindage : impact = balistique
+const updateVehicleArmor = () => {
+  getAttrs(['sheet_type', 'ballistic', 'impact'], v => {
+    if (v.sheet_type !== 'vehicle') return
+    const armor = parseInt(v.ballistic) || 0
+    if ((parseInt(v.impact) || 0) !== armor) setAttrs({impact: armor})
+  })
 }
 
 const updateVehicleControl = () => {

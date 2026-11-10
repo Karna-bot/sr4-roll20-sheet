@@ -80,7 +80,7 @@
 
   on("change:default_attribute", eventinfo => updateDefaultAttribute(eventinfo.newValue))
 
-  on('change:force change:sheet_type change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
+  on('change:force change:sheet_type change:spirit_state change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
 
   on('change:sheet_type', eventinfo => { if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'}) })
 
@@ -89,5 +89,7 @@
   on('change:spirit_type', eventinfo => applySpiritType(eventinfo.newValue))
 
   on('change:tradition', eventinfo => applyTradition(eventinfo.newValue))
+
+  on('change:ballistic change:sheet_type', () => updateVehicleArmor())
 
   on(VEHICLE_FIELDS.map(attr => `change:${attr}`).join(' '), () => updateVehicleControl())

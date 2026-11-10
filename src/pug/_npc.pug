@@ -128,6 +128,17 @@
 			//- VEHICLE / DRONE CONTROL
 			.rows.vehicle
 				h1(data-i18n='vh_control') Control
+			//- Character linked by the API script vehicle-link (command !link-vehicle)
+			.rows.vehicle
+				h2(data-i18n='vh_driver') Linked character
+				input(name='attr_veh_driver_id' type='hidden' value='')
+				span(name='attr_veh_driver_name')
+			.rows.vehicle.settings
+				h2.settings(data-i18n='vh_pilotskill') Piloting skill used
+				select.settings(name='attr_veh_pilot_skill' title='@{veh_pilot_skill}')
+					option(value='auto' data-i18n='vh_pilot_auto' selected) Best Pilot skill
+					each val in ['Pilot Aerospace', 'Pilot Aircraft', 'Pilot Anthroform', 'Pilot Exotic Vehicle', 'Pilot Ground Craft', 'Pilot Watercraft']
+						option(value=val data-i18n=val.replace(/ /g, '').toLowerCase()) #{val}
 			.rows.vehicle
 				h2(data-i18n='vh_controlmode') Control mode
 				select(name='attr_veh_mode' title='@{veh_mode}')
@@ -195,9 +206,14 @@
 		//- MODIFIERS				
 		.column
 			h1.settings(data-i18n='modifier') Modifier
+			//- A vehicle has a single armor value (impact = ballistic, kept in sync by a sheet worker)
+			.rows.vehicle
+				+rollButton('armor', 'base', '@{ballistic}+@{soak}')
+				label.settings(data-i18n-title='armor' title='armor')
+					input(name='attr_ballistic' placeholder='9' title='@{ballistic}' type='number' value='0')
 			each val in ['ballistic', 'impact']
 				- const attrName = val.toLowerCase();
-				.rows
+				.rows.grunt.spirit
 					+rollButton(attrName, 'base', `@{${attrName}}+@{soak}`)
 					label.settings(data-i18n-title=val)
 						input(name=`attr_${val}` placeholder='9' title=`@{${attrName}}` type='number' value='0')

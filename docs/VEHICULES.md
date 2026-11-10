@@ -3,7 +3,7 @@
 Un véhicule ou un drone est un **nœud matriciel** : il a ses statistiques de deck (Réponse, Système, Signal, Pare-feu) et son Pilote. Les jets dépendent du **mode de contrôle** (menu « Control mode »), de l'interface (AR, VR cold-sim, VR hot-sim) et des statistiques de l'**opérateur** (rigger ou pilote), saisies sur la fiche du véhicule.
 
 ## Champs (visibles en mode réglages)
-- Véhicule (existant) : handling, speed, acceleration, body, pilot, sensor, seats, blindage (ballistic / impact).
+- Véhicule (existant) : handling, speed, acceleration, body, pilot, sensor, seats, blindage unique (`ballistic`, `impact` est recopié automatiquement : un véhicule n'a qu'un type d'armure).
 - Nœud : `veh_response`, `veh_system`, `veh_signal`, `veh_firewall`. La **Matrix Initiative** d'un véhicule = Pilote + Réponse.
 - Contrôle : `veh_command` (programme Commande), Réaction / Agilité / Intuition de l'opérateur, Initiative de l'opérateur et ses IP (manuel / AR), compétences (pilotage, tir, esquive, mêlée, perception, infiltration), autosofts (Maneuver, Targeting, Defense, Clearsight, Covert Ops).
 - Bonus réglables : Control Rig (défaut +2) et Hot-sim (défaut +2), utilisés en mode immergé.
@@ -18,7 +18,7 @@ Un véhicule ou un drone est un **nœud matriciel** : il a ses statistiques de d
 | Défense totale | Réaction + Esquive | Commande + Esquive | Réponse + Esquive | Pilote + Defense |
 | Perception | Intuition + Perception | Capteur + Perception | Capteur + min(Perception, Intuition) | Capteur + Clearsight |
 | Infiltration | Agilité + Infiltration | Commande + Infiltration | Réponse + Infiltration | Pilote + Covert Ops |
-| Résistance | Corps + blindage (balistique ou impact), dans tous les modes |
+| Résistance | Corps + blindage, dans tous les modes (un seul jet) |
 
 ## Initiative
 | Mode | Score | Passes (IP) |
@@ -40,3 +40,6 @@ Les IP écrivent `initiative_passes_base` ; la fiche calcule le total.
 3. Control Rig et Hot-sim se cumulent en hot-sim immergé.
 4. Le bouton d'initiative reprend la convention de la fiche (dés d'initiative + score) et l'en-tête `initiative` lu par CombatManagement.
 5. Les coûts de maintenance restent hors de la fiche.
+
+## Lier un personnage (script API `vehicle-link`)
+Commande `!link-vehicle` (voir `sr4-roll20-scripts/vehicle-link/README.md`) : recopie les statistiques d'un personnage (Réaction, Agilité, Intuition, Initiative, IP, compétences Pilotage/Artillerie/Esquive/Mêlée/Perception/Infiltration, bonus de Control Rig) dans les champs « opérateur » du véhicule. Le personnage lié apparaît dans « Linked character » ; le menu « Piloting skill used » (réglages) choisit la compétence de pilotage (par défaut la meilleure compétence Pilot). La mise à jour n'est faite que sur commande.
