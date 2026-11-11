@@ -19,9 +19,20 @@
         input.tab-switch(name='attr_weapon_type_toggle' type='hidden' value='range')
         .rows.repeating-container.weapon-range
           - const rangeRepeatingSection = '@{repeating_range_${x}';
+          //- RECOIL (cumulative over one initiative pass) : shots fired this pass, reset by the button or by the CombatManagement script
+          .row-long.recoil-row
+            h3(data-i18n='shotspass') Shots this pass
+            label(data-i18n-title='shotspass' title='Shots fired this pass')
+              input(name='attr_shots_pass' type='number' value='0' title='@{shots_pass}')
+            button(name='act_new_pass' type='action' data-i18n='newpass') New pass
+            h3(data-i18n='recoilbonus') Recoil bonus
+            label(data-i18n-title='recoilbonus' title='Extra recoil compensation (Strength, gyro...)')
+              input(name='attr_recoil_bonus' type='number' value='0' title='@{recoil_bonus}')
           +h2Headers(pcRangeWeaponObject)
           fieldset(class='repeating_range')
             input(name='attr_dicepool' type='hidden' value='0')
+            input(name='attr_recoil_penalty' type='hidden' value='0')
+            input(name='attr_shots' type='hidden' value='1')
             input.flag-primary(name='attr_primary' type='hidden' value='')
             +weaponRollButton(pcRangeWeaponButton)
             each val in ['Dam', 'AP', 'Mode', 'RC', 'Ammo']
@@ -43,6 +54,14 @@
                 else
                   label(data-i18n-title=key.toLowerCase() title=key.toLowerCase())
                     input(name=`attr_${attrName}` placeholder=val['placeholder'] title=`${rangeRepeatingSection}_${attrName}}` type=val['type'] value='')
+              .row
+                h3(data-i18n='ammomax') Max ammo
+                label(data-i18n-title='ammomax' title='Max ammo')
+                  input(name='attr_ammo_max' placeholder='15' type='number' title=`${rangeRepeatingSection}_ammo_max}`)
+                h3(data-i18n='shotscustom') Shots per attack
+                label(data-i18n-title='shotscustom' title='Shots per attack (empty = from mode: SS/SA 1, BF 3, FA 6)')
+                  input(name='attr_shots_custom' placeholder='auto' type='number' title=`${rangeRepeatingSection}_shots_custom}`)
+                button.pictos(name='act_ammo_reload' type='action' title='Reload') 0
               .row
                 h3(data-i18n='modeoptions') Mode Options
                 label(data-i18n-title='modeoptions' title='Mode Options')

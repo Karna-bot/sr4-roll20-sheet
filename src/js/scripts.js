@@ -155,6 +155,54 @@ const updateShotsFired = trigger => {
   });
 }
 
+//- RECOIL (SR4) : modifier = shots already fired this pass + shots of this attack - 1 - recoil compensation, never below 0
+const RECOIL_SHOTS_BY_MODE = {SS: 1, SA: 1, BF: 3, FA: 6, Other: 1}
+
+const rangeShots = (mode, custom) => {
+  const forced = parseInt(custom, 10)
+  return forced > 0 ? forced : (RECOIL_SHOTS_BY_MODE[mode] || 1)
+}
+
+const updateRecoilPenalties = () => {
+  getSectionIDs('range', ids => {
+    const fields = ['shots_pass', 'recoil_bonus']
+    ids.forEach(id => ['recoil', 'mode', 'shots_custom'].forEach(field => fields.push(`repeating_range_${id}_${field}`)))
+    getAttrs(fields, v => {
+      const pass = parseInt(v.shots_pass, 10) || 0
+      const bonus = parseInt(v.recoil_bonus, 10) || 0
+      const update = {}
+      ids.forEach(id => {
+        const prefix = `repeating_range_${id}_`
+        const shots = rangeShots(v[`${prefix}mode`], v[`${prefix}shots_custom`])
+        const compensation = parseInt(String(v[`${prefix}recoil`] || '0').replace(/[()]/g, ''), 10) || 0
+        update[`${prefix}shots`] = shots
+        update[`${prefix}recoil_penalty`] = Math.max(0, pass + shots - 1 - compensation - bonus)
+      })
+      processingFunctions.setAttributes(update, true)
+    })
+  })
+}
+
+//- A range weapon roll button was clicked: the roll already used the stored penalty; now count the shots and spend the ammo
+const fireRangeWeapon = eventinfo => {
+  const rowId = processingFunctions.getReprowid(eventinfo.triggerName)
+  getAttrs(['shots_pass', `${rowId}_ammo`, `${rowId}_mode`, `${rowId}_shots_custom`], v => {
+    const shots = rangeShots(v[`${rowId}_mode`], v[`${rowId}_shots_custom`])
+    const update = {shots_pass: (parseInt(v.shots_pass, 10) || 0) + shots}
+    const ammo = parseInt(v[`${rowId}_ammo`], 10)
+    if (!isNaN(ammo)) update[`${rowId}_ammo`] = Math.max(0, ammo - shots)
+    processingFunctions.setAttributes(update)
+  })
+}
+
+const reloadRangeWeapon = eventinfo => {
+  const rowId = processingFunctions.getReprowid(eventinfo.triggerName)
+  getAttrs([`${rowId}_ammo_max`], v => {
+    const max = parseInt(v[`${rowId}_ammo_max`], 10)
+    if (!isNaN(max)) processingFunctions.setAttributes({[`${rowId}_ammo`]: max})
+  })
+}
+
 const updateAmmoWithShotsFired = () => {
   getAttrs([`primary_range_weapon_ammo`, `shots_fired`], attrs => {
     attrs = processingFunctions.parseIntegers(attrs)

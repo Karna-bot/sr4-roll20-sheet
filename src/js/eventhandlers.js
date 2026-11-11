@@ -7,6 +7,11 @@
   on('clicked:shots_remove clicked:shots_add', eventinfo => updateShotsFired(eventinfo.triggerName))
 
 	on('clicked:primary_ammo', () => updateAmmoWithShotsFired())
+  // Recoil, shots and ammo per ranged weapon row (roll buttons also raise clicked events)
+  on('change:shots_pass change:recoil_bonus change:repeating_range:mode change:repeating_range:recoil change:repeating_range:shots_custom remove:repeating_range', () => updateRecoilPenalties())
+  on('clicked:repeating_range:range_weapon clicked:repeating_range:roll_range_weapon', eventinfo => fireRangeWeapon(eventinfo))
+  on('clicked:repeating_range:ammo_reload', eventinfo => reloadRangeWeapon(eventinfo))
+  on('clicked:new_pass', () => processingFunctions.setAttributes({shots_pass: 0}))
 
   on('clicked:reload', () => updateAmmoWithMax())
 

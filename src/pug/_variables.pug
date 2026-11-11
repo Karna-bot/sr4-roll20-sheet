@@ -56,7 +56,7 @@
 
 //- Weapons
 - const weaponButton = {'name': 'weapon', 'header': '@{weapon_type}', 'rollFormula': '@{weapon_dice}', 'desc': '{{desc= DV @{weapon_dv}, AP @{weapon_ap}}}{{rea=[[@{weapon_reach}]]}}', 'display': 'weapon_name'};
-- const pcRangeWeaponButton = {'name': 'range_weapon', 'header': '@{weapon}', 'rollFormula': '@{skill}+@{dicepool}+@{agility}', 'desc': '{{desc=@{mode}, DV @{damage}, AP @{ap}}}', 'display': 'weapon'};
+- const pcRangeWeaponButton = {'name': 'range_weapon', 'header': '@{weapon}', 'rollFormula': '@{skill}+@{dicepool}+@{agility}-@{recoil_penalty}', 'desc': '{{desc=@{mode}, DV @{damage}, AP @{ap}, Recoil -@{recoil_penalty} (@{shots})}}', 'display': 'weapon'};
 - const pcMeleeWeaponButton = {'name': 'melee_weapon', 'header': '@{weapon}', 'rollFormula': '@{skill}+@{dicepool}+@{agility}', 'desc': '{{desc=DV @{damage}, AP @{ap}, Reach @{reach}}}', 'display': 'weapon'};
 
 	//- MAGIC
