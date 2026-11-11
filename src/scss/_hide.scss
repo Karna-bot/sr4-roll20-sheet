@@ -145,6 +145,12 @@
 		display: none !important;
 	}
 
+	//- Initiate / Submersion rows only make sense on a grunt sheet (spirit, sprite and vehicle never show them)
+	input[name='attr_sheet_type']:not([value='grunt']) ~ .sheet-npc .sheet-textrow.sheet-grunt.sheet-hide-magic,
+	input[name='attr_sheet_type']:not([value='grunt']) ~ .sheet-npc .sheet-textrow.sheet-grunt.sheet-hide-resonance {
+		display: none !important;
+	}
+
 	input[name='attr_sheet_type'][value='host'] ~ .sheet-npc .sheet-column:nth-of-type(2),
 	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-column:nth-of-type(2)  { 
 		@extend %display-none;
