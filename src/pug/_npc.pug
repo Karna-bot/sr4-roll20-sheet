@@ -274,6 +274,14 @@
 					input(name='attr_services' placeholder='1' title='@{services}' type='number' value='')
 				span(name='attr_services')
 			.rows.spirit
+				h2(data-i18n='summoner') Summoner
+				label.settings(data-i18n-title='summoner' title='Summoner')
+					input(name='attr_summoner_name' title='@{summoner_name}' type='text' value='')
+				span(name='attr_summoner_name')
+			.rows.spirit
+				h2(data-i18n='bound') Bound
+				input(name='attr_bound' title='@{bound}' type='checkbox' value='1')
+			.rows.spirit
 				h2(data-i18n='forceoffsets') Attribute = Force +
 			each val in coreAttributeArray.concat(['Edge'])
 				- const attrName = val.toLowerCase();
@@ -297,6 +305,14 @@
 				label.settings(data-i18n-title='services' title='Services')
 					input(name='attr_services' placeholder='1' title='@{services}' type='number' value='')
 				span(name='attr_services')
+			.rows.sprite
+				h2(data-i18n='summoner') Summoner
+				label.settings(data-i18n-title='summoner' title='Summoner')
+					input(name='attr_summoner_name' title='@{summoner_name}' type='text' value='')
+				span(name='attr_summoner_name')
+			.rows.sprite
+				h2(data-i18n='bound') Bound
+				input(name='attr_bound' title='@{bound}' type='checkbox' value='1')
 			.rows.sprite
 				h2(data-i18n='spriteinit') Initiative = Level x
 				label.settings(data-i18n-title='spriteinit' title='Initiative multiplier')
@@ -343,6 +359,11 @@
 			span(name='attr_sprite_info')
 			label.settings(data-i18n-title='spriteinfo' title='Skills and Forms')
 				textarea(name='attr_sprite_info' placeholder='Skills and Forms' title='@{sprite_info}')
+
+		.textrow.grunt.hide-magic
+			+conjuringButtons('magic')
+		.textrow.grunt.hide-resonance
+			+conjuringButtons('resonance')
 
 		each val, key in {'Initiate': ['grunt hide-magic', 'metamagic'],'Submersion': ['grunt hide-resonance', 'echos']}
 			- const attrName = key.toLowerCase();

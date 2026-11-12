@@ -29,6 +29,7 @@
               option(value=val[0]) #{val[1]}
           span(name='attr_tradition_spirits')
         +fadeDrainSection('drain')
+        +conjuringButtons('magic')
         input.magic-toggle(name='attr_magic_toggle' type='hidden' value='spells')
         .row-long.headers
           each val in ['spells', 'type', 'range', 'duration', 'drain']
