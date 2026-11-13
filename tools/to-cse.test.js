@@ -1,0 +1,14 @@
+const assert = require("assert");
+const { processCss, stripComments, convertHtml, convertSelector } = require("./to-cse.js");
+const P = ".ui-dialog .tab-content .charsheet";
+assert.strictEqual(convertSelector(".sheet-pc h1"), `${P} .pc h1`);
+assert.strictEqual(convertSelector(".sheet-row"), `${P} .sr-row`);
+assert.strictEqual(convertSelector("input[name='attr_x'][value='a.sheet-b'] ~ .sheet-npc"), `${P} input[name='attr_x'][value='a.sheet-b'] ~ .npc`);
+assert.strictEqual(convertSelector("div:not(.sheet-a, .sheet-col)"), `${P} div:not(.a, .sr-col)`);
+assert.strictEqual(convertSelector(".sheet-rolltemplate-rolls .sheet-template-row"), ".sheet-rolltemplate-rolls .sheet-template-row");
+assert.strictEqual(convertSelector("div.repitem"), `${P} div.repitem`);
+const css = processCss(stripComments("/* c */ .sheet-a, .sheet-b > .sheet-col { color: red; } @media (min-width: 1px) { .sheet-c { top: 0; } } @font-face { font-family: 'p'; src: url(x.woff); }"));
+assert(css.includes(`${P} .a,\n${P} .b > .sr-col {`) && css.includes(`@media (min-width: 1px) {\n${P} .c {`) && css.includes("@font-face"));
+const html = convertHtml('<div class="row pc-col"></div><rolltemplate class="sheet-rolltemplate-x"><div class="sheet-template-row"></div></rolltemplate><span class=\'col\'>');
+assert(html.includes('class="sr-row pc-col"') && html.includes('sheet-template-row') && html.includes("class='sr-col'"));
+console.log("to-cse : OK");
