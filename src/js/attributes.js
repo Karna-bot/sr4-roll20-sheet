@@ -34,7 +34,7 @@ const sheetAttributes = {
   matrixAttributes: ['attack', 'sleaze', 'data_processing', 'firewall'],
 
   weaponTypes: ['range', 'melee'],
-  rangeAttributes: ['dicepool', 'weapon', 'damage', 'ap', 'skill', 'ammo', 'mode', 'recoil'],
+  rangeAttributes: ['dicepool', 'weapon', 'damage', 'ap', 'skill', 'ammo', 'ammo_max', 'mode', 'recoil'],
   meleeAttributes: ['dicepool', 'weapon', 'damage', 'ap', 'skill', 'reach'],
 
   spellTypes: ['spell', 'preps', 'ritual', 'forms'],

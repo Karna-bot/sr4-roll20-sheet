@@ -166,17 +166,21 @@ const rangeShots = (mode, custom) => {
 const updateRecoilPenalties = () => {
   getSectionIDs('range', ids => {
     const fields = ['shots_pass', 'recoil_bonus']
-    ids.forEach(id => ['recoil', 'mode', 'shots_custom'].forEach(field => fields.push(`repeating_range_${id}_${field}`)))
+    ids.forEach(id => ['recoil', 'mode', 'shots_custom', 'primary'].forEach(field => fields.push(`repeating_range_${id}_${field}`)))
     getAttrs(fields, v => {
       const pass = parseInt(v.shots_pass, 10) || 0
       const bonus = parseInt(v.recoil_bonus, 10) || 0
-      const update = {}
+      const update = {primary_range_weapon_recoil_penalty: 0, primary_range_weapon_shots: 1}
       ids.forEach(id => {
         const prefix = `repeating_range_${id}_`
         const shots = rangeShots(v[`${prefix}mode`], v[`${prefix}shots_custom`])
         const compensation = parseInt(String(v[`${prefix}recoil`] || '0').replace(/[()]/g, ''), 10) || 0
         update[`${prefix}shots`] = shots
         update[`${prefix}recoil_penalty`] = Math.max(0, pass + shots - 1 - compensation - bonus)
+        if (v[`${prefix}primary`] === 'primary') {
+          update.primary_range_weapon_recoil_penalty = update[`${prefix}recoil_penalty`]
+          update.primary_range_weapon_shots = shots
+        }
       })
       processingFunctions.setAttributes(update, true)
     })
@@ -184,8 +188,21 @@ const updateRecoilPenalties = () => {
 }
 
 //- A range weapon roll button was clicked: the roll already used the stored penalty; now count the shots and spend the ammo
-const fireRangeWeapon = eventinfo => {
-  const rowId = processingFunctions.getReprowid(eventinfo.triggerName)
+const fireRangeWeapon = eventinfo => fireRangeRow(processingFunctions.getReprowid(eventinfo.triggerName))
+
+//- The "Primary Ranged Weapon" banner button was clicked: fire the row marked Primary (its ammo change is copied back to the banner)
+const firePrimaryRangeWeapon = () => {
+  getSectionIDs('range', ids => {
+    const fields = ids.map(id => `repeating_range_${id}_primary`)
+    getAttrs(fields.concat(['shots_pass', 'primary_range_weapon_shots']), v => {
+      const id = ids.find(i => v[`repeating_range_${i}_primary`] === 'primary')
+      if (id) fireRangeRow(`repeating_range_${id}`)
+      else processingFunctions.setAttributes({shots_pass: (parseInt(v.shots_pass, 10) || 0) + (parseInt(v.primary_range_weapon_shots, 10) || 1)})
+    })
+  })
+}
+
+const fireRangeRow = rowId => {
   getAttrs(['shots_pass', `${rowId}_ammo`, `${rowId}_mode`, `${rowId}_shots_custom`], v => {
     const shots = rangeShots(v[`${rowId}_mode`], v[`${rowId}_shots_custom`])
     const update = {shots_pass: (parseInt(v.shots_pass, 10) || 0) + shots}

@@ -169,10 +169,6 @@ const processingFunctions = {
         const weaponAttribute = processingFunctions.getReprowAttribute(key)
         const primaryAttributeName = key.includes('weapon') ? `primary_${type}_weapon` : `primary_${type}_weapon_${weaponAttribute}`
         update[primaryAttributeName] = value
-
-        if (key.includes('ammo')) {
-          update[`${primaryAttributeName}_max`] = value
-        }
       }
       return update
     }
