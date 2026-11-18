@@ -1,0 +1,132 @@
+{
+  "Cyberadepts": {
+    "fadeAttribute": "Willpower + Resonance",
+    "sprites": [
+      "Courier",
+      "Crack",
+      "Data",
+      "Fault",
+      "Machine"
+    ],
+    "source": "UN",
+    "page": 138,
+    "description": "Fusion naturelle metahumain/technologie ; sprites = outils intelligents."
+  },
+  "Default (Technomancer SR4)": {
+    "fadeAttribute": "Willpower + Resonance",
+    "sprites": [
+      "Courier",
+      "Crack",
+      "Data",
+      "Fault",
+      "Machine"
+    ],
+    "source": "SR4",
+    "page": 243,
+    "description": "Technomancien sans flux particulier."
+  },
+  "Dronomancers": {
+    "fadeAttribute": "Intuition + Resonance",
+    "sprites": [
+      "Crack",
+      "Data",
+      "Fault",
+      "Machine",
+      "Tutor"
+    ],
+    "source": "UN",
+    "page": 138,
+    "description": "Specialistes des drones et appareils."
+  },
+  "E-scapists": {
+    "fadeAttribute": "Willpower + Resonance",
+    "sprites": [
+      "Courier",
+      "Crack",
+      "Data",
+      "Fault",
+      "Tank"
+    ],
+    "source": "UN",
+    "page": 138,
+    "description": "Fuite dans la Matrice."
+  },
+  "Info Savants": {
+    "fadeAttribute": "Intuition + Resonance",
+    "sprites": [
+      "Code",
+      "Courier",
+      "Data",
+      "Machine",
+      "Paladin"
+    ],
+    "source": "UN",
+    "page": 139,
+    "description": "Datamanciens : la Matrice comme fleuves d'information."
+  },
+  "Networkers": {
+    "fadeAttribute": "Charisma + Resonance",
+    "sprites": [
+      "Code",
+      "Courier",
+      "Crack",
+      "Data",
+      "Sleuth"
+    ],
+    "source": "UN",
+    "page": 139,
+    "description": "La Matrice comme toile d'araignee."
+  },
+  "Singularitarians": {
+    "fadeAttribute": "Logic + Resonance",
+    "sprites": [
+      "Courier",
+      "Crack",
+      "Data",
+      "Tutor",
+      "Tank"
+    ],
+    "source": "UN",
+    "page": 139,
+    "description": "Vers la Singularite."
+  },
+  "Sourcerors": {
+    "fadeAttribute": "Logic + Resonance",
+    "sprites": [
+      "Code",
+      "Courier",
+      "Crack",
+      "Data",
+      "Machine"
+    ],
+    "source": "UN",
+    "page": 139,
+    "description": "Approche mathematique de la Resonance."
+  },
+  "Technoshamans": {
+    "fadeAttribute": "Charisma + Resonance",
+    "sprites": [
+      "Crack",
+      "Data",
+      "Machine",
+      "Paladin",
+      "Sleuth"
+    ],
+    "source": "UN",
+    "page": 140,
+    "description": "La Matrice comme entite vivante."
+  },
+  "Dissonant": {
+    "fadeAttribute": null,
+    "sprites": [
+      "Blight",
+      "Chaos",
+      "Contagion",
+      "Meltdown",
+      "Spike"
+    ],
+    "source": "UN",
+    "page": 176,
+    "description": "Technomanciens dissonants (sprites entropiques). Fading : voir Unwired p.176-179 (non verifie), a regler a la main."
+  }
+}

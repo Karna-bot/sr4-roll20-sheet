@@ -103,6 +103,8 @@
 
   on('change:tradition', eventinfo => applyTradition(eventinfo.newValue))
 
+  on('change:stream', eventinfo => applyStream(eventinfo.newValue))
+
   on('change:ballistic change:sheet_type', () => updateVehicleArmor())
 
   on(VEHICLE_FIELDS.map(attr => `change:${attr}`).join(' '), () => updateVehicleControl())

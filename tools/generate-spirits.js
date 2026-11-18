@@ -32,8 +32,9 @@ const slug = name => name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|
 // Les traditions "libres" (ex. "Trad GM") sont remplacees par l'option "Custom" de la fiche
 const usable = Object.entries(traditions).filter(([name]) => !/^Trad GM/i.test(name))
 const parseDrain = text => {
-  const parts = String(text || '').split('+').map(p => p.trim().toLowerCase())
-  return parts.length === 2 && parts.every(p => CORE.includes(p)) ? parts : null
+  // Les deux premiers attributs de base cites ("Willpower + Intuition / Logic" -> willpower, intuition)
+  const found = (String(text || '').toLowerCase().match(/[a-z]+/g) || []).filter(w => CORE.includes(w))
+  return found.length >= 2 ? found.slice(0, 2) : null
 }
 const spiritsText = t => ['combat', 'detection', 'health', 'illusion', 'manipulation']
   .map(k => `${k[0].toUpperCase()}${k.slice(1)}: ${((t.spirits || {})[k] || '-').replace(/_/g, ' ')}`).join(' | ')
@@ -70,3 +71,24 @@ fs.writeFileSync(path.join(root, 'src', 'pug', '_sprite-types.pug'),
   '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
   '- const spriteTypes = [' + Object.keys(sprites).map(n => `['${key(n)}', '${label(n)}']`).join(', ') + '];\n')
 console.log(`${Object.keys(sprites).length} types de sprites generes`)
+
+// ---- STREAMS (onglet Matrice de la fiche PC, technomanciens) : data/streams.json -> src/js/stream-types.js, src/pug/_stream-types.pug
+const streams = JSON.parse(fs.readFileSync(path.join(root, 'data', 'streams.json'), 'utf8'))
+const parseFade = text => {
+  const found = (String(text || '').toLowerCase().match(/[a-z]+/g) || []).filter(w => CORE.includes(w) || w === 'resonance')
+  return found.length >= 2 ? found.slice(0, 2) : null
+}
+const spriteLabel = n => n.replace(/_/g, ' ')
+fs.writeFileSync(path.join(root, 'src', 'js', 'stream-types.js'), [
+  '// FICHIER GENERE par tools/generate-spirits.js depuis data/streams.json : ne pas modifier a la main.',
+  'const STREAMS = {',
+  Object.entries(streams).map(([name, st]) =>
+    `  ${slug(name)}: {fade: ${JSON.stringify(parseFade(st.fadeAttribute))}, sprites: ${JSON.stringify((st.sprites || []).map(spriteLabel).join(', '))}}`
+  ).join(',\n'),
+  '}',
+  ''
+].join('\n'))
+fs.writeFileSync(path.join(root, 'src', 'pug', '_stream-types.pug'),
+  '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
+  '- const streamTypes = [' + Object.keys(streams).map(n => `['${slug(n)}', '${n.replace(/'/g, "\\'")}', ${JSON.stringify((streams[n].sprites || []).map(x => x.toLowerCase()))}]`).join(', ') + '];\n')
+console.log(`${Object.keys(streams).length} flux generes`)

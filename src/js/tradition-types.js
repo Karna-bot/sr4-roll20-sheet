@@ -19,7 +19,7 @@ const TRADITIONS = {
   rastafarian: {drain: ["willpower","intuition"], spirits: "Combat: Man | Detection: Beasts | Health: Plant | Illusion: Water | Manipulation: Guidance"},
   shamanic: {drain: ["willpower","charisma"], spirits: "Combat: Beasts | Detection: Water | Health: Earth | Illusion: Air | Manipulation: Man"},
   shinto: {drain: ["willpower","charisma"], spirits: "Combat: Air | Detection: Water | Health: Plant | Illusion: Beasts | Manipulation: Man"},
-  toxic: {drain: null, spirits: "Combat: Toxic Fire Nuclear | Detection: Toxic Air Smog | Health: Toxic Earth Sludge | Illusion: Toxic Water Pollution | Manipulation: Toxic Man Harrow"},
+  toxic: {drain: ["willpower","intuition"], spirits: "Combat: Toxic Fire Nuclear | Detection: Toxic Air Smog | Health: Toxic Earth Sludge | Illusion: Toxic Water Pollution | Manipulation: Toxic Man Harrow"},
   traditional_or_hedge_witchcraft: {drain: ["willpower","intuition"], spirits: "Combat: Earth | Detection: Water | Health: Plant | Illusion: Air | Manipulation: Task"},
   voodoo: {drain: ["willpower","charisma"], spirits: "Combat: Guardian | Detection: Water | Health: Man | Illusion: Guidance | Manipulation: Task"},
   wicca_gardnerian: {drain: ["willpower","logic"], spirits: "Combat: Fire | Detection: Water | Health: Plant | Illusion: Air | Manipulation: Earth"},

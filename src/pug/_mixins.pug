@@ -29,8 +29,8 @@ mixin weaponRollButton(button)
     span(name=`attr_${button['display']}`)
 
 //- SOAK ROLL
-mixin soakRoll(header, base, rollForumla)
-    button(data-i18n=header name=`roll_${header}` type='roll' value!=noWoundsRollBegining+'{{header=^{'+header+'}}}{{base='+base+'}}{{dice=[[(('+rollForumla+')'+noWoundsRollEnding) #{name}
+mixin soakRoll(header, base, rollForumla, buttonName)
+    button(data-i18n=header name=`roll_${buttonName || header}` type='roll' value!=noWoundsRollBegining+'{{header=^{'+header+'}}}{{base='+base+'}}{{dice=[[(('+rollForumla+')'+noWoundsRollEnding) #{name}
 
 //- SPRITE BUTTONS
 mixin spriteButton(header, display)
@@ -80,8 +80,10 @@ mixin conditionMonitor(conditionTypes)
 //- PC FADE & DRAIN ROLLS
 mixin fadeDrainSection(fadeOrDrain, adept)
     - const defaultFirstAttribute = fadeOrDrain === 'fade' ? 'Resonance' : adept ? 'Body' : 'Logic';
-    - const nameFadeorDrain = adept ? 'drain' : fadeOrDrain;
-    +soakRoll(nameFadeorDrain, '^{base}', `@{${nameFadeorDrain}_attribute_1}+@{${nameFadeorDrain}_attribute_2}+@{${nameFadeorDrain}_modifier}`)
+    //- La section adepte a ses propres attributs (adept_drain_*) : elle ne doit pas partager ceux du drain des sorts,
+    //- sinon la tradition choisie et la section adepte s'ecrasent mutuellement.
+    - const nameFadeorDrain = adept ? 'adept_drain' : fadeOrDrain;
+    +soakRoll(adept ? 'drain' : fadeOrDrain, '^{base}', `@{${nameFadeorDrain}_attribute_1}+@{${nameFadeorDrain}_attribute_2}+@{${nameFadeorDrain}_modifier}`, nameFadeorDrain)
     select.attribute-select(name=`attr_${nameFadeorDrain}_attribute_1` title=`@{${nameFadeorDrain}_attribute_1}`)
         +attributeSelect(defaultFirstAttribute)
     span +
