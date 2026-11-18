@@ -175,8 +175,7 @@
     "optionalComplexForms": [
       "Decrypt",
       "Edit",
-      "Medic",
-      null
+      "Medic"
     ]
   },
   "Paladin": {
@@ -298,6 +297,173 @@
       "Activesoft",
       "Knowsoft",
       "Linguasoft"
+    ]
+  },
+  "Blight": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 2
+    },
+    "initMult": 2,
+    "source": "UN",
+    "page": 179,
+    "category": "Entropic",
+    "skills": [
+      "Computer",
+      "Cybercombat",
+      "Data Search",
+      "Hacking",
+      "Software"
+    ],
+    "powers": [
+      "Datavore",
+      "Resonance Drain"
+    ],
+    "complexForms": [
+      "Attack (Shredder)",
+      "Corrupt",
+      "Edit",
+      "Exploit"
+    ],
+    "optionalComplexForms": [
+      "Analyze",
+      "Armor",
+      "Browse",
+      "Stealth",
+      "Scan"
+    ]
+  },
+  "Chaos": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 2,
+      "logic": 0
+    },
+    "initMult": 2,
+    "source": "UN",
+    "page": 180,
+    "category": "Entropic",
+    "skills": [
+      "Cybercombat",
+      "Electronic Warfare",
+      "Hacking"
+    ],
+    "powers": [
+      "Distortion",
+      "Siphon"
+    ],
+    "complexForms": [
+      "Corrupt",
+      "Exploit",
+      "Nuke",
+      "Node Mine",
+      "Sniffer",
+      "Spoof"
+    ],
+    "optionalComplexForms": [
+      "Armor",
+      "Attack",
+      "Black Hammer",
+      "Decrypt",
+      "Encrypt"
+    ]
+  },
+  "Contagion": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": -1,
+      "logic": 1
+    },
+    "initMult": 3,
+    "source": "UN",
+    "page": 180,
+    "category": "Entropic",
+    "skills": [
+      "Computer",
+      "Cybercombat",
+      "Data Search",
+      "Hacking",
+      "Software"
+    ],
+    "powers": [
+      "Virulence"
+    ],
+    "complexForms": [
+      "Attack (Rust)",
+      "Browse",
+      "Edit",
+      "Exploit",
+      "Nuke"
+    ],
+    "optionalComplexForms": [
+      "Corrupt",
+      "Decrypt",
+      "Encrypt",
+      "Shield"
+    ]
+  },
+  "Meltdown": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 0,
+      "logic": 1
+    },
+    "initMult": 2,
+    "source": "UN",
+    "page": 180,
+    "category": "Entropic",
+    "skills": [
+      "Computer",
+      "Cybercombat",
+      "Electronic Warfare",
+      "Hardware"
+    ],
+    "powers": [
+      "Gremlins",
+      "Surge"
+    ],
+    "complexForms": [
+      "Command",
+      "Data Bomb"
+    ],
+    "optionalComplexForms": [
+      "Attack",
+      "Databomb",
+      "Decrypt"
+    ]
+  },
+  "Spike": {
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": 2
+    },
+    "initMult": 2,
+    "source": "UN",
+    "page": 180,
+    "category": "Entropic",
+    "skills": [
+      "Cybercombat",
+      "Hacking"
+    ],
+    "powers": [
+      "Peak",
+      "Resonance Drain",
+      "Sparky"
+    ],
+    "complexForms": [
+      "Attack",
+      "Attack (Psychotropic)",
+      "Black Hammer",
+      "Blackout",
+      "Cascading"
+    ],
+    "optionalComplexForms": [
+      "Armor",
+      "Exploit",
+      "Shielding",
+      "Stealth"
     ]
   }
 }

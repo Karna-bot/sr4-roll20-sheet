@@ -478,6 +478,9 @@
     "vh_pilotskill": "Compétence de pilotage utilisée",
     "vh_pilot_auto": "Meilleure compétence de Pilote",
     "tradition": "Tradition",
+    "initiation": "Initiation",
+    "submersionechoes": "Submersion et échos",
+    "stream": "Flux",
     "services": "Services",
     "forceoffsets": "Attribut = Force +"
 }

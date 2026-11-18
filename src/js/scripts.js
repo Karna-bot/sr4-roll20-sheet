@@ -575,6 +575,19 @@ const applyTradition = key => {
   setAttrs(update)
 }
 
+// Flux (onglet Matrice, technomanciens) : preremplit la resistance au Fading et la liste des sprites compilables.
+// "custom" ne modifie rien.
+const applyStream = key => {
+  const stream = STREAMS[key]
+  if (!stream) return
+  const update = {stream_sprites: stream.sprites}
+  if (stream.fade) {
+    update.fade_attribute_1 = `@{${stream.fade[0]}}`
+    update.fade_attribute_2 = `@{${stream.fade[1]}}`
+  }
+  setAttrs(update)
+}
+
 // ---------------------------------------------------------------- VEHICLE / DRONE CONTROL
 // Dice pools depend on who controls the vehicle: manual, remote control, jumped-in rigger, autonomous (Pilot).
 // Jumped-in: Control Rig bonus (+ Hot-sim bonus) added to every pool, threshold -1 (displayed only).

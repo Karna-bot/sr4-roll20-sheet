@@ -65,6 +65,13 @@
       .right-tri
     .border-box
       .pc-box.medium-box
+        .row-long.stream
+          h3(data-i18n='stream') Stream
+          select(name='attr_stream' title='@{stream}')
+            option(value='custom' data-i18n='customtype' selected) Custom
+            each val in streamTypes
+              option(value=val[0]) #{val[1]}
+          span(name='attr_stream_sprites')
         +fadeDrainSection('fade')
         +conjuringButtons('resonance')
         .rows.repeating-container.complex-forms
@@ -102,3 +109,16 @@
                 label(data-i18n-title='modifier' title='modifier')
                   input(name='attr_dicepool_modifier' title=`${formsrepeatingSection}_dicepool_modifier}` type='number')
               +repeatingSectionNotes('forms')
+
+  .pc-row.submersion
+    .header.right-header
+      h1(data-i18n='submersionechoes') Submersion and Echoes
+      .right-tri
+    .border-box
+      .pc-box.medium-box
+        .row-long
+          h3(data-i18n='submersion') Submersion
+          input(name='attr_submersion' placeholder='0' style='width: 15%' title='@{submersion}' type='number')
+        .row-long
+          h3(data-i18n='echos') Echoes
+          textarea(name='attr_echos' placeholder='Echoes' style='width: 90%' title='@{echos}')
