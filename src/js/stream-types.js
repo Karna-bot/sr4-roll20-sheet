@@ -9,5 +9,10 @@ const STREAMS = {
   singularitarians: {fade: ["logic","resonance"], sprites: "Courier, Crack, Data, Tutor, Tank"},
   sourcerors: {fade: ["logic","resonance"], sprites: "Code, Courier, Crack, Data, Machine"},
   technoshamans: {fade: ["charisma","resonance"], sprites: "Crack, Data, Machine, Paladin, Sleuth"},
-  dissonant: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"}
+  dissonant: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  cyberdarwinists: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  discordians: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  infektors: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  nytemares: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  the_sublime: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"}
 }

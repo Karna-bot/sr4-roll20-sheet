@@ -1,0 +1,158 @@
+{
+  "Cookie": {
+    "category": "Core",
+    "effect": "Opposed rating × 2 vs. target Firewall + Stealth. Logs the icon's nodes, who it talked to and when (not contents), programs. Net hits set depth (1 = outline, 4+ = detailed). Ends at a preset time and reports back. Detect: Matrix Perception (4); remove: Computer + Edit (2).",
+    "source": "SR4A p.242-243",
+    "alsoCalled": "Cookies (Unwired spelling)"
+  },
+  "Diagnostics": {
+    "category": "Core",
+    "effect": "Teamwork Test, sprite rating × 2; each hit +1 die to a character using/repairing the device, up to the character's skill.",
+    "source": "SR4A p.242-243"
+  },
+  "Electron Storm": {
+    "category": "Core",
+    "effect": "On a successful cybercombat hit, engulfs the target: rating DV Matrix damage, AP –2 each of the sprite's phases; target –2 on all Matrix actions. Escape: Complex Action, Opposed Response × 2 vs. the sprite.",
+    "source": "SR4A p.242-243"
+  },
+  "Gremlins": {
+    "category": "Core",
+    "effect": "Opposed rating × 2 vs. device System + Firewall: device suffers a glitch; 4 net hits = critical glitch. Against drones/vehicles can force a Crash Test with the rating as a penalty.",
+    "source": "SR4A p.242-243"
+  },
+  "Hash": {
+    "category": "Core",
+    "effect": "Temporarily encrypts a file so only the sprite can decrypt it; reverts if the sprite leaves; sprite destroyed = file permanently corrupted.",
+    "source": "SR4A p.242-243"
+  },
+  "Steganography": {
+    "category": "Core",
+    "effect": "Hides data inside another file; invisible to searches; found only by Matrix Perception (4) (even by the sprite).",
+    "source": "SR4A p.242-243"
+  },
+  "Stability": {
+    "category": "Core",
+    "effect": "Prevents normal malfunctions and glitches (also those from Gremlins/Accident) on a node/device/program/icon; critical glitches become standard glitches.",
+    "source": "SR4A p.242-243"
+  },
+  "Suppression": {
+    "category": "Core",
+    "effect": "Any alert the sprite triggers is delayed rating ÷ 2 (round up) Combat Turns.",
+    "source": "SR4A p.242-243"
+  },
+  "Watermark": {
+    "category": "Core",
+    "effect": "Invisible tag only Resonance beings can read; can be overwritten.",
+    "source": "SR4A p.242-243"
+  },
+  "Assault": {
+    "category": "Unwired",
+    "effect": "two attacks as with two weapons; only Pilot is halved, each Attack CF added to one half (needs two Attack CFs). Once per combat against an icon.",
+    "source": "UW p.156-157"
+  },
+  "Castling": {
+    "category": "Unwired",
+    "effect": "Complex Action; redirect damage aimed at the technomancer to itself by mimicking his access ID.",
+    "source": "UW p.156-157"
+  },
+  "Hardening": {
+    "category": "Unwired",
+    "effect": "Armor CF behaves like hardened armor while used (Complex Action, like full defence).",
+    "source": "UW p.156-157"
+  },
+  "Info Sortilege": {
+    "category": "Unwired",
+    "effect": "as the echo, with rating instead of Resonance.",
+    "source": "UW p.156-157"
+  },
+  "Probability Distribution": {
+    "category": "Unwired",
+    "effect": "Rating×2 vs half node Response (round up); success adds/removes half rating (round up) dice on a target test; Complex Action, so the sprite must have delayed.",
+    "source": "UW p.156-157"
+  },
+  "Proficiency": {
+    "category": "Unwired",
+    "effect": "tutor assists a non-skilled user in AR/VR: test without modifiers using half rating (round up) as skill; takes an Extended or Complex action.",
+    "source": "UW p.156-157"
+  },
+  "Traceroute": {
+    "category": "Unwired",
+    "effect": "Extended Rating + Track, 1 hour base interval, threshold by how often the subject uses the Matrix: constantly 4, a few hours/day 8, once a day 12, less than daily 16. Modifiers: last transaction logged –1; subject using Stealth +Stealth; SIN/commcode/MSP address known –3. Success finds the subject's current node or last physical access point.",
+    "source": "UW p.156-157"
+  },
+  "Blend": {
+    "category": "Free sprite",
+    "effect": "-2 to Matrix Perception to spot it and -2 to attacks against it.",
+    "source": "UW p.157-160"
+  },
+  "Credit": {
+    "category": "Free sprite",
+    "effect": "Monthly Rating + Edge Test: each hit = 10,000 nuyen of permanent black-account cash carrying its signature; can also make daily counterfeit cash of rating = rating / 2 that vanishes after 8 hours.",
+    "source": "UW p.157-160"
+  },
+  "Denial": {
+    "category": "Free sprite",
+    "effect": "Treated as having tasks equal to its Edge (refreshing every 8 hours) for the purposes of decompiling. All free sprites have it.",
+    "source": "UW p.157-160"
+  },
+  "Doorstop": {
+    "category": "Free sprite",
+    "effect": "Rating + Response vs Willpower + Resonance; traps the user online while sustained; disconnecting from outside causes dumpshock.",
+    "source": "UW p.157-160"
+  },
+  "Resonance Bond": {
+    "category": "Free sprite",
+    "effect": "Quality-like bond (UW p.160): both parties act as resonance link / datatrail for each other. Examples: Allocation Bond (+half the sprite Resonance dice to Fading tests), Echo Bond (share one power/CF/echo/widget each way), Networking Bond (share one CF each way).",
+    "source": "UW p.157-160"
+  },
+  "Resonance Rift": {
+    "category": "Free sprite",
+    "effect": "Opens rifts to resonance realms (UW p.172).",
+    "source": "UW p.157-160"
+  },
+  "Transfer": {
+    "category": "Free sprite",
+    "effect": "Grants one of its powers to up to Rating subjects (one power per subject).",
+    "source": "UW p.157-160"
+  },
+  "Datavore": {
+    "category": "Entropic",
+    "effect": "after a successful attack, every 3 damage = +1 rating temporarily (max half starting rating, round down) for Resonance Combat Turns.",
+    "source": "UW p.179-181"
+  },
+  "Distortion": {
+    "category": "Entropic",
+    "effect": "Complex Action; all Matrix test dice pools in the node reduced by the sprite's rating while sustained (Simple Action per pass after the first); users can roll System + Response to reduce the penalty by 1 per hit. Against technomancers/sprites: Rating × 2 vs Resonance + Firewall; each Combat Turn sustained, –1 Resonance; at 0, physical dumpshock (DV increased by the sprite's power). Resonance returns at 1 per 10 minutes. One use per node.",
+    "source": "UW p.179-181"
+  },
+  "Peak": {
+    "category": "Entropic",
+    "effect": "replaces damage with a tripchip-like BTL blast: penalty on all actions equal to net hits for Resonance Combat Turns; possible mental addiction test. Hot-sim VR only.",
+    "source": "UW p.179-181"
+  },
+  "Resonance Drain": {
+    "category": "Entropic",
+    "effect": "after a hit, drains 1 Resonance per pass (Simple Action); at 0, dissonant dumpshock as above.",
+    "source": "UW p.179-181"
+  },
+  "Siphon": {
+    "category": "Entropic",
+    "effect": "Same as the dissonant / technomancer echo of the same name (see echoes.json).",
+    "source": "UW p.179-181"
+  },
+  "Surge": {
+    "category": "Entropic",
+    "effect": "Opposed Rating × 2 vs the device's System + Firewall (or Device rating × 2); each net hit = 1 box of damage to the device; sprite must be in a node linked to the device but not inside the device.",
+    "source": "UW p.179-181"
+  },
+  "Virulence": {
+    "category": "Entropic",
+    "effect": "Rating × 2 vs program rating + Firewall; success infects the program with a GM-chosen virus.",
+    "source": "UW p.179-181"
+  },
+  "Sparky": {
+    "category": "Entropic",
+    "source": "UW p.179-181",
+    "effect": "Same as the dissonant / technomancer echo of the same name (see echoes.json)."
+  }
+}

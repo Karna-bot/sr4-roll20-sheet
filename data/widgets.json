@@ -1,0 +1,38 @@
+{
+  "Amp": {
+    "effect": "+ to Cybercombat.",
+    "source": "UW p.148-149"
+  },
+  "Benchmarking": {
+    "effect": "+ to Computer Tests (incl. Matrix Perception).",
+    "source": "UW p.148-149"
+  },
+  "Cheat": {
+    "effect": "+ to Hacking.",
+    "source": "UW p.148-149"
+  },
+  "Debugger": {
+    "effect": "+ to Software.",
+    "source": "UW p.148-149"
+  },
+  "Decoy": {
+    "effect": "decoy persona (Computer+Analyze vs Resonance+rating to tell apart; dies on any hit).",
+    "source": "UW p.148-149"
+  },
+  "Displacer": {
+    "effect": "+ to Matrix combat defence (stacks with Shield).",
+    "source": "UW p.148-149"
+  },
+  "Neuroleptic": {
+    "effect": "+ to defend vs psychotropic programs.",
+    "source": "UW p.148-149"
+  },
+  "Rendering": {
+    "effect": "+ to Compiling. RAM: sustains threaded programs up to total rating = its rating (unrated options count as 1).",
+    "source": "UW p.148-149"
+  },
+  "_rules": {
+    "effect": "Needs the Widget Crafting echo. Creation: Threading (Rating x 2, 1 hour) Extended; resist Fading = 2 x rating; lasts 8 hours; no sustaining; only the creator can use it; can be crashed. Dice bonus = rating (only the highest applies).",
+    "source": "UW p.148-149"
+  }
+}

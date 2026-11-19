@@ -1,0 +1,229 @@
+{
+  "01 (Zero-One)": {
+    "category": "Technomancer",
+    "advantage": "+1 die compiling/registering",
+    "disadvantage": "2 Edge to negate a glitch / downgrade a critical",
+    "source": "UW p.149-151",
+    "spriteBonus": []
+  },
+  "Alias": {
+    "category": "Technomancer",
+    "advantage": "+2 Spoof; +1 Crack or Sleuth",
+    "disadvantage": "Cannot pay for lifestyle; must spoof it",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Crack",
+      "Sleuth"
+    ]
+  },
+  "Archivist": {
+    "category": "Technomancer",
+    "advantage": "+2 Browse; +1 Code or Data",
+    "disadvantage": "Willpower+Logic (3) to delete/corrupt data",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Code",
+      "Data"
+    ]
+  },
+  "Architect": {
+    "category": "Technomancer",
+    "advantage": "+2 Edit; +1 Data or Machine",
+    "disadvantage": "–1 Crash Tests",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Data",
+      "Machine"
+    ]
+  },
+  "Babel": {
+    "category": "Technomancer",
+    "advantage": "+1 online Etiquette/Language; +1 Courier or Tutor",
+    "disadvantage": "Willpower+Logic (3) to encrypt",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Courier",
+      "Tutor"
+    ]
+  },
+  "Black Hat": {
+    "category": "Technomancer",
+    "advantage": "+2 Exploit; +1 Crack or Fault",
+    "disadvantage": "Willpower+Charisma (3) to resist hacking interesting node",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Crack",
+      "Fault"
+    ]
+  },
+  "Cryptome": {
+    "category": "Technomancer",
+    "advantage": "+2 Encryption/Decryption; +1 Courier or Data",
+    "disadvantage": "Willpower+Logic (3) to share a secret",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Courier",
+      "Data"
+    ]
+  },
+  "Daedalus": {
+    "category": "Technomancer",
+    "advantage": "+2 Hardware; +1 Machine or Fault",
+    "disadvantage": "Devices built have –2 usability for others",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Machine",
+      "Fault"
+    ]
+  },
+  "Delphi": {
+    "category": "Technomancer",
+    "advantage": "+2 Analyze; +1 Code or Tutor",
+    "disadvantage": "Willpower+Logic (3) for unplanned quick decisions",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Code",
+      "Tutor"
+    ]
+  },
+  "Echelon": {
+    "category": "Technomancer",
+    "advantage": "+1 Track/Sniffer; +1 Crack or Sleuth",
+    "disadvantage": "–1 to all actions when lacking information",
+    "source": "UW p.149-151",
+    "spriteBonus": []
+  },
+  "Flow": {
+    "category": "Technomancer",
+    "advantage": "+2 Threading; +1 Code or Data",
+    "disadvantage": "–1 Cybercombat Attack",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Code",
+      "Data"
+    ]
+  },
+  "Idoru": {
+    "category": "Technomancer",
+    "advantage": "+2 Con; +1 Crack or Sleuth",
+    "disadvantage": "Willpower+Logic (3) to avoid manipulating data",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Crack",
+      "Sleuth"
+    ]
+  },
+  "IC": {
+    "category": "Technomancer",
+    "advantage": "+2 Matrix damage resistance (not Fading); +1 Paladin",
+    "disadvantage": "–1 all actions until atoning for a failed guard/goal",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Paladin"
+    ]
+  },
+  "Probe": {
+    "category": "Technomancer",
+    "advantage": "+2 Scan; +1 Crack or Sleuth",
+    "disadvantage": "–2 hacking on the fly without probing",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Crack",
+      "Sleuth"
+    ]
+  },
+  "Pulse": {
+    "category": "Technomancer",
+    "advantage": "+2 Matrix Initiative",
+    "disadvantage": "–2 Hacking when not hacking on the fly",
+    "source": "UW p.149-151",
+    "spriteBonus": []
+  },
+  "Shooter": {
+    "category": "Technomancer",
+    "advantage": "+2 Matrix Attack; +1 Paladin or Tank",
+    "disadvantage": "Willpower+Logic (3) to retreat",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Paladin",
+      "Tank"
+    ]
+  },
+  "World Tree": {
+    "category": "Technomancer",
+    "advantage": "+2 Analyze; +1 Code or Courier",
+    "disadvantage": "Willpower+Charisma (3) to resist dropping task for new information",
+    "source": "UW p.149-151",
+    "spriteBonus": [
+      "Code",
+      "Courier"
+    ]
+  },
+  "Abort": {
+    "category": "Dissonant",
+    "advantage": "+2 Crash Tests; +1 dissonant Crack or Fault",
+    "disadvantage": "Willpower+Charisma (3) to do anything but crash software in cybercombat",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": [
+      "Crack",
+      "Fault"
+    ]
+  },
+  "Disinformation": {
+    "category": "Dissonant",
+    "advantage": "+1 Influence group tests; +1 dissonant Data or Tutor",
+    "disadvantage": "Willpower+Charisma (3) to pass honest information to non-dissonants",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": []
+  },
+  "Jormungand": {
+    "category": "Dissonant",
+    "advantage": "+2 Corrupt; +1 dissonant Data or Code",
+    "disadvantage": "Willpower+Logic (3) to leave a hacked node unscathed",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": [
+      "Data",
+      "Code"
+    ]
+  },
+  "Nemesis": {
+    "category": "Dissonant",
+    "advantage": "+2 Con; +1 dissonant Fault or Sleuth",
+    "disadvantage": "Willpower+Charisma (3) to hold back punishing",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": [
+      "Fault",
+      "Sleuth"
+    ]
+  },
+  "Noise": {
+    "category": "Dissonant",
+    "advantage": "+2 Threading; +1 dissonant Courier or Code",
+    "disadvantage": "Double static/dead-zone modifiers",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": [
+      "Courier",
+      "Code"
+    ]
+  },
+  "Snuff": {
+    "category": "Dissonant",
+    "advantage": "+2 Sniffer; +1 dissonant Crack or Sleuth",
+    "disadvantage": "–2 resisting BTL/Matrix media addiction",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": [
+      "Crack",
+      "Sleuth"
+    ]
+  },
+  "Tiamat": {
+    "category": "Dissonant",
+    "advantage": "+2 Cybercombat; +1 dissonant Crack or Tank",
+    "disadvantage": "–1 Hacking",
+    "source": "UW p.149-151 (dissonant)",
+    "spriteBonus": [
+      "Crack",
+      "Tank"
+    ]
+  }
+}

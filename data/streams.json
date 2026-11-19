@@ -10,7 +10,11 @@
     ],
     "source": "UN",
     "page": 138,
-    "description": "Fusion naturelle metahumain/technologie ; sprites = outils intelligents."
+    "description": "Fusion naturelle metahumain/technologie ; sprites = outils intelligents.",
+    "philosophy": "See Resonance as an energy (\"e-Qi\"); the standard SR4A technomancer.",
+    "fadeAttributeKey": "willpower",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Default (Technomancer SR4)": {
     "fadeAttribute": "Willpower + Resonance",
@@ -23,7 +27,11 @@
     ],
     "source": "SR4",
     "page": 243,
-    "description": "Technomancien sans flux particulier."
+    "description": "Technomancien sans flux particulier.",
+    "philosophy": "Core-book technomancer without an Unwired stream; same sprites as cyberadepts.",
+    "fadeAttributeKey": "willpower",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Dronomancers": {
     "fadeAttribute": "Intuition + Resonance",
@@ -36,7 +44,11 @@
     ],
     "source": "UN",
     "page": 138,
-    "description": "Specialistes des drones et appareils."
+    "description": "Specialistes des drones et appareils.",
+    "philosophy": "Talk with machines (puppeteks, robomancers).",
+    "fadeAttributeKey": "intuition",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "E-scapists": {
     "fadeAttribute": "Willpower + Resonance",
@@ -49,7 +61,11 @@
     ],
     "source": "UN",
     "page": 138,
-    "description": "Fuite dans la Matrice."
+    "description": "Fuite dans la Matrice.",
+    "philosophy": "Treat cyberspace as a better world (sculptors).",
+    "fadeAttributeKey": "willpower",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Info Savants": {
     "fadeAttribute": "Intuition + Resonance",
@@ -62,7 +78,11 @@
     ],
     "source": "UN",
     "page": 139,
-    "description": "Datamanciens : la Matrice comme fleuves d'information."
+    "description": "Datamanciens : la Matrice comme fleuves d'information.",
+    "philosophy": "Read data as flowing rivers (infomancers, datamancers).",
+    "fadeAttributeKey": "intuition",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Networkers": {
     "fadeAttribute": "Charisma + Resonance",
@@ -75,7 +95,11 @@
     ],
     "source": "UN",
     "page": 139,
-    "description": "La Matrice comme toile d'araignee."
+    "description": "La Matrice comme toile d'araignee.",
+    "philosophy": "See a cobweb they can weave.",
+    "fadeAttributeKey": "charisma",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Singularitarians": {
     "fadeAttribute": "Logic + Resonance",
@@ -88,7 +112,11 @@
     ],
     "source": "UN",
     "page": 139,
-    "description": "Vers la Singularite."
+    "description": "Vers la Singularite.",
+    "philosophy": "Work toward a machine super-intelligence (e-volutionists).",
+    "fadeAttributeKey": "logic",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Sourcerors": {
     "fadeAttribute": "Logic + Resonance",
@@ -101,7 +129,11 @@
     ],
     "source": "UN",
     "page": 139,
-    "description": "Approche mathematique de la Resonance."
+    "description": "Approche mathematique de la Resonance.",
+    "philosophy": "Treat Resonance as the Matrix machine code and sprites as sentient programs.",
+    "fadeAttributeKey": "logic",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Technoshamans": {
     "fadeAttribute": "Charisma + Resonance",
@@ -114,7 +146,11 @@
     ],
     "source": "UN",
     "page": 140,
-    "description": "La Matrice comme entite vivante."
+    "description": "La Matrice comme entite vivante.",
+    "philosophy": "See a spiritual Matrix and ally with strange beings including new AIs; usually follow a paragon (UW p.149).",
+    "fadeAttributeKey": "charisma",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one."
   },
   "Dissonant": {
     "fadeAttribute": null,
@@ -127,6 +163,84 @@
     ],
     "source": "UN",
     "page": 176,
-    "description": "Technomanciens dissonants (sprites entropiques). Fading : voir Unwired p.176-179 (non verifie), a regler a la main."
+    "description": "Technomanciens dissonants (sprites entropiques). Attribut de Fading et liste de sprites choisis par le MJ (UW p.175-178).",
+    "fadingRule": "Resist Fading with Resonance + the stream attribute (SR4A p.243); stun unless the rating exceeds Resonance.",
+    "paragons": "Technomancer paragons (paragons.json); technoshamans usually follow one.",
+    "philosophy": "Emerged individuals warped by cyberpsychopathy (Pax and the Jormungand worm of Crash 2.0); some calm down in static / dead zones."
+  },
+  "Cyberdarwinists": {
+    "fadeAttribute": null,
+    "sprites": [
+      "Blight",
+      "Chaos",
+      "Contagion",
+      "Meltdown",
+      "Spike"
+    ],
+    "source": "UN",
+    "page": 176,
+    "description": "Flux dissonant (Unwired p.176-178). Attribut de Fading choisi par le MJ.",
+    "philosophy": "Want a controlling machine intelligence; turn realms into dissonance realms.",
+    "dissonant": true
+  },
+  "Discordians": {
+    "fadeAttribute": null,
+    "sprites": [
+      "Blight",
+      "Chaos",
+      "Contagion",
+      "Meltdown",
+      "Spike"
+    ],
+    "source": "UN",
+    "page": 176,
+    "description": "Flux dissonant (Unwired p.176-178). Attribut de Fading choisi par le MJ.",
+    "philosophy": "Hunt \"Cainite\" technomancers.",
+    "dissonant": true
+  },
+  "Infektors": {
+    "fadeAttribute": null,
+    "sprites": [
+      "Blight",
+      "Chaos",
+      "Contagion",
+      "Meltdown",
+      "Spike"
+    ],
+    "source": "UN",
+    "page": 176,
+    "description": "Flux dissonant (Unwired p.176-178). Attribut de Fading choisi par le MJ.",
+    "philosophy": "Spread dissonance pools; Contagion sprites.",
+    "dissonant": true
+  },
+  "Nytemares": {
+    "fadeAttribute": null,
+    "sprites": [
+      "Blight",
+      "Chaos",
+      "Contagion",
+      "Meltdown",
+      "Spike"
+    ],
+    "source": "UN",
+    "page": 176,
+    "description": "Flux dissonant (Unwired p.176-178). Attribut de Fading choisi par le MJ.",
+    "philosophy": "Grotesque iconography; torment their targets.",
+    "dissonant": true
+  },
+  "The Sublime": {
+    "fadeAttribute": null,
+    "sprites": [
+      "Blight",
+      "Chaos",
+      "Contagion",
+      "Meltdown",
+      "Spike"
+    ],
+    "source": "UN",
+    "page": 176,
+    "description": "Flux dissonant (Unwired p.176-178). Attribut de Fading choisi par le MJ.",
+    "philosophy": "Supremacists who enslave users.",
+    "dissonant": true
   }
 }

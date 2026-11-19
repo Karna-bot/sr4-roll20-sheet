@@ -1,0 +1,188 @@
+{
+  "Firewall Upgrade": {
+    "category": "Core",
+    "effect": "+1 living-persona Firewall; up to 3 times.",
+    "source": "SR4A p.243-244",
+    "maxTimes": 3
+  },
+  "NeuroFilter": {
+    "category": "Core",
+    "effect": "+1 Biofeedback Filter; up to 3 times.",
+    "source": "SR4A p.243-244",
+    "maxTimes": 3
+  },
+  "System Upgrade": {
+    "category": "Core",
+    "effect": "+1 System; up to 3 times.",
+    "source": "SR4A p.243-244",
+    "maxTimes": 3
+  },
+  "Overclocking": {
+    "category": "Core",
+    "effect": "+1 Response (raises Matrix Initiative) and +1 Initiative Pass in full-sim VR.",
+    "source": "SR4A p.243-244",
+    "maxTimes": 1
+  },
+  "Resonance Link": {
+    "category": "Core",
+    "effect": "One-way empathic link to another meshed technomancer (mood, danger, pain); both can take it for a two-way link.",
+    "source": "SR4A p.243-244",
+    "maxTimes": 1
+  },
+  "Amplification": {
+    "category": "Unwired",
+    "effect": "+1 Signal, up to 3×",
+    "source": "UW p.145-149",
+    "maxTimes": 3
+  },
+  "Biowire": {
+    "category": "Unwired",
+    "effect": "Skillwire at rating = submersion grade; active skillsofts emulated (see Emulation)",
+    "source": "UW p.145-149"
+  },
+  "Blur": {
+    "category": "Unwired",
+    "effect": "+grade to the threshold of Matrix Perception to detect signature (incl. the 5+ threshold)",
+    "source": "UW p.145-149"
+  },
+  "Coenesthesia": {
+    "category": "Unwired",
+    "effect": "Resonance+Intuition (3), subconscious detection; +2 to follow-up Matrix Perception",
+    "source": "UW p.145-149"
+  },
+  "Defragmentation": {
+    "category": "Unwired",
+    "effect": "Resonance+Willpower (1 Combat Turn) Extended; each hit heals 1 box of living-persona damage; no other actions; not vs Black IC/Fading",
+    "source": "UW p.145-149"
+  },
+  "E-sensing": {
+    "category": "Unwired",
+    "effect": "Resonance+Perception, Observe in Detail as Simple Action, range Resonance × grade m; more hits reveal more (1 hit presence/direction … 5+ Firewall/nanites/slaved/stealth tags)",
+    "source": "UW p.145-149"
+  },
+  "Flexible Touch": {
+    "category": "Unwired",
+    "effect": "Forge signature: +grade threshold to identify the real one; signatures last 1 hour less per grade",
+    "source": "UW p.145-149"
+  },
+  "Living ECM": {
+    "category": "Unwired",
+    "effect": "Jammer rating = grade; Complex Action to start, Free Action per pass to sustain; +1 per extra selection",
+    "source": "UW p.145-149"
+  },
+  "Macro": {
+    "category": "Unwired",
+    "effect": "One extra non-combat Matrix task in a Complex Action at –2 per test; once",
+    "source": "UW p.145-149"
+  },
+  "Immersion": {
+    "category": "Unwired",
+    "effect": "+1 die when jumped in; selectable twice",
+    "source": "UW p.145-149",
+    "maxTimes": 2
+  },
+  "Multiprocessing": {
+    "category": "Unwired",
+    "effect": "Observe in Detail is a Free Action in VR/AR; extra Free Action per pass for non-combat tasks",
+    "source": "UW p.145-149"
+  },
+  "Info Sortilege": {
+    "category": "Unwired",
+    "effect": "Data-search intuition (mild trance, –2 to other actions); Data Search + Resonance Test after ≥2 hits on Data Search + Browse; can \"watch\" a number of extra nodes = grade (half skill for tests there, half dice pool to defend). Needs Data Search skill and Browse CF",
+    "source": "UW p.145-149"
+  },
+  "Sift": {
+    "category": "Unwired",
+    "effect": "Data Search threshold reduced by grade",
+    "source": "UW p.145-149"
+  },
+  "Skinlink": {
+    "category": "Unwired",
+    "effect": "Skin as link (hack by touch even with jamming; target needs no skinlink); two skinlink technomancers can talk by touch",
+    "source": "UW p.145-149"
+  },
+  "Sparky": {
+    "category": "Unwired",
+    "effect": "After damaging a hacker icon: Response+Willpower vs target Response+System; each net hit –1 Response of the originating node; 0 = node fails. Repair Hardware+Logic (8, 1 h) Extended. Ineffective vs technomancers, sprites, agents, AIs, e-ghosts",
+    "source": "UW p.145-149"
+  },
+  "Sprite Link": {
+    "category": "Unwired",
+    "effect": "One more sprite species (repeatable)",
+    "source": "UW p.145-149"
+  },
+  "Swap": {
+    "category": "Unwired",
+    "effect": "–1 overall sustaining modifier for threaded CFs (max twice)",
+    "source": "UW p.145-149",
+    "maxTimes": 2
+  },
+  "Widget Crafting": {
+    "category": "Unwired",
+    "effect": "Create widgets (section 6)",
+    "source": "UW p.145-149"
+  },
+  "Acceleration": {
+    "category": "Advanced",
+    "effect": "+1 Reaction (augmentation bonus) and +1 Initiative Pass for real-world actions; up to 3×.",
+    "source": "UW p.147-148",
+    "prerequisite": "Biowire",
+    "maxTimes": 3
+  },
+  "Advanced Overclocking": {
+    "category": "Advanced",
+    "effect": "counts as Overclocking taken twice: total +2 Response and +2 IP in full-sim VR; with hot-sim passes this reaches IP 5 (exception to the normal cap of 4).",
+    "source": "UW p.147-148",
+    "prerequisite": "Overclocking"
+  },
+  "Enhanced Resonance Link": {
+    "category": "Advanced",
+    "effect": "two-way telepathic link as Mind Link, exchange of data; one partner at a time even in a mesh.",
+    "source": "UW p.147-148",
+    "prerequisite": "Resonance Link"
+  },
+  "Mesh Reality": {
+    "category": "Advanced",
+    "effect": "Free Action; perceive real world and VR together; use Matrix Initiative/passes in meatspace (not more passes than normal for real actions). Simultaneous physical and cybercombat: –4 to all pools (reducible for cybercombat only via Macro).",
+    "source": "UW p.147-148",
+    "prerequisite": "Multiprocessing"
+  },
+  "Mind Over Machine": {
+    "category": "Advanced",
+    "effect": "jump into any wireless device without rigger adaptation (hack in first if no access).",
+    "source": "UW p.147-148",
+    "prerequisite": "Immersion"
+  },
+  "Resonance Exchange": {
+    "category": "Advanced",
+    "effect": "share one complex form or widget at a time with a linked technomancer (each option chosen separately; threaded CFs not shareable); rating limited by sharer's grade; sharer keeps use.",
+    "source": "UW p.147-148",
+    "prerequisite": "Resonance Link + Widget Crafting"
+  },
+  "Resonance Trodes": {
+    "category": "Advanced",
+    "effect": "touch acts as trodes (share simsense/Matrix perception); unwilling target needs a touch attack, a subduing attack to hold, and Resonance+Willpower vs Intuition+Willpower.",
+    "source": "UW p.147-148",
+    "prerequisite": "Skinlink"
+  },
+  "Contaminate": {
+    "category": "Dissonant",
+    "effect": "Resonance + Software + submersion grade (1 IP) Extended; each hit +1 to a temporary dissonance pool up to the dissonant's Resonance (a resonance well must first be reduced, with its rating as a penalty); node restores itself after grade hours unless the GM rules otherwise.",
+    "source": "UW p.175-178"
+  },
+  "Malfunction": {
+    "category": "Dissonant",
+    "effect": "reduce a sprite's tasks to 0 by decompiling (+grade), then Compiling (+grade) to take control; it recodes as an entropic sprite and may be registered.",
+    "source": "UW p.175-178"
+  },
+  "Pryon": {
+    "category": "Dissonant",
+    "effect": "code-induced diseases spread by touch. Black Shakes (Contact, Power 5, Body+Willpower (2) monthly; tremors –1 up to –4 on physical-attribute tests); Dysphoria (Contact, Power 6, Willpower (1) Test, mood episodes).",
+    "source": "UW p.175-178"
+  },
+  "Siphon": {
+    "category": "Dissonant",
+    "effect": "Cybercombat + Attack vs Response + System; 3+ net hits dumps the target (dumpshock); more hits but less than 3 = –2 dice for grade Initiative Passes. VR users only.",
+    "source": "UW p.175-178"
+  }
+}

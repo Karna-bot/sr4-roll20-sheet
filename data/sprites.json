@@ -27,7 +27,37 @@
       "Corrupt",
       "Data Bomb",
       "Scan"
-    ]
+    ],
+    "description": "Data-sorting and decoding sprite.",
+    "category": "Unwired",
+    "page": 154,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "rawSequence": "R,R,R+2,R*2,3,R,R",
+      "verified": false,
+      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Info Sortilege": "as the echo, with rating instead of Resonance.",
+      "Probability Distribution": "Rating×2 vs half node Response (round up); success adds/removes half rating (round up) dice on a target test; Complex Action, so the sprite must have delayed."
+    },
+    "streams": [
+      "Info Savants",
+      "Networkers",
+      "Sourcerors"
+    ],
+    "paragonBonus": [
+      "Archivist",
+      "Delphi",
+      "Flow",
+      "World Tree",
+      "Jormungand",
+      "Noise"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Courier": {
     "attrMod": {
@@ -63,7 +93,39 @@
     "matrix": {
       "response": 1,
       "firewall": 1
-    }
+    },
+    "description": "Moves and tracks data between nodes.",
+    "category": "Core",
+    "page": 242,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "response": "R+1",
+      "firewall": "R+1",
+      "matrixInit": "R*3",
+      "verified": true
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Cookie": "Opposed rating × 2 vs. target Firewall + Stealth. Logs the icon's nodes, who it talked to and when (not contents), programs. Net hits set depth (1 = outline, 4+ = detailed). Ends at a preset time and reports back. Detect: Matrix Perception (4); remove: Computer + Edit (2).",
+      "Hash": "Temporarily encrypts a file so only the sprite can decrypt it; reverts if the sprite leaves; sprite destroyed = file permanently corrupted."
+    },
+    "streams": [
+      "Cyberadepts",
+      "E-scapists",
+      "Info Savants",
+      "Networkers",
+      "Singularitarians",
+      "Sourcerors"
+    ],
+    "paragonBonus": [
+      "Babel",
+      "Cryptome",
+      "World Tree",
+      "Noise"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Crack": {
     "attrMod": {
@@ -96,7 +158,42 @@
     "matrix": {
       "response": 1,
       "firewall": 0
-    }
+    },
+    "description": "Hacking and stealth intruder.",
+    "category": "Core",
+    "page": 242,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "response": "R+1",
+      "firewall": "R",
+      "matrixInit": "R*3",
+      "verified": true
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Suppression": "Any alert the sprite triggers is delayed rating ÷ 2 (round up) Combat Turns."
+    },
+    "streams": [
+      "Cyberadepts",
+      "Dronomancers",
+      "E-scapists",
+      "Networkers",
+      "Singularitarians",
+      "Sourcerors",
+      "Technoshamans"
+    ],
+    "paragonBonus": [
+      "Alias",
+      "Black Hat",
+      "Idoru",
+      "Probe",
+      "Abort",
+      "Snuff",
+      "Tiamat"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Data": {
     "attrMod": {
@@ -131,7 +228,42 @@
     "matrix": {
       "response": 0,
       "firewall": -2
-    }
+    },
+    "description": "Searches and edits data.",
+    "category": "Core",
+    "page": 242,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "response": "R",
+      "firewall": "R-2",
+      "matrixInit": "R*2",
+      "verified": true
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Steganography": "Hides data inside another file; invisible to searches; found only by Matrix Perception (4) (even by the sprite).",
+      "Watermark": "Invisible tag only Resonance beings can read; can be overwritten."
+    },
+    "streams": [
+      "Cyberadepts",
+      "Dronomancers",
+      "E-scapists",
+      "Info Savants",
+      "Networkers",
+      "Singularitarians",
+      "Sourcerors",
+      "Technoshamans"
+    ],
+    "paragonBonus": [
+      "Archivist",
+      "Architect",
+      "Cryptome",
+      "Flow",
+      "Jormungand"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Fault": {
     "attrMod": {
@@ -164,7 +296,35 @@
     "matrix": {
       "response": 2,
       "firewall": 1
-    }
+    },
+    "description": "Combat sprite (cybercombat).",
+    "category": "Core",
+    "page": 242,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "response": "R+2",
+      "firewall": "R+1",
+      "matrixInit": "R*3",
+      "verified": true
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Electron Storm": "On a successful cybercombat hit, engulfs the target: rating DV Matrix damage, AP –2 each of the sprite's phases; target –2 on all Matrix actions. Escape: Complex Action, Opposed Response × 2 vs. the sprite."
+    },
+    "streams": [
+      "Cyberadepts",
+      "Dronomancers",
+      "E-scapists"
+    ],
+    "paragonBonus": [
+      "Black Hat",
+      "Daedalus",
+      "Abort",
+      "Nemesis"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Machine": {
     "attrMod": {
@@ -196,7 +356,37 @@
     "matrix": {
       "response": 0,
       "firewall": 2
-    }
+    },
+    "description": "Controls and diagnoses devices and drones.",
+    "category": "Core",
+    "page": 242,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "response": "R",
+      "firewall": "R+2",
+      "matrixInit": "R*2",
+      "verified": true
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Diagnostics": "Teamwork Test, sprite rating × 2; each hit +1 die to a character using/repairing the device, up to the character's skill.",
+      "Gremlins": "Opposed rating × 2 vs. device System + Firewall: device suffers a glitch; 4 net hits = critical glitch. Against drones/vehicles can force a Crash Test with the rating as a penalty.",
+      "Stability": "Prevents normal malfunctions and glitches (also those from Gremlins/Accident) on a node/device/program/icon; critical glitches become standard glitches."
+    },
+    "streams": [
+      "Cyberadepts",
+      "Dronomancers",
+      "Info Savants",
+      "Sourcerors",
+      "Technoshamans"
+    ],
+    "paragonBonus": [
+      "Architect",
+      "Daedalus"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Paladin": {
     "attrMod": {
@@ -226,7 +416,32 @@
       "Attack",
       "Blackout",
       "Expert Defense"
-    ]
+    ],
+    "description": "Defensive guard sprite.",
+    "category": "Unwired",
+    "page": 154,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "rawSequence": "R,R+2,R+2,R*1,3,R,R",
+      "verified": false,
+      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points (Expert Defense: Rating/2, max 3)",
+    "powerDetails": {
+      "Castling": "Complex Action; redirect damage aimed at the technomancer to itself by mimicking his access ID.",
+      "Hardening": "Armor CF behaves like hardened armor while used (Complex Action, like full defence)."
+    },
+    "streams": [
+      "Info Savants",
+      "Technoshamans"
+    ],
+    "paragonBonus": [
+      "IC",
+      "Shooter"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Sleuth": {
     "attrMod": {
@@ -259,7 +474,35 @@
       "Decrypt",
       "Exploit",
       "Scan"
-    ]
+    ],
+    "description": "Tracks and investigates.",
+    "category": "Unwired",
+    "page": 154,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "rawSequence": "R,R-1,R+2,R*3,3,R,R",
+      "verified": false,
+      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Cookie": "Opposed rating × 2 vs. target Firewall + Stealth. Logs the icon's nodes, who it talked to and when (not contents), programs. Net hits set depth (1 = outline, 4+ = detailed). Ends at a preset time and reports back. Detect: Matrix Perception (4); remove: Computer + Edit (2).",
+      "Traceroute": "Extended Rating + Track, 1 hour base interval, threshold by how often the subject uses the Matrix: constantly 4, a few hours/day 8, once a day 12, less than daily 16. Modifiers: last transaction logged –1; subject using Stealth +Stealth; SIN/commcode/MSP address known –3. Success finds the subject's current node or last physical access point."
+    },
+    "streams": [
+      "Networkers",
+      "Technoshamans"
+    ],
+    "paragonBonus": [
+      "Alias",
+      "Idoru",
+      "Probe",
+      "Nemesis",
+      "Snuff"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Tank": {
     "attrMod": {
@@ -287,7 +530,31 @@
       "Cascading",
       "Medic",
       "Shield"
-    ]
+    ],
+    "description": "Heavy combat sprite.",
+    "category": "Unwired",
+    "page": 154,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "rawSequence": "R,R+1,R+1,R*2,3,R,R",
+      "verified": false,
+      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points (Cascading: Rating/2, max 3)",
+    "powerDetails": {
+      "Assault": "two attacks as with two weapons; only Pilot is halved, each Attack CF added to one half (needs two Attack CFs). Once per combat against an icon."
+    },
+    "streams": [
+      "E-scapists",
+      "Singularitarians"
+    ],
+    "paragonBonus": [
+      "Shooter",
+      "Tiamat"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Tutor": {
     "attrMod": {
@@ -317,7 +584,32 @@
       "Activesoft",
       "Knowsoft",
       "Linguasoft"
-    ]
+    ],
+    "description": "Teaches skills through AR/VR skillsofts.",
+    "category": "Unwired",
+    "page": 154,
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "rawSequence": "R,R+1,R,R*2,3,R,R",
+      "verified": false,
+      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+    },
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Proficiency": "tutor assists a non-skilled user in AR/VR: test without modifiers using half rating (round up) as skill; takes an Extended or Complex action.",
+      "Stability": "Prevents normal malfunctions and glitches (also those from Gremlins/Accident) on a node/device/program/icon; critical glitches become standard glitches."
+    },
+    "streams": [
+      "Dronomancers",
+      "Singularitarians"
+    ],
+    "paragonBonus": [
+      "Babel",
+      "Delphi"
+    ],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Blight": {
     "attrMod": {
@@ -352,7 +644,26 @@
       "Browse",
       "Stealth",
       "Scan"
-    ]
+    ],
+    "description": "Entropic: eats data and drains Resonance.",
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "verified": false,
+      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+    },
+    "origin": "Code/Data",
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Datavore": "after a successful attack, every 3 damage = +1 rating temporarily (max half starting rating, round down) for Resonance Combat Turns.",
+      "Resonance Drain": "after a hit, drains 1 Resonance per pass (Simple Action); at 0, dissonant dumpshock as above."
+    },
+    "streams": [
+      "Dissonant"
+    ],
+    "paragonBonus": [],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Chaos": {
     "attrMod": {
@@ -387,7 +698,26 @@
       "Black Hammer",
       "Decrypt",
       "Encrypt"
-    ]
+    ],
+    "description": "Entropic: distorts nodes, siphons users.",
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "verified": false,
+      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+    },
+    "origin": "Crack/Fault",
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Distortion": "Complex Action; all Matrix test dice pools in the node reduced by the sprite's rating while sustained (Simple Action per pass after the first); users can roll System + Response to reduce the penalty by 1 per hit. Against technomancers/sprites: Rating × 2 vs Resonance + Firewall; each Combat Turn sustained, –1 Resonance; at 0, physical dumpshock (DV increased by the sprite's power). Resonance returns at 1 per 10 minutes. One use per node.",
+      "Siphon": "Same as the dissonant / technomancer echo of the same name (see echoes.json)."
+    },
+    "streams": [
+      "Dissonant"
+    ],
+    "paragonBonus": [],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Contagion": {
     "attrMod": {
@@ -421,7 +751,25 @@
       "Decrypt",
       "Encrypt",
       "Shield"
-    ]
+    ],
+    "description": "Entropic: infects programs.",
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "verified": false,
+      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+    },
+    "origin": "Courier",
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Virulence": "Rating × 2 vs program rating + Firewall; success infects the program with a GM-chosen virus."
+    },
+    "streams": [
+      "Dissonant"
+    ],
+    "paragonBonus": [],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Meltdown": {
     "attrMod": {
@@ -451,7 +799,26 @@
       "Attack",
       "Databomb",
       "Decrypt"
-    ]
+    ],
+    "description": "Entropic: damages devices.",
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "verified": false,
+      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+    },
+    "origin": "Machine",
+    "optionalFormRule": "One optional complex form per 3 full rating points",
+    "powerDetails": {
+      "Gremlins": "Opposed rating × 2 vs. device System + Firewall: device suffers a glitch; 4 net hits = critical glitch. Against drones/vehicles can force a Crash Test with the rating as a penalty.",
+      "Surge": "Opposed Rating × 2 vs the device's System + Firewall (or Device rating × 2); each net hit = 1 box of damage to the device; sprite must be in a node linked to the device but not inside the device."
+    },
+    "streams": [
+      "Dissonant"
+    ],
+    "paragonBonus": [],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   },
   "Spike": {
     "attrMod": {
@@ -484,6 +851,26 @@
       "Exploit",
       "Shielding",
       "Stealth"
-    ]
+    ],
+    "description": "Entropic: BTL-like attacks, drains Resonance.",
+    "ip": 3,
+    "pilot": "R",
+    "edge": "R",
+    "stats": {
+      "verified": false,
+      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+    },
+    "origin": "Fault/Tank",
+    "optionalFormRule": "One optional complex form per 3 full rating points (Cascading: Rating/2, max 3)",
+    "powerDetails": {
+      "Peak": "replaces damage with a tripchip-like BTL blast: penalty on all actions equal to net hits for Resonance Combat Turns; possible mental addiction test. Hot-sim VR only.",
+      "Resonance Drain": "after a hit, drains 1 Resonance per pass (Simple Action); at 0, dissonant dumpshock as above.",
+      "Sparky": "Same as the dissonant / technomancer echo of the same name (see echoes.json)."
+    },
+    "streams": [
+      "Dissonant"
+    ],
+    "paragonBonus": [],
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
   }
 }
