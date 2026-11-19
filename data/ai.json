@@ -5,7 +5,17 @@
     "skills": "Cracking group R+1, Electronics group R+1",
     "programs": "Analyze R+1, Armor, Browse, Command, Edit, Exploit, Homeground, Reality Filter, Stealth",
     "qualities": "Authority, Code Flux, Fragmentation, Real World Naivete, Redundancy, Rootkit, Sapper",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": 1,
+      "intuition": 0,
+      "logic": 0,
+      "willpower": 1,
+      "edge": 0
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   },
   "Artifaun": {
     "group": "AI",
@@ -13,7 +23,17 @@
     "skills": "Computer R-1, Cybercombat R+1, Hacking R",
     "programs": "Analyze, Armor, Attack, Browse, Edit, Exploit, Homeground, Stealth",
     "qualities": "Drone Pilot, Fragmentation, Real World Naivete",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": -1,
+      "willpower": 0,
+      "edge": 0
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   },
   "Poltergeist": {
     "group": "AI",
@@ -21,7 +41,17 @@
     "skills": "Computer R+1, Cybercombat R-1, Data Search R-1, Hacking R, Software R",
     "programs": "Analyze, Attack R-1, Browse, Command, Edit, Exploit, Homeground, Stealth",
     "qualities": "Code Flux, Corruptor, Real World Naivete, Rootkit",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": -2,
+      "intuition": 1,
+      "logic": -1,
+      "willpower": 0,
+      "edge": 0
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   },
   "Predator": {
     "group": "AI",
@@ -29,7 +59,17 @@
     "skills": "Computer R, Cybercombat R+2, Hacking R",
     "programs": "Analyze, Armor, Attack R+1, Blackout or Black Hammer, Cascading 1, Exploit, Stealth, Track",
     "qualities": "Codivore, Real World Naivete, Redundancy, Snooper",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": -1,
+      "intuition": 1,
+      "logic": 0,
+      "willpower": 0,
+      "edge": 1
+    },
+    "initiative": "INT + Response + 2",
+    "initBonus": 2,
+    "ip": 3
   },
   "Archivist": {
     "group": "AI",
@@ -37,7 +77,17 @@
     "skills": "Computer R, Data Search R+2, Hacking R",
     "programs": "Analyze, Browse R+2, Decrypt R+2, Defuse, Edit, Encrypt, Exploit, Homeground, Purge, Stealth",
     "qualities": "Code Flux, Real World Naivete, Redundancy, Rootkit",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": -2,
+      "intuition": 1,
+      "logic": 2,
+      "willpower": 0,
+      "edge": 0
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   },
   "Assembler": {
     "group": "AI",
@@ -45,7 +95,17 @@
     "skills": "Cracking group R, Electronics group R+1",
     "programs": "Analyze, Browse, Command, Edit, Expert Defense 2, Exploit R-1, Homeground R+2, Medic R+2, Purge, Spoof, Stealth",
     "qualities": "Authority, Emulate, Real World Naivete, Spawn",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": -2,
+      "intuition": -2,
+      "logic": 3,
+      "willpower": 1,
+      "edge": 1
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   },
   "Sculptor": {
     "group": "AI",
@@ -53,7 +113,17 @@
     "skills": "Computer, Hacking, Software R+1",
     "programs": "Analyze R+1, Browse, Command, Edit R+2, Exploit, Homeground, Medic, Reality Filter, Stealth",
     "qualities": "Code Flux, Designer, Improved Realignment, Real World Naivete",
-    "source": "UW p.167-169"
+    "source": "UW p.167-169",
+    "attrMod": {
+      "charisma": 1,
+      "intuition": 2,
+      "logic": 0,
+      "willpower": 1,
+      "edge": 0
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   },
   "Daemon": {
     "group": "Feral AI",
@@ -61,7 +131,10 @@
     "skills": "",
     "programs": "Attack R+1, Cascading, Expert Offense",
     "qualities": "Codivore, Datavore (realigning AIs), Fnord, Redundancy",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Frobnitz": {
     "group": "Feral AI",
@@ -69,7 +142,10 @@
     "skills": "",
     "programs": "Attack R+2",
     "qualities": "Datavore (sprites), Sapper, Snooper",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Grue": {
     "group": "Feral AI",
@@ -77,7 +153,10 @@
     "skills": "",
     "programs": "Black Hammer",
     "qualities": "Authority, Datavore (dead users persona programs), Fnord, Rootkit, Teergrube",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Blob": {
     "group": "Feral AI",
@@ -85,7 +164,10 @@
     "skills": "",
     "programs": "",
     "qualities": "POKEr, Redundancy, Teergrube",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Gimp": {
     "group": "Feral AI",
@@ -93,7 +175,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Authority, Datavore (a colour)",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Prowler": {
     "group": "Feral AI",
@@ -101,7 +186,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Authority, Intuitive Hacking (Exploit), Redundancy",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "SINtax": {
     "group": "Feral AI",
@@ -109,7 +197,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Code Flux, Intuitive Hacking (Spoof), Rootkit",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Tentacle": {
     "group": "Feral AI",
@@ -117,7 +208,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Nyetworking, Redundancy, Teergrube",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Cyberwerewolf": {
     "group": "Feral AI",
@@ -125,7 +219,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Authority, Codivore, Designer, POKEr, Persnickety Renter (cyberware)",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Heap Frog": {
     "group": "Feral AI",
@@ -133,7 +230,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Code Flux, Datavore (unused memory)",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Heavyweight": {
     "group": "Feral AI",
@@ -141,7 +241,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Datavore (any), Improved Realignment, Redundancy",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Rogue": {
     "group": "Feral AI",
@@ -149,7 +252,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Authority, Code Flux, Datavore (wireless traffic), Drone Pilot (ground)",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Cryppie": {
     "group": "Feral AI",
@@ -157,7 +263,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Datavore (encrypted archives), Sapper",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Heisenbug": {
     "group": "Feral AI",
@@ -165,7 +274,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Code Flux, Redundancy, Uncertainty",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Kitteh": {
     "group": "Feral AI",
@@ -173,7 +285,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Codivore, Datavore (running programs)",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Netmare": {
     "group": "Feral AI",
@@ -181,7 +296,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Improved Realignment, Intuitive Hacking (Attack), Nyetworking, Uncertainty",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Yantra": {
     "group": "Feral AI",
@@ -189,7 +307,10 @@
     "skills": "",
     "programs": "",
     "qualities": "Datavore (defused data bombs), Redundancy",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
   },
   "Green Man": {
     "group": "Feral AI",
@@ -197,6 +318,27 @@
     "skills": "",
     "programs": "",
     "qualities": "Animator (master); see RW p.201",
-    "source": "RW p.195-201"
+    "source": "RW p.195-201",
+    "attrMod": null,
+    "initBonus": 0,
+    "ip": 3
+  },
+  "E-Ghost": {
+    "group": "E-Ghost",
+    "notes": "Digital copy of a person who died online in Crash 2.0; rating 1-6, quality of the copy independent of rating",
+    "skills": "Computer R, Cybercombat R, Hacking R, additional skills as appropriate to the character",
+    "programs": "Analyze R, Blackout R, Browse R, Command R, Edit R, Exploit R, Reality Filter R, Stealth R, Track R",
+    "qualities": "Code Flux, Corruptor, Fragmentation, Redundancy, Rootkit",
+    "source": "UW p.170-171",
+    "attrMod": {
+      "charisma": 0,
+      "intuition": 1,
+      "logic": 0,
+      "willpower": 2,
+      "edge": -2
+    },
+    "initiative": "INT + Response",
+    "initBonus": 0,
+    "ip": 3
   }
 }

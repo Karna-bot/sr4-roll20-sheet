@@ -573,18 +573,36 @@ const updateAIAttributes = () => {
   })
 }
 
+// Mental attribute offsets from R (Unwired p.166-168): Charisma, Intuition, Logic, Willpower, Edge. R = reference rating (field ai_r).
+const AI_OFFSET_ATTRIBUTES = ['charisma', 'intuition', 'logic', 'willpower']
+
 const applyAIType = type => {
   const ai = AI_TYPES[type]
   if (!ai) return
-  getAttrs(['sheet_type'], v => {
+  getAttrs(['sheet_type', 'ai_r'], v => {
     if (v.sheet_type !== 'ai') return
     const programs = ai.programs ? ` Programs (R = rating): ${ai.programs}.` : ''
     const skills = ai.skills ? ` Skills: ${ai.skills}.` : ''
-    setAttrs({
+    const update = {
       matrix_info: `${ai.group}: ${ai.notes}.${skills}${programs}`,
       quality: ai.qualities,
-      mx_passes: 3
-    })
+      mx_passes: 3,
+      matrix_mod_modifier: ai.initBonus || 0
+    }
+    const r = parseInt(v.ai_r) || 0
+    if (ai.offsets && r > 0) {
+      AI_OFFSET_ATTRIBUTES.forEach((attr, i) => update[`${attr}_base`] = Math.max(1, r + ai.offsets[i]))
+      update.edge = Math.max(1, r + ai.offsets[4])
+    }
+    setAttrs(update)
+  })
+}
+
+// Changing the reference rating R re-applies the attribute offsets of the chosen AI type
+const syncAIReferenceRating = () => {
+  getAttrs(['sheet_type', 'ai_type'], v => {
+    if (v.sheet_type !== 'ai' || !AI_TYPES[v.ai_type]) return
+    applyAIType(v.ai_type)
   })
 }
 

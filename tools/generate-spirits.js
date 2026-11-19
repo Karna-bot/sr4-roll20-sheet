@@ -115,9 +115,10 @@ const ais = JSON.parse(fs.readFileSync(path.join(root, 'data', 'ai.json'), 'utf8
 const aiKey = name => name.toLowerCase().replace(/[^a-z0-9]+/g, '_')
 fs.writeFileSync(path.join(root, 'src', 'js', 'ai-types.js'), [
   '// FICHIER GENERE par tools/generate-spirits.js depuis data/ai.json : ne pas modifier a la main.',
+  '// offsets = Charisme, Intuition, Logique, Volonte, Edge par rapport a R (indice de reference) ; null = non renseigne (IA ferales).',
   'const AI_TYPES = {',
   Object.entries(ais).map(([name, a]) =>
-    `  ${aiKey(name)}: {group: ${JSON.stringify(a.group)}, notes: ${JSON.stringify(a.notes || '')}, skills: ${JSON.stringify(a.skills || '')}, programs: ${JSON.stringify(a.programs || '')}, qualities: ${JSON.stringify(a.qualities || '')}}`
+    `  ${aiKey(name)}: {group: ${JSON.stringify(a.group)}, notes: ${JSON.stringify(a.notes || '')}, skills: ${JSON.stringify(a.skills || '')}, programs: ${JSON.stringify(a.programs || '')}, qualities: ${JSON.stringify(a.qualities || '')}, offsets: ${a.attrMod ? JSON.stringify(['charisma', 'intuition', 'logic', 'willpower', 'edge'].map(k => a.attrMod[k] || 0)) : 'null'}, initBonus: ${a.initBonus || 0}}`
   ).join(',\n'),
   '}',
   ''

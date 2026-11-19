@@ -6,7 +6,7 @@
       "logic": 2
     },
     "initMult": 2,
-    "source": "UN",
+    "source": "SR4",
     "skills": [
       "Computer",
       "Data Search",
@@ -29,15 +29,16 @@
       "Scan"
     ],
     "description": "Data-sorting and decoding sprite.",
-    "category": "Unwired",
-    "page": 154,
+    "category": "Core",
+    "page": 242,
     "ip": 3,
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "rawSequence": "R,R,R+2,R*2,3,R,R",
-      "verified": false,
-      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+      "response": "R",
+      "firewall": "R+2",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "optionalFormRule": "One optional complex form per 3 full rating points",
     "powerDetails": {
@@ -57,7 +58,11 @@
       "Jormungand",
       "Noise"
     ],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 0,
+      "firewall": 2
+    }
   },
   "Courier": {
     "attrMod": {
@@ -395,7 +400,7 @@
       "logic": 2
     },
     "initMult": 1,
-    "source": "UN",
+    "source": "SR4",
     "skills": [
       "Computer",
       "Cybercombat",
@@ -418,15 +423,16 @@
       "Expert Defense"
     ],
     "description": "Defensive guard sprite.",
-    "category": "Unwired",
-    "page": 154,
+    "category": "Core",
+    "page": 242,
     "ip": 3,
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "rawSequence": "R,R+2,R+2,R*1,3,R,R",
-      "verified": false,
-      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+      "response": "R+2",
+      "firewall": "R+2",
+      "matrixInit": "R*1",
+      "verified": true
     },
     "optionalFormRule": "One optional complex form per 3 full rating points (Expert Defense: Rating/2, max 3)",
     "powerDetails": {
@@ -441,7 +447,11 @@
       "IC",
       "Shooter"
     ],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 2,
+      "firewall": 2
+    }
   },
   "Sleuth": {
     "attrMod": {
@@ -450,7 +460,7 @@
       "logic": 2
     },
     "initMult": 3,
-    "source": "UN",
+    "source": "SR4",
     "skills": [
       "Computer",
       "Data Search",
@@ -476,15 +486,16 @@
       "Scan"
     ],
     "description": "Tracks and investigates.",
-    "category": "Unwired",
-    "page": 154,
+    "category": "Core",
+    "page": 242,
     "ip": 3,
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "rawSequence": "R,R-1,R+2,R*3,3,R,R",
-      "verified": false,
-      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+      "response": "R-1",
+      "firewall": "R+2",
+      "matrixInit": "R*3",
+      "verified": true
     },
     "optionalFormRule": "One optional complex form per 3 full rating points",
     "powerDetails": {
@@ -502,7 +513,11 @@
       "Nemesis",
       "Snuff"
     ],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": -1,
+      "firewall": 2
+    }
   },
   "Tank": {
     "attrMod": {
@@ -511,7 +526,7 @@
       "logic": 1
     },
     "initMult": 2,
-    "source": "UN",
+    "source": "SR4",
     "skills": [
       "Cybercombat"
     ],
@@ -532,15 +547,16 @@
       "Shield"
     ],
     "description": "Heavy combat sprite.",
-    "category": "Unwired",
-    "page": 154,
+    "category": "Core",
+    "page": 242,
     "ip": 3,
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "rawSequence": "R,R+1,R+1,R*2,3,R,R",
-      "verified": false,
-      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+      "response": "R+1",
+      "firewall": "R+1",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "optionalFormRule": "One optional complex form per 3 full rating points (Cascading: Rating/2, max 3)",
     "powerDetails": {
@@ -554,7 +570,11 @@
       "Shooter",
       "Tiamat"
     ],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 1,
+      "firewall": 1
+    }
   },
   "Tutor": {
     "attrMod": {
@@ -563,7 +583,7 @@
       "logic": 0
     },
     "initMult": 2,
-    "source": "UN",
+    "source": "SR4",
     "skills": [
       "Computer",
       "Hardware",
@@ -586,15 +606,16 @@
       "Linguasoft"
     ],
     "description": "Teaches skills through AR/VR skillsofts.",
-    "category": "Unwired",
-    "page": 154,
+    "category": "Core",
+    "page": 242,
     "ip": 3,
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "rawSequence": "R,R+1,R,R*2,3,R,R",
-      "verified": false,
-      "note": "Order uncertain in the source conversion (Pilot/Response/Firewall/Matrix/Init/IP/Edge/Res); sheet values left to the GM."
+      "response": "R+1",
+      "firewall": "R",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "optionalFormRule": "One optional complex form per 3 full rating points",
     "powerDetails": {
@@ -609,7 +630,11 @@
       "Babel",
       "Delphi"
     ],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 1,
+      "firewall": 0
+    }
   },
   "Blight": {
     "attrMod": {
@@ -650,8 +675,10 @@
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "verified": false,
-      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+      "response": "R",
+      "firewall": "R+2",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "origin": "Code/Data",
     "optionalFormRule": "One optional complex form per 3 full rating points",
@@ -660,10 +687,19 @@
       "Resonance Drain": "after a hit, drains 1 Resonance per pass (Simple Action); at 0, dissonant dumpshock as above."
     },
     "streams": [
-      "Dissonant"
+      "Dissonant",
+      "Cyberdarwinists",
+      "Discordians",
+      "Infektors",
+      "Nytemares",
+      "The Sublime"
     ],
     "paragonBonus": [],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 0,
+      "firewall": 2
+    }
   },
   "Chaos": {
     "attrMod": {
@@ -704,8 +740,10 @@
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "verified": false,
-      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+      "response": "R+2",
+      "firewall": "R",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "origin": "Crack/Fault",
     "optionalFormRule": "One optional complex form per 3 full rating points",
@@ -714,10 +752,19 @@
       "Siphon": "Same as the dissonant / technomancer echo of the same name (see echoes.json)."
     },
     "streams": [
-      "Dissonant"
+      "Dissonant",
+      "Cyberdarwinists",
+      "Discordians",
+      "Infektors",
+      "Nytemares",
+      "The Sublime"
     ],
     "paragonBonus": [],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 2,
+      "firewall": 0
+    }
   },
   "Contagion": {
     "attrMod": {
@@ -757,8 +804,10 @@
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "verified": false,
-      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+      "response": "R-1",
+      "firewall": "R+1",
+      "matrixInit": "R*3",
+      "verified": true
     },
     "origin": "Courier",
     "optionalFormRule": "One optional complex form per 3 full rating points",
@@ -766,10 +815,19 @@
       "Virulence": "Rating × 2 vs program rating + Firewall; success infects the program with a GM-chosen virus."
     },
     "streams": [
-      "Dissonant"
+      "Dissonant",
+      "Cyberdarwinists",
+      "Discordians",
+      "Infektors",
+      "Nytemares",
+      "The Sublime"
     ],
     "paragonBonus": [],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": -1,
+      "firewall": 1
+    }
   },
   "Meltdown": {
     "attrMod": {
@@ -805,8 +863,10 @@
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "verified": false,
-      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+      "response": "R",
+      "firewall": "R+1",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "origin": "Machine",
     "optionalFormRule": "One optional complex form per 3 full rating points",
@@ -815,10 +875,19 @@
       "Surge": "Opposed Rating × 2 vs the device's System + Firewall (or Device rating × 2); each net hit = 1 box of damage to the device; sprite must be in a node linked to the device but not inside the device."
     },
     "streams": [
-      "Dissonant"
+      "Dissonant",
+      "Cyberdarwinists",
+      "Discordians",
+      "Infektors",
+      "Nytemares",
+      "The Sublime"
     ],
     "paragonBonus": [],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 0,
+      "firewall": 1
+    }
   },
   "Spike": {
     "attrMod": {
@@ -857,8 +926,10 @@
     "pilot": "R",
     "edge": "R",
     "stats": {
-      "verified": false,
-      "note": "Stat line unreadable in the source conversion (UW p.179-181)."
+      "response": "R+1",
+      "firewall": "R+1",
+      "matrixInit": "R*2",
+      "verified": true
     },
     "origin": "Fault/Tank",
     "optionalFormRule": "One optional complex form per 3 full rating points (Cascading: Rating/2, max 3)",
@@ -868,9 +939,18 @@
       "Sparky": "Same as the dissonant / technomancer echo of the same name (see echoes.json)."
     },
     "streams": [
-      "Dissonant"
+      "Dissonant",
+      "Cyberdarwinists",
+      "Discordians",
+      "Infektors",
+      "Nytemares",
+      "The Sublime"
     ],
     "paragonBonus": [],
-    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use"
+    "registeredTasks": "Tasks = hits on the registering test; 1 task consumed per 8 hours of continuous power use",
+    "matrix": {
+      "response": 1,
+      "firewall": 1
+    }
   }
 }

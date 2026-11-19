@@ -96,6 +96,8 @@
 
   on('change:ai_type', eventinfo => applyAIType(eventinfo.newValue))
 
+  on('change:ai_r', () => syncAIReferenceRating())
+
   on('change:technocritter_type', eventinfo => applyTechnocritterType(eventinfo.newValue))
 
   on('change:resonance', () => syncTechnocritterResonance())

@@ -377,6 +377,11 @@
 					each val in aiTypes
 						option(value=val[0]) #{val[1]}
 			.rows.ai
+				h2(data-i18n='ai_r') Reference rating R
+				label.settings(data-i18n-title='ai_r' title='Reference rating R (attributes = R + type offsets)')
+					input(name='attr_ai_r' placeholder='4' title='@{ai_r}' type='number' value='')
+				span(name='attr_ai_r')
+			.rows.ai
 				h2(data-i18n='ai_home') Home node
 				label.settings(data-i18n-title='ai_home' title='Home node')
 					input(name='attr_ai_home_node' title='@{ai_home_node}' type='text' value='')

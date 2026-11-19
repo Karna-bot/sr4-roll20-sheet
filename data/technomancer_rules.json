@@ -1,0 +1,25 @@
+{
+  "resonance_difference": {
+    "source": "UW p.137-139 (optional rule)",
+    "warning": "Gives technomancers an edge over hackers; may instead be handled as echoes.",
+    "effects": {
+      "Attack Protection": "+2 dice on the Defense Test against normal Attack programs used on technomancers and sprites.",
+      "Difficult to Analyze": "+1 to the threshold of Matrix Perception Tests against technomancers, complex forms, sprites, echoes and widgets.",
+      "Immunity to Crashing": "Technomancer complex forms cannot be crashed unless the Crash action comes from a technomancer or sprite (who can still crash regular programs).",
+      "Immunity to Defusing": "A Data Bomb created by a complex form can be disarmed only by a Defuse complex form.",
+      "Immunity to Nuke": "The resources targeted by Nuke do not exist for technomancers and sprites.",
+      "Invisible Node": "The biological node is immune to standard wireless scans unless the scanner is a technomancer or sprite; may run active, passive or hidden toward them.",
+      "Resonance Encryption": "The Encrypt complex form creates code breakable only by a Decrypt complex form.",
+      "Superior Trace": "The Track complex form ignores Spoof-program confusion; only Redirect Trace with a Spoof complex form throws it."
+    }
+  },
+  "submersion_costs": {
+    "source": "SR4A p.243; UW p.141-142",
+    "base_karma": "10 + (Grade x 3)",
+    "submersion_task": "Base cost - 20% (round up)",
+    "network_submersion": "Base cost - 20% (round up)",
+    "combined": "Base cost - 40%",
+    "echo_learning_karma": 15,
+    "max_echoes": "Resonance + submersion grade"
+  }
+}

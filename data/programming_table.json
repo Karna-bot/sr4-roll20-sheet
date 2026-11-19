@@ -1,0 +1,83 @@
+{
+  "rule": "Extended Test Software + Logic (Hacking + Logic for malware); threshold and interval per row; patching uses interval 1 week and the rating difference.",
+  "source": "UW p.119",
+  "rows": {
+    "Agent/IC/Pilot": {
+      "threshold": "Rating x 3",
+      "interval": "3 months"
+    },
+    "AR Environment": {
+      "threshold": "12",
+      "interval": "1 month"
+    },
+    "Autosofts": {
+      "threshold": "Rating x 2",
+      "interval": "6 months"
+    },
+    "Common Use programs": {
+      "threshold": "Rating",
+      "interval": "1 month"
+    },
+    "Firewall": {
+      "threshold": "Rating x 2",
+      "interval": "3 months"
+    },
+    "Hacking programs": {
+      "threshold": "Rating x 2",
+      "interval": "1 month"
+    },
+    "Sensor": {
+      "threshold": "Rating x 2",
+      "interval": "1 month"
+    },
+    "System": {
+      "threshold": "Rating x 2",
+      "interval": "6 months"
+    },
+    "Tactical": {
+      "threshold": "Rating x 3",
+      "interval": "6 months"
+    },
+    "Program options - General": {
+      "threshold": "Rating*",
+      "interval": "1 month"
+    },
+    "Program options - Biofeedback": {
+      "threshold": "Rating x 2",
+      "interval": "1 month"
+    },
+    "Program options - Psychotropic": {
+      "threshold": "Rating x 3",
+      "interval": "3 months"
+    },
+    "Program options - Hacking": {
+      "threshold": "Rating*",
+      "interval": "1 month"
+    },
+    "Malware - Bugs (adding)": {
+      "threshold": "4",
+      "interval": "1 hour"
+    },
+    "Malware - Bugs (finding/repairing)": {
+      "threshold": "16 (12 in one printed copy)",
+      "interval": "1 hour per text; 1 week in the table"
+    },
+    "Malware - Virus": {
+      "threshold": "Rating x 4",
+      "interval": "3 months"
+    },
+    "Malware - Metamorphic Engine": {
+      "threshold": "+6",
+      "interval": "+1 month"
+    },
+    "Malware - Trojan": {
+      "threshold": "Rating x 4",
+      "interval": "3 months"
+    }
+  },
+  "notes": [
+    "* options without a rating count as Rating 3",
+    "Bug added deliberately: threshold = net hits x 4",
+    "Row grouping of the option/malware rows follows reading order (labels detached from values in the source)"
+  ]
+}

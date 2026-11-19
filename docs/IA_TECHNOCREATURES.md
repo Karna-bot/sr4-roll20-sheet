@@ -9,8 +9,8 @@ Champs : `mx_response`, `mx_signal`, `mx_system`, `firewall`, `mx_biofeedback`, 
 La fiche véhicule garde ses champs `veh_*`. Le bloc hôte (`hostObject`) n'est pas modifié (type non proposé dans le menu).
 
 ## 2. Sprites
-Réponse et Pare-feu = Niveau + décalage pour les 5 sprites du livre de base (SR4A p.242) : Courier +1/+1, Crack +1/0, Data 0/-2, Fault +2/+1, Machine 0/+2.
-Les 10 sprites d'Unwired ont des suites de statistiques illisibles dans la conversion (fichier 15) : leurs décalages restent vides (saisie libre).
+Réponse et Pare-feu = Niveau + décalage pour les 15 sprites (SR4A p.242, UW p.155-156 et 179-181), voir `data/sprites.json`.
+Les 10 sprites d'Unwired et entropiques ont maintenant leurs décalages (retrouvés dans la conversion le 2026-11-19).
 Initiative matricielle = Niveau x multiplicateur ; passes = `mx_passes` (3). Avant : 4 dés fixes (valeur SR5).
 
 ## 3. Technocréatures (grunt, option « Émergé »)
@@ -21,6 +21,7 @@ Les attributs physiques de l'animal restent à saisir (non présents dans Runnin
 ## 4. Type de fiche « IA »
 Attributs mentaux libres : Charisme, Intuition, Logique, Volonté, Edge. Calculés : Indice = moyenne des 4 (arrondi sup.), Système = moy.(INT, LOG), Pare-feu = moy.(CHA, VOL), moniteur matriciel = 8 + Système/2 (fichiers 16 et 22 : UW p.165-170, RC).
 Réponse et Signal : ceux du nœud occupé (saisie). Initiative matricielle = Intuition + Réponse, 3 passes.
+Champ `ai_r` (indice de référence R) : choisir un type d'IA fixe Charisme, Intuition, Logique, Volonté et Edge à R + décalage du type (Unwired p.166-168) ; Prédateur : +2 à l'initiative matricielle. L'Indice affiché reste la moyenne des quatre attributs mentaux (RC), arrondie au supérieur.
 Sélecteur `ai_type` : 7 types d'Unwired (métasapient, artifaun, poltergeist, prédateur, archiviste, assembleur, sculpteur) et 18 IA férales de Running Wild. Il remplit « Compétences et formes » (`matrix_info`) et « Qualités ».
 Nœud d'origine (`ai_home_node`, texte), bouton Réalignement (Indice x 2). Compétences, formes complexes, qualités et programmes utilisent les sections existantes du grunt.
 
@@ -31,7 +32,7 @@ Nœud d'origine (`ai_home_node`, texte), bouton Réalignement (Indice x 2). Comp
 - Les valeurs calculées d'une IA (Indice, Système, Pare-feu) sont réécrites à chaque changement d'attribut mental : une saisie manuelle est perdue à ce moment-là.
 - Bonus du nœud d'origine : conflit entre RC (par attribut, ÷2) et UW (Indice ÷2 sur les quatre statistiques) ; **non automatisé**, à saisir à la main dans Réponse/Signal/Système/Pare-feu.
 - Fadeur des technocréatures (Intuition + Résonance) non automatisée.
-- Lignes d'attributs des types d'IA (CHA/INT/LOG/VOL/EDG) illisibles dans la conversion : non pré-remplies.
+- Lignes d'attributs des IA férales de Running Wild illisibles dans la conversion : non pré-remplies (les 7 types d'Unwired le sont).
 - `matrix_initiative` est maintenant écrit pour les fiches non-PC (le bouton d'initiative matricielle PNJ lisait ce champ, jamais renseigné jusque-là).
 - Handler `updateMatrixMaximum` (eventhandlers.js) : fonction jamais définie dans le code d'origine ; non touché.
 

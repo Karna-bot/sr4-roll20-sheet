@@ -12,7 +12,7 @@ console.log('ok handlers',handlers.length);
 let attrs={}, set={};
 sandbox.getAttrs=(arr,cb)=>{const o={};arr.forEach(k=>o[k]=attrs[k]);cb(o)};
 sandbox.setAttrs=(u)=>{Object.assign(set,u);Object.assign(attrs,u)};
-vm.runInContext('globalThis.__t={updateAIAttributes,applyAIType,applyTechnocritterType,syncTechnocritterResonance,updateMatrixInitiative,updateEmergedMatrixMax,applySpriteType,updateSpriteAttributes}',sandbox);
+vm.runInContext('globalThis.__t={updateAIAttributes,applyAIType,applyTechnocritterType,syncTechnocritterResonance,updateMatrixInitiative,updateEmergedMatrixMax,applyAIType,applySpriteType,updateSpriteAttributes}',sandbox);
 const t=sandbox.__t;
 attrs={sheet_type:'ai',charisma:3,intuition:5,logic:6,willpower:4};t.updateAIAttributes();console.log('AI',set);
 attrs.mx_response=4;attrs.intuition=5;t.updateMatrixInitiative();console.log('AI init',set.matrix_mod,set.matrix_dice);
@@ -23,3 +23,5 @@ set={};attrs={sheet_type:'sprite',level:4,sprite_init_mult:3,mx_response_offset:
 set={};attrs={sheet_type:'sprite'};t.applySpriteType('code');console.log('code',set.mx_response_offset,set.mx_firewall_offset);
 set={};attrs={sheet_type:'ai'};t.applyAIType('predator');console.log(set.quality,'|',set.matrix_info.slice(0,60));
 set={};attrs={sheet_type:'pc',intuition:3};t.updateMatrixInitiative();console.log('pc untouched',JSON.stringify(set));
+// AI reference rating R : attributs = R + decalages du type (Unwired p.166-168)
+set={};attrs={sheet_type:'ai',ai_r:4};t.applyAIType('predator');console.log('predator R4',set.charisma_base,set.intuition_base,set.logic_base,set.willpower_base,set.edge,set.matrix_mod_modifier);
