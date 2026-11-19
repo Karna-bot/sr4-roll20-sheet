@@ -30,7 +30,7 @@ const sheetAttributes = {
 
   stunCharacters: ['grunt', 'spirit', 'pc'],
   physicalCharacters: ['grunt', 'spirit', 'pc', 'vehicle'],
-  matrixCharacters: ['vehicle', 'host', 'sprite'],
+  matrixCharacters: ['vehicle', 'host', 'sprite', 'ai'],
   matrixAttributes: ['attack', 'sleaze', 'data_processing', 'firewall'],
 
   weaponTypes: ['range', 'melee'],

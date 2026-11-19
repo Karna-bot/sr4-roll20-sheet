@@ -21,7 +21,7 @@
 
 //- SHEET TYPES
 //- - const sheetTypes = ['Grunt', 'Host', 'Sprite', 'Vehicle', 'PC'];
-- const sheetTypes = ['Grunt', 'Spirit', 'Sprite', 'Vehicle', 'PC'];
+- const sheetTypes = ['Grunt', 'Spirit', 'Sprite', 'AI', 'Vehicle', 'PC'];
 
 //- TABS
 - const tabs = ['core', 'arms', 'augs', 'gear', 'magic', 'matrix', 'social', 'vehicle'];
@@ -34,7 +34,10 @@
 
 //- LOOP OBJECTS
 - const hostObject = {'Host Rating': ['host_rating', '5'], 'Attack': ['attack', '5'], 'Sleaze': ['sleaze', '6'], 'Data Processing': ['data_processing', '7'], 'Firewall': ['firewall', '8']};
-- const spriteObject = {'Level': ['level', '5'], 'Attack': ['attack', '5'], 'Sleaze': ['sleaze', '6'], 'Data Processing': ['data_processing', '7'], 'Firewall': ['firewall', '8']};
+//- SR4 Matrix statistics (sprite, AI, technocritter): Response, Signal, System, Firewall. Attack, Sleaze and Data Processing are SR5 names and do not exist in SR4.
+- const spriteObject = {'Level': ['level', '5'], 'Response': ['mx_response', '5'], 'Signal': ['mx_signal', '5'], 'System': ['mx_system', '5'], 'Firewall': ['firewall', '5']};
+- const aiObject = {'Rating': ['ai_rating', '5'], 'Response': ['mx_response', '5'], 'Signal': ['mx_signal', '5'], 'System': ['mx_system', '5'], 'Firewall': ['firewall', '5']};
+- const critterMatrixObject = {'Response': ['mx_response', '4'], 'Signal': ['mx_signal', '4'], 'System': ['mx_system', '4'], 'Firewall': ['firewall', '4'], 'Biofeedback': ['mx_biofeedback', '4']};
 - const npcWeaponsObject = {'Range': {'type': 'select', 'default': 'range'}, 'Dice': {'type': 'number', 'placeholder': '18'},'Name': {'type': 'text', 'placeholder': 'Ares Predator'}, 'Type': {'type': 'text', 'placeholder': 'Heavy Pistol'}, 'Reach': {'type': 'number', 'placeholder': '0'}, 'Dam': {'type': 'text', 'placeholder': '9P'},  'AP': {'type': 'number', 'placeholder': '-2'},'Modes': {'type': 'text', 'placeholder': 'SA/BF/FA'},'Recoil': {'type': 'text', 'placeholder': '+2'},'Ammo': {'type': 'number', 'placeholder': '15'}, 'Notes': {'type': 'text', 'placeholder': 'w/ 3 clips of explosive rounds'}};
 - const npcSpellObject = {'Category': {'type': 'select', 'default': 'combat', 'array': spellCatagories}, 'Dice': {'type': 'number', 'placeholder': '18'}, 'Name': {'type': 'text', 'placeholder': 'Fireball'}, 'Type': {'type': 'select', 'default': 'P', 'array': spellTypes}, 'Range': {'type': 'select', 'default': 'LOS', 'array':spellRanges}, 'Duration': {'type': 'select', 'default': 'Instant', 'array':spellDurations}, 'Drain': {'type': 'number', 'placeholder': '-1'}, 'Combat': {'type': 'select', 'default': 'Force', 'array':spellCombatTypes}, 'Dam': {'type': 'text', 'placeholder': 'P'}, 'Notes': {'type': 'text', 'placeholder': 'may start fires'}};
 

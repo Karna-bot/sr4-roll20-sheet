@@ -74,7 +74,7 @@
 
 	on('change:astral_dice_modifier change:edge_toggle', () => updateAstralInitiativeDice())
 
-	on('change:host_rating change:data_processing change:veh_response change:pilot change:intuition change:matrix_initiative_modifier change:level change:sprite_init_mult change:sheet_type change:matrix_dice_modifier change:edge_toggle', () => updateMatrixInitiative())
+	on('change:host_rating change:data_processing change:veh_response change:pilot change:intuition change:matrix_initiative_modifier change:level change:sprite_init_mult change:sheet_type change:matrix_dice_modifier change:edge_toggle change:flag_special change:mx_response change:mx_passes', () => updateMatrixInitiative())
 
   on("clicked:cond_reset", () => resetNpcCondition()); 
 
@@ -88,13 +88,23 @@
 
   on('change:force change:sheet_type change:spirit_state change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
 
-  on('change:level change:sheet_type change:edge_offset ' + SPRITE_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpriteAttributes())
+  on('change:level change:sheet_type change:edge_offset change:mx_response_offset change:mx_firewall_offset ' + SPRITE_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpriteAttributes())
 
   on('change:sprite_type', eventinfo => applySpriteType(eventinfo.newValue))
 
+  on('change:charisma change:intuition change:logic change:willpower change:sheet_type', () => updateAIAttributes())
+
+  on('change:ai_type', eventinfo => applyAIType(eventinfo.newValue))
+
+  on('change:technocritter_type', eventinfo => applyTechnocritterType(eventinfo.newValue))
+
+  on('change:resonance', () => syncTechnocritterResonance())
+
+  on('change:mx_system change:sheet_type', () => updateEmergedMatrixMax())
+
   on('change:sheet_type', eventinfo => {
     if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'})
-    if (eventinfo.newValue === 'sprite') setAttrs({flag_special: 'resonance'})
+    if (eventinfo.newValue === 'sprite' || eventinfo.newValue === 'ai') setAttrs({flag_special: 'resonance'})
   })
 
   on(`change:${sheetAttributes.defense.join(' change:')} change:spirit_state change:sheet_type`, () => updateDefense())

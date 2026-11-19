@@ -62,7 +62,7 @@ fs.writeFileSync(path.join(root, 'src', 'js', 'sprite-types.js'), [
   '// Attribut = Niveau + decalage ; ordre des decalages : ' + SPRITE_ATTRS.join(', ') + '. initMult : initiative matricielle = Niveau x initMult.',
   'const SPRITE_TYPES = {',
   Object.entries(sprites).map(([name, s]) =>
-    `  ${key(name)}: {offsets: [${SPRITE_ATTRS.map(a => (s.attrMod || {})[a] || 0).join(', ')}], initMult: ${s.initMult || 1}, powers: ${list(s.powers)}, skills: ${list(s.skills)}, forms: ${list(s.complexForms)}, optionalForms: ${list(s.optionalComplexForms)}}`
+    `  ${key(name)}: {offsets: [${SPRITE_ATTRS.map(a => (s.attrMod || {})[a] || 0).join(', ')}], initMult: ${s.initMult || 1}, matrix: ${s.matrix ? `[${s.matrix.response || 0}, ${s.matrix.firewall || 0}]` : 'null'}, powers: ${list(s.powers)}, skills: ${list(s.skills)}, forms: ${list(s.complexForms)}, optionalForms: ${list(s.optionalComplexForms)}}`
   ).join(',\n'),
   '}',
   ''
@@ -92,3 +92,37 @@ fs.writeFileSync(path.join(root, 'src', 'pug', '_stream-types.pug'),
   '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
   '- const streamTypes = [' + Object.keys(streams).map(n => `['${slug(n)}', '${n.replace(/'/g, "\\'")}', ${JSON.stringify((streams[n].sprites || []).map(x => x.toLowerCase()))}]`).join(', ') + '];\n')
 console.log(`${Object.keys(streams).length} flux generes`)
+
+// ---- TECHNOCRITTERS (fiche grunt emergee) : data/technocritters.json -> src/js/technocritter-types.js, src/pug/_technocritter-types.pug
+// Statistiques matricielles (Reponse, Signal, Systeme, Pare-feu, Filtre de biofeedback) = Resonance (Running Wild p.189-192).
+const critters = JSON.parse(fs.readFileSync(path.join(root, 'data', 'technocritters.json'), 'utf8'))
+fs.writeFileSync(path.join(root, 'src', 'js', 'technocritter-types.js'), [
+  '// FICHIER GENERE par tools/generate-spirits.js depuis data/technocritters.json : ne pas modifier a la main.',
+  'const TECHNOCRITTER_TYPES = {',
+  Object.entries(critters).map(([name, c]) =>
+    `  ${key(name)}: {resonance: ${c.resonance}, passes: ${c.passes}, skills: ${list([c.skills])}, forms: ${list([c.complexForms])}, powers: ${list([c.powers])}}`
+  ).join(',\n'),
+  '}',
+  ''
+].join('\n'))
+fs.writeFileSync(path.join(root, 'src', 'pug', '_technocritter-types.pug'),
+  '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
+  '- const technocritterTypes = [' + Object.keys(critters).map(n => `['${key(n)}', '${label(n)}']`).join(', ') + '];\n')
+console.log(`${Object.keys(critters).length} technocritters generes`)
+
+// ---- IA (fiche type "ai") : data/ai.json -> src/js/ai-types.js, src/pug/_ai-types.pug
+const ais = JSON.parse(fs.readFileSync(path.join(root, 'data', 'ai.json'), 'utf8'))
+const aiKey = name => name.toLowerCase().replace(/[^a-z0-9]+/g, '_')
+fs.writeFileSync(path.join(root, 'src', 'js', 'ai-types.js'), [
+  '// FICHIER GENERE par tools/generate-spirits.js depuis data/ai.json : ne pas modifier a la main.',
+  'const AI_TYPES = {',
+  Object.entries(ais).map(([name, a]) =>
+    `  ${aiKey(name)}: {group: ${JSON.stringify(a.group)}, notes: ${JSON.stringify(a.notes || '')}, skills: ${JSON.stringify(a.skills || '')}, programs: ${JSON.stringify(a.programs || '')}, qualities: ${JSON.stringify(a.qualities || '')}}`
+  ).join(',\n'),
+  '}',
+  ''
+].join('\n'))
+fs.writeFileSync(path.join(root, 'src', 'pug', '_ai-types.pug'),
+  '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
+  '- const aiTypes = [' + Object.entries(ais).map(([n, a]) => `['${aiKey(n)}', '${a.group} - ${n.replace(/'/g, "\\'")}']`).join(', ') + '];\n')
+console.log(`${Object.keys(ais).length} types d'IA generes`)

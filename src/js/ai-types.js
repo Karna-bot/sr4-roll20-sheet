@@ -1,0 +1,28 @@
+// FICHIER GENERE par tools/generate-spirits.js depuis data/ai.json : ne pas modifier a la main.
+const AI_TYPES = {
+  metasapient: {group: "AI", notes: "Most human-like", skills: "Cracking group R+1, Electronics group R+1", programs: "Analyze R+1, Armor, Browse, Command, Edit, Exploit, Homeground, Reality Filter, Stealth", qualities: "Authority, Code Flux, Fragmentation, Real World Naivete, Redundancy, Rootkit, Sapper"},
+  artifaun: {group: "AI", notes: "Protosapient from virtual pets", skills: "Computer R-1, Cybercombat R+1, Hacking R", programs: "Analyze, Armor, Attack, Browse, Edit, Exploit, Homeground, Stealth", qualities: "Drone Pilot, Fragmentation, Real World Naivete"},
+  poltergeist: {group: "AI", notes: "Protosapient from maintenance utilities", skills: "Computer R+1, Cybercombat R-1, Data Search R-1, Hacking R, Software R", programs: "Analyze, Attack R-1, Browse, Command, Edit, Exploit, Homeground, Stealth", qualities: "Code Flux, Corruptor, Real World Naivete, Rootkit"},
+  predator: {group: "AI", notes: "Protosapient from offensive software", skills: "Computer R, Cybercombat R+2, Hacking R", programs: "Analyze, Armor, Attack R+1, Blackout or Black Hammer, Cascading 1, Exploit, Stealth, Track", qualities: "Codivore, Real World Naivete, Redundancy, Snooper"},
+  archivist: {group: "AI", notes: "Xenosapient, data hoarder", skills: "Computer R, Data Search R+2, Hacking R", programs: "Analyze, Browse R+2, Decrypt R+2, Defuse, Edit, Encrypt, Exploit, Homeground, Purge, Stealth", qualities: "Code Flux, Real World Naivete, Redundancy, Rootkit"},
+  assembler: {group: "AI", notes: "Xenosapient from compilers/kernels", skills: "Cracking group R, Electronics group R+1", programs: "Analyze, Browse, Command, Edit, Expert Defense 2, Exploit R-1, Homeground R+2, Medic R+2, Purge, Spoof, Stealth", qualities: "Authority, Emulate, Real World Naivete, Spawn"},
+  sculptor: {group: "AI", notes: "Xenosapient, rewrites node iconography", skills: "Computer, Hacking, Software R+1", programs: "Analyze R+1, Browse, Command, Edit R+2, Exploit, Homeground, Medic, Reality Filter, Stealth", qualities: "Code Flux, Designer, Improved Realignment, Real World Naivete"},
+  daemon: {group: "Feral AI", notes: "Destroyer: hunts other AIs", skills: "", programs: "Attack R+1, Cascading, Expert Offense", qualities: "Codivore, Datavore (realigning AIs), Fnord, Redundancy"},
+  frobnitz: {group: "Feral AI", notes: "Destroyer: munges sprite code", skills: "", programs: "Attack R+2", qualities: "Datavore (sprites), Sapper, Snooper"},
+  grue: {group: "Feral AI", notes: "Destroyer: kills users with Black Hammer, eats the persona", skills: "", programs: "Black Hammer", qualities: "Authority, Datavore (dead users persona programs), Fnord, Rootkit, Teergrube"},
+  blob: {group: "Feral AI", notes: "Infovore: munges video/trideo/icon/simsense files", skills: "", programs: "", qualities: "POKEr, Redundancy, Teergrube"},
+  gimp: {group: "Feral AI", notes: "Infovore: eats one colour of image data", skills: "", programs: "", qualities: "Authority, Datavore (a colour)"},
+  prowler: {group: "Feral AI", notes: "Infovore: munges advertising AROs", skills: "", programs: "", qualities: "Authority, Intuitive Hacking (Exploit), Redundancy"},
+  sintax: {group: "Feral AI", notes: "Infovore: munges SIN data from commlinks", skills: "", programs: "", qualities: "Code Flux, Intuitive Hacking (Spoof), Rootkit"},
+  tentacle: {group: "Feral AI", notes: "Infovore: eats persona icons", skills: "", programs: "", qualities: "Nyetworking, Redundancy, Teergrube"},
+  cyberwerewolf: {group: "Feral AI", notes: "Naive: territorial in cyberware nodes", skills: "", programs: "", qualities: "Authority, Codivore, Designer, POKEr, Persnickety Renter (cyberware)"},
+  heap_frog: {group: "Feral AI", notes: "Naive: eats unassigned memory", skills: "", programs: "", qualities: "Code Flux, Datavore (unused memory)"},
+  heavyweight: {group: "Feral AI", notes: "Naive: docile, then munges anything but heavyweights", skills: "", programs: "", qualities: "Datavore (any), Improved Realignment, Redundancy"},
+  rogue: {group: "Feral AI", notes: "Naive: takes over drones/vehicles", skills: "", programs: "", qualities: "Authority, Code Flux, Datavore (wireless traffic), Drone Pilot (ground)"},
+  cryppie: {group: "Feral AI", notes: "Obfuscator: encrypts random files then munges them", skills: "", programs: "", qualities: "Datavore (encrypted archives), Sapper"},
+  heisenbug: {group: "Feral AI", notes: "Obfuscator: munges loaded programs", skills: "", programs: "", qualities: "Code Flux, Redundancy, Uncertainty"},
+  kitteh: {group: "Feral AI", notes: "Obfuscator: eats running programs, agents and AIs", skills: "", programs: "", qualities: "Codivore, Datavore (running programs)"},
+  netmare: {group: "Feral AI", notes: "Obfuscator: munges error messages", skills: "", programs: "", qualities: "Improved Realignment, Intuitive Hacking (Attack), Nyetworking, Uncertainty"},
+  yantra: {group: "Feral AI", notes: "Obfuscator: munges disarmed data bombs", skills: "", programs: "", qualities: "Datavore (defused data bombs), Redundancy"},
+  green_man: {group: "Feral AI", notes: "Zombie master/spawn (money trie)", skills: "", programs: "", qualities: "Animator (master); see RW p.201"}
+}

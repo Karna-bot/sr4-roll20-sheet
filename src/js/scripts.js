@@ -307,10 +307,14 @@ const resetConditionTrack = eventinfo => {
 }
 
 //Calculate Matrix Initiatve.
+// Sprite: Level x multiplier of its type. AI: Intuition + Response (Unwired p.165-170). Technocritter (emerged grunt with Matrix stats): Response x 2 (Running Wild p.189-192).
+// Other grunts keep the earlier Data Processing + Intuition formula. Passes: mx_passes (3 by default; a flipper has 4).
 const updateMatrixInitiative = () => {
-  getAttrs(["sheet_type", "data_processing", "veh_response", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle", "sprite_init_mult"], v => {
+  getAttrs(["sheet_type", "flag_special", "data_processing", "veh_response", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle", "sprite_init_mult", "mx_response", "mx_passes"], v => {
     const sheetType = v.sheet_type;
+    if (sheetType === "pc") return;
     const edgeFlag = v.edge_toggle === "@{edge}" ? true : false;
+    const emerged = sheetType === "grunt" && v.flag_special === "resonance" && (parseInt(v.mx_response) || 0) > 0;
 
     v = processingFunctions.parseIntegers(v);
 
@@ -320,12 +324,19 @@ const updateMatrixInitiative = () => {
 
     //- sprite: Matrix initiative = Level x multiplier of its type (Chummer), no Data Processing
     if (sheetType === "sprite" && v.sprite_init_mult > 0) base = v.level * v.sprite_init_mult;
+    //- AI: Intuition + Response of the node it occupies
+    if (sheetType === "ai") base = v.intuition + v.mx_response;
+    //- technocritter: Response x 2 in Matrix-VR
+    if (emerged) base = v.mx_response * 2;
 
     const total = base + v.matrix_mod_modifier;
+    const passes = v.mx_passes > 0 ? v.mx_passes : 3;
+    const usesPasses = sheetType === "sprite" || sheetType === "ai" || emerged;
 
     setAttrs({
       ["matrix_mod"]: total,
-      ["matrix_dice"]: sheetType === "grunt" && edgeFlag ? 5 : sheetType === "grunt" && !edgeFlag ? 4 + v.matrix_dice_modifier : 4,
+      ["matrix_initiative"]: total,
+      ["matrix_dice"]: usesPasses ? passes : sheetType === "grunt" && edgeFlag ? 5 : sheetType === "grunt" && !edgeFlag ? 4 + v.matrix_dice_modifier : 4,
       ["display_matrix_mod"]: v.matrix_mod_modifier === 0 ? base : `${base} (${total})`
     })
   })
@@ -517,11 +528,14 @@ const SPRITE_ATTRIBUTES = ['charisma', 'intuition', 'logic']
 
 const updateSpriteAttributes = () => {
   const offsets = SPRITE_ATTRIBUTES.concat(['edge']).map(attr => `${attr}_offset`)
-  getAttrs(['sheet_type', 'level'].concat(offsets), v => {
+  getAttrs(['sheet_type', 'level', 'mx_response_offset', 'mx_firewall_offset'].concat(offsets), v => {
     if (v.sheet_type !== 'sprite') return
     const level = parseInt(v.level) || 0
     const update = {edge: level + (parseInt(v.edge_offset) || 0)}
     SPRITE_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = level + (parseInt(v[`${attr}_offset`]) || 0))
+    //- Response and Firewall = Level + offset, only for types whose offsets are known (SR4A p.242); empty offset = left to the GM
+    if (v.mx_response_offset !== undefined && v.mx_response_offset !== '') update.mx_response = level + (parseInt(v.mx_response_offset) || 0)
+    if (v.mx_firewall_offset !== undefined && v.mx_firewall_offset !== '') update.firewall = level + (parseInt(v.mx_firewall_offset) || 0)
     setAttrs(update)
   })
 }
@@ -532,11 +546,82 @@ const applySpriteType = type => {
   getAttrs(['sheet_type'], v => {
     if (v.sheet_type !== 'sprite') return
     const update = {
-      powers: sprite.powers, edge_offset: 0, sprite_init_mult: sprite.initMult,
+      powers: sprite.powers, edge_offset: 0, sprite_init_mult: sprite.initMult, mx_passes: 3,
+      mx_response_offset: sprite.matrix ? sprite.matrix[0] : '', mx_firewall_offset: sprite.matrix ? sprite.matrix[1] : '',
       sprite_info: `Skills (rating = Level): ${sprite.skills}. Complex forms: ${sprite.forms}. Optional: ${sprite.optionalForms}.`
     }
     SPRITE_ATTRIBUTES.forEach((attr, i) => update[`${attr}_offset`] = sprite.offsets[i])
     setAttrs(update)
+  })
+}
+
+// ---------------------------------------------------------------- AI (sheet type "ai") AND TECHNOCRITTERS (emerged grunt)
+// AI (Runner's Companion, Unwired p.165-170): Rating = average of the four mental attributes, System = average of Intuition and Logic,
+// Firewall = average of Charisma and Willpower (all rounded up). Response and Signal are those of the node the AI occupies (typed by hand).
+// Matrix condition monitor = 8 + System / 2 (round up). The computed values can be overwritten by hand until a mental attribute changes.
+const updateAIAttributes = () => {
+  getAttrs(['sheet_type', 'charisma', 'intuition', 'logic', 'willpower'], v => {
+    if (v.sheet_type !== 'ai') return
+    v = processingFunctions.parseIntegers(v)
+    const system = Math.ceil((v.intuition + v.logic) / 2)
+    setAttrs({
+      ai_rating: Math.ceil((v.charisma + v.intuition + v.logic + v.willpower) / 4),
+      mx_system: system,
+      firewall: Math.ceil((v.charisma + v.willpower) / 2),
+      matrix_max: 8 + Math.ceil(system / 2)
+    })
+  })
+}
+
+const applyAIType = type => {
+  const ai = AI_TYPES[type]
+  if (!ai) return
+  getAttrs(['sheet_type'], v => {
+    if (v.sheet_type !== 'ai') return
+    const programs = ai.programs ? ` Programs (R = rating): ${ai.programs}.` : ''
+    const skills = ai.skills ? ` Skills: ${ai.skills}.` : ''
+    setAttrs({
+      matrix_info: `${ai.group}: ${ai.notes}.${skills}${programs}`,
+      quality: ai.qualities,
+      mx_passes: 3
+    })
+  })
+}
+
+// Matrix condition monitor of a technocritter = 8 + System / 2, with System = Resonance
+const updateEmergedMatrixMax = () => {
+  getAttrs(['sheet_type', 'mx_system'], v => {
+    const system = parseInt(v.mx_system) || 0
+    if (v.sheet_type !== 'grunt' || system <= 0) return
+    setAttrs({matrix_max: 8 + Math.ceil(system / 2)})
+  })
+}
+
+// Technocritter (Running Wild p.189-193): Response, Signal, System, Firewall and Biofeedback Filter all equal Resonance.
+const setTechnocritterMatrix = resonance => ({
+  resonance: resonance, mx_response: resonance, mx_signal: resonance, mx_system: resonance, firewall: resonance, mx_biofeedback: resonance,
+  matrix_max: 8 + Math.ceil(resonance / 2)
+})
+
+const applyTechnocritterType = type => {
+  const critter = TECHNOCRITTER_TYPES[type]
+  if (!critter) return
+  getAttrs(['sheet_type'], v => {
+    if (v.sheet_type !== 'grunt') return
+    const update = setTechnocritterMatrix(critter.resonance)
+    update.flag_special = 'resonance'
+    update.mx_passes = critter.passes
+    update.matrix_info = `Matrix skills: ${critter.skills}. Complex forms: ${critter.forms}. +2 dice on Matrix Perception and on all full-VR Matrix tests; Fading resisted with Intuition + Resonance.`
+    update.emergent_powers = critter.powers
+    setAttrs(update)
+  })
+}
+
+// Changing Resonance on a technocritter keeps its Matrix statistics in line (they always equal Resonance)
+const syncTechnocritterResonance = () => {
+  getAttrs(['sheet_type', 'technocritter_type', 'resonance'], v => {
+    if (v.sheet_type !== 'grunt' || !TECHNOCRITTER_TYPES[v.technocritter_type]) return
+    setAttrs(setTechnocritterMatrix(parseInt(v.resonance) || 0))
   })
 }
 

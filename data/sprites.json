@@ -59,7 +59,11 @@
       "Decrypt",
       "Exploit",
       "Scan"
-    ]
+    ],
+    "matrix": {
+      "response": 1,
+      "firewall": 1
+    }
   },
   "Crack": {
     "attrMod": {
@@ -88,7 +92,11 @@
       "Edit",
       "Scan",
       "Spoof"
-    ]
+    ],
+    "matrix": {
+      "response": 1,
+      "firewall": 0
+    }
   },
   "Data": {
     "attrMod": {
@@ -119,7 +127,11 @@
       "Sniffer",
       "Stealth",
       "Linguasoft"
-    ]
+    ],
+    "matrix": {
+      "response": 0,
+      "firewall": -2
+    }
   },
   "Fault": {
     "attrMod": {
@@ -148,7 +160,11 @@
       "Blackout",
       "Exploit",
       "Medic"
-    ]
+    ],
+    "matrix": {
+      "response": 2,
+      "firewall": 1
+    }
   },
   "Machine": {
     "attrMod": {
@@ -176,7 +192,11 @@
       "Decrypt",
       "Edit",
       "Medic"
-    ]
+    ],
+    "matrix": {
+      "response": 0,
+      "firewall": 2
+    }
   },
   "Paladin": {
     "attrMod": {

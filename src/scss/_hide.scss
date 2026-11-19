@@ -65,6 +65,7 @@
 
 	//- Spirit sheet: attribute modifiers are always visible under each attribute
 	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-attribute.sheet-sprite label.sheet-settings[data-i18n-title='modifier'],
+	input[name='attr_sheet_type'][value='ai'] ~ .sheet-npc .sheet-attribute.sheet-ai label.sheet-settings[data-i18n-title='modifier'],
 	input[name='attr_sheet_type'][value='spirit'] ~ .sheet-npc .sheet-attribute.sheet-spirit label.sheet-settings[data-i18n-title='modifier'] {
 		@extend %display-inline-block;
 	}
@@ -141,18 +142,20 @@
 
 	//- Essence, Magic and Resonance do not exist on a spirit or sprite sheet
 	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-grunt-only,
+	input[name='attr_sheet_type'][value='ai'] ~ .sheet-npc .sheet-grunt-only,
 	input[name='attr_sheet_type'][value='spirit'] ~ .sheet-npc .sheet-grunt-only {
 		display: none !important;
 	}
 
 	//- Initiate / Submersion rows only make sense on a grunt sheet (spirit, sprite and vehicle never show them)
-	input[name='attr_sheet_type']:not([value='grunt']) ~ .sheet-npc .sheet-textrow.sheet-grunt:not(.sheet-spirit).sheet-hide-magic,
-	input[name='attr_sheet_type']:not([value='grunt']) ~ .sheet-npc .sheet-textrow.sheet-grunt:not(.sheet-spirit).sheet-hide-resonance {
+	input[name='attr_sheet_type']:not([value='grunt']) ~ .sheet-npc .sheet-textrow.sheet-grunt:not(.sheet-spirit):not(.sheet-ai).sheet-hide-magic,
+	input[name='attr_sheet_type']:not([value='grunt']) ~ .sheet-npc .sheet-textrow.sheet-grunt:not(.sheet-spirit):not(.sheet-ai).sheet-hide-resonance {
 		display: none !important;
 	}
 
 	input[name='attr_sheet_type'][value='host'] ~ .sheet-npc .sheet-column:nth-of-type(2),
-	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-column:nth-of-type(2)  { 
+	input[name='attr_sheet_type'][value='sprite'] ~ .sheet-npc .sheet-column:nth-of-type(2),
+	input[name='attr_sheet_type'][value='ai'] ~ .sheet-npc .sheet-column:nth-of-type(2)  { 
 		@extend %display-none;
 	}
 

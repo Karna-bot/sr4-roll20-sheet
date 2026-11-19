@@ -1,0 +1,74 @@
+{
+  "Ahi": {
+    "resonance": 4,
+    "passes": 3,
+    "skills": "Computer 2, Cybercombat 5, Hacking 4, Software 1",
+    "complexForms": "Analyze 2, Armor 5, Attack 4, Corrupt 2, Exploit 3, Nuke 3, Stealth 5",
+    "powers": "AR-Parallelism, Hardening, Technovantage (Defragmentation), Venomous Code",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Bastet": {
+    "resonance": 5,
+    "passes": 3,
+    "skills": "Computer 3, Cybercombat 3, Hacking 3, Software 3",
+    "complexForms": "Analyze 4, Blackout 4, Corrupt 3, Exploit 5, Spoof 3, Stealth 5",
+    "powers": "AR-Parallelism, Resonant Conditioning, Resonance Bond (Bastet Bond), Suppression, Technovantage (Flexible Touch)",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Digit": {
+    "resonance": 1,
+    "passes": 3,
+    "skills": "Computer 3, Electronic Warfare 4, Hacking 2, Software 3",
+    "complexForms": "Analyze 3, Armor 2, Command 2, Exploit 3, ECCM 3, Edit 2, Scan 3, Spoof 3, Stealth 3",
+    "powers": "AR-Parallelism, E-Hive, Gremlins, Technovantage (Living ECM); -4 to detect its persona/signature",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Flipper": {
+    "resonance": 4,
+    "passes": 4,
+    "skills": "Computer 3, Cybercombat 4, Hacking 3, Software 2",
+    "complexForms": "Analyze 3, Armor 3, Attack 4, Browse 1, Command 2, Disarm 3, Shield 3, Stealth 5",
+    "powers": "AR-Parallelism, Blend, Tunnel, Technovantage (Overclocking)",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Libertine": {
+    "resonance": 3,
+    "passes": 3,
+    "skills": "Computer 3, Hacking 4, Software 5",
+    "complexForms": "Analyze 3, Command 2, Data Bomb 2, Exploit 4, Sniffer 3, Spoof 5, Stealth 5",
+    "powers": "AR-Parallelism, Suppression, Technovantage (Skinlink), Technovantage (Swap, rating 2)",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Mongrel": {
+    "resonance": 4,
+    "passes": 3,
+    "skills": "Computer 2, Data Search 5, Electronic Warfare 4, Software 2",
+    "complexForms": "Analyze 4, Browse 5, Edit 2, Scan 5, Sniffer 3, Track 5",
+    "powers": "AR-Parallelism, Spraying, Technovantage (E-Sensing), Technovantage (Sift), Traceroute",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Nezumi": {
+    "resonance": 2,
+    "passes": 3,
+    "skills": "Computer 3, Electronic Warfare 3, Hardware 3, Software 3",
+    "complexForms": "Analyze 3, Command 3, Defuse 3, Decrypt 3, Edit 4, Scan 5, Spoof 3",
+    "powers": "AR-Parallelism, Diagnostics, Technovantage (E-Sensing), Technovantage (Skinlink)",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Rapscallion": {
+    "resonance": 2,
+    "passes": 3,
+    "skills": "Computer 3, Hacking 3, Software 4",
+    "complexForms": "Analyze 3, Attack 3, Scan 3, Sniffer 3, Spoof 3, Stealth 3",
+    "powers": "AR-Parallelism, Anthropomorphism, Cozenage, Technovantage (Biowire)",
+    "source": "RW p.192-193; p.216-218"
+  },
+  "Rook": {
+    "resonance": 2,
+    "passes": 3,
+    "skills": "Computer 3, Electronic Warfare 4, Hacking 3, Software 2",
+    "complexForms": "Analyze 4, Command 3, Edit 4, Encrypt 3, Decrypt 3, Scan 4, Shield 3",
+    "powers": "AR-Parallelism, Holographic Concealment, Technovantage (Immersion), Virtual Mimicry",
+    "source": "RW p.192-193; p.216-218"
+  }
+}

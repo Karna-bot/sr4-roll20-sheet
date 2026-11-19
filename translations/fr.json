@@ -482,5 +482,16 @@
     "submersionechoes": "Submersion et échos",
     "stream": "Flux",
     "services": "Services",
-    "forceoffsets": "Attribut = Force +"
+    "forceoffsets": "Attribut = Force +",
+    "ai": "IA",
+    "ai_rating": "Indice",
+    "mx_response": "Réponse",
+    "mx_signal": "Signal",
+    "mx_system": "Système",
+    "mx_biofeedback": "Filtre de biofeedback",
+    "mx_passes": "PI matricielles",
+    "technocritter": "Technocréature",
+    "emergentpowers": "Pouvoirs émergents",
+    "ai_home": "Nœud d'origine",
+    "realign": "Réalignement"
 }
