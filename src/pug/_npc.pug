@@ -410,8 +410,8 @@
 
 	.end.body
 		//- TEXTBOXES
-		each val, key in {'Qualities': 'grunt ai', 'Augmentations': 'grunt', 'Gear': 'grunt spirit vehicle', 'Programs': 'vehicle ai', 'Modifications': 'vehicle', 'Notes': 'vehicle', 'Powers': 'grunt spirit hide-magic', 'Weakness': 'grunt spirit hide-magic'}
-			- const attrName = key === 'Qualities' ? 'quality' : key === 'Notes' ? 'vehicle_notes' : key.toLowerCase();
+		each val, key in {'Qualities': 'grunt ai', 'Augmentations': 'grunt', 'Gear': 'grunt spirit vehicle', 'Programs': 'vehicle ai', 'Modifications': 'vehicle', 'Notes': 'vehicle spirit sprite', 'Powers': 'grunt spirit hide-magic', 'Weakness': 'grunt spirit hide-magic'}
+			- const attrName = key === 'Qualities' ? 'quality' : key === 'Notes' ? 'npc_notes' : key.toLowerCase();
 			input(name=`attr_${attrName}` type='hidden' value='')
 			.textrow(class=val)
 				h1(data-i18n=attrName) key
