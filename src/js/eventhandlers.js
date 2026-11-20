@@ -117,6 +117,20 @@
 
   on('change:stream', eventinfo => applyStream(eventinfo.newValue))
 
+  on('change:repeating_echoes:echo_type', eventinfo => applyEcho(eventinfo.sourceAttribute))
+
+  on('change:repeating_echoes:echo_type change:repeating_echoes:echo_times remove:repeating_echoes change:willpower change:intuition change:logic change:charisma change:resonance change:submersion change:sheet_type', () => updateLivingPersona())
+
+  on('change:paragon', eventinfo => applyParagon(eventinfo.newValue))
+
+  on('change:repeating_widgets:widget_type', eventinfo => applyWidget(eventinfo.sourceAttribute))
+
+  on('change:repeating_widgets:widget_rating', eventinfo => updateWidgetRating(eventinfo.sourceAttribute))
+
+  on('change:resonance_difference', () => updateResonanceDifference())
+
+  on('change:repeating_spritepowers:sp_type', eventinfo => applySpritePower(eventinfo.sourceAttribute))
+
   on('change:ballistic change:sheet_type', () => updateVehicleArmor())
 
   on(VEHICLE_FIELDS.map(attr => `change:${attr}`).join(' '), () => updateVehicleControl())

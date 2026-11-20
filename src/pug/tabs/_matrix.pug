@@ -122,3 +122,82 @@
         .row-long
           h3(data-i18n='echos') Echoes
           textarea(name='attr_echos' placeholder='Echoes' style='width: 90%' title='@{echos}')
+
+  //- MATRICE AVANCEE : persona vivante + echoes, paragon, widgets, Resonance Difference (data/*.json -> menus generes)
+  .pc-row.advanced-matrix
+    .header.right-header
+      h1(data-i18n='livingpersona') Living Persona
+      .right-tri
+    .border-box
+      .pc-box.medium-box
+        .row-long.living-persona
+          each val in [['lp_response', 'response'], ['lp_signal', 'signal'], ['lp_system', 'system'], ['lp_firewall', 'firewall'], ['lp_biofeedback', 'biofeedback'], ['lp_init', 'matrixinitiative'], ['lp_ip', 'initiativepasses']]
+            h3(data-i18n=val[1]) #{val[1]}
+            span.center.eclipse(name=`attr_${val[0]}`) 0
+        .row-long
+          span(name='attr_lp_warning')
+        .row-long.paragon
+          h3(data-i18n='paragon') Paragon
+          select(name='attr_paragon' title='@{paragon}')
+            option(value='custom' data-i18n='customtype' selected) Custom
+            each val in paragonTypes
+              option(value=val[0]) #{val[1]}
+        .row-long
+          h3(data-i18n='advantage') Advantage
+          textarea(name='attr_paragon_advantage' placeholder='Advantage' title='@{paragon_advantage}')
+        .row-long
+          h3(data-i18n='disadvantage') Disadvantage
+          textarea(name='attr_paragon_disadvantage' placeholder='Disadvantage' title='@{paragon_disadvantage}')
+        .row-long
+          h3(data-i18n='paragonsprites') Sprite bonus
+          input(name='attr_paragon_sprites' type='text' title='@{paragon_sprites}' value='')
+          input(name='attr_paragon_source' type='text' placeholder='Source' title='@{paragon_source}' value='')
+        .row-long.resonance-difference
+          h3(data-i18n='resonancedifference') Resonance Difference (optional rule)
+          label(data-i18n-title='resonancedifference' title='Resonance Difference')
+            input(name='attr_resonance_difference' type='checkbox' value='1')
+          h3(data-i18n='defensebonus') Defense vs Attack
+          span.center.eclipse(name='attr_resdiff_defense') 0
+        .row-long
+          textarea(name='attr_resdiff_info' readonly title='@{resdiff_info}')
+        .rows.repeating-container.echoes
+          h2(data-i18n='echos') Echoes
+          fieldset(class='repeating_echoes')
+            input(name='attr_echo_max' type='hidden' value='1')
+            span.center(name='attr_echo_name')
+            span.center.eclipse(name='attr_echo_times')
+            +repeatingSectionFlags()
+            .settings
+              select(name='attr_echo_type' title='@{repeating_echoes_${x}_echo_type}')
+                option(value='custom' data-i18n='customtype' selected) Custom
+                each val in echoTypes
+                  option(value=val[0]) #{val[1]}
+              label(data-i18n-title='name' title='name')
+                input(name='attr_echo_name' placeholder='name' type='text' value='')
+              h3(data-i18n='times') Times
+              input(name='attr_echo_times' type='number' min='1' value='1')
+              textarea(name='attr_echo_effect' placeholder='Effect' title='@{repeating_echoes_${x}_echo_effect}')
+              input(name='attr_echo_source' type='text' placeholder='Source' value='')
+        .rows.repeating-container.widgets
+          h2(data-i18n='widgets') Widgets
+          fieldset(class='repeating_widgets')
+            +rollButton('widget_create', '^{widget}', '@{resonance}+@{software}')
+            +rollButton('widget_fade', '^{fade}', '@{fade_attribute_1}+@{fade_attribute_2}+@{fade_modifier}')
+            span.center(name='attr_widget_name')
+            span.center.eclipse(name='attr_widget_rating')
+            +repeatingSectionFlags()
+            .settings
+              select(name='attr_widget_type' title='@{repeating_widgets_${x}_widget_type}')
+                option(value='custom' data-i18n='customtype' selected) Custom
+                each val in widgetTypes
+                  option(value=val[0]) #{val[1]}
+              label(data-i18n-title='name' title='name')
+                input(name='attr_widget_name' placeholder='name' type='text' value='')
+              h3(data-i18n='rating') Rating
+              input(name='attr_widget_rating' type='number' min='0' value='0')
+              h3(data-i18n='threshold') Threshold (Rating x 2, 1 h)
+              span.center.eclipse(name='attr_widget_threshold') 0
+              h3(data-i18n='fade') Fading (2 x Rating)
+              span.center.eclipse(name='attr_widget_fade') 0
+              textarea(name='attr_widget_effect' placeholder='Effect' title='@{repeating_widgets_${x}_widget_effect}')
+              input(name='attr_widget_source' type='text' placeholder='Source' value='')

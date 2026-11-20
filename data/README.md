@@ -22,3 +22,6 @@ Générées/complétées à partir des suppléments Matrice du dépôt `sr4-conv
 - Les flux dissonants n'ont pas d'attribut de Fading fixé par le livre (`fadeAttribute: null`, choix du MJ) ; ils compilent par défaut les cinq sprites entropiques.
 - Les IA férales (Running Wild) n'ont pas de lignes d'attributs lisibles.
 - `programming_table.json` : le regroupement des lignes « options » et « malwares » suit l'ordre de lecture ; seuil de réparation des bugs 16 (texte) ou 12 (une copie du tableau), intervalle 1 heure (texte) ou 1 semaine (tableau).
+
+## Matrice avancée
+`echoes.json` : champ `mods` (response, signal, system, firewall, biofeedback, passes par prise) lu par la fiche PC. `echoes.json`, `paragons.json`, `widgets.json`, `sprite_powers.json` et `technomancer_rules.json` alimentent les menus et textes de l'onglet Matrice et des pouvoirs de sprites (voir docs/MATRICE_AVANCEE.md).

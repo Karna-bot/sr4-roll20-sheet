@@ -552,6 +552,7 @@ const applySpriteType = type => {
     }
     SPRITE_ATTRIBUTES.forEach((attr, i) => update[`${attr}_offset`] = sprite.offsets[i])
     setAttrs(update)
+    fillSpritePowers(sprite.powerList || [])
   })
 }
 
@@ -755,5 +756,127 @@ const updateVehicleControl = () => {
     const update = {veh_init: result.init, veh_ip: result.ip, initiative_passes_base: result.ip, veh_note: result.note}
     Object.keys(result.pools).forEach(key => update[`veh_pool_${key}`] = result.pools[key])
     setAttrs(update)
+  })
+}
+
+// ---------------------------------------------------------------- MATRICE AVANCEE (technomancien PC) : echoes, paragon, widgets, Resonance Difference
+// Donnees generees (matrix-advanced-types.js) depuis data/*.json. Les lignes repetables remplissent leur texte depuis le menu choisi ("custom" = saisie libre).
+const ECHO_STATS = ['response', 'signal', 'system', 'firewall', 'biofeedback', 'passes']
+
+// Persona vivante (SR4A p.239) + bonus des echos : Pare-feu = Volonte, Reponse = Intuition (+1 en RV), Signal = Resonance/2 (sup.),
+// Systeme = Logique, Filtre de biofeedback = Charisme, Init. matricielle RV = Reponse + Intuition, 3 passes (+bonus d'Overclocking, plafond 4, 5 avec Advanced Overclocking).
+const echoBonuses = (rows) => {
+  const total = {}
+  ECHO_STATS.forEach(stat => total[stat] = 0)
+  rows.forEach(row => {
+    const echo = ECHOES[row.type]
+    if (!echo) return
+    const times = Math.min(Math.max(parseInt(row.times) || 1, 1), echo.max)
+    ECHO_STATS.forEach(stat => total[stat] += (echo.mods[stat] || 0) * times)
+  })
+  return total
+}
+
+const livingPersona = (v, bonus) => {
+  const n = key => parseInt(v[key]) || 0
+  const response = n('intuition') + 1 + bonus.response
+  const result = {
+    lp_firewall: n('willpower') + bonus.firewall,
+    lp_response: response,
+    lp_signal: Math.ceil(n('resonance') / 2) + bonus.signal,
+    lp_system: n('logic') + bonus.system,
+    lp_biofeedback: n('charisma') + bonus.biofeedback,
+    lp_init: n('intuition') + response,
+    lp_ip: Math.min(3 + bonus.passes, bonus.passes >= 2 ? 5 : 4)
+  }
+  const over = ['lp_firewall', 'lp_response', 'lp_signal', 'lp_system', 'lp_biofeedback'].some(key => result[key] > n('resonance') + n('submersion'))
+  result.lp_warning = over && n('resonance') > 0 ? 'Above Resonance: check the cap (SR4A p.239)' : ''
+  return result
+}
+
+const updateLivingPersona = () => {
+  getSectionIDs('echoes', ids => {
+    const fields = ['sheet_type', 'willpower', 'intuition', 'logic', 'charisma', 'resonance', 'submersion']
+    ids.forEach(id => fields.push(`repeating_echoes_${id}_echo_type`, `repeating_echoes_${id}_echo_times`))
+    getAttrs(fields, v => {
+      if (v.sheet_type !== 'pc') return
+      const rows = ids.map(id => ({type: v[`repeating_echoes_${id}_echo_type`], times: v[`repeating_echoes_${id}_echo_times`]}))
+      const bonus = echoBonuses(rows)
+      const update = livingPersona(v, bonus)
+      ECHO_STATS.forEach(stat => update[`echo_bonus_${stat}`] = bonus[stat])
+      setAttrs(update)
+    })
+  })
+}
+
+const applyEcho = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/echo_type$/, '')
+  getAttrs([sourceAttribute, `${prefix}echo_times`], v => {
+    const echo = ECHOES[v[sourceAttribute]]
+    if (!echo) return
+    const update = {[`${prefix}echo_name`]: echo.name, [`${prefix}echo_effect`]: echo.effect, [`${prefix}echo_source`]: echo.source, [`${prefix}echo_max`]: echo.max}
+    //- une valeur deja saisie (import) n'est pas ecrasee
+    if (!parseInt(v[`${prefix}echo_times`])) update[`${prefix}echo_times`] = 1
+    setAttrs(update)
+  })
+}
+
+const applyParagon = key => {
+  const paragon = PARAGONS[key]
+  if (!paragon) return
+  setAttrs({paragon_advantage: paragon.advantage, paragon_disadvantage: paragon.disadvantage, paragon_sprites: paragon.sprites, paragon_source: paragon.source})
+}
+
+// Widget (Unwired p.148-149) : creation = Threading (Indice x 2, 1 heure) etendu, Fading 2 x Indice, dure 8 heures.
+const applyWidget = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/widget_type$/, '')
+  getAttrs([sourceAttribute], v => {
+    const widget = WIDGETS[v[sourceAttribute]]
+    if (!widget) return
+    setAttrs({[`${prefix}widget_name`]: widget.name, [`${prefix}widget_effect`]: widget.effect, [`${prefix}widget_source`]: widget.source})
+  })
+}
+
+const updateWidgetRating = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/widget_rating$/, '')
+  getAttrs([sourceAttribute], v => {
+    const rating = parseInt(v[sourceAttribute]) || 0
+    setAttrs({[`${prefix}widget_threshold`]: rating * 2, [`${prefix}widget_fade`]: rating * 2})
+  })
+}
+
+// Option de table Resonance Difference (Unwired p.137-139)
+const updateResonanceDifference = () => {
+  getAttrs(['resonance_difference'], v => {
+    const on = v.resonance_difference === '1' || v.resonance_difference === 'on'
+    setAttrs({resdiff_info: on ? RESONANCE_DIFFERENCE : '', resdiff_defense: on ? 2 : 0})
+  })
+}
+
+// ---------------------------------------------------------------- POUVOIRS DE SPRITES (fiche sprite) : lignes repetables avec bouton de jet Niveau x 2
+const applySpritePower = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/sp_type$/, '')
+  getAttrs([sourceAttribute], v => {
+    const power = SPRITE_POWERS[v[sourceAttribute]]
+    if (!power) return
+    setAttrs({[`${prefix}sp_name`]: power.name, [`${prefix}sp_effect`]: power.effect, [`${prefix}sp_source`]: power.source})
+  })
+}
+
+// Remplace les pouvoirs de la fiche par ceux du type de sprite choisi (modifiables ensuite)
+const fillSpritePowers = list => {
+  getSectionIDs('spritepowers', ids => {
+    ids.forEach(id => removeRepeatingRow(`repeating_spritepowers_${id}`))
+    const update = {}
+    list.forEach(key => {
+      const power = SPRITE_POWERS[key]
+      if (!power) return
+      const prefix = `repeating_spritepowers_${generateRowID()}_`
+      update[`${prefix}sp_type`] = key
+      update[`${prefix}sp_name`] = power.name
+      update[`${prefix}sp_effect`] = power.effect
+      update[`${prefix}sp_source`] = power.source
+    })
+    if (Object.keys(update).length) setAttrs(update)
   })
 }

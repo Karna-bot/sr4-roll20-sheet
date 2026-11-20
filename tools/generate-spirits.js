@@ -62,7 +62,7 @@ fs.writeFileSync(path.join(root, 'src', 'js', 'sprite-types.js'), [
   '// Attribut = Niveau + decalage ; ordre des decalages : ' + SPRITE_ATTRS.join(', ') + '. initMult : initiative matricielle = Niveau x initMult.',
   'const SPRITE_TYPES = {',
   Object.entries(sprites).map(([name, s]) =>
-    `  ${key(name)}: {offsets: [${SPRITE_ATTRS.map(a => (s.attrMod || {})[a] || 0).join(', ')}], initMult: ${s.initMult || 1}, matrix: ${s.matrix ? `[${s.matrix.response || 0}, ${s.matrix.firewall || 0}]` : 'null'}, powers: ${list(s.powers)}, skills: ${list(s.skills)}, forms: ${list(s.complexForms)}, optionalForms: ${list(s.optionalComplexForms)}}`
+    `  ${key(name)}: {offsets: [${SPRITE_ATTRS.map(a => (s.attrMod || {})[a] || 0).join(', ')}], initMult: ${s.initMult || 1}, matrix: ${s.matrix ? `[${s.matrix.response || 0}, ${s.matrix.firewall || 0}]` : 'null'}, powers: ${list(s.powers)}, powerList: ${JSON.stringify((s.powers || []).map(slug))}, skills: ${list(s.skills)}, forms: ${list(s.complexForms)}, optionalForms: ${list(s.optionalComplexForms)}}`
   ).join(',\n'),
   '}',
   ''
@@ -127,3 +127,32 @@ fs.writeFileSync(path.join(root, 'src', 'pug', '_ai-types.pug'),
   '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
   '- const aiTypes = [' + Object.entries(ais).map(([n, a]) => `['${aiKey(n)}', '${a.group} - ${n.replace(/'/g, "\\'")}']`).join(', ') + '];\n')
 console.log(`${Object.keys(ais).length} types d'IA generes`)
+
+// ---- MATRICE AVANCEE (onglet Matrice PC + pouvoirs de sprites) : echoes, paragons, widgets, pouvoirs de sprites, Resonance Difference
+// data/*.json -> src/js/matrix-advanced-types.js, src/pug/_matrix-advanced-types.pug
+const readData = f => JSON.parse(fs.readFileSync(path.join(root, 'data', f), 'utf8'))
+const echoData = readData('echoes.json'), paragonData = readData('paragons.json'), widgetData = readData('widgets.json'), powerData = readData('sprite_powers.json'), techRules = readData('technomancer_rules.json')
+const spritePowerSlug = n => slug(n)
+const echoJs = Object.entries(echoData).map(([n, x]) => `  "${slug(n)}": {name: ${JSON.stringify(n)}, effect: ${JSON.stringify(x.effect)}, source: ${JSON.stringify(x.source || '')}, max: ${x.maxTimes || 1}, mods: ${JSON.stringify(x.mods || {})}}`).join(',\n')
+const paragonJs = Object.entries(paragonData).map(([n, x]) => `  "${slug(n)}": {name: ${JSON.stringify(n)}, advantage: ${JSON.stringify(x.advantage)}, disadvantage: ${JSON.stringify(x.disadvantage)}, sprites: ${JSON.stringify((x.spriteBonus || []).join(', '))}, source: ${JSON.stringify(x.source || '')}}`).join(',\n')
+const widgetEntries = Object.entries(widgetData).filter(([n]) => !n.startsWith('_'))
+const widgetJs = widgetEntries.map(([n, x]) => `  "${slug(n)}": {name: ${JSON.stringify(n)}, effect: ${JSON.stringify(x.effect)}, source: ${JSON.stringify(x.source || '')}}`).join(',\n')
+const powerJs = Object.entries(powerData).map(([n, x]) => `  "${spritePowerSlug(n)}": {name: ${JSON.stringify(n)}, effect: ${JSON.stringify(x.effect)}, source: ${JSON.stringify(x.source || '')}}`).join(',\n')
+const rd = (techRules.resonance_difference || {})
+const rdText = Object.entries(rd.effects || {}).map(([k, v]) => `${k}: ${v}`).join('\n')
+fs.writeFileSync(path.join(root, 'src', 'js', 'matrix-advanced-types.js'), [
+  '// FICHIER GENERE par tools/generate-spirits.js depuis data/echoes.json, paragons.json, widgets.json, sprite_powers.json, technomancer_rules.json : ne pas modifier a la main.',
+  '// ECHOES : mods = bonus par prise (response, signal, system, firewall, biofeedback, passes), max = nombre de prises.',
+  'const ECHOES = {', echoJs, '}',
+  'const PARAGONS = {', paragonJs, '}',
+  'const WIDGETS = {', widgetJs, '}',
+  `const WIDGET_RULES = ${JSON.stringify((widgetData._rules || {}).effect || '')}`,
+  'const SPRITE_POWERS = {', powerJs, '}',
+  `const RESONANCE_DIFFERENCE = ${JSON.stringify(rdText)}`,
+  ''
+].join('\n'))
+const opt = (obj, skip) => '[' + Object.keys(obj).filter(n => !(skip && n.startsWith('_'))).map(n => `['${slug(n)}', '${n.replace(/'/g, "\\'")}']`).join(', ') + ']'
+fs.writeFileSync(path.join(root, 'src', 'pug', '_matrix-advanced-types.pug'),
+  '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
+  `- const echoTypes = ${opt(echoData)};\n- const paragonTypes = ${opt(paragonData)};\n- const widgetTypes = ${opt(widgetData, true)};\n- const spritePowerTypes = ${opt(powerData)};\n`)
+console.log(`matrice avancee : ${Object.keys(echoData).length} echos, ${Object.keys(paragonData).length} paragons, ${widgetEntries.length} widgets, ${Object.keys(powerData).length} pouvoirs de sprites`)

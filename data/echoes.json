@@ -3,25 +3,38 @@
     "category": "Core",
     "effect": "+1 living-persona Firewall; up to 3 times.",
     "source": "SR4A p.243-244",
-    "maxTimes": 3
+    "maxTimes": 3,
+    "mods": {
+      "firewall": 1
+    }
   },
   "NeuroFilter": {
     "category": "Core",
     "effect": "+1 Biofeedback Filter; up to 3 times.",
     "source": "SR4A p.243-244",
-    "maxTimes": 3
+    "maxTimes": 3,
+    "mods": {
+      "biofeedback": 1
+    }
   },
   "System Upgrade": {
     "category": "Core",
     "effect": "+1 System; up to 3 times.",
     "source": "SR4A p.243-244",
-    "maxTimes": 3
+    "maxTimes": 3,
+    "mods": {
+      "system": 1
+    }
   },
   "Overclocking": {
     "category": "Core",
     "effect": "+1 Response (raises Matrix Initiative) and +1 Initiative Pass in full-sim VR.",
     "source": "SR4A p.243-244",
-    "maxTimes": 1
+    "maxTimes": 1,
+    "mods": {
+      "response": 1,
+      "passes": 1
+    }
   },
   "Resonance Link": {
     "category": "Core",
@@ -33,7 +46,10 @@
     "category": "Unwired",
     "effect": "+1 Signal, up to 3×",
     "source": "UW p.145-149",
-    "maxTimes": 3
+    "maxTimes": 3,
+    "mods": {
+      "signal": 1
+    }
   },
   "Biowire": {
     "category": "Unwired",
@@ -133,7 +149,11 @@
     "category": "Advanced",
     "effect": "counts as Overclocking taken twice: total +2 Response and +2 IP in full-sim VR; with hot-sim passes this reaches IP 5 (exception to the normal cap of 4).",
     "source": "UW p.147-148",
-    "prerequisite": "Overclocking"
+    "prerequisite": "Overclocking",
+    "mods": {
+      "response": 2,
+      "passes": 2
+    }
   },
   "Enhanced Resonance Link": {
     "category": "Advanced",

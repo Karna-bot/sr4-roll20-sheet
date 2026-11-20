@@ -412,6 +412,21 @@
 			label.settings(data-i18n-title='powers' title='Powers')
 				textarea(name='attr_powers' placeholder='Powers' title='@{powers}')
 
+		//- SPRITE : powers with effect text and a roll button (Level x 2, opposed tests per power text)
+		.rows.repeating-container.sprite.spritepowers
+			fieldset(class='repeating_spritepowers')
+				+spriteButton('sp_name', 'attr_sp_name')
+				+repeatingSectionFlags()
+				.settings
+					select(name='attr_sp_type' title='@{repeating_spritepowers_${x}_sp_type}')
+						option(value='custom' data-i18n='customtype' selected) Custom
+						each val in spritePowerTypes
+							option(value=val[0]) #{val[1]}
+					label(data-i18n-title='name' title='name')
+						input(name='attr_sp_name' placeholder='name' type='text' value='')
+					textarea(name='attr_sp_effect' placeholder='Effect' title='@{repeating_spritepowers_${x}_sp_effect}')
+					input(name='attr_sp_source' type='text' placeholder='Source' value='')
+
 		//- SPRITE : typical skills and complex forms of the selected sprite type (filled by the sheet, editable)
 		input(name='attr_sprite_info' type='hidden' value='')
 		.textrow.sprite

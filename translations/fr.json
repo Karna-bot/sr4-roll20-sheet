@@ -494,5 +494,20 @@
     "emergentpowers": "Pouvoirs émergents",
     "ai_home": "Nœud d'origine",
     "realign": "Réalignement",
-    "ai_r": "Indice de référence R"
+    "ai_r": "Indice de référence R",
+    "livingpersona": "Persona vivante",
+    "paragon": "Paragon",
+    "advantage": "Avantage",
+    "disadvantage": "Désavantage",
+    "paragonsprites": "Bonus aux sprites",
+    "resonancedifference": "Resonance Difference (règle optionnelle)",
+    "defensebonus": "Défense contre Attaque",
+    "widgets": "Widgets",
+    "widget": "Widget",
+    "widget_create": "Créer le widget (Threading)",
+    "widget_fade": "Fading du widget",
+    "times": "Fois",
+    "threshold": "Seuil (Indice x 2, 1 h)",
+    "initiativepasses": "Passes d'initiative",
+    "sp_name": "Pouvoir"
 }
