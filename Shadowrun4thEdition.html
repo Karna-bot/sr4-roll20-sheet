@@ -46,8 +46,9 @@
 	<div class="header"><div class="triangle"></div><h1 data-i18n="personal">Personal Data</h1></div>
 	<div class="border-box">
 		<div class="pc-box small-box">
-			<div class="row-long pd-nam">
-				<h2 data-i18n="namealias">NAME/PRIMARY ALIAS</h2><input type="text" name="attr_name" placeholder="name" title="@{name}" />
+			<div class="row-long pd-meta">
+				<h2 data-i18n="name">Name</h2><input type="text" name="attr_name" placeholder="name" title="@{name}" />
+				<h2 data-i18n="alias">Alias</h2><input type="text" name="attr_alias" placeholder="alias" title="@{alias}" />
 			</div>
 			<div class="row-long pd-meta">
 				<h2 data-i18n="metatype">Metatype</h2><input type="text" name="attr_metatype" placeholder="metatype" title="@{metatype}" />
@@ -238,7 +239,7 @@
         <label class="attr-ini red" data-i18n="Initiative Passes">Initiative Passes</label>
         <div class="attr-und">
           <div class="settings">
-            <input type="number" name="attr_initiative_passes_modifier" value="1" placeholder="1" title="@{initiative_passes_modifier}" />
+            <input type="number" name="attr_initiative_passes_modifier" value="0" placeholder="0" title="@{initiative_passes_modifier}" />
             <span class="tiny-span"> = </span>
             <span name="attr_display_initiative_passes" title="@{initiative_passes}"></span>
           </div>
@@ -437,8 +438,8 @@
 <option value="Blades" data-i18n="blades">Blades</option>
 <option value="Clubs" data-i18n="clubs">Clubs</option>
 <option value="Dodge" data-i18n="dodge">Dodge</option>
-<option value="Exotic Melee" data-i18n="exoticmelee">Exotic Melee</option>
-<option value="Exotic Range" data-i18n="exoticrange">Exotic Range</option>
+<option value="Exotic Melee Weapon" data-i18n="exoticmeleeweapon">Exotic Melee Weapon</option>
+<option value="Exotic Ranged Weapon" data-i18n="exoticrangedweapon">Exotic Ranged Weapon</option>
 <option value="Heavy Weapons" data-i18n="heavyweapons">Heavy Weapons</option>
 <option value="Longarms" data-i18n="longarms">Longarms</option>
 <option value="Pistols" data-i18n="pistols">Pistols</option>
@@ -448,6 +449,9 @@
 <option class="option-groups" value="Athletics Group" data-i18n="athleticsgroup">Athletics Group</option>
 <option class="option-groups" value="Outdoors Group" data-i18n="outdoorsgroup">Outdoors Group</option>
 <option class="option-groups" value="Stealth Group" data-i18n="stealthgroup">Stealth Group</option>
+<option class="option-groups" value="Animal Husbandry Group" data-i18n="animalhusbandrygroup">Animal Husbandry Group</option>
+<option value="Animal Handling" data-i18n="animalhandling">Animal Handling</option>
+<option value="Animal Training" data-i18n="animaltraining">Animal Training</option>
 <option value="Climbing" data-i18n="climbing">Climbing</option>
 <option value="Disguise" data-i18n="disguise">Disguise</option>
 <option value="Diving" data-i18n="diving">Diving</option>
@@ -455,11 +459,12 @@
 <option value="Flight" data-i18n="flight">Flight</option>
 <option value="Free Fall" data-i18n="freefall">Free Fall</option>
 <option value="Gymnastics" data-i18n="gymnastics">Gymnastics</option>
-<option value="infiltration" data-i18n="infiltration">Infiltration</option>
+<option value="Infiltration" data-i18n="infiltration">Infiltration</option>
 <option value="Navigation" data-i18n="navigation">Navigation</option>
 <option value="Palming" data-i18n="palming">Palming</option>
 <option value="Parachuting" data-i18n="parachuting">Parachuting</option>
 <option value="Perception" data-i18n="perception">Perception</option>
+<option value="Riding" data-i18n="riding">Riding</option>
 <option value="Running" data-i18n="running">Running</option>
 <option value="Shadowing" data-i18n="shadowing">Shadowing</option>
 <option value="Survival" data-i18n="survival">Survival</option>
@@ -523,7 +528,7 @@
 <option value="Pilot Exotic Vehicle" data-i18n="pilotexoticvehicle">Pilot Exotic Vehicle</option>
 <option value="Pilot Ground Craft" data-i18n="pilotgroundcraft">Pilot Ground Craft</option>
 <option value="Pilot Watercraft" data-i18n="pilotwatercraft">Pilot Watercraft</option>
-
+<option value="VetTech" data-i18n="vettech">VetTech</option>
                   </select>
                   <label data-i18n-title="rating" title="rating">
                     <input name="attr_rating" min="0" placeholder="0" type="number" title="@{repeating_active_${x}_rating}"/>
@@ -664,7 +669,7 @@
 			</div>
 			<div class="row-long cc-row">
 				<h2 data-i18n="primaryrangedweapon">Primary Ranged Weapon</h2>
-				<button type="roll" name="primary range" value="@{gm_toggle} &{template:rolls}{{header=@{primary_range_weapon}}}{{base=^{base}}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool}+@{agility})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{primary_range_weapon_mode}, DV @{primary_range_weapon_damage}, AP @{primary_range_weapon_ap}}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Primary range weapon"><span name="attr_primary_range_weapon" title="@{primary_range_weapon}"></span></button>
+				<button type="roll" name="roll_primary_range" value="@{gm_toggle} &{template:rolls}{{header=@{primary_range_weapon}}}{{base=^{base}}}{{dice=[[((@{primary_range_weapon_skill}+@{primary_range_weapon_dicepool}+@{agility}-@{primary_range_weapon_recoil_penalty})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{primary_range_weapon_mode}, DV @{primary_range_weapon_damage}, AP @{primary_range_weapon_ap}, Recoil -@{primary_range_weapon_recoil_penalty}}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}" title="Primary range weapon"><span name="attr_primary_range_weapon" title="@{primary_range_weapon}"></span></button>
 				<!-- Ammo removal button -->
 				<button name="act_shots_remove" type="action">4</button>
 				<button type="action" name="act_primary_ammo" title="Shots Fired">
@@ -868,6 +873,17 @@
         <div class="pc-box medium-box">
           <input class="tab-switch" name="attr_weapon_type_toggle" type="hidden" value="range"/>
           <div class="rows repeating-container weapon-range">
+            <div class="row-long recoil-row">
+              <h3 data-i18n="shotspass">Shots this pass</h3>
+              <label data-i18n-title="shotspass" title="Shots fired this pass">
+                <input name="attr_shots_pass" type="number" value="0" title="@{shots_pass}"/>
+              </label>
+              <button name="act_new_pass" type="action" data-i18n="newpass">New pass</button>
+              <h3 data-i18n="recoilbonus">Recoil bonus</h3>
+              <label data-i18n-title="recoilbonus" title="Extra recoil compensation (Strength, gyro...)">
+                <input name="attr_recoil_bonus" type="number" value="0" title="@{recoil_bonus}"/>
+              </label>
+            </div>
             <div class="row-long headers">
               <h2 data-i18n="weapon">Weapon</h2>
               <h2 data-i18n="dam">Dam</h2>
@@ -878,8 +894,10 @@
             </div>
             <fieldset class="repeating_range">
               <input name="attr_dicepool" type="hidden" value="0"/>
+              <input name="attr_recoil_penalty" type="hidden" value="0"/>
+              <input name="attr_shots" type="hidden" value="1"/>
               <input class="flag-primary" name="attr_primary" type="hidden" value=""/>
-              <button name="roll_range_weapon" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=@{weapon}}}{{base=^{agility}}}{{dice=[[((@{skill}+@{dicepool}+@{agility})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{mode}, DV @{damage}, AP @{ap}}}"><span name="attr_weapon"></span></button><span class="center" name="attr_damage"></span><span class="center" name="attr_ap"></span>
+              <button name="roll_range_weapon" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=@{weapon}}}{{base=^{agility}}}{{dice=[[((@{skill}+@{dicepool}+@{agility}-@{recoil_penalty})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{mode}, DV @{damage}, AP @{ap}, Recoil -@{recoil_penalty} (@{shots})}}"><span name="attr_weapon"></span></button><span class="center" name="attr_damage"></span><span class="center" name="attr_ap"></span>
               <select name="attr_mode" title="@{mode}" value="BF">
                 <option data-i18n="bf" value="BF">BF</option>
                 <option data-i18n="fa" value="FA">FA</option>
@@ -913,7 +931,18 @@
                 <label data-i18n-title="ammo" title="ammo">
                   <input name="attr_ammo" placeholder="15" title="@{repeating_range_${x}_ammo}" type="number" value=""/>
                 </label>
-                <div class="row">
+                <div class="sr-row">
+                  <h3 data-i18n="ammomax">Max ammo</h3>
+                  <label data-i18n-title="ammomax" title="Max ammo">
+                    <input name="attr_ammo_max" placeholder="15" type="number" title="@{repeating_range_${x}_ammo_max}"/>
+                  </label>
+                  <h3 data-i18n="shotscustom">Shots per attack</h3>
+                  <label data-i18n-title="shotscustom" title="Shots per attack (empty = from mode: SS/SA 1, BF 3, FA 6)">
+                    <input name="attr_shots_custom" placeholder="auto" type="number" title="@{repeating_range_${x}_shots_custom}"/>
+                  </label>
+                  <button class="pictos" name="act_ammo_reload" type="action" title="Reload">0</button>
+                </div>
+                <div class="sr-row">
                   <h3 data-i18n="modeoptions">Mode Options</h3>
                   <label data-i18n-title="modeoptions" title="Mode Options">
                     <input name="attr_mode_options" placeholder="SA/BF/FA" type="text" title="@{repeating_range_${x}_mode_options}}"/>
@@ -927,7 +956,7 @@
                     <input name="attr_primary" type="checkbox" title="@{repeating_range_${x}_primary}" value="primary"/>
                   </label>
                 </div>
-                <div class="row">
+                <div class="sr-row">
                   <h3 data-i18n="skill">skill</h3>
                   <select name="attr_skill" title="@{repeating_range_${x}_skill}" value="@{firearms}">
                     <optgroup label="Combat Skills">Combat Skills
@@ -993,7 +1022,7 @@
                 <label data-i18n-title="primary" title="Primary">
                   <input name="attr_primary" type="checkbox" title="@{repeating_melee_${x}_primary}" value="primary"/>
                 </label>
-                <div class="row">
+                <div class="sr-row">
                   <h3 data-i18n="skill">skill</h3>
                   <select name="attr_skill" title="@{repeating_melee_${x}_skill}" value="@{closecombat}">
                     <optgroup label="Combat Skills">Combat Skills
@@ -1061,7 +1090,7 @@
                 <button data-i18n="Falling Protection" name="roll_falling" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{Falling Protection}}}{{base=^{armor}}}{{dice=[[((@{impact}/2)+@{falling_modifier}+@{soak}+@{modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
                 <button data-i18n="Laser Protection" name="roll_laser" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{Laser Protection}}}{{base=^{armor}}}{{dice=[[((@{impact}/2)+@{radiation_modifier}+@{laser_modifier}+@{soak}+@{modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
                 <button data-i18n="Gause Round Armor" name="roll_gause" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{Gause Round Armor}}}{{base=^{armor}}}{{dice=[[((@{ballistic}/2)+@{gause_modifier}+@{soak}+@{modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
-                <div class="row"><span name="attr_notes"></span></div>
+                <div class="sr-row"><span name="attr_notes"></span></div>
               </div>
               <div class="settings">
                 <label data-i18n-title="name" title="name">
@@ -1073,7 +1102,7 @@
                 <label data-i18n-title="Impact">
                   <input name="attr_impact" placeholder="9" title="@{@{repeating_armor_${x}_impact}" type="text" value=""/>
                 </label>
-                <div class="row">
+                <div class="sr-row">
                   <h2 class="center" data-i18n="Acid">Acid</h2>
                   <h2 class="center" data-i18n="Cold">Cold</h2>
                   <h2 class="center" data-i18n="Elec">Elec</h2>
@@ -1082,7 +1111,7 @@
                   <h2 class="center" data-i18n="Laser">Laser</h2>
                   <h2 class="center" data-i18n="Gause">Gause</h2>
                 </div>
-                <div class="row">
+                <div class="sr-row">
                   <label class="protections" data-i18n-title="Acid">
                     <input name="attr_acid_modifier" placeholder="0" title="@{@{repeating_armor_${x}_acid_modifier}" type="number" value="0"/>
                   </label>
@@ -1105,7 +1134,7 @@
                     <input name="attr_gause_modifier" placeholder="0" title="@{@{repeating_armor_${x}_gause_modifier}" type="number" value="0"/>
                   </label>
                 </div>
-                <div class="row">
+                <div class="sr-row">
                   <h3 data-i18n="primary">primary</h3>
                   <label data-i18n-title="primary" title="Primary">
                     <input name="attr_primary" type="checkbox" title="@{repeating_armor_${x}_primary}" value="primary"/>
@@ -1232,6 +1261,38 @@
       </div>
       <div class="border-box">
         <div class="pc-box medium-box">
+          <div class="row-long tradition">
+            <h3 data-i18n="tradition">Tradition</h3>
+            <select name="attr_tradition" title="@{tradition}">
+              <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+              <option value="aboriginal">Aboriginal</option>
+              <option value="aztec">Aztec</option>
+              <option value="black_magic">Black Magic</option>
+              <option value="buddhist">Buddhist</option>
+              <option value="chaos_magic">Chaos Magic</option>
+              <option value="christian_theurgy">Christian Theurgy</option>
+              <option value="druidic">Druidic</option>
+              <option value="egyptian">Egyptian</option>
+              <option value="hermetic">Hermetic</option>
+              <option value="hindu">Hindu</option>
+              <option value="insect">Insect</option>
+              <option value="islamic">Islamic</option>
+              <option value="norse">Norse</option>
+              <option value="path_of_the_wheel">Path of the Wheel</option>
+              <option value="psionic">Psionic</option>
+              <option value="qabbalistic">Qabbalistic</option>
+              <option value="rastafarian">Rastafarian</option>
+              <option value="shamanic">Shamanic</option>
+              <option value="shinto">Shinto</option>
+              <option value="toxic">Toxic</option>
+              <option value="traditional_or_hedge_witchcraft">Traditional or Hedge Witchcraft</option>
+              <option value="voodoo">Voodoo</option>
+              <option value="wicca_gardnerian">Wicca (Gardnerian)</option>
+              <option value="wicca_goddess">Wicca (Goddess)</option>
+              <option value="wuxing">Wuxing</option>
+              <option value="zoroastrian">Zoroastrian</option>
+            </select><span name="attr_tradition_spirits"></span>
+          </div>
           <button data-i18n="drain" name="roll_drain" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{drain}}}{{base=^{base}}}{{dice=[[((@{drain_attribute_1}+@{drain_attribute_2}+@{drain_modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
           <select class="attribute-select" name="attr_drain_attribute_1" title="@{drain_attribute_1}">
             <option data-i18n="body" value="@{body}">Body</option>
@@ -1261,6 +1322,11 @@
           <label data-i18n-title="modifier" title="modifier">
             <input name="attr_drain_modifier" title="@{drain_modifier}" type="number" value="0"/>
           </label>
+          <div class="row-long conjuring">
+            <button name="roll_summon" type="roll" data-i18n="summon" value="!sr4-summon --char @{character_id} --type ?{Spirit|Air,air|Beasts,beasts|Earth,earth|Fire,fire|Man,man|Water,water|Guardian,guardian|Guidance,guidance|Plant,plant|Task,task|Insect Soldier,insect_soldier|Insect Scout,insect_scout|Insect Caretaker,insect_caretaker|Insect Nymph,insect_nymph|Insect Worker,insect_worker|Toxic Fire Nuclear,toxic_fire_nuclear|Toxic Air Smog,toxic_air_smog|Toxic Earth Sludge,toxic_earth_sludge|Toxic Water Pollution,toxic_water_pollution|Toxic Man Harrow,toxic_man_harrow|Cicak,cicak} --force ?{Force|3} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Summon</button>
+            <button name="roll_bind" type="roll" data-i18n="bind" value="!sr4-bind --char @{character_id} --spirit @{target|Spirit|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Bind</button>
+            <button name="roll_banish" type="roll" data-i18n="banish" value="!sr4-banish --char @{character_id} --spirit @{target|Spirit|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Banish</button>
+          </div>
           <input class="magic-toggle" name="attr_magic_toggle" type="hidden" value="spells"/>
           <div class="row-long headers">
             <h2 data-i18n="spells">spells</h2>
@@ -1301,7 +1367,7 @@
                   <label data-i18n-title="drain" title="Drain">
                     <input name="attr_drain" placeholder="-1" title="@{repeating_spell_${x}_drain}" type="number"/>
                   </label>
-                  <div class="row">
+                  <div class="sr-row">
                     <h3 data-i18n="category">Category</h3>
                     <select name="attr_category" title="@{repeating_spell_${x}_category}" value="combat">
                       <option data-i18n="combat" value="Combat" selected="selected">combat</option>
@@ -1321,7 +1387,7 @@
                       <input name="attr_damage" placeholder="P" title="@{repeating_spell_${x}_damage}" type="text"/>
                     </label>
                   </div>
-                  <div class="row">
+                  <div class="sr-row">
                     <h3 data-i18n="skill">Skill</h3>
                     <select name="attr_skill" title="@{repeating_spell_${x}_skill}" value="@{spellcasting}">
                       <option data-i18n="sorcerygroup" value="@{sorcery}">sorcerygroup</option>
@@ -1376,7 +1442,7 @@
                   <label data-i18n-title="drain" title="Drain">
                     <input name="attr_drain" placeholder="-1" title="@{repeating_preps_${x}_drain}" type="number"/>
                   </label>
-                  <div class="row">
+                  <div class="sr-row">
                     <h3 data-i18n="category">Category</h3>
                     <select name="attr_category" title="@{repeating_preps_${x}_category}" value="combat">
                       <option data-i18n="combat" value="Combat" selected="selected">combat</option>
@@ -1396,7 +1462,7 @@
                       <input name="attr_damage" placeholder="P" title="@{repeating_preps_${x}_damage}" type="text"/>
                     </label>
                   </div>
-                  <div class="row">
+                  <div class="sr-row">
                     <h3 data-i18n="skill">Skill</h3>
                     <select name="attr_skill" title="@{repeating_preps_${x}_skill}" value="@{enchanting}">
                       <option data-i18n="enchanting" value="@{enchanting}" selected="selected">enchanting</option>
@@ -1494,6 +1560,24 @@
         </div>
       </div>
     </div>
+    <div class="pc-row initiation">
+      <div class="header right-header">
+        <h1 data-i18n="initiation">Initiation</h1>
+        <div class="right-tri"></div>
+      </div>
+      <div class="border-box">
+        <div class="pc-box medium-box">
+          <div class="row-long">
+            <h3 data-i18n="initiate">Initiate</h3>
+            <input name="attr_initiate" placeholder="0" style="width: 15%" title="@{initiate}" type="number"/>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="metamagic">Metamagic</h3>
+            <textarea name="attr_metamagic" placeholder="Metamagic" style="width: 90%" title="@{metamagic}"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="pc-row powers">
       <div class="header right-header">
         <h1 data-i18n="adeptpowers">Adept Powers or Other Abilities</h1>
@@ -1501,8 +1585,8 @@
       </div>
       <div class="border-box">
         <div class="pc-box medium-box">
-          <button data-i18n="drain" name="roll_drain" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{drain}}}{{base=^{base}}}{{dice=[[((@{drain_attribute_1}+@{drain_attribute_2}+@{drain_modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
-          <select class="attribute-select" name="attr_drain_attribute_1" title="@{drain_attribute_1}">
+          <button data-i18n="drain" name="roll_adept_drain" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{drain}}}{{base=^{base}}}{{dice=[[((@{adept_drain_attribute_1}+@{adept_drain_attribute_2}+@{adept_drain_modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
+          <select class="attribute-select" name="attr_adept_drain_attribute_1" title="@{adept_drain_attribute_1}">
             <option data-i18n="body" value="@{body}" selected="selected">Body</option>
             <option data-i18n="agility" value="@{agility}">Agility</option>
             <option data-i18n="reaction" value="@{reaction}">Reaction</option>
@@ -1514,7 +1598,7 @@
             <option data-i18n="magic" value="@{magic}">Magic</option>
             <option data-i18n="resonance" value="@{resonance}">Resonance</option>
           </select><span>+</span>
-          <select class="attribute-select" name="attr_drain_attribute_2" title="@{drain_attribute_2}">
+          <select class="attribute-select" name="attr_adept_drain_attribute_2" title="@{adept_drain_attribute_2}">
             <option data-i18n="body" value="@{body}">Body</option>
             <option data-i18n="agility" value="@{agility}">Agility</option>
             <option data-i18n="reaction" value="@{reaction}">Reaction</option>
@@ -1528,7 +1612,7 @@
           </select>
           <h3 data-i18n="modifier">modifier</h3>
           <label data-i18n-title="modifier" title="modifier">
-            <input name="attr_drain_modifier" title="@{drain_modifier}" type="number" value="0"/>
+            <input name="attr_adept_drain_modifier" title="@{adept_drain_modifier}" type="number" value="0"/>
           </label>
           <div class="row-long headers">
             <h2 data-i18n="name">Name</h2>
@@ -1619,18 +1703,18 @@
               <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
               <div class="collapse"><span name="attr_notes"></span></div>
               <div class="settings">
-                <div class="col">
+                <div class="sr-col">
                   <label data-i18n-title="programs" title="programs">
                     <input name="attr_program" placeholder="Program name" title="@{repeating_programs_${x}_program}" type="text" value=""/>
                   </label>
                 </div>
-                <div class="col">
+                <div class="sr-col">
                   <h3 data-i18n="rating">rating</h3>
                   <label data-i18n-title="programs" title="programs">
                     <input name="attr_rating" placeholder="0" title="@{repeating_programs_${x}_rating}" type="number" value="0"/>
                   </label>
                 </div>
-                <div class="col">
+                <div class="sr-col">
                   <h3 data-i18n="skill">skill</h3>
                   <select name="attr_skill" title="@{repeating_programs_${x}_skill}" value="@{cracking}">
                     <optgroup label="Cracking Skills">Cracking Skills
@@ -1648,13 +1732,13 @@
                     </optgroup>
                   </select>
                 </div>
-                <div class="col">
+                <div class="sr-col">
                   <h3 data-i18n="specialization">specialization</h3>
                   <label data-i18n-title="specialization" title="specialization">
                     <input name="attr_specialization" value="2" title="@{repeating_programs_${x}_specialization}" type="checkbox"/>
                   </label>
                 </div>
-                <div class="col">
+                <div class="sr-col">
                   <h3 data-i18n="modifier">modifier</h3>
                   <label data-i18n-title="modifier" title="modifier">
                     <input name="attr_modifier" title="@{repeating_programs_${x}_modifier}" type="number" value="0"/>
@@ -1677,6 +1761,27 @@
       </div>
       <div class="border-box">
         <div class="pc-box medium-box">
+          <div class="row-long stream">
+            <h3 data-i18n="stream">Stream</h3>
+            <select name="attr_stream" title="@{stream}">
+              <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+              <option value="cyberadepts">Cyberadepts</option>
+              <option value="default_technomancer_sr4">Default (Technomancer SR4)</option>
+              <option value="dronomancers">Dronomancers</option>
+              <option value="e_scapists">E-scapists</option>
+              <option value="info_savants">Info Savants</option>
+              <option value="networkers">Networkers</option>
+              <option value="singularitarians">Singularitarians</option>
+              <option value="sourcerors">Sourcerors</option>
+              <option value="technoshamans">Technoshamans</option>
+              <option value="dissonant">Dissonant</option>
+              <option value="cyberdarwinists">Cyberdarwinists</option>
+              <option value="discordians">Discordians</option>
+              <option value="infektors">Infektors</option>
+              <option value="nytemares">Nytemares</option>
+              <option value="the_sublime">The Sublime</option>
+            </select><span name="attr_stream_sprites"></span>
+          </div>
           <button data-i18n="fade" name="roll_fade" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{fade}}}{{base=^{base}}}{{dice=[[((@{fade_attribute_1}+@{fade_attribute_2}+@{fade_modifier})+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"></button>
           <select class="attribute-select" name="attr_fade_attribute_1" title="@{fade_attribute_1}">
             <option data-i18n="body" value="@{body}">Body</option>
@@ -1706,6 +1811,11 @@
           <label data-i18n-title="modifier" title="modifier">
             <input name="attr_fade_modifier" title="@{fade_modifier}" type="number" value="0"/>
           </label>
+          <div class="row-long conjuring">
+            <button name="roll_compile" type="roll" data-i18n="compile" value="!sr4-compile --char @{character_id} --type ?{Sprite|Code,code|Courier,courier|Crack,crack|Data,data|Fault,fault|Machine,machine|Paladin,paladin|Sleuth,sleuth|Tank,tank|Tutor,tutor|Blight,blight|Chaos,chaos|Contagion,contagion|Meltdown,meltdown|Spike,spike} --level ?{Level|3} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Compile</button>
+            <button name="roll_register" type="roll" data-i18n="registersprite" value="!sr4-register --char @{character_id} --sprite @{target|Sprite|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Register</button>
+            <button name="roll_decompile" type="roll" data-i18n="decompile" value="!sr4-decompile --char @{character_id} --sprite @{target|Sprite|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Decompile</button>
+          </div>
           <div class="rows repeating-container complex-forms">
             <div class="row-long headers">
               <h2 class="text-capitalize" data-i18n="complex form"></h2>
@@ -1742,7 +1852,7 @@
                 <label data-i18n-title="fade" title="fade">
                   <input name="attr_fade" placeholder="-1" title="@{repeating_forms_${x}_fade}" type="number" value=""/>
                 </label>
-                <div class="row">
+                <div class="sr-row">
                   <h3 data-i18n="skill">skill</h3>
                   <select name="attr_skill" title="@{repeating_forms_${x}_skill}" value="@{software}">
                     <option data-i18n="Electronics Group" value="@{electronics}">Electronics Group</option>
@@ -1761,6 +1871,184 @@
                 <label data-i18n-title="notes" title="notes">
                   <textarea name="attr_notes" placeholder="Notes" title="@{repeating_forms_${x}_notes}" type="text" value=""></textarea>
                 </label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-row submersion">
+      <div class="header right-header">
+        <h1 data-i18n="submersionechoes">Submersion and Echoes</h1>
+        <div class="right-tri"></div>
+      </div>
+      <div class="border-box">
+        <div class="pc-box medium-box">
+          <div class="row-long">
+            <h3 data-i18n="submersion">Submersion</h3>
+            <input name="attr_submersion" placeholder="0" style="width: 15%" title="@{submersion}" type="number"/>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="echos">Echoes</h3>
+            <textarea name="attr_echos" placeholder="Echoes" style="width: 90%" title="@{echos}"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-row advanced-matrix">
+      <div class="header right-header">
+        <h1 data-i18n="livingpersona">Living Persona</h1>
+        <div class="right-tri"></div>
+      </div>
+      <div class="border-box">
+        <div class="pc-box medium-box">
+          <div class="row-long living-persona">
+            <h3 data-i18n="response">response</h3><span class="center eclipse" name="attr_lp_response">0</span>
+            <h3 data-i18n="signal">signal</h3><span class="center eclipse" name="attr_lp_signal">0</span>
+            <h3 data-i18n="system">system</h3><span class="center eclipse" name="attr_lp_system">0</span>
+            <h3 data-i18n="firewall">firewall</h3><span class="center eclipse" name="attr_lp_firewall">0</span>
+            <h3 data-i18n="biofeedback">biofeedback</h3><span class="center eclipse" name="attr_lp_biofeedback">0</span>
+            <h3 data-i18n="matrixinitiative">matrixinitiative</h3><span class="center eclipse" name="attr_lp_init">0</span>
+            <h3 data-i18n="initiativepasses">initiativepasses</h3><span class="center eclipse" name="attr_lp_ip">0</span>
+          </div>
+          <div class="row-long"><span name="attr_lp_warning"></span></div>
+          <div class="row-long paragon">
+            <h3 data-i18n="paragon">Paragon</h3>
+            <select name="attr_paragon" title="@{paragon}">
+              <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+              <option value="01_zero_one">01 (Zero-One)</option>
+              <option value="alias">Alias</option>
+              <option value="archivist">Archivist</option>
+              <option value="architect">Architect</option>
+              <option value="babel">Babel</option>
+              <option value="black_hat">Black Hat</option>
+              <option value="cryptome">Cryptome</option>
+              <option value="daedalus">Daedalus</option>
+              <option value="delphi">Delphi</option>
+              <option value="echelon">Echelon</option>
+              <option value="flow">Flow</option>
+              <option value="idoru">Idoru</option>
+              <option value="ic">IC</option>
+              <option value="probe">Probe</option>
+              <option value="pulse">Pulse</option>
+              <option value="shooter">Shooter</option>
+              <option value="world_tree">World Tree</option>
+              <option value="abort">Abort</option>
+              <option value="disinformation">Disinformation</option>
+              <option value="jormungand">Jormungand</option>
+              <option value="nemesis">Nemesis</option>
+              <option value="noise">Noise</option>
+              <option value="snuff">Snuff</option>
+              <option value="tiamat">Tiamat</option>
+            </select>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="advantage">Advantage</h3>
+            <textarea name="attr_paragon_advantage" placeholder="Advantage" title="@{paragon_advantage}"></textarea>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="disadvantage">Disadvantage</h3>
+            <textarea name="attr_paragon_disadvantage" placeholder="Disadvantage" title="@{paragon_disadvantage}"></textarea>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="paragonsprites">Sprite bonus</h3>
+            <input name="attr_paragon_sprites" type="text" title="@{paragon_sprites}" value=""/>
+            <input name="attr_paragon_source" type="text" placeholder="Source" title="@{paragon_source}" value=""/>
+          </div>
+          <div class="row-long resonance-difference">
+            <h3 data-i18n="resonancedifference">Resonance Difference (optional rule)</h3>
+            <label data-i18n-title="resonancedifference" title="Resonance Difference">
+              <input name="attr_resonance_difference" type="checkbox" value="1"/>
+            </label>
+            <h3 data-i18n="defensebonus">Defense vs Attack</h3><span class="center eclipse" name="attr_resdiff_defense">0</span>
+          </div>
+          <div class="row-long">
+            <textarea name="attr_resdiff_info" readonly="readonly" title="@{resdiff_info}"></textarea>
+          </div>
+          <div class="rows repeating-container echoes">
+            <h2 data-i18n="echos">Echoes</h2>
+            <fieldset class="repeating_echoes">
+              <input name="attr_echo_max" type="hidden" value="1"/><span class="center" name="attr_echo_name"></span><span class="center eclipse" name="attr_echo_times"></span>
+              <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
+              <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
+              <div class="collapse"><span name="attr_notes"></span></div>
+              <div class="settings">
+                <select name="attr_echo_type" title="@{repeating_echoes_${x}_echo_type}">
+                  <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+                  <option value="firewall_upgrade">Firewall Upgrade</option>
+                  <option value="neurofilter">NeuroFilter</option>
+                  <option value="system_upgrade">System Upgrade</option>
+                  <option value="overclocking">Overclocking</option>
+                  <option value="resonance_link">Resonance Link</option>
+                  <option value="amplification">Amplification</option>
+                  <option value="biowire">Biowire</option>
+                  <option value="blur">Blur</option>
+                  <option value="coenesthesia">Coenesthesia</option>
+                  <option value="defragmentation">Defragmentation</option>
+                  <option value="e_sensing">E-sensing</option>
+                  <option value="flexible_touch">Flexible Touch</option>
+                  <option value="living_ecm">Living ECM</option>
+                  <option value="macro">Macro</option>
+                  <option value="immersion">Immersion</option>
+                  <option value="multiprocessing">Multiprocessing</option>
+                  <option value="info_sortilege">Info Sortilege</option>
+                  <option value="sift">Sift</option>
+                  <option value="skinlink">Skinlink</option>
+                  <option value="sparky">Sparky</option>
+                  <option value="sprite_link">Sprite Link</option>
+                  <option value="swap">Swap</option>
+                  <option value="widget_crafting">Widget Crafting</option>
+                  <option value="acceleration">Acceleration</option>
+                  <option value="advanced_overclocking">Advanced Overclocking</option>
+                  <option value="enhanced_resonance_link">Enhanced Resonance Link</option>
+                  <option value="mesh_reality">Mesh Reality</option>
+                  <option value="mind_over_machine">Mind Over Machine</option>
+                  <option value="resonance_exchange">Resonance Exchange</option>
+                  <option value="resonance_trodes">Resonance Trodes</option>
+                  <option value="contaminate">Contaminate</option>
+                  <option value="malfunction">Malfunction</option>
+                  <option value="pryon">Pryon</option>
+                  <option value="siphon">Siphon</option>
+                </select>
+                <label data-i18n-title="name" title="name">
+                  <input name="attr_echo_name" placeholder="name" type="text" value=""/>
+                </label>
+                <h3 data-i18n="times">Times</h3>
+                <input name="attr_echo_times" type="number" min="1" value="1"/>
+                <textarea name="attr_echo_effect" placeholder="Effect" title="@{repeating_echoes_${x}_echo_effect}"></textarea>
+                <input name="attr_echo_source" type="text" placeholder="Source" value=""/>
+              </div>
+            </fieldset>
+          </div>
+          <div class="rows repeating-container widgets">
+            <h2 data-i18n="widgets">Widgets</h2>
+            <fieldset class="repeating_widgets">
+              <button data-i18n="widget_create" name="roll_widget_create" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{widget_create}}}{{base=^{widget}}}{{dice=[[((@{resonance}+@{software})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">widget_create</button>
+              <button data-i18n="widget_fade" name="roll_widget_fade" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{widget_fade}}}{{base=^{fade}}}{{dice=[[((@{fade_attribute_1}+@{fade_attribute_2}+@{fade_modifier})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">widget_fade</button><span class="center" name="attr_widget_name"></span><span class="center eclipse" name="attr_widget_rating"></span>
+              <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
+              <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
+              <div class="collapse"><span name="attr_notes"></span></div>
+              <div class="settings">
+                <select name="attr_widget_type" title="@{repeating_widgets_${x}_widget_type}">
+                  <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+                  <option value="amp">Amp</option>
+                  <option value="benchmarking">Benchmarking</option>
+                  <option value="cheat">Cheat</option>
+                  <option value="debugger">Debugger</option>
+                  <option value="decoy">Decoy</option>
+                  <option value="displacer">Displacer</option>
+                  <option value="neuroleptic">Neuroleptic</option>
+                  <option value="rendering">Rendering</option>
+                </select>
+                <label data-i18n-title="name" title="name">
+                  <input name="attr_widget_name" placeholder="name" type="text" value=""/>
+                </label>
+                <h3 data-i18n="rating">Rating</h3>
+                <input name="attr_widget_rating" type="number" min="0" value="0"/>
+                <h3 data-i18n="threshold">Threshold (Rating x 2, 1 h)</h3><span class="center eclipse" name="attr_widget_threshold">0</span>
+                <h3 data-i18n="fade">Fading (2 x Rating)</h3><span class="center eclipse" name="attr_widget_fade">0</span>
+                <textarea name="attr_widget_effect" placeholder="Effect" title="@{repeating_widgets_${x}_widget_effect}"></textarea>
+                <input name="attr_widget_source" type="text" placeholder="Source" value=""/>
               </div>
             </fieldset>
           </div>
@@ -1852,6 +2140,32 @@
                 </label>
               </div>
             </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-row">
+      <div class="header right-header">
+        <h1 data-i18n="characterbackground">Character Background</h1>
+        <div class="right-tri"></div>
+      </div>
+      <div class="border-box background">
+        <div class="pc-box small-box">
+          <div class="row-long">
+            <h3 data-i18n="concept">Concept</h3>
+            <input name="attr_concept" placeholder="Concept" style="width: 85%" title="@{concept}" type="text"/>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="description">Description</h3>
+            <textarea name="attr_description" placeholder="Description" style="width: 92%; height: 90px" title="@{description}"></textarea>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="background">Background</h3>
+            <textarea name="attr_background" placeholder="Background" style="width: 92%; height: 120px" title="@{background}"></textarea>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="notes">Notes</h3>
+            <textarea name="attr_character_notes" placeholder="Notes" style="width: 92%; height: 90px" title="@{character_notes}"></textarea>
           </div>
         </div>
       </div>
@@ -2013,6 +2327,8 @@
 							<option value="pc" data-i18n="pc" selected>PC</option>
 							<option value="grunt" data-i18n="grunt">grunt</option>
 							<option value="spirit" data-i18n="spirit">Spirit</option>
+							<option value="sprite" data-i18n="sprite">Sprite</option>
+							<option value="vehicle" data-i18n="vehicle">Vehicle</option>
 							<!---<option value="host" data-i18n="host">Host</option>
 							<option value="sprite" data-i18n="sprite">Sprite</option>
 							<option value="vehicle" data-i18n="vehicle">Vehicle</option>-->
@@ -2068,6 +2384,9 @@
     <select name="attr_sheet_type" title="Sheet Type" value="pc">
       <option value="grunt" data-i18n="grunt">Grunt</option>
       <option value="spirit" data-i18n="spirit">Spirit</option>
+      <option value="sprite" data-i18n="sprite">Sprite</option>
+      <option value="ai" data-i18n="ai">AI</option>
+      <option value="vehicle" data-i18n="vehicle">Vehicle</option>
       <option value="pc" data-i18n="pc" selected="selected">PC</option>
     </select>
     <input name="attr_stats_toggle" type="checkbox" value="settings" checked="checked"/><span class="pictos">y</span>
@@ -2212,21 +2531,104 @@
     <label class="settings" data-i18n-title="level" title="Level">
       <input name="attr_level" placeholder="5" title="@{level}" type="number" value=""/>
     </label>
-    <button data-i18n="attack" name="roll_attack" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{attack}}}{{base=^{level}}}{{dice=[[((@{level}+@{attack})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">attack</button><span name="attr_attack"></span>
-    <label class="settings" data-i18n-title="attack" title="Attack">
-      <input name="attr_attack" placeholder="5" title="@{attack}" type="number" value=""/>
+    <button data-i18n="mx_response" name="roll_mx_response" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_response}}}{{base=^{level}}}{{dice=[[((@{level}+@{mx_response})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_response</button><span name="attr_mx_response"></span>
+    <label class="settings" data-i18n-title="mx_response" title="Response">
+      <input name="attr_mx_response" placeholder="5" title="@{mx_response}" type="number" value=""/>
     </label>
-    <button data-i18n="sleaze" name="roll_sleaze" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{sleaze}}}{{base=^{level}}}{{dice=[[((@{level}+@{sleaze})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">sleaze</button><span name="attr_sleaze"></span>
-    <label class="settings" data-i18n-title="sleaze" title="Sleaze">
-      <input name="attr_sleaze" placeholder="6" title="@{sleaze}" type="number" value=""/>
+    <button data-i18n="mx_signal" name="roll_mx_signal" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_signal}}}{{base=^{level}}}{{dice=[[((@{level}+@{mx_signal})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_signal</button><span name="attr_mx_signal"></span>
+    <label class="settings" data-i18n-title="mx_signal" title="Signal">
+      <input name="attr_mx_signal" placeholder="5" title="@{mx_signal}" type="number" value=""/>
     </label>
-    <button data-i18n="data_processing" name="roll_data_processing" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{data_processing}}}{{base=^{level}}}{{dice=[[((@{level}+@{data_processing})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">data_processing</button><span name="attr_data_processing"></span>
-    <label class="settings" data-i18n-title="data_processing" title="Data Processing">
-      <input name="attr_data_processing" placeholder="7" title="@{data_processing}" type="number" value=""/>
+    <button data-i18n="mx_system" name="roll_mx_system" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_system}}}{{base=^{level}}}{{dice=[[((@{level}+@{mx_system})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_system</button><span name="attr_mx_system"></span>
+    <label class="settings" data-i18n-title="mx_system" title="System">
+      <input name="attr_mx_system" placeholder="5" title="@{mx_system}" type="number" value=""/>
     </label>
     <button data-i18n="firewall" name="roll_firewall" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{firewall}}}{{base=^{level}}}{{dice=[[((@{level}+@{firewall})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">firewall</button><span name="attr_firewall"></span>
     <label class="settings" data-i18n-title="firewall" title="Firewall">
-      <input name="attr_firewall" placeholder="8" title="@{firewall}" type="number" value=""/>
+      <input name="attr_firewall" placeholder="5" title="@{firewall}" type="number" value=""/>
+    </label>
+  </div>
+  <div class="sprite attribute">
+    <button data-i18n="c" name="roll_charisma" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{charisma}}}{{base=^{base}}}{{dice=[[((@{charisma}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">c</button><span name="attr_display_charisma"></span>
+    <label class="settings" data-i18n-title="Charisma" title="Charisma">
+      <input name="attr_charisma_base" placeholder="3" title="@{charisma_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_charisma_modifier" placeholder="+" title="@{charisma_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="i" name="roll_intuition" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{intuition}}}{{base=^{base}}}{{dice=[[((@{intuition}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">i</button><span name="attr_display_intuition"></span>
+    <label class="settings" data-i18n-title="Intuition" title="Intuition">
+      <input name="attr_intuition_base" placeholder="3" title="@{intuition_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_intuition_modifier" placeholder="+" title="@{intuition_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="l" name="roll_logic" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{logic}}}{{base=^{base}}}{{dice=[[((@{logic}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">l</button><span name="attr_display_logic"></span>
+    <label class="settings" data-i18n-title="Logic" title="Logic">
+      <input name="attr_logic_base" placeholder="3" title="@{logic_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_logic_modifier" placeholder="+" title="@{logic_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="e" name="roll_edge" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{edge}}}{{base=^{base}}}{{dice=[[((@{edge}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">e</button><span name="attr_edge"></span>
+    <label class="settings" data-i18n-title="edge" title="edge">
+      <input name="attr_edge" placeholder="3" title="@{edge}" type="number" value="3"/>
+    </label>
+  </div>
+  <div class="ai attribute">
+    <button data-i18n="ai_rating" name="roll_ai_rating" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{ai_rating}}}{{base=^{ai_rating}}}{{dice=[[((@{ai_rating}+@{ai_rating})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">ai_rating</button><span name="attr_ai_rating"></span>
+    <label class="settings" data-i18n-title="ai_rating" title="Rating">
+      <input name="attr_ai_rating" placeholder="5" title="@{ai_rating}" type="number" value=""/>
+    </label>
+    <button data-i18n="mx_response" name="roll_mx_response" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_response}}}{{base=^{ai_rating}}}{{dice=[[((@{ai_rating}+@{mx_response})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_response</button><span name="attr_mx_response"></span>
+    <label class="settings" data-i18n-title="mx_response" title="Response">
+      <input name="attr_mx_response" placeholder="5" title="@{mx_response}" type="number" value=""/>
+    </label>
+    <button data-i18n="mx_signal" name="roll_mx_signal" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_signal}}}{{base=^{ai_rating}}}{{dice=[[((@{ai_rating}+@{mx_signal})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_signal</button><span name="attr_mx_signal"></span>
+    <label class="settings" data-i18n-title="mx_signal" title="Signal">
+      <input name="attr_mx_signal" placeholder="5" title="@{mx_signal}" type="number" value=""/>
+    </label>
+    <button data-i18n="mx_system" name="roll_mx_system" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_system}}}{{base=^{ai_rating}}}{{dice=[[((@{ai_rating}+@{mx_system})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_system</button><span name="attr_mx_system"></span>
+    <label class="settings" data-i18n-title="mx_system" title="System">
+      <input name="attr_mx_system" placeholder="5" title="@{mx_system}" type="number" value=""/>
+    </label>
+    <button data-i18n="firewall" name="roll_firewall" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{firewall}}}{{base=^{ai_rating}}}{{dice=[[((@{ai_rating}+@{firewall})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">firewall</button><span name="attr_firewall"></span>
+    <label class="settings" data-i18n-title="firewall" title="Firewall">
+      <input name="attr_firewall" placeholder="5" title="@{firewall}" type="number" value=""/>
+    </label>
+  </div>
+  <div class="ai attribute">
+    <button data-i18n="c" name="roll_charisma" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{charisma}}}{{base=^{base}}}{{dice=[[((@{charisma}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">c</button><span name="attr_display_charisma"></span>
+    <label class="settings" data-i18n-title="Charisma" title="Charisma">
+      <input name="attr_charisma_base" placeholder="3" title="@{charisma_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_charisma_modifier" placeholder="+" title="@{charisma_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="i" name="roll_intuition" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{intuition}}}{{base=^{base}}}{{dice=[[((@{intuition}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">i</button><span name="attr_display_intuition"></span>
+    <label class="settings" data-i18n-title="Intuition" title="Intuition">
+      <input name="attr_intuition_base" placeholder="3" title="@{intuition_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_intuition_modifier" placeholder="+" title="@{intuition_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="l" name="roll_logic" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{logic}}}{{base=^{base}}}{{dice=[[((@{logic}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">l</button><span name="attr_display_logic"></span>
+    <label class="settings" data-i18n-title="Logic" title="Logic">
+      <input name="attr_logic_base" placeholder="3" title="@{logic_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_logic_modifier" placeholder="+" title="@{logic_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="w" name="roll_willpower" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{willpower}}}{{base=^{base}}}{{dice=[[((@{willpower}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">w</button><span name="attr_display_willpower"></span>
+    <label class="settings" data-i18n-title="Willpower" title="Willpower">
+      <input name="attr_willpower_base" placeholder="3" title="@{willpower_base}" type="number" value="3"/>
+    </label>
+    <label class="settings" data-i18n-title="modifier" title="modifier">
+      <input name="attr_willpower_modifier" placeholder="+" title="@{willpower_modifier}" type="number" value=""/>
+    </label>
+    <button data-i18n="e" name="roll_edge" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{edge}}}{{base=^{base}}}{{dice=[[((@{edge}+@{attribute_roll})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">e</button><span name="attr_edge"></span>
+    <label class="settings" data-i18n-title="edge" title="edge">
+      <input name="attr_edge" placeholder="3" title="@{edge}" type="number" value="3"/>
     </label>
   </div>
   <div class="mid body">
@@ -2257,7 +2659,7 @@
           <input min="0" max="4" name="attr_astral_dice_modifier" placeholder="0" title="@{astral_dice_modifier}" type="number" value="0"/>
         </label><span class="settings" data-i18n="d6">d6</span>
       </div>
-      <div class="rows grunt vehicle sprite host">
+      <div class="rows grunt vehicle sprite host ai">
         <button data-i18n="matrixinitiative" name="Matrix Initiative" type="roll" value="@{gm_toggle} &{template:rolls}{{header=^{matrixinitiative}}}{{base=^{base}}}{{dice=[[((@{matrix_initiative}+@{modifiers_toggle})d6>5cf0)+(@{matrix_initiative})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}">Matrix Initiative</button>
         <label class="settings" data-i18n-title="modifier" title="modifier">
           <input name="attr_matrix_mod_modifier" placeholder="0" title="@{matrix_modifier}" type="number" value="0"/>
@@ -2265,6 +2667,15 @@
         <label class="settings" data-i18n-title="modifierdice" title="Modifier Dice">
           <input min="0" max="4" name="attr_matrix_dice_modifier" placeholder="0" title="@{matrix_dice_modifier}" type="number" value="0"/>
         </label><span class="settings" data-i18n="d6">d6</span>
+      </div>
+      <div class="rows grunt spirit vehicle">
+        <h2 data-i18n="Initiative Passes">Initiative Passes</h2>
+        <label class="settings" data-i18n-title="Initiative Passes" title="Initiative Passes">
+          <input name="attr_initiative_passes_base" placeholder="1" title="@{initiative_passes_base}" type="number" value="1"/>
+        </label><span class="settings">+</span>
+        <label class="settings" data-i18n-title="modifier" title="modifier">
+          <input name="attr_initiative_passes_modifier" placeholder="0" title="@{initiative_passes_modifier}" type="number" value="0"/>
+        </label><span class="settings tiny-span">=</span><span name="attr_initiative_passes" title="@{initiative_passes}"></span>
       </div>
       <div class="rows grunt spirit">
         <h2 data-i18n="movement">Movement</h2>
@@ -2296,8 +2707,283 @@
           <input name="attr_matrix_modifier" placeholder="0" title="@{matrix_modifier}" type="number" value="0"/>
         </label><span class="settings tiny-span">=</span><span name="attr_physical_max" title="@{physical_max}"></span><span>/</span><span name="attr_matrix_max" title="@{matrix_max}"></span>
       </div>
-      <div class="rows host sprite">
+      <div class="rows host sprite ai">
         <button data-i18n="conditionmonitorm" name="act_cond_reset" type="action">Condition Monitor (M)</button><span name="attr_matrix_max"></span>
+      </div>
+      <div class="rows sprite ai">
+        <h2 data-i18n="mx_passes">Matrix IP</h2>
+        <label class="settings" data-i18n-title="mx_passes" title="Matrix initiative passes">
+          <input name="attr_mx_passes" placeholder="3" title="@{mx_passes}" type="number" value="3"/>
+        </label><span name="attr_mx_passes"></span>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <h1 data-i18n="technocritter">Technocritter</h1>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <h2 data-i18n="spritetype">Type</h2>
+        <select name="attr_technocritter_type" title="@{technocritter_type}">
+          <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+          <option value="ahi">Ahi</option>
+          <option value="bastet">Bastet</option>
+          <option value="digit">Digit</option>
+          <option value="flipper">Flipper</option>
+          <option value="libertine">Libertine</option>
+          <option value="mongrel">Mongrel</option>
+          <option value="nezumi">Nezumi</option>
+          <option value="rapscallion">Rapscallion</option>
+          <option value="rook">Rook</option>
+        </select>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <button data-i18n="mx_response" name="roll_mx_response" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_response}}}{{base=^{resonance}}}{{dice=[[((@{resonance}+@{mx_response})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_response</button><span name="attr_mx_response"></span>
+        <label class="settings" data-i18n-title="mx_response" title="Response">
+          <input name="attr_mx_response" placeholder="4" title="@{mx_response}" type="number" value=""/>
+        </label>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <button data-i18n="mx_signal" name="roll_mx_signal" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_signal}}}{{base=^{resonance}}}{{dice=[[((@{resonance}+@{mx_signal})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_signal</button><span name="attr_mx_signal"></span>
+        <label class="settings" data-i18n-title="mx_signal" title="Signal">
+          <input name="attr_mx_signal" placeholder="4" title="@{mx_signal}" type="number" value=""/>
+        </label>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <button data-i18n="mx_system" name="roll_mx_system" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_system}}}{{base=^{resonance}}}{{dice=[[((@{resonance}+@{mx_system})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_system</button><span name="attr_mx_system"></span>
+        <label class="settings" data-i18n-title="mx_system" title="System">
+          <input name="attr_mx_system" placeholder="4" title="@{mx_system}" type="number" value=""/>
+        </label>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <button data-i18n="firewall" name="roll_firewall" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{firewall}}}{{base=^{resonance}}}{{dice=[[((@{resonance}+@{firewall})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">firewall</button><span name="attr_firewall"></span>
+        <label class="settings" data-i18n-title="firewall" title="Firewall">
+          <input name="attr_firewall" placeholder="4" title="@{firewall}" type="number" value=""/>
+        </label>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <button data-i18n="mx_biofeedback" name="roll_mx_biofeedback" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{mx_biofeedback}}}{{base=^{resonance}}}{{dice=[[((@{resonance}+@{mx_biofeedback})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">mx_biofeedback</button><span name="attr_mx_biofeedback"></span>
+        <label class="settings" data-i18n-title="mx_biofeedback" title="Biofeedback">
+          <input name="attr_mx_biofeedback" placeholder="4" title="@{mx_biofeedback}" type="number" value=""/>
+        </label>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <button data-i18n="conditionmonitorm" name="act_cond_reset" type="action">Condition Monitor (M)</button><span name="attr_matrix_max"></span>
+      </div>
+      <div class="rows grunt hide-resonance">
+        <h2 data-i18n="mx_passes">Matrix IP</h2>
+        <label class="settings" data-i18n-title="mx_passes" title="Matrix initiative passes">
+          <input name="attr_mx_passes" placeholder="3" title="@{mx_passes}" type="number" value="3"/>
+        </label><span name="attr_mx_passes"></span>
+      </div>
+      <div class="rows vehicle">
+        <h1 data-i18n="vh_control">Control</h1>
+      </div>
+      <div class="rows vehicle">
+        <h2 data-i18n="vh_driver">Linked character</h2>
+        <input name="attr_veh_driver_id" type="hidden" value=""/><span name="attr_veh_driver_name"></span>
+      </div>
+      <div class="rows vehicle settings">
+        <h2 class="settings" data-i18n="vh_pilotskill">Piloting skill used</h2>
+        <select class="settings" name="attr_veh_pilot_skill" title="@{veh_pilot_skill}">
+          <option value="auto" data-i18n="vh_pilot_auto" selected="selected">Best Pilot skill</option>
+          <option value="Pilot Aerospace" data-i18n="pilotaerospace">Pilot Aerospace</option>
+          <option value="Pilot Aircraft" data-i18n="pilotaircraft">Pilot Aircraft</option>
+          <option value="Pilot Anthroform" data-i18n="pilotanthroform">Pilot Anthroform</option>
+          <option value="Pilot Exotic Vehicle" data-i18n="pilotexoticvehicle">Pilot Exotic Vehicle</option>
+          <option value="Pilot Ground Craft" data-i18n="pilotgroundcraft">Pilot Ground Craft</option>
+          <option value="Pilot Watercraft" data-i18n="pilotwatercraft">Pilot Watercraft</option>
+        </select>
+      </div>
+      <div class="rows vehicle">
+        <h2 data-i18n="vh_controlmode">Control mode</h2>
+        <select name="attr_veh_mode" title="@{veh_mode}">
+          <option value="manual" data-i18n="vh_manual">Manual</option>
+          <option value="remote" data-i18n="vh_remote">Remote control</option>
+          <option value="jumped" data-i18n="vh_jumped">Jumped-in rigger</option>
+          <option value="autonomous" data-i18n="vh_autonomous">Autonomous (Pilot)</option>
+        </select>
+      </div>
+      <div class="rows vehicle">
+        <h2 data-i18n="vh_interface">Interface</h2>
+        <select name="attr_veh_interface" title="@{veh_interface}">
+          <option value="ar" data-i18n="vh_ar">AR</option>
+          <option value="cold" data-i18n="vh_cold">VR cold-sim</option>
+          <option value="hot" data-i18n="vh_hot">VR hot-sim</option>
+        </select>
+      </div>
+      <div class="rows vehicle">
+        <h2 data-i18n="vh_arsubscribed">AR subscribed (manual)</h2>
+        <label data-i18n-title="vh_arsubscribed" title="AR subscribed">
+          <input name="attr_veh_ar" title="@{veh_ar}" type="checkbox" value="1"/>
+        </label>
+      </div>
+      <div class="rows vehicle"><span name="attr_veh_note"></span></div>
+      <div class="rows vehicle">
+        <button name="roll_vh_initiative" type="roll" value="@{gm_toggle} &{template:rolls}{{header=^{initiative}}}{{base=^{base}}}{{dice=[[((@{veh_init}+@{modifiers_toggle})d6>5cf0)+(@{veh_init})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}">Initiative</button><span name="attr_veh_init"></span><span>+</span>
+        <input name="attr_veh_ip" type="hidden" value="1"/><span name="attr_veh_ip"></span><span data-i18n="vh_ip">IP</span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_maneuver" name="roll_vh_maneuver" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_maneuver}}}{{base=^{base}}}{{dice=[[((@{veh_pool_maneuver})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_maneuver</button><span name="attr_veh_pool_maneuver"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_gunnery" name="roll_vh_gunnery" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_gunnery}}}{{base=^{base}}}{{dice=[[((@{veh_pool_gunnery})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_gunnery</button><span name="attr_veh_pool_gunnery"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_defense_ranged" name="roll_vh_defense_ranged" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_defense_ranged}}}{{base=^{base}}}{{dice=[[((@{veh_pool_defense_ranged})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_defense_ranged</button><span name="attr_veh_pool_defense_ranged"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_defense_melee" name="roll_vh_defense_melee" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_defense_melee}}}{{base=^{base}}}{{dice=[[((@{veh_pool_defense_melee})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_defense_melee</button><span name="attr_veh_pool_defense_melee"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_full_defense" name="roll_vh_full_defense" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_full_defense}}}{{base=^{base}}}{{dice=[[((@{veh_pool_full_defense})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_full_defense</button><span name="attr_veh_pool_full_defense"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_perception" name="roll_vh_perception" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_perception}}}{{base=^{base}}}{{dice=[[((@{veh_pool_perception})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_perception</button><span name="attr_veh_pool_perception"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_infiltration" name="roll_vh_infiltration" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_infiltration}}}{{base=^{base}}}{{dice=[[((@{veh_pool_infiltration})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_infiltration</button><span name="attr_veh_pool_infiltration"></span>
+      </div>
+      <div class="rows vehicle">
+        <button data-i18n="vh_resist" name="roll_vh_resist" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_resist}}}{{base=^{base}}}{{dice=[[((@{veh_pool_resist})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_resist</button><span name="attr_veh_pool_resist"></span>
+      </div>
+      <div class="rows vehicle">
+        <h1 class="settings" data-i18n="vh_controlstats">Control statistics</h1>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="response">Response</h2>
+        <label class="settings" data-i18n-title="response" title="Response">
+          <input name="attr_veh_response" placeholder="0" title="@{veh_response}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="system">System</h2>
+        <label class="settings" data-i18n-title="system" title="System">
+          <input name="attr_veh_system" placeholder="0" title="@{veh_system}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="signal">Signal</h2>
+        <label class="settings" data-i18n-title="signal" title="Signal">
+          <input name="attr_veh_signal" placeholder="0" title="@{veh_signal}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="firewall">Firewall</h2>
+        <label class="settings" data-i18n-title="firewall" title="Firewall">
+          <input name="attr_veh_firewall" placeholder="0" title="@{veh_firewall}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_command">Command program</h2>
+        <label class="settings" data-i18n-title="vh_command" title="Command program">
+          <input name="attr_veh_command" placeholder="0" title="@{veh_command}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_op_reaction">Operator Reaction</h2>
+        <label class="settings" data-i18n-title="vh_op_reaction" title="Operator Reaction">
+          <input name="attr_veh_op_reaction" placeholder="0" title="@{veh_op_reaction}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_op_agility">Operator Agility</h2>
+        <label class="settings" data-i18n-title="vh_op_agility" title="Operator Agility">
+          <input name="attr_veh_op_agility" placeholder="0" title="@{veh_op_agility}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_op_intuition">Operator Intuition</h2>
+        <label class="settings" data-i18n-title="vh_op_intuition" title="Operator Intuition">
+          <input name="attr_veh_op_intuition" placeholder="0" title="@{veh_op_intuition}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_op_init">Operator Initiative</h2>
+        <label class="settings" data-i18n-title="vh_op_init" title="Operator Initiative">
+          <input name="attr_veh_op_init" placeholder="0" title="@{veh_op_init}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_op_ip">Operator IP (manual/AR)</h2>
+        <label class="settings" data-i18n-title="vh_op_ip" title="Operator IP (manual/AR)">
+          <input name="attr_veh_op_ip" placeholder="0" title="@{veh_op_ip}" type="number" value="1"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_sk_piloting">Piloting skill</h2>
+        <label class="settings" data-i18n-title="vh_sk_piloting" title="Piloting skill">
+          <input name="attr_veh_sk_piloting" placeholder="0" title="@{veh_sk_piloting}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="gunnery">Gunnery skill</h2>
+        <label class="settings" data-i18n-title="gunnery" title="Gunnery skill">
+          <input name="attr_veh_sk_gunnery" placeholder="0" title="@{veh_sk_gunnery}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="dodge">Dodge skill</h2>
+        <label class="settings" data-i18n-title="dodge" title="Dodge skill">
+          <input name="attr_veh_sk_dodge" placeholder="0" title="@{veh_sk_dodge}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_sk_melee">Melee skill</h2>
+        <label class="settings" data-i18n-title="vh_sk_melee" title="Melee skill">
+          <input name="attr_veh_sk_melee" placeholder="0" title="@{veh_sk_melee}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="perception">Perception skill</h2>
+        <label class="settings" data-i18n-title="perception" title="Perception skill">
+          <input name="attr_veh_sk_perception" placeholder="0" title="@{veh_sk_perception}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="infiltration">Infiltration skill</h2>
+        <label class="settings" data-i18n-title="infiltration" title="Infiltration skill">
+          <input name="attr_veh_sk_infiltration" placeholder="0" title="@{veh_sk_infiltration}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_as_maneuver">Autosoft Maneuver</h2>
+        <label class="settings" data-i18n-title="vh_as_maneuver" title="Autosoft Maneuver">
+          <input name="attr_veh_as_maneuver" placeholder="0" title="@{veh_as_maneuver}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_as_targeting">Autosoft Targeting</h2>
+        <label class="settings" data-i18n-title="vh_as_targeting" title="Autosoft Targeting">
+          <input name="attr_veh_as_targeting" placeholder="0" title="@{veh_as_targeting}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_as_defense">Autosoft Defense</h2>
+        <label class="settings" data-i18n-title="vh_as_defense" title="Autosoft Defense">
+          <input name="attr_veh_as_defense" placeholder="0" title="@{veh_as_defense}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_as_clearsight">Autosoft Clearsight</h2>
+        <label class="settings" data-i18n-title="vh_as_clearsight" title="Autosoft Clearsight">
+          <input name="attr_veh_as_clearsight" placeholder="0" title="@{veh_as_clearsight}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_as_covert">Autosoft Covert Ops</h2>
+        <label class="settings" data-i18n-title="vh_as_covert" title="Autosoft Covert Ops">
+          <input name="attr_veh_as_covert" placeholder="0" title="@{veh_as_covert}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_bonus_rig">Control Rig bonus (jumped-in)</h2>
+        <label class="settings" data-i18n-title="vh_bonus_rig" title="Control Rig bonus (jumped-in)">
+          <input name="attr_veh_bonus_rig" placeholder="0" title="@{veh_bonus_rig}" type="number" value="2"/>
+        </label>
+      </div>
+      <div class="rows vehicle">
+        <h2 class="settings" data-i18n="vh_bonus_hot">Hot-sim bonus (jumped-in)</h2>
+        <label class="settings" data-i18n-title="vh_bonus_hot" title="Hot-sim bonus (jumped-in)">
+          <input name="attr_veh_bonus_hot" placeholder="0" title="@{veh_bonus_hot}" type="number" value="2"/>
+        </label>
       </div>
       <div class="grunt pain-tolerance">
         <div class="rows settings">
@@ -2337,13 +3023,19 @@
     </div>
     <div class="column">
       <h1 class="settings" data-i18n="modifier">Modifier</h1>
-      <div class="rows">
+      <div class="rows vehicle">
+        <button data-i18n="armor" name="roll_armor" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{armor}}}{{base=base}}{{dice=[[((@{ballistic}+@{soak})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">armor</button>
+        <label class="settings" data-i18n-title="armor" title="armor">
+          <input name="attr_ballistic" placeholder="9" title="@{ballistic}" type="number" value="0"/>
+        </label>
+      </div>
+      <div class="rows grunt spirit">
         <button data-i18n="ballistic" name="roll_ballistic" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{ballistic}}}{{base=base}}{{dice=[[((@{ballistic}+@{soak})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">ballistic</button>
         <label class="settings" data-i18n-title="ballistic">
           <input name="attr_ballistic" placeholder="9" title="@{ballistic}" type="number" value="0"/>
         </label>
       </div>
-      <div class="rows">
+      <div class="rows grunt spirit">
         <button data-i18n="impact" name="roll_impact" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{impact}}}{{base=base}}{{dice=[[((@{impact}+@{soak})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">impact</button>
         <label class="settings" data-i18n-title="impact">
           <input name="attr_impact" placeholder="9" title="@{impact}" type="number" value="0"/>
@@ -2450,6 +3142,16 @@
         </label><span name="attr_services"></span>
       </div>
       <div class="rows spirit">
+        <h2 data-i18n="summoner">Summoner</h2>
+        <label class="settings" data-i18n-title="summoner" title="Summoner">
+          <input name="attr_summoner_name" title="@{summoner_name}" type="text" value=""/>
+        </label><span name="attr_summoner_name"></span>
+      </div>
+      <div class="rows spirit">
+        <h2 data-i18n="bound">Bound</h2>
+        <input name="attr_bound" title="@{bound}" type="checkbox" value="1"/>
+      </div>
+      <div class="rows spirit">
         <h2 data-i18n="forceoffsets">Attribute = Force +</h2>
       </div>
       <div class="rows spirit">
@@ -2506,6 +3208,129 @@
           <input name="attr_edge_offset" placeholder="0" title="@{edge_offset}" type="number" value="0"/>
         </label><span name="attr_edge_offset"></span>
       </div>
+      <div class="rows sprite">
+        <h1 data-i18n="sprite">Sprite</h1>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="spritetype">Type</h2>
+        <select name="attr_sprite_type" title="@{sprite_type}">
+          <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+          <option value="code">Code</option>
+          <option value="courier">Courier</option>
+          <option value="crack">Crack</option>
+          <option value="data">Data</option>
+          <option value="fault">Fault</option>
+          <option value="machine">Machine</option>
+          <option value="paladin">Paladin</option>
+          <option value="sleuth">Sleuth</option>
+          <option value="tank">Tank</option>
+          <option value="tutor">Tutor</option>
+          <option value="blight">Blight</option>
+          <option value="chaos">Chaos</option>
+          <option value="contagion">Contagion</option>
+          <option value="meltdown">Meltdown</option>
+          <option value="spike">Spike</option>
+        </select>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="services">Services</h2>
+        <label class="settings" data-i18n-title="services" title="Services">
+          <input name="attr_services" placeholder="1" title="@{services}" type="number" value=""/>
+        </label><span name="attr_services"></span>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="summoner">Summoner</h2>
+        <label class="settings" data-i18n-title="summoner" title="Summoner">
+          <input name="attr_summoner_name" title="@{summoner_name}" type="text" value=""/>
+        </label><span name="attr_summoner_name"></span>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="bound">Bound</h2>
+        <input name="attr_bound" title="@{bound}" type="checkbox" value="1"/>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="spriteinit">Initiative = Level x</h2>
+        <label class="settings" data-i18n-title="spriteinit" title="Initiative multiplier">
+          <input name="attr_sprite_init_mult" placeholder="2" title="@{sprite_init_mult}" type="number" value="2"/>
+        </label><span name="attr_sprite_init_mult"></span>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="leveloffsets">Attribute = Level +</h2>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="c">c</h2>
+        <label class="settings" data-i18n-title="charisma" title="Charisma">
+          <input name="attr_charisma_offset" placeholder="0" title="@{charisma_offset}" type="number" value="0"/>
+        </label><span name="attr_charisma_offset"></span>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="i">i</h2>
+        <label class="settings" data-i18n-title="intuition" title="Intuition">
+          <input name="attr_intuition_offset" placeholder="0" title="@{intuition_offset}" type="number" value="0"/>
+        </label><span name="attr_intuition_offset"></span>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="l">l</h2>
+        <label class="settings" data-i18n-title="logic" title="Logic">
+          <input name="attr_logic_offset" placeholder="0" title="@{logic_offset}" type="number" value="0"/>
+        </label><span name="attr_logic_offset"></span>
+      </div>
+      <div class="rows sprite">
+        <h2 data-i18n="e">e</h2>
+        <label class="settings" data-i18n-title="edge" title="Edge">
+          <input name="attr_edge_offset" placeholder="0" title="@{edge_offset}" type="number" value="0"/>
+        </label><span name="attr_edge_offset"></span>
+      </div>
+      <div class="rows ai">
+        <h1 data-i18n="ai">AI</h1>
+      </div>
+      <div class="rows ai">
+        <h2 data-i18n="spritetype">Type</h2>
+        <select name="attr_ai_type" title="@{ai_type}">
+          <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+          <option value="metasapient">AI - Metasapient</option>
+          <option value="artifaun">AI - Artifaun</option>
+          <option value="poltergeist">AI - Poltergeist</option>
+          <option value="predator">AI - Predator</option>
+          <option value="archivist">AI - Archivist</option>
+          <option value="assembler">AI - Assembler</option>
+          <option value="sculptor">AI - Sculptor</option>
+          <option value="daemon">Feral AI - Daemon</option>
+          <option value="frobnitz">Feral AI - Frobnitz</option>
+          <option value="grue">Feral AI - Grue</option>
+          <option value="blob">Feral AI - Blob</option>
+          <option value="gimp">Feral AI - Gimp</option>
+          <option value="prowler">Feral AI - Prowler</option>
+          <option value="sintax">Feral AI - SINtax</option>
+          <option value="tentacle">Feral AI - Tentacle</option>
+          <option value="cyberwerewolf">Feral AI - Cyberwerewolf</option>
+          <option value="heap_frog">Feral AI - Heap Frog</option>
+          <option value="heavyweight">Feral AI - Heavyweight</option>
+          <option value="rogue">Feral AI - Rogue</option>
+          <option value="cryppie">Feral AI - Cryppie</option>
+          <option value="heisenbug">Feral AI - Heisenbug</option>
+          <option value="kitteh">Feral AI - Kitteh</option>
+          <option value="netmare">Feral AI - Netmare</option>
+          <option value="yantra">Feral AI - Yantra</option>
+          <option value="green_man">Feral AI - Green Man</option>
+          <option value="e_ghost">E-Ghost - E-Ghost</option>
+        </select>
+      </div>
+      <div class="rows ai">
+        <h2 data-i18n="ai_r">Reference rating R</h2>
+        <label class="settings" data-i18n-title="ai_r" title="Reference rating R (attributes = R + type offsets)">
+          <input name="attr_ai_r" placeholder="4" title="@{ai_r}" type="number" value=""/>
+        </label><span name="attr_ai_r"></span>
+      </div>
+      <div class="rows ai">
+        <h2 data-i18n="ai_home">Home node</h2>
+        <label class="settings" data-i18n-title="ai_home" title="Home node">
+          <input name="attr_ai_home_node" title="@{ai_home_node}" type="text" value=""/>
+        </label><span name="attr_ai_home_node"></span>
+      </div>
+      <div class="rows ai">
+        <button data-i18n="realign" name="roll_realign" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{realign}}}{{base=^{ai_rating}}}{{dice=[[((@{ai_rating}+@{ai_rating})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">realign</button>
+      </div>
       <div class="rows vehicle">
         <label class="settings" title="Drone">
           <input class="character-type" name="attr_flag_drone" title="@{flag_drone}" type="checkbox" value="drone"/>
@@ -2516,7 +3341,7 @@
   </div>
   <div class="end body">
     <input name="attr_quality" type="hidden" value=""/>
-    <div class="textrow grunt">
+    <div class="textrow grunt ai">
       <h1 data-i18n="quality">key</h1><span name="attr_quality"></span>
       <label class="settings" data-i18n-title="quality" title="Qualities">
         <textarea name="attr_quality" placeholder="Qualities" title="@{quality}"></textarea>
@@ -2537,7 +3362,7 @@
       </label>
     </div>
     <input name="attr_programs" type="hidden" value=""/>
-    <div class="textrow vehicle">
+    <div class="textrow vehicle ai">
       <h1 data-i18n="programs">key</h1><span name="attr_programs"></span>
       <label class="settings" data-i18n-title="programs" title="Programs">
         <textarea name="attr_programs" placeholder="Programs" title="@{programs}"></textarea>
@@ -2564,6 +3389,97 @@
         <textarea name="attr_weakness" placeholder="Weakness" title="@{weakness}"></textarea>
       </label>
     </div>
+    <input name="attr_powers" type="hidden" value=""/>
+    <div class="textrow sprite">
+      <h1 data-i18n="powers">Powers</h1><span name="attr_powers"></span>
+      <label class="settings" data-i18n-title="powers" title="Powers">
+        <textarea name="attr_powers" placeholder="Powers" title="@{powers}"></textarea>
+      </label>
+    </div>
+    <div class="rows repeating-container sprite spritepowers">
+      <fieldset class="repeating_spritepowers">
+        <button name="roll_sp_name" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=@{sp_name}}}{{base=^{level}}}{{dice=[[((@{level}+@{level})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}"><span name="attr_sp_name"></span></button>
+        <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
+        <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
+        <div class="collapse"><span name="attr_notes"></span></div>
+        <div class="settings">
+          <select name="attr_sp_type" title="@{repeating_spritepowers_${x}_sp_type}">
+            <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
+            <option value="cookie">Cookie</option>
+            <option value="diagnostics">Diagnostics</option>
+            <option value="electron_storm">Electron Storm</option>
+            <option value="gremlins">Gremlins</option>
+            <option value="hash">Hash</option>
+            <option value="steganography">Steganography</option>
+            <option value="stability">Stability</option>
+            <option value="suppression">Suppression</option>
+            <option value="watermark">Watermark</option>
+            <option value="assault">Assault</option>
+            <option value="castling">Castling</option>
+            <option value="hardening">Hardening</option>
+            <option value="info_sortilege">Info Sortilege</option>
+            <option value="probability_distribution">Probability Distribution</option>
+            <option value="proficiency">Proficiency</option>
+            <option value="traceroute">Traceroute</option>
+            <option value="blend">Blend</option>
+            <option value="credit">Credit</option>
+            <option value="denial">Denial</option>
+            <option value="doorstop">Doorstop</option>
+            <option value="resonance_bond">Resonance Bond</option>
+            <option value="resonance_rift">Resonance Rift</option>
+            <option value="transfer">Transfer</option>
+            <option value="datavore">Datavore</option>
+            <option value="distortion">Distortion</option>
+            <option value="peak">Peak</option>
+            <option value="resonance_drain">Resonance Drain</option>
+            <option value="siphon">Siphon</option>
+            <option value="surge">Surge</option>
+            <option value="virulence">Virulence</option>
+            <option value="sparky">Sparky</option>
+          </select>
+          <label data-i18n-title="name" title="name">
+            <input name="attr_sp_name" placeholder="name" type="text" value=""/>
+          </label>
+          <textarea name="attr_sp_effect" placeholder="Effect" title="@{repeating_spritepowers_${x}_sp_effect}"></textarea>
+          <input name="attr_sp_source" type="text" placeholder="Source" value=""/>
+        </div>
+      </fieldset>
+    </div>
+    <input name="attr_sprite_info" type="hidden" value=""/>
+    <div class="textrow sprite">
+      <h1 data-i18n="spriteinfo">Skills and Forms</h1><span name="attr_sprite_info"></span>
+      <label class="settings" data-i18n-title="spriteinfo" title="Skills and Forms">
+        <textarea name="attr_sprite_info" placeholder="Skills and Forms" title="@{sprite_info}"></textarea>
+      </label>
+    </div>
+    <input name="attr_matrix_info" type="hidden" value=""/>
+    <div class="textrow grunt ai hide-resonance">
+      <h1 data-i18n="spriteinfo">Skills and Forms</h1><span name="attr_matrix_info"></span>
+      <label class="settings" data-i18n-title="spriteinfo" title="Skills and Forms">
+        <textarea name="attr_matrix_info" placeholder="Skills and Forms" title="@{matrix_info}"></textarea>
+      </label>
+    </div>
+    <input name="attr_emergent_powers" type="hidden" value=""/>
+    <div class="textrow grunt hide-resonance">
+      <h1 data-i18n="emergentpowers">Emergent Powers</h1><span name="attr_emergent_powers"></span>
+      <label class="settings" data-i18n-title="emergentpowers" title="Emergent Powers">
+        <textarea name="attr_emergent_powers" placeholder="Emergent Powers" title="@{emergent_powers}"></textarea>
+      </label>
+    </div>
+    <div class="textrow grunt hide-magic">
+      <div class="row-long conjuring">
+        <button name="roll_summon" type="roll" data-i18n="summon" value="!sr4-summon --char @{character_id} --type ?{Spirit|Air,air|Beasts,beasts|Earth,earth|Fire,fire|Man,man|Water,water|Guardian,guardian|Guidance,guidance|Plant,plant|Task,task|Insect Soldier,insect_soldier|Insect Scout,insect_scout|Insect Caretaker,insect_caretaker|Insect Nymph,insect_nymph|Insect Worker,insect_worker|Toxic Fire Nuclear,toxic_fire_nuclear|Toxic Air Smog,toxic_air_smog|Toxic Earth Sludge,toxic_earth_sludge|Toxic Water Pollution,toxic_water_pollution|Toxic Man Harrow,toxic_man_harrow|Cicak,cicak} --force ?{Force|3} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Summon</button>
+        <button name="roll_bind" type="roll" data-i18n="bind" value="!sr4-bind --char @{character_id} --spirit @{target|Spirit|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Bind</button>
+        <button name="roll_banish" type="roll" data-i18n="banish" value="!sr4-banish --char @{character_id} --spirit @{target|Spirit|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Banish</button>
+      </div>
+    </div>
+    <div class="textrow grunt hide-resonance">
+      <div class="row-long conjuring">
+        <button name="roll_compile" type="roll" data-i18n="compile" value="!sr4-compile --char @{character_id} --type ?{Sprite|Code,code|Courier,courier|Crack,crack|Data,data|Fault,fault|Machine,machine|Paladin,paladin|Sleuth,sleuth|Tank,tank|Tutor,tutor|Blight,blight|Chaos,chaos|Contagion,contagion|Meltdown,meltdown|Spike,spike} --level ?{Level|3} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Compile</button>
+        <button name="roll_register" type="roll" data-i18n="registersprite" value="!sr4-register --char @{character_id} --sprite @{target|Sprite|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Register</button>
+        <button name="roll_decompile" type="roll" data-i18n="decompile" value="!sr4-decompile --char @{character_id} --sprite @{target|Sprite|character_id} --mod ?{Modifier|0} --edge ?{Spend Edge|No,0|Yes,1}">Decompile</button>
+      </div>
+    </div>
     <div class="textrow grunt hide-magic">
       <input name="attr_initiate" type="hidden" value=""/>
       <h1 data-i18n="initiate">key</h1><span name="attr_initiate"></span>
@@ -2584,7 +3500,7 @@
         <textarea name="attr_echos" placeholder="echos" title="@{echos}"></textarea>
       </label>
     </div>
-    <div class="rows grunt spirit repeating inline-repeating">
+    <div class="rows grunt spirit sprite ai repeating inline-repeating">
       <h1 data-i18n="skills">skills</h1>
       <fieldset class="repeating_active">
         <input name="attr_display_rating" type="hidden"/>
@@ -2608,8 +3524,8 @@
 <option value="Blades" data-i18n="blades">Blades</option>
 <option value="Clubs" data-i18n="clubs">Clubs</option>
 <option value="Dodge" data-i18n="dodge">Dodge</option>
-<option value="Exotic Melee" data-i18n="exoticmelee">Exotic Melee</option>
-<option value="Exotic Range" data-i18n="exoticrange">Exotic Range</option>
+<option value="Exotic Melee Weapon" data-i18n="exoticmeleeweapon">Exotic Melee Weapon</option>
+<option value="Exotic Ranged Weapon" data-i18n="exoticrangedweapon">Exotic Ranged Weapon</option>
 <option value="Heavy Weapons" data-i18n="heavyweapons">Heavy Weapons</option>
 <option value="Longarms" data-i18n="longarms">Longarms</option>
 <option value="Pistols" data-i18n="pistols">Pistols</option>
@@ -2619,6 +3535,9 @@
 <option class="option-groups" value="Athletics Group" data-i18n="athleticsgroup">Athletics Group</option>
 <option class="option-groups" value="Outdoors Group" data-i18n="outdoorsgroup">Outdoors Group</option>
 <option class="option-groups" value="Stealth Group" data-i18n="stealthgroup">Stealth Group</option>
+<option class="option-groups" value="Animal Husbandry Group" data-i18n="animalhusbandrygroup">Animal Husbandry Group</option>
+<option value="Animal Handling" data-i18n="animalhandling">Animal Handling</option>
+<option value="Animal Training" data-i18n="animaltraining">Animal Training</option>
 <option value="Climbing" data-i18n="climbing">Climbing</option>
 <option value="Disguise" data-i18n="disguise">Disguise</option>
 <option value="Diving" data-i18n="diving">Diving</option>
@@ -2626,11 +3545,12 @@
 <option value="Flight" data-i18n="flight">Flight</option>
 <option value="Free Fall" data-i18n="freefall">Free Fall</option>
 <option value="Gymnastics" data-i18n="gymnastics">Gymnastics</option>
-<option value="infiltration" data-i18n="infiltration">Infiltration</option>
+<option value="Infiltration" data-i18n="infiltration">Infiltration</option>
 <option value="Navigation" data-i18n="navigation">Navigation</option>
 <option value="Palming" data-i18n="palming">Palming</option>
 <option value="Parachuting" data-i18n="parachuting">Parachuting</option>
 <option value="Perception" data-i18n="perception">Perception</option>
+<option value="Riding" data-i18n="riding">Riding</option>
 <option value="Running" data-i18n="running">Running</option>
 <option value="Shadowing" data-i18n="shadowing">Shadowing</option>
 <option value="Survival" data-i18n="survival">Survival</option>
@@ -2694,7 +3614,7 @@
 <option value="Pilot Exotic Vehicle" data-i18n="pilotexoticvehicle">Pilot Exotic Vehicle</option>
 <option value="Pilot Ground Craft" data-i18n="pilotgroundcraft">Pilot Ground Craft</option>
 <option value="Pilot Watercraft" data-i18n="pilotwatercraft">Pilot Watercraft</option>
-
+<option value="VetTech" data-i18n="vettech">VetTech</option>
           </select>
           <label data-i18n-title="rating" title="rating">
             <input name="attr_rating" min="0" placeholder="0" title="@{repeating_active_${x}_rating}" type="number"/>
@@ -2721,7 +3641,7 @@
         </div>
       </fieldset>
     </div>
-    <div class="rows grunt spirit repeating inline-repeating">
+    <div class="rows grunt spirit sprite ai repeating inline-repeating">
       <h1 data-i18n="knowledgeskills">knowledgeskills</h1>
       <fieldset class="repeating_knowledge">
         <input name="attr_display_rating" type="hidden"/>
@@ -2764,7 +3684,7 @@
         </div>
       </fieldset>
     </div>
-    <div class="rows grunt spirit repeating inline-repeating">
+    <div class="rows grunt spirit sprite ai repeating inline-repeating">
       <h1 data-i18n="languageskills">languageskills</h1>
       <fieldset class="repeating_language">
         <input name="attr_display_rating" type="hidden"/>
@@ -2926,7 +3846,7 @@
         </div>
       </fieldset>
     </div>
-    <div class="rows grunt repeating forms hide-resonance">
+    <div class="rows grunt sprite ai repeating forms hide-resonance">
       <h1 data-i18n="complex form">Complex Forms</h1>
       <fieldset class="repeating_form">
         <input name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
@@ -3011,6 +3931,9 @@
 <input type="hidden" name="attr_primary_range_weapon_mode" />
 <input type="hidden" name="attr_primary_range_weapon_recoil" />
 <input type="hidden" name="attr_primary_range_weapon_ammo" />
+<input type="hidden" name="attr_primary_range_weapon_ammo_max" />
+<input type="hidden" name="attr_primary_range_weapon_recoil_penalty" value="0" />
+<input type="hidden" name="attr_primary_range_weapon_shots" value="1" />
 <input type="hidden" name="attr_shots_fired" value="1" />
 
 <input type="hidden" name="attr_primary_melee_weapon" value="select a Primary in Arms" />
@@ -3042,6 +3965,11 @@
 <input type="hidden" name="attr_artisan" min="0" value="0" />
 <input type="hidden" name="attr_assensing" min="0" value="0" />
 <input type="hidden" name="attr_astralcombat" min="0" value="0" />
+<input type="hidden" name="attr_animalhandling" min="0" value="0" />
+<input type="hidden" name="attr_animaltraining" min="0" value="0" />
+<input type="hidden" name="attr_animalhusbandry" min="0" value="0" />
+<input type="hidden" name="attr_riding" min="0" value="0" />
+<input type="hidden" name="attr_vettech" min="0" value="0" />
 <input type="hidden" name="attr_athletics" min="0" value="0" />
 <input type="hidden" name="attr_automatics" min="0" min="0" value="0" />
 <input type="hidden" name="attr_automotivemechanic" min="0" value="0" />
@@ -3069,8 +3997,8 @@
 <input type="hidden" name="attr_enchanting" min="0" value="0" />
 <input type="hidden" name="attr_escapeartist" min="0" value="0" />
 <input type="hidden" name="attr_etiquette" min="0" value="0" />
-<input type="hidden" name="attr_exoticmelee" min="0" value="0" />
-<input type="hidden" name="attr_exoticrange" min="0" value="0" />
+<input type="hidden" name="attr_exoticmeleeweapon" min="0" value="0" />
+<input type="hidden" name="attr_exoticrangedweapon" min="0" value="0" />
 <input type="hidden" name="attr_firearms" min="0" value="0" />
 <input type="hidden" name="attr_firstaid" min="0" value="0" />
 <input type="hidden" name="attr_flight" min="0" value="0" />
@@ -3156,11 +4084,11 @@ const sheetAttributes = {
 
   stunCharacters: ['grunt', 'spirit', 'pc'],
   physicalCharacters: ['grunt', 'spirit', 'pc', 'vehicle'],
-  matrixCharacters: ['vehicle', 'host', 'sprite'],
+  matrixCharacters: ['vehicle', 'host', 'sprite', 'ai'],
   matrixAttributes: ['attack', 'sleaze', 'data_processing', 'firewall'],
 
   weaponTypes: ['range', 'melee'],
-  rangeAttributes: ['dicepool', 'weapon', 'damage', 'ap', 'skill', 'ammo', 'mode', 'recoil'],
+  rangeAttributes: ['dicepool', 'weapon', 'damage', 'ap', 'skill', 'ammo', 'ammo_max', 'mode', 'recoil'],
   meleeAttributes: ['dicepool', 'weapon', 'damage', 'ap', 'skill', 'reach'],
 
   spellTypes: ['spell', 'preps', 'ritual', 'forms'],
@@ -3380,10 +4308,6 @@ const processingFunctions = {
         const weaponAttribute = processingFunctions.getReprowAttribute(key)
         const primaryAttributeName = key.includes('weapon') ? `primary_${type}_weapon` : `primary_${type}_weapon_${weaponAttribute}`
         update[primaryAttributeName] = value
-
-        if (key.includes('ammo')) {
-          update[`${primaryAttributeName}_max`] = value
-        }
       }
       return update
     }
@@ -3419,6 +4343,223 @@ const SPIRIT_TYPES = {
   toxic_man_harrow: {offsets: [0, 2, 3, -2, 0, 0, 0, 0], powers: "Accident, Astral Form, Concealment, Confusion, Enhanced Senses, Fear, Influence, Materialization, Sapience, Search"},
   cicak: {offsets: [1, 3, 2, 0, 0, 0, 0, 0], powers: "Astral Form, Banishing Resistance, Fey Glamour, Materialization, Movement, Natural Weapon, Sapience, Vanishing, Wall Walking"}
 }
+  // FICHIER GENERE par tools/generate-spirits.js depuis data/sprites.json : ne pas modifier a la main.
+// Attribut = Niveau + decalage ; ordre des decalages : charisma, intuition, logic. initMult : initiative matricielle = Niveau x initMult.
+const SPRITE_TYPES = {
+  code: {offsets: [0, 0, 2], initMult: 2, matrix: [0, 2], powers: "Info Sortilege, Probability Distribution", powerList: ["info_sortilege","probability_distribution"], skills: "Computer, Data Search, Electronic Warfare", forms: "Browse, Decrypt, Edit, Encrypt", optionalForms: "Analyze, Corrupt, Data Bomb, Scan"},
+  courier: {offsets: [0, 1, 1], initMult: 3, matrix: [1, 1], powers: "Cookie, Hash", powerList: ["cookie","hash"], skills: "Computer, Data Search, Hacking", forms: "Analyze, Edit, Encrypt, Stealth, Track", optionalForms: "Browse, Command, Decrypt, Exploit, Scan"},
+  crack: {offsets: [0, 1, 0], initMult: 3, matrix: [1, 0], powers: "Suppression", powerList: ["suppression"], skills: "Computer, Electronic Warfare, Hacking", forms: "Analyze, Exploit, Stealth", optionalForms: "Decrypt, Defuse, Edit, Scan, Spoof"},
+  data: {offsets: [0, 0, -2], initMult: 2, matrix: [0, -2], powers: "Steganography, Watermark", powerList: ["steganography","watermark"], skills: "Computer, Data Search, Electronic Warfare", forms: "Analyze, Browse, Edit, Decrypt", optionalForms: "Defuse, Encrypt, Sniffer, Stealth, Linguasoft"},
+  fault: {offsets: [0, 2, 1], initMult: 3, matrix: [2, 1], powers: "Electron Storm", powerList: ["electron_storm"], skills: "Computer, Cybercombat, Hacking", forms: "Analyze, Armor, Attack, Stealth", optionalForms: "Black Hammer, Blackout, Exploit, Medic"},
+  machine: {offsets: [0, 0, 2], initMult: 2, matrix: [0, 2], powers: "Diagnostics, Gremlins, Stability", powerList: ["diagnostics","gremlins","stability"], skills: "Computer, Electronic Warfare, Hardware", forms: "Analyze, Command", optionalForms: "Decrypt, Edit, Medic"},
+  paladin: {offsets: [0, 2, 2], initMult: 1, matrix: [2, 2], powers: "Castling, Hardening", powerList: ["castling","hardening"], skills: "Computer, Cybercombat, Hacking", forms: "Armor, Disarm, Medic, Shield", optionalForms: "Analyze, Attack, Blackout, Expert Defense"},
+  sleuth: {offsets: [0, -1, 2], initMult: 3, matrix: [-1, 2], powers: "Cookie, Traceroute", powerList: ["cookie","traceroute"], skills: "Computer, Data Search, Electronic Warfare, Hacking", forms: "Analyze, Browse, Sniffer, Spoof, Stealth, Track", optionalForms: "Command, Decrypt, Exploit, Scan"},
+  tank: {offsets: [0, 1, 1], initMult: 2, matrix: [1, 1], powers: "Assault", powerList: ["assault"], skills: "Cybercombat", forms: "Attack, Attack, Blackout, Nuke", optionalForms: "Armor, Black Hammer, Cascading, Medic, Shield"},
+  tutor: {offsets: [0, 1, 0], initMult: 2, matrix: [1, 0], powers: "Proficiency, Stability", powerList: ["proficiency","stability"], skills: "Computer, Hardware, Instruction, Software", forms: "Analyze, Browse", optionalForms: "Command, Edit, Activesoft, Knowsoft, Linguasoft"},
+  blight: {offsets: [0, 0, 2], initMult: 2, matrix: [0, 2], powers: "Datavore, Resonance Drain", powerList: ["datavore","resonance_drain"], skills: "Computer, Cybercombat, Data Search, Hacking, Software", forms: "Attack (Shredder), Corrupt, Edit, Exploit", optionalForms: "Analyze, Armor, Browse, Stealth, Scan"},
+  chaos: {offsets: [0, 2, 0], initMult: 2, matrix: [2, 0], powers: "Distortion, Siphon", powerList: ["distortion","siphon"], skills: "Cybercombat, Electronic Warfare, Hacking", forms: "Corrupt, Exploit, Nuke, Node Mine, Sniffer, Spoof", optionalForms: "Armor, Attack, Black Hammer, Decrypt, Encrypt"},
+  contagion: {offsets: [0, -1, 1], initMult: 3, matrix: [-1, 1], powers: "Virulence", powerList: ["virulence"], skills: "Computer, Cybercombat, Data Search, Hacking, Software", forms: "Attack (Rust), Browse, Edit, Exploit, Nuke", optionalForms: "Corrupt, Decrypt, Encrypt, Shield"},
+  meltdown: {offsets: [0, 0, 1], initMult: 2, matrix: [0, 1], powers: "Gremlins, Surge", powerList: ["gremlins","surge"], skills: "Computer, Cybercombat, Electronic Warfare, Hardware", forms: "Command, Data Bomb", optionalForms: "Attack, Databomb, Decrypt"},
+  spike: {offsets: [0, 1, 2], initMult: 2, matrix: [1, 1], powers: "Peak, Resonance Drain, Sparky", powerList: ["peak","resonance_drain","sparky"], skills: "Cybercombat, Hacking", forms: "Attack, Attack (Psychotropic), Black Hammer, Blackout, Cascading", optionalForms: "Armor, Exploit, Shielding, Stealth"}
+}
+  // FICHIER GENERE par tools/generate-spirits.js depuis data/technocritters.json : ne pas modifier a la main.
+const TECHNOCRITTER_TYPES = {
+  ahi: {resonance: 4, passes: 3, skills: "Computer 2, Cybercombat 5, Hacking 4, Software 1", forms: "Analyze 2, Armor 5, Attack 4, Corrupt 2, Exploit 3, Nuke 3, Stealth 5", powers: "AR-Parallelism, Hardening, Technovantage (Defragmentation), Venomous Code"},
+  bastet: {resonance: 5, passes: 3, skills: "Computer 3, Cybercombat 3, Hacking 3, Software 3", forms: "Analyze 4, Blackout 4, Corrupt 3, Exploit 5, Spoof 3, Stealth 5", powers: "AR-Parallelism, Resonant Conditioning, Resonance Bond (Bastet Bond), Suppression, Technovantage (Flexible Touch)"},
+  digit: {resonance: 1, passes: 3, skills: "Computer 3, Electronic Warfare 4, Hacking 2, Software 3", forms: "Analyze 3, Armor 2, Command 2, Exploit 3, ECCM 3, Edit 2, Scan 3, Spoof 3, Stealth 3", powers: "AR-Parallelism, E-Hive, Gremlins, Technovantage (Living ECM); -4 to detect its persona/signature"},
+  flipper: {resonance: 4, passes: 4, skills: "Computer 3, Cybercombat 4, Hacking 3, Software 2", forms: "Analyze 3, Armor 3, Attack 4, Browse 1, Command 2, Disarm 3, Shield 3, Stealth 5", powers: "AR-Parallelism, Blend, Tunnel, Technovantage (Overclocking)"},
+  libertine: {resonance: 3, passes: 3, skills: "Computer 3, Hacking 4, Software 5", forms: "Analyze 3, Command 2, Data Bomb 2, Exploit 4, Sniffer 3, Spoof 5, Stealth 5", powers: "AR-Parallelism, Suppression, Technovantage (Skinlink), Technovantage (Swap, rating 2)"},
+  mongrel: {resonance: 4, passes: 3, skills: "Computer 2, Data Search 5, Electronic Warfare 4, Software 2", forms: "Analyze 4, Browse 5, Edit 2, Scan 5, Sniffer 3, Track 5", powers: "AR-Parallelism, Spraying, Technovantage (E-Sensing), Technovantage (Sift), Traceroute"},
+  nezumi: {resonance: 2, passes: 3, skills: "Computer 3, Electronic Warfare 3, Hardware 3, Software 3", forms: "Analyze 3, Command 3, Defuse 3, Decrypt 3, Edit 4, Scan 5, Spoof 3", powers: "AR-Parallelism, Diagnostics, Technovantage (E-Sensing), Technovantage (Skinlink)"},
+  rapscallion: {resonance: 2, passes: 3, skills: "Computer 3, Hacking 3, Software 4", forms: "Analyze 3, Attack 3, Scan 3, Sniffer 3, Spoof 3, Stealth 3", powers: "AR-Parallelism, Anthropomorphism, Cozenage, Technovantage (Biowire)"},
+  rook: {resonance: 2, passes: 3, skills: "Computer 3, Electronic Warfare 4, Hacking 3, Software 2", forms: "Analyze 4, Command 3, Edit 4, Encrypt 3, Decrypt 3, Scan 4, Shield 3", powers: "AR-Parallelism, Holographic Concealment, Technovantage (Immersion), Virtual Mimicry"}
+}
+  // FICHIER GENERE par tools/generate-spirits.js depuis data/ai.json : ne pas modifier a la main.
+// offsets = Charisme, Intuition, Logique, Volonte, Edge par rapport a R (indice de reference) ; null = non renseigne (IA ferales).
+const AI_TYPES = {
+  metasapient: {group: "AI", notes: "Most human-like", skills: "Cracking group R+1, Electronics group R+1", programs: "Analyze R+1, Armor, Browse, Command, Edit, Exploit, Homeground, Reality Filter, Stealth", qualities: "Authority, Code Flux, Fragmentation, Real World Naivete, Redundancy, Rootkit, Sapper", offsets: [1,0,0,1,0], initBonus: 0},
+  artifaun: {group: "AI", notes: "Protosapient from virtual pets", skills: "Computer R-1, Cybercombat R+1, Hacking R", programs: "Analyze, Armor, Attack, Browse, Edit, Exploit, Homeground, Stealth", qualities: "Drone Pilot, Fragmentation, Real World Naivete", offsets: [0,1,-1,0,0], initBonus: 0},
+  poltergeist: {group: "AI", notes: "Protosapient from maintenance utilities", skills: "Computer R+1, Cybercombat R-1, Data Search R-1, Hacking R, Software R", programs: "Analyze, Attack R-1, Browse, Command, Edit, Exploit, Homeground, Stealth", qualities: "Code Flux, Corruptor, Real World Naivete, Rootkit", offsets: [-2,1,-1,0,0], initBonus: 0},
+  predator: {group: "AI", notes: "Protosapient from offensive software", skills: "Computer R, Cybercombat R+2, Hacking R", programs: "Analyze, Armor, Attack R+1, Blackout or Black Hammer, Cascading 1, Exploit, Stealth, Track", qualities: "Codivore, Real World Naivete, Redundancy, Snooper", offsets: [-1,1,0,0,1], initBonus: 2},
+  archivist: {group: "AI", notes: "Xenosapient, data hoarder", skills: "Computer R, Data Search R+2, Hacking R", programs: "Analyze, Browse R+2, Decrypt R+2, Defuse, Edit, Encrypt, Exploit, Homeground, Purge, Stealth", qualities: "Code Flux, Real World Naivete, Redundancy, Rootkit", offsets: [-2,1,2,0,0], initBonus: 0},
+  assembler: {group: "AI", notes: "Xenosapient from compilers/kernels", skills: "Cracking group R, Electronics group R+1", programs: "Analyze, Browse, Command, Edit, Expert Defense 2, Exploit R-1, Homeground R+2, Medic R+2, Purge, Spoof, Stealth", qualities: "Authority, Emulate, Real World Naivete, Spawn", offsets: [-2,-2,3,1,1], initBonus: 0},
+  sculptor: {group: "AI", notes: "Xenosapient, rewrites node iconography", skills: "Computer, Hacking, Software R+1", programs: "Analyze R+1, Browse, Command, Edit R+2, Exploit, Homeground, Medic, Reality Filter, Stealth", qualities: "Code Flux, Designer, Improved Realignment, Real World Naivete", offsets: [1,2,0,1,0], initBonus: 0},
+  daemon: {group: "Feral AI", notes: "Destroyer: hunts other AIs", skills: "", programs: "Attack R+1, Cascading, Expert Offense", qualities: "Codivore, Datavore (realigning AIs), Fnord, Redundancy", offsets: null, initBonus: 0},
+  frobnitz: {group: "Feral AI", notes: "Destroyer: munges sprite code", skills: "", programs: "Attack R+2", qualities: "Datavore (sprites), Sapper, Snooper", offsets: null, initBonus: 0},
+  grue: {group: "Feral AI", notes: "Destroyer: kills users with Black Hammer, eats the persona", skills: "", programs: "Black Hammer", qualities: "Authority, Datavore (dead users persona programs), Fnord, Rootkit, Teergrube", offsets: null, initBonus: 0},
+  blob: {group: "Feral AI", notes: "Infovore: munges video/trideo/icon/simsense files", skills: "", programs: "", qualities: "POKEr, Redundancy, Teergrube", offsets: null, initBonus: 0},
+  gimp: {group: "Feral AI", notes: "Infovore: eats one colour of image data", skills: "", programs: "", qualities: "Authority, Datavore (a colour)", offsets: null, initBonus: 0},
+  prowler: {group: "Feral AI", notes: "Infovore: munges advertising AROs", skills: "", programs: "", qualities: "Authority, Intuitive Hacking (Exploit), Redundancy", offsets: null, initBonus: 0},
+  sintax: {group: "Feral AI", notes: "Infovore: munges SIN data from commlinks", skills: "", programs: "", qualities: "Code Flux, Intuitive Hacking (Spoof), Rootkit", offsets: null, initBonus: 0},
+  tentacle: {group: "Feral AI", notes: "Infovore: eats persona icons", skills: "", programs: "", qualities: "Nyetworking, Redundancy, Teergrube", offsets: null, initBonus: 0},
+  cyberwerewolf: {group: "Feral AI", notes: "Naive: territorial in cyberware nodes", skills: "", programs: "", qualities: "Authority, Codivore, Designer, POKEr, Persnickety Renter (cyberware)", offsets: null, initBonus: 0},
+  heap_frog: {group: "Feral AI", notes: "Naive: eats unassigned memory", skills: "", programs: "", qualities: "Code Flux, Datavore (unused memory)", offsets: null, initBonus: 0},
+  heavyweight: {group: "Feral AI", notes: "Naive: docile, then munges anything but heavyweights", skills: "", programs: "", qualities: "Datavore (any), Improved Realignment, Redundancy", offsets: null, initBonus: 0},
+  rogue: {group: "Feral AI", notes: "Naive: takes over drones/vehicles", skills: "", programs: "", qualities: "Authority, Code Flux, Datavore (wireless traffic), Drone Pilot (ground)", offsets: null, initBonus: 0},
+  cryppie: {group: "Feral AI", notes: "Obfuscator: encrypts random files then munges them", skills: "", programs: "", qualities: "Datavore (encrypted archives), Sapper", offsets: null, initBonus: 0},
+  heisenbug: {group: "Feral AI", notes: "Obfuscator: munges loaded programs", skills: "", programs: "", qualities: "Code Flux, Redundancy, Uncertainty", offsets: null, initBonus: 0},
+  kitteh: {group: "Feral AI", notes: "Obfuscator: eats running programs, agents and AIs", skills: "", programs: "", qualities: "Codivore, Datavore (running programs)", offsets: null, initBonus: 0},
+  netmare: {group: "Feral AI", notes: "Obfuscator: munges error messages", skills: "", programs: "", qualities: "Improved Realignment, Intuitive Hacking (Attack), Nyetworking, Uncertainty", offsets: null, initBonus: 0},
+  yantra: {group: "Feral AI", notes: "Obfuscator: munges disarmed data bombs", skills: "", programs: "", qualities: "Datavore (defused data bombs), Redundancy", offsets: null, initBonus: 0},
+  green_man: {group: "Feral AI", notes: "Zombie master/spawn (money trie)", skills: "", programs: "", qualities: "Animator (master); see RW p.201", offsets: null, initBonus: 0},
+  e_ghost: {group: "E-Ghost", notes: "Digital copy of a person who died online in Crash 2.0; rating 1-6, quality of the copy independent of rating", skills: "Computer R, Cybercombat R, Hacking R, additional skills as appropriate to the character", programs: "Analyze R, Blackout R, Browse R, Command R, Edit R, Exploit R, Reality Filter R, Stealth R, Track R", qualities: "Code Flux, Corruptor, Fragmentation, Redundancy, Rootkit", offsets: [0,1,0,2,-2], initBonus: 0}
+}
+  // FICHIER GENERE par tools/generate-spirits.js depuis data/traditions.json : ne pas modifier a la main.
+const TRADITIONS = {
+  aboriginal: {drain: ["willpower","charisma"], spirits: "Combat: Air | Detection: Earth | Health: Beasts | Illusion: Guidance | Manipulation: Man"},
+  aztec: {drain: ["willpower","charisma"], spirits: "Combat: Fire | Detection: Air | Health: Plant | Illusion: Beasts | Manipulation: Earth"},
+  black_magic: {drain: ["willpower","charisma"], spirits: "Combat: Fire | Detection: Air | Health: Beasts | Illusion: Guidance | Manipulation: Earth"},
+  buddhist: {drain: ["willpower","intuition"], spirits: "Combat: Fire | Detection: Water | Health: Earth | Illusion: Guidance | Manipulation: Air"},
+  chaos_magic: {drain: ["willpower","logic"], spirits: "Combat: Fire | Detection: Air | Health: Earth | Illusion: Water | Manipulation: Man"},
+  christian_theurgy: {drain: ["willpower","charisma"], spirits: "Combat: Fire | Detection: Water | Health: Air | Illusion: Earth | Manipulation: Guidance"},
+  druidic: {drain: ["willpower","intuition"], spirits: "Combat: Beasts | Detection: Earth | Health: Plant | Illusion: Water | Manipulation: Air"},
+  egyptian: {drain: ["willpower","intuition"], spirits: "Combat: Fire | Detection: Earth | Health: Air | Illusion: Guidance | Manipulation: Water"},
+  hermetic: {drain: ["willpower","logic"], spirits: "Combat: Fire | Detection: Air | Health: Man | Illusion: Water | Manipulation: Earth"},
+  hindu: {drain: ["willpower","logic"], spirits: "Combat: Beasts | Detection: Water | Health: Plant | Illusion: Air | Manipulation: Earth"},
+  insect: {drain: ["willpower","intuition"], spirits: "Combat: Insect Soldier | Detection: Insect Scout | Health: Insect Caretaker | Illusion: Insect Nymph | Manipulation: Insect Worker"},
+  islamic: {drain: ["willpower","logic"], spirits: "Combat: Fire | Detection: Air | Health: Earth | Illusion: Guidance | Manipulation: Water"},
+  norse: {drain: ["willpower","charisma"], spirits: "Combat: Fire | Detection: Water | Health: Earth | Illusion: Air | Manipulation: Guardian"},
+  path_of_the_wheel: {drain: ["willpower","charisma"], spirits: "Combat: Earth | Detection: Guidance | Health: Air | Illusion: Water | Manipulation: Fire"},
+  psionic: {drain: ["willpower","intuition"], spirits: "Combat: Fire | Detection: Air | Health: Man | Illusion: Guidance | Manipulation: Task"},
+  qabbalistic: {drain: ["willpower","logic"], spirits: "Combat: Air | Detection: Earth | Health: Fire | Illusion: Water | Manipulation: Task"},
+  rastafarian: {drain: ["willpower","intuition"], spirits: "Combat: Man | Detection: Beasts | Health: Plant | Illusion: Water | Manipulation: Guidance"},
+  shamanic: {drain: ["willpower","charisma"], spirits: "Combat: Beasts | Detection: Water | Health: Earth | Illusion: Air | Manipulation: Man"},
+  shinto: {drain: ["willpower","charisma"], spirits: "Combat: Air | Detection: Water | Health: Plant | Illusion: Beasts | Manipulation: Man"},
+  toxic: {drain: ["willpower","intuition"], spirits: "Combat: Toxic Fire Nuclear | Detection: Toxic Air Smog | Health: Toxic Earth Sludge | Illusion: Toxic Water Pollution | Manipulation: Toxic Man Harrow"},
+  traditional_or_hedge_witchcraft: {drain: ["willpower","intuition"], spirits: "Combat: Earth | Detection: Water | Health: Plant | Illusion: Air | Manipulation: Task"},
+  voodoo: {drain: ["willpower","charisma"], spirits: "Combat: Guardian | Detection: Water | Health: Man | Illusion: Guidance | Manipulation: Task"},
+  wicca_gardnerian: {drain: ["willpower","logic"], spirits: "Combat: Fire | Detection: Water | Health: Plant | Illusion: Air | Manipulation: Earth"},
+  wicca_goddess: {drain: ["willpower","intuition"], spirits: "Combat: Fire | Detection: Water | Health: Plant | Illusion: Air | Manipulation: Earth"},
+  wuxing: {drain: ["willpower","logic"], spirits: "Combat: Fire | Detection: Earth | Health: Plant | Illusion: Water | Manipulation: Guidance"},
+  zoroastrian: {drain: ["willpower","logic"], spirits: "Combat: Guardian | Detection: Fire | Health: Earth | Illusion: Water | Manipulation: Man"}
+}
+  // FICHIER GENERE par tools/generate-spirits.js depuis data/streams.json : ne pas modifier a la main.
+const STREAMS = {
+  cyberadepts: {fade: ["willpower","resonance"], sprites: "Courier, Crack, Data, Fault, Machine"},
+  default_technomancer_sr4: {fade: ["willpower","resonance"], sprites: "Courier, Crack, Data, Fault, Machine"},
+  dronomancers: {fade: ["intuition","resonance"], sprites: "Crack, Data, Fault, Machine, Tutor"},
+  e_scapists: {fade: ["willpower","resonance"], sprites: "Courier, Crack, Data, Fault, Tank"},
+  info_savants: {fade: ["intuition","resonance"], sprites: "Code, Courier, Data, Machine, Paladin"},
+  networkers: {fade: ["charisma","resonance"], sprites: "Code, Courier, Crack, Data, Sleuth"},
+  singularitarians: {fade: ["logic","resonance"], sprites: "Courier, Crack, Data, Tutor, Tank"},
+  sourcerors: {fade: ["logic","resonance"], sprites: "Code, Courier, Crack, Data, Machine"},
+  technoshamans: {fade: ["charisma","resonance"], sprites: "Crack, Data, Machine, Paladin, Sleuth"},
+  dissonant: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  cyberdarwinists: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  discordians: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  infektors: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  nytemares: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"},
+  the_sublime: {fade: null, sprites: "Blight, Chaos, Contagion, Meltdown, Spike"}
+}
+  // FICHIER GENERE par tools/generate-spirits.js depuis data/echoes.json, paragons.json, widgets.json, sprite_powers.json, technomancer_rules.json : ne pas modifier a la main.
+// ECHOES : mods = bonus par prise (response, signal, system, firewall, biofeedback, passes), max = nombre de prises.
+const ECHOES = {
+  "firewall_upgrade": {name: "Firewall Upgrade", effect: "+1 living-persona Firewall; up to 3 times.", source: "SR4A p.243-244", max: 3, mods: {"firewall":1}},
+  "neurofilter": {name: "NeuroFilter", effect: "+1 Biofeedback Filter; up to 3 times.", source: "SR4A p.243-244", max: 3, mods: {"biofeedback":1}},
+  "system_upgrade": {name: "System Upgrade", effect: "+1 System; up to 3 times.", source: "SR4A p.243-244", max: 3, mods: {"system":1}},
+  "overclocking": {name: "Overclocking", effect: "+1 Response (raises Matrix Initiative) and +1 Initiative Pass in full-sim VR.", source: "SR4A p.243-244", max: 1, mods: {"response":1,"passes":1}},
+  "resonance_link": {name: "Resonance Link", effect: "One-way empathic link to another meshed technomancer (mood, danger, pain); both can take it for a two-way link.", source: "SR4A p.243-244", max: 1, mods: {}},
+  "amplification": {name: "Amplification", effect: "+1 Signal, up to 3×", source: "UW p.145-149", max: 3, mods: {"signal":1}},
+  "biowire": {name: "Biowire", effect: "Skillwire at rating = submersion grade; active skillsofts emulated (see Emulation)", source: "UW p.145-149", max: 1, mods: {}},
+  "blur": {name: "Blur", effect: "+grade to the threshold of Matrix Perception to detect signature (incl. the 5+ threshold)", source: "UW p.145-149", max: 1, mods: {}},
+  "coenesthesia": {name: "Coenesthesia", effect: "Resonance+Intuition (3), subconscious detection; +2 to follow-up Matrix Perception", source: "UW p.145-149", max: 1, mods: {}},
+  "defragmentation": {name: "Defragmentation", effect: "Resonance+Willpower (1 Combat Turn) Extended; each hit heals 1 box of living-persona damage; no other actions; not vs Black IC/Fading", source: "UW p.145-149", max: 1, mods: {}},
+  "e_sensing": {name: "E-sensing", effect: "Resonance+Perception, Observe in Detail as Simple Action, range Resonance × grade m; more hits reveal more (1 hit presence/direction … 5+ Firewall/nanites/slaved/stealth tags)", source: "UW p.145-149", max: 1, mods: {}},
+  "flexible_touch": {name: "Flexible Touch", effect: "Forge signature: +grade threshold to identify the real one; signatures last 1 hour less per grade", source: "UW p.145-149", max: 1, mods: {}},
+  "living_ecm": {name: "Living ECM", effect: "Jammer rating = grade; Complex Action to start, Free Action per pass to sustain; +1 per extra selection", source: "UW p.145-149", max: 1, mods: {}},
+  "macro": {name: "Macro", effect: "One extra non-combat Matrix task in a Complex Action at –2 per test; once", source: "UW p.145-149", max: 1, mods: {}},
+  "immersion": {name: "Immersion", effect: "+1 die when jumped in; selectable twice", source: "UW p.145-149", max: 2, mods: {}},
+  "multiprocessing": {name: "Multiprocessing", effect: "Observe in Detail is a Free Action in VR/AR; extra Free Action per pass for non-combat tasks", source: "UW p.145-149", max: 1, mods: {}},
+  "info_sortilege": {name: "Info Sortilege", effect: "Data-search intuition (mild trance, –2 to other actions); Data Search + Resonance Test after ≥2 hits on Data Search + Browse; can \"watch\" a number of extra nodes = grade (half skill for tests there, half dice pool to defend). Needs Data Search skill and Browse CF", source: "UW p.145-149", max: 1, mods: {}},
+  "sift": {name: "Sift", effect: "Data Search threshold reduced by grade", source: "UW p.145-149", max: 1, mods: {}},
+  "skinlink": {name: "Skinlink", effect: "Skin as link (hack by touch even with jamming; target needs no skinlink); two skinlink technomancers can talk by touch", source: "UW p.145-149", max: 1, mods: {}},
+  "sparky": {name: "Sparky", effect: "After damaging a hacker icon: Response+Willpower vs target Response+System; each net hit –1 Response of the originating node; 0 = node fails. Repair Hardware+Logic (8, 1 h) Extended. Ineffective vs technomancers, sprites, agents, AIs, e-ghosts", source: "UW p.145-149", max: 1, mods: {}},
+  "sprite_link": {name: "Sprite Link", effect: "One more sprite species (repeatable)", source: "UW p.145-149", max: 1, mods: {}},
+  "swap": {name: "Swap", effect: "–1 overall sustaining modifier for threaded CFs (max twice)", source: "UW p.145-149", max: 2, mods: {}},
+  "widget_crafting": {name: "Widget Crafting", effect: "Create widgets (section 6)", source: "UW p.145-149", max: 1, mods: {}},
+  "acceleration": {name: "Acceleration", effect: "+1 Reaction (augmentation bonus) and +1 Initiative Pass for real-world actions; up to 3×.", source: "UW p.147-148", max: 3, mods: {}},
+  "advanced_overclocking": {name: "Advanced Overclocking", effect: "counts as Overclocking taken twice: total +2 Response and +2 IP in full-sim VR; with hot-sim passes this reaches IP 5 (exception to the normal cap of 4).", source: "UW p.147-148", max: 1, mods: {"response":2,"passes":2}},
+  "enhanced_resonance_link": {name: "Enhanced Resonance Link", effect: "two-way telepathic link as Mind Link, exchange of data; one partner at a time even in a mesh.", source: "UW p.147-148", max: 1, mods: {}},
+  "mesh_reality": {name: "Mesh Reality", effect: "Free Action; perceive real world and VR together; use Matrix Initiative/passes in meatspace (not more passes than normal for real actions). Simultaneous physical and cybercombat: –4 to all pools (reducible for cybercombat only via Macro).", source: "UW p.147-148", max: 1, mods: {}},
+  "mind_over_machine": {name: "Mind Over Machine", effect: "jump into any wireless device without rigger adaptation (hack in first if no access).", source: "UW p.147-148", max: 1, mods: {}},
+  "resonance_exchange": {name: "Resonance Exchange", effect: "share one complex form or widget at a time with a linked technomancer (each option chosen separately; threaded CFs not shareable); rating limited by sharer's grade; sharer keeps use.", source: "UW p.147-148", max: 1, mods: {}},
+  "resonance_trodes": {name: "Resonance Trodes", effect: "touch acts as trodes (share simsense/Matrix perception); unwilling target needs a touch attack, a subduing attack to hold, and Resonance+Willpower vs Intuition+Willpower.", source: "UW p.147-148", max: 1, mods: {}},
+  "contaminate": {name: "Contaminate", effect: "Resonance + Software + submersion grade (1 IP) Extended; each hit +1 to a temporary dissonance pool up to the dissonant's Resonance (a resonance well must first be reduced, with its rating as a penalty); node restores itself after grade hours unless the GM rules otherwise.", source: "UW p.175-178", max: 1, mods: {}},
+  "malfunction": {name: "Malfunction", effect: "reduce a sprite's tasks to 0 by decompiling (+grade), then Compiling (+grade) to take control; it recodes as an entropic sprite and may be registered.", source: "UW p.175-178", max: 1, mods: {}},
+  "pryon": {name: "Pryon", effect: "code-induced diseases spread by touch. Black Shakes (Contact, Power 5, Body+Willpower (2) monthly; tremors –1 up to –4 on physical-attribute tests); Dysphoria (Contact, Power 6, Willpower (1) Test, mood episodes).", source: "UW p.175-178", max: 1, mods: {}},
+  "siphon": {name: "Siphon", effect: "Cybercombat + Attack vs Response + System; 3+ net hits dumps the target (dumpshock); more hits but less than 3 = –2 dice for grade Initiative Passes. VR users only.", source: "UW p.175-178", max: 1, mods: {}}
+}
+const PARAGONS = {
+  "01_zero_one": {name: "01 (Zero-One)", advantage: "+1 die compiling/registering", disadvantage: "2 Edge to negate a glitch / downgrade a critical", sprites: "", source: "UW p.149-151"},
+  "alias": {name: "Alias", advantage: "+2 Spoof; +1 Crack or Sleuth", disadvantage: "Cannot pay for lifestyle; must spoof it", sprites: "Crack, Sleuth", source: "UW p.149-151"},
+  "archivist": {name: "Archivist", advantage: "+2 Browse; +1 Code or Data", disadvantage: "Willpower+Logic (3) to delete/corrupt data", sprites: "Code, Data", source: "UW p.149-151"},
+  "architect": {name: "Architect", advantage: "+2 Edit; +1 Data or Machine", disadvantage: "–1 Crash Tests", sprites: "Data, Machine", source: "UW p.149-151"},
+  "babel": {name: "Babel", advantage: "+1 online Etiquette/Language; +1 Courier or Tutor", disadvantage: "Willpower+Logic (3) to encrypt", sprites: "Courier, Tutor", source: "UW p.149-151"},
+  "black_hat": {name: "Black Hat", advantage: "+2 Exploit; +1 Crack or Fault", disadvantage: "Willpower+Charisma (3) to resist hacking interesting node", sprites: "Crack, Fault", source: "UW p.149-151"},
+  "cryptome": {name: "Cryptome", advantage: "+2 Encryption/Decryption; +1 Courier or Data", disadvantage: "Willpower+Logic (3) to share a secret", sprites: "Courier, Data", source: "UW p.149-151"},
+  "daedalus": {name: "Daedalus", advantage: "+2 Hardware; +1 Machine or Fault", disadvantage: "Devices built have –2 usability for others", sprites: "Machine, Fault", source: "UW p.149-151"},
+  "delphi": {name: "Delphi", advantage: "+2 Analyze; +1 Code or Tutor", disadvantage: "Willpower+Logic (3) for unplanned quick decisions", sprites: "Code, Tutor", source: "UW p.149-151"},
+  "echelon": {name: "Echelon", advantage: "+1 Track/Sniffer; +1 Crack or Sleuth", disadvantage: "–1 to all actions when lacking information", sprites: "", source: "UW p.149-151"},
+  "flow": {name: "Flow", advantage: "+2 Threading; +1 Code or Data", disadvantage: "–1 Cybercombat Attack", sprites: "Code, Data", source: "UW p.149-151"},
+  "idoru": {name: "Idoru", advantage: "+2 Con; +1 Crack or Sleuth", disadvantage: "Willpower+Logic (3) to avoid manipulating data", sprites: "Crack, Sleuth", source: "UW p.149-151"},
+  "ic": {name: "IC", advantage: "+2 Matrix damage resistance (not Fading); +1 Paladin", disadvantage: "–1 all actions until atoning for a failed guard/goal", sprites: "Paladin", source: "UW p.149-151"},
+  "probe": {name: "Probe", advantage: "+2 Scan; +1 Crack or Sleuth", disadvantage: "–2 hacking on the fly without probing", sprites: "Crack, Sleuth", source: "UW p.149-151"},
+  "pulse": {name: "Pulse", advantage: "+2 Matrix Initiative", disadvantage: "–2 Hacking when not hacking on the fly", sprites: "", source: "UW p.149-151"},
+  "shooter": {name: "Shooter", advantage: "+2 Matrix Attack; +1 Paladin or Tank", disadvantage: "Willpower+Logic (3) to retreat", sprites: "Paladin, Tank", source: "UW p.149-151"},
+  "world_tree": {name: "World Tree", advantage: "+2 Analyze; +1 Code or Courier", disadvantage: "Willpower+Charisma (3) to resist dropping task for new information", sprites: "Code, Courier", source: "UW p.149-151"},
+  "abort": {name: "Abort", advantage: "+2 Crash Tests; +1 dissonant Crack or Fault", disadvantage: "Willpower+Charisma (3) to do anything but crash software in cybercombat", sprites: "Crack, Fault", source: "UW p.149-151 (dissonant)"},
+  "disinformation": {name: "Disinformation", advantage: "+1 Influence group tests; +1 dissonant Data or Tutor", disadvantage: "Willpower+Charisma (3) to pass honest information to non-dissonants", sprites: "", source: "UW p.149-151 (dissonant)"},
+  "jormungand": {name: "Jormungand", advantage: "+2 Corrupt; +1 dissonant Data or Code", disadvantage: "Willpower+Logic (3) to leave a hacked node unscathed", sprites: "Data, Code", source: "UW p.149-151 (dissonant)"},
+  "nemesis": {name: "Nemesis", advantage: "+2 Con; +1 dissonant Fault or Sleuth", disadvantage: "Willpower+Charisma (3) to hold back punishing", sprites: "Fault, Sleuth", source: "UW p.149-151 (dissonant)"},
+  "noise": {name: "Noise", advantage: "+2 Threading; +1 dissonant Courier or Code", disadvantage: "Double static/dead-zone modifiers", sprites: "Courier, Code", source: "UW p.149-151 (dissonant)"},
+  "snuff": {name: "Snuff", advantage: "+2 Sniffer; +1 dissonant Crack or Sleuth", disadvantage: "–2 resisting BTL/Matrix media addiction", sprites: "Crack, Sleuth", source: "UW p.149-151 (dissonant)"},
+  "tiamat": {name: "Tiamat", advantage: "+2 Cybercombat; +1 dissonant Crack or Tank", disadvantage: "–1 Hacking", sprites: "Crack, Tank", source: "UW p.149-151 (dissonant)"}
+}
+const WIDGETS = {
+  "amp": {name: "Amp", effect: "+ to Cybercombat.", source: "UW p.148-149"},
+  "benchmarking": {name: "Benchmarking", effect: "+ to Computer Tests (incl. Matrix Perception).", source: "UW p.148-149"},
+  "cheat": {name: "Cheat", effect: "+ to Hacking.", source: "UW p.148-149"},
+  "debugger": {name: "Debugger", effect: "+ to Software.", source: "UW p.148-149"},
+  "decoy": {name: "Decoy", effect: "decoy persona (Computer+Analyze vs Resonance+rating to tell apart; dies on any hit).", source: "UW p.148-149"},
+  "displacer": {name: "Displacer", effect: "+ to Matrix combat defence (stacks with Shield).", source: "UW p.148-149"},
+  "neuroleptic": {name: "Neuroleptic", effect: "+ to defend vs psychotropic programs.", source: "UW p.148-149"},
+  "rendering": {name: "Rendering", effect: "+ to Compiling. RAM: sustains threaded programs up to total rating = its rating (unrated options count as 1).", source: "UW p.148-149"}
+}
+const WIDGET_RULES = "Needs the Widget Crafting echo. Creation: Threading (Rating x 2, 1 hour) Extended; resist Fading = 2 x rating; lasts 8 hours; no sustaining; only the creator can use it; can be crashed. Dice bonus = rating (only the highest applies)."
+const SPRITE_POWERS = {
+  "cookie": {name: "Cookie", effect: "Opposed rating × 2 vs. target Firewall + Stealth. Logs the icon's nodes, who it talked to and when (not contents), programs. Net hits set depth (1 = outline, 4+ = detailed). Ends at a preset time and reports back. Detect: Matrix Perception (4); remove: Computer + Edit (2).", source: "SR4A p.242-243"},
+  "diagnostics": {name: "Diagnostics", effect: "Teamwork Test, sprite rating × 2; each hit +1 die to a character using/repairing the device, up to the character's skill.", source: "SR4A p.242-243"},
+  "electron_storm": {name: "Electron Storm", effect: "On a successful cybercombat hit, engulfs the target: rating DV Matrix damage, AP –2 each of the sprite's phases; target –2 on all Matrix actions. Escape: Complex Action, Opposed Response × 2 vs. the sprite.", source: "SR4A p.242-243"},
+  "gremlins": {name: "Gremlins", effect: "Opposed rating × 2 vs. device System + Firewall: device suffers a glitch; 4 net hits = critical glitch. Against drones/vehicles can force a Crash Test with the rating as a penalty.", source: "SR4A p.242-243"},
+  "hash": {name: "Hash", effect: "Temporarily encrypts a file so only the sprite can decrypt it; reverts if the sprite leaves; sprite destroyed = file permanently corrupted.", source: "SR4A p.242-243"},
+  "steganography": {name: "Steganography", effect: "Hides data inside another file; invisible to searches; found only by Matrix Perception (4) (even by the sprite).", source: "SR4A p.242-243"},
+  "stability": {name: "Stability", effect: "Prevents normal malfunctions and glitches (also those from Gremlins/Accident) on a node/device/program/icon; critical glitches become standard glitches.", source: "SR4A p.242-243"},
+  "suppression": {name: "Suppression", effect: "Any alert the sprite triggers is delayed rating ÷ 2 (round up) Combat Turns.", source: "SR4A p.242-243"},
+  "watermark": {name: "Watermark", effect: "Invisible tag only Resonance beings can read; can be overwritten.", source: "SR4A p.242-243"},
+  "assault": {name: "Assault", effect: "two attacks as with two weapons; only Pilot is halved, each Attack CF added to one half (needs two Attack CFs). Once per combat against an icon.", source: "UW p.156-157"},
+  "castling": {name: "Castling", effect: "Complex Action; redirect damage aimed at the technomancer to itself by mimicking his access ID.", source: "UW p.156-157"},
+  "hardening": {name: "Hardening", effect: "Armor CF behaves like hardened armor while used (Complex Action, like full defence).", source: "UW p.156-157"},
+  "info_sortilege": {name: "Info Sortilege", effect: "as the echo, with rating instead of Resonance.", source: "UW p.156-157"},
+  "probability_distribution": {name: "Probability Distribution", effect: "Rating×2 vs half node Response (round up); success adds/removes half rating (round up) dice on a target test; Complex Action, so the sprite must have delayed.", source: "UW p.156-157"},
+  "proficiency": {name: "Proficiency", effect: "tutor assists a non-skilled user in AR/VR: test without modifiers using half rating (round up) as skill; takes an Extended or Complex action.", source: "UW p.156-157"},
+  "traceroute": {name: "Traceroute", effect: "Extended Rating + Track, 1 hour base interval, threshold by how often the subject uses the Matrix: constantly 4, a few hours/day 8, once a day 12, less than daily 16. Modifiers: last transaction logged –1; subject using Stealth +Stealth; SIN/commcode/MSP address known –3. Success finds the subject's current node or last physical access point.", source: "UW p.156-157"},
+  "blend": {name: "Blend", effect: "-2 to Matrix Perception to spot it and -2 to attacks against it.", source: "UW p.157-160"},
+  "credit": {name: "Credit", effect: "Monthly Rating + Edge Test: each hit = 10,000 nuyen of permanent black-account cash carrying its signature; can also make daily counterfeit cash of rating = rating / 2 that vanishes after 8 hours.", source: "UW p.157-160"},
+  "denial": {name: "Denial", effect: "Treated as having tasks equal to its Edge (refreshing every 8 hours) for the purposes of decompiling. All free sprites have it.", source: "UW p.157-160"},
+  "doorstop": {name: "Doorstop", effect: "Rating + Response vs Willpower + Resonance; traps the user online while sustained; disconnecting from outside causes dumpshock.", source: "UW p.157-160"},
+  "resonance_bond": {name: "Resonance Bond", effect: "Quality-like bond (UW p.160): both parties act as resonance link / datatrail for each other. Examples: Allocation Bond (+half the sprite Resonance dice to Fading tests), Echo Bond (share one power/CF/echo/widget each way), Networking Bond (share one CF each way).", source: "UW p.157-160"},
+  "resonance_rift": {name: "Resonance Rift", effect: "Opens rifts to resonance realms (UW p.172).", source: "UW p.157-160"},
+  "transfer": {name: "Transfer", effect: "Grants one of its powers to up to Rating subjects (one power per subject).", source: "UW p.157-160"},
+  "datavore": {name: "Datavore", effect: "after a successful attack, every 3 damage = +1 rating temporarily (max half starting rating, round down) for Resonance Combat Turns.", source: "UW p.179-181"},
+  "distortion": {name: "Distortion", effect: "Complex Action; all Matrix test dice pools in the node reduced by the sprite's rating while sustained (Simple Action per pass after the first); users can roll System + Response to reduce the penalty by 1 per hit. Against technomancers/sprites: Rating × 2 vs Resonance + Firewall; each Combat Turn sustained, –1 Resonance; at 0, physical dumpshock (DV increased by the sprite's power). Resonance returns at 1 per 10 minutes. One use per node.", source: "UW p.179-181"},
+  "peak": {name: "Peak", effect: "replaces damage with a tripchip-like BTL blast: penalty on all actions equal to net hits for Resonance Combat Turns; possible mental addiction test. Hot-sim VR only.", source: "UW p.179-181"},
+  "resonance_drain": {name: "Resonance Drain", effect: "after a hit, drains 1 Resonance per pass (Simple Action); at 0, dissonant dumpshock as above.", source: "UW p.179-181"},
+  "siphon": {name: "Siphon", effect: "Same as the dissonant / technomancer echo of the same name (see echoes.json).", source: "UW p.179-181"},
+  "surge": {name: "Surge", effect: "Opposed Rating × 2 vs the device's System + Firewall (or Device rating × 2); each net hit = 1 box of damage to the device; sprite must be in a node linked to the device but not inside the device.", source: "UW p.179-181"},
+  "virulence": {name: "Virulence", effect: "Rating × 2 vs program rating + Firewall; success infects the program with a GM-chosen virus.", source: "UW p.179-181"},
+  "sparky": {name: "Sparky", effect: "Same as the dissonant / technomancer echo of the same name (see echoes.json).", source: "UW p.179-181"}
+}
+const RESONANCE_DIFFERENCE = "Attack Protection: +2 dice on the Defense Test against normal Attack programs used on technomancers and sprites.\nDifficult to Analyze: +1 to the threshold of Matrix Perception Tests against technomancers, complex forms, sprites, echoes and widgets.\nImmunity to Crashing: Technomancer complex forms cannot be crashed unless the Crash action comes from a technomancer or sprite (who can still crash regular programs).\nImmunity to Defusing: A Data Bomb created by a complex form can be disarmed only by a Defuse complex form.\nImmunity to Nuke: The resources targeted by Nuke do not exist for technomancers and sprites.\nInvisible Node: The biological node is immune to standard wireless scans unless the scanner is a technomancer or sprite; may run active, passive or hidden toward them.\nResonance Encryption: The Encrypt complex form creates code breakable only by a Decrypt complex form.\nSuperior Trace: The Track complex form ignores Spoof-program confusion; only Redirect Trace with a Spoof complex form throws it."
     //Edge toggle to include ! for exploding dice
 const edgeToggle = newValue => {
   processingFunctions.setAttributes({
@@ -3576,6 +4717,71 @@ const updateShotsFired = trigger => {
   });
 }
 
+//- RECOIL (SR4) : modifier = shots already fired this pass + shots of this attack - 1 - recoil compensation, never below 0
+const RECOIL_SHOTS_BY_MODE = {SS: 1, SA: 1, BF: 3, FA: 6, Other: 1}
+
+const rangeShots = (mode, custom) => {
+  const forced = parseInt(custom, 10)
+  return forced > 0 ? forced : (RECOIL_SHOTS_BY_MODE[mode] || 1)
+}
+
+const updateRecoilPenalties = () => {
+  getSectionIDs('range', ids => {
+    const fields = ['shots_pass', 'recoil_bonus']
+    ids.forEach(id => ['recoil', 'mode', 'shots_custom', 'primary'].forEach(field => fields.push(`repeating_range_${id}_${field}`)))
+    getAttrs(fields, v => {
+      const pass = parseInt(v.shots_pass, 10) || 0
+      const bonus = parseInt(v.recoil_bonus, 10) || 0
+      const update = {primary_range_weapon_recoil_penalty: 0, primary_range_weapon_shots: 1}
+      ids.forEach(id => {
+        const prefix = `repeating_range_${id}_`
+        const shots = rangeShots(v[`${prefix}mode`], v[`${prefix}shots_custom`])
+        const compensation = parseInt(String(v[`${prefix}recoil`] || '0').replace(/[()]/g, ''), 10) || 0
+        update[`${prefix}shots`] = shots
+        update[`${prefix}recoil_penalty`] = Math.max(0, pass + shots - 1 - compensation - bonus)
+        if (v[`${prefix}primary`] === 'primary') {
+          update.primary_range_weapon_recoil_penalty = update[`${prefix}recoil_penalty`]
+          update.primary_range_weapon_shots = shots
+        }
+      })
+      processingFunctions.setAttributes(update, true)
+    })
+  })
+}
+
+//- A range weapon roll button was clicked: the roll already used the stored penalty; now count the shots and spend the ammo
+const fireRangeWeapon = eventinfo => fireRangeRow(processingFunctions.getReprowid(eventinfo.triggerName))
+
+//- The "Primary Ranged Weapon" banner button was clicked: fire the row marked Primary (its ammo change is copied back to the banner)
+const firePrimaryRangeWeapon = () => {
+  getSectionIDs('range', ids => {
+    const fields = ids.map(id => `repeating_range_${id}_primary`)
+    getAttrs(fields.concat(['shots_pass', 'primary_range_weapon_shots']), v => {
+      const id = ids.find(i => v[`repeating_range_${i}_primary`] === 'primary')
+      if (id) fireRangeRow(`repeating_range_${id}`)
+      else processingFunctions.setAttributes({shots_pass: (parseInt(v.shots_pass, 10) || 0) + (parseInt(v.primary_range_weapon_shots, 10) || 1)})
+    })
+  })
+}
+
+const fireRangeRow = rowId => {
+  getAttrs(['shots_pass', `${rowId}_ammo`, `${rowId}_mode`, `${rowId}_shots_custom`], v => {
+    const shots = rangeShots(v[`${rowId}_mode`], v[`${rowId}_shots_custom`])
+    const update = {shots_pass: (parseInt(v.shots_pass, 10) || 0) + shots}
+    const ammo = parseInt(v[`${rowId}_ammo`], 10)
+    if (!isNaN(ammo)) update[`${rowId}_ammo`] = Math.max(0, ammo - shots)
+    processingFunctions.setAttributes(update)
+  })
+}
+
+const reloadRangeWeapon = eventinfo => {
+  const rowId = processingFunctions.getReprowid(eventinfo.triggerName)
+  getAttrs([`${rowId}_ammo_max`], v => {
+    const max = parseInt(v[`${rowId}_ammo_max`], 10)
+    if (!isNaN(max)) processingFunctions.setAttributes({[`${rowId}_ammo`]: max})
+  })
+}
+
 const updateAmmoWithShotsFired = () => {
   getAttrs([`primary_range_weapon_ammo`, `shots_fired`], attrs => {
     attrs = processingFunctions.parseIntegers(attrs)
@@ -3663,21 +4869,36 @@ const resetConditionTrack = eventinfo => {
 }
 
 //Calculate Matrix Initiatve.
+// Sprite: Level x multiplier of its type. AI: Intuition + Response (Unwired p.165-170). Technocritter (emerged grunt with Matrix stats): Response x 2 (Running Wild p.189-192).
+// Other grunts keep the earlier Data Processing + Intuition formula. Passes: mx_passes (3 by default; a flipper has 4).
 const updateMatrixInitiative = () => {
-  getAttrs(["sheet_type", "data_processing", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle"], v => {
+  getAttrs(["sheet_type", "flag_special", "data_processing", "veh_response", "pilot", "intuition", "matrix_mod_modifier", "host_rating", "level", "matrix_dice_modifier", "edge_toggle", "sprite_init_mult", "mx_response", "mx_passes"], v => {
     const sheetType = v.sheet_type;
+    if (sheetType === "pc") return;
     const edgeFlag = v.edge_toggle === "@{edge}" ? true : false;
+    const emerged = sheetType === "grunt" && v.flag_special === "resonance" && (parseInt(v.mx_response) || 0) > 0;
 
     v = processingFunctions.parseIntegers(v);
 
-    let base = v.data_processing;
+    //- vehicle / drone node: Pilot + Response (deck statistics)
+    let base = sheetType === "vehicle" ? v.veh_response : v.data_processing;
     base += sheetType === "sprite" ? v.level : sheetType === "vehicle" ? v.pilot : sheetType === "host" ? v.host_rating : v.intuition;
 
+    //- sprite: Matrix initiative = Level x multiplier of its type (Chummer), no Data Processing
+    if (sheetType === "sprite" && v.sprite_init_mult > 0) base = v.level * v.sprite_init_mult;
+    //- AI: Intuition + Response of the node it occupies
+    if (sheetType === "ai") base = v.intuition + v.mx_response;
+    //- technocritter: Response x 2 in Matrix-VR
+    if (emerged) base = v.mx_response * 2;
+
     const total = base + v.matrix_mod_modifier;
+    const passes = v.mx_passes > 0 ? v.mx_passes : 3;
+    const usesPasses = sheetType === "sprite" || sheetType === "ai" || emerged;
 
     setAttrs({
       ["matrix_mod"]: total,
-      ["matrix_dice"]: sheetType === "grunt" && edgeFlag ? 5 : sheetType === "grunt" && !edgeFlag ? 4 + v.matrix_dice_modifier : 4,
+      ["matrix_initiative"]: total,
+      ["matrix_dice"]: usesPasses ? passes : sheetType === "grunt" && edgeFlag ? 5 : sheetType === "grunt" && !edgeFlag ? 4 + v.matrix_dice_modifier : 4,
       ["display_matrix_mod"]: v.matrix_mod_modifier === 0 ? base : `${base} (${total})`
     })
   })
@@ -3848,15 +5069,140 @@ on("change:repeating_weapon", () => {
 const SPIRIT_ATTRIBUTES = ['body', 'agility', 'reaction', 'strength', 'charisma', 'intuition', 'logic', 'willpower']
 const SPIRIT_DEFENSE_BONUS = {astral: 1, materialized: 0.5, other: 0}
 const SPIRIT_ROUND = Math.ceil
+// Passes d'initiative selon l'état : 3 en astral, 2 matérialisé ('other' : valeur laissée telle quelle)
+const SPIRIT_PASSES = {astral: 3, materialized: 2}
 
 const updateSpiritAttributes = () => {
   const offsets = SPIRIT_ATTRIBUTES.concat(['edge']).map(attr => `${attr}_offset`)
-  getAttrs(['sheet_type', 'force'].concat(offsets), v => {
+  getAttrs(['sheet_type', 'force', 'spirit_state'].concat(offsets), v => {
     if (v.sheet_type !== 'spirit') return
     const force = parseInt(v.force) || 0
     const update = {edge: force + (parseInt(v.edge_offset) || 0)}
     SPIRIT_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = force + (parseInt(v[`${attr}_offset`]) || 0))
+    if (SPIRIT_PASSES[v.spirit_state]) update.initiative_passes_base = SPIRIT_PASSES[v.spirit_state]
     setAttrs(update)
+  })
+}
+
+// Sprite : Charisme, Intuition, Logique, Edge = Niveau + decalage propre a l'attribut (champs *_offset).
+// Corps, Agilite, Reaction, Force et Volonte n'existent pas pour un sprite (0 dans Chummer).
+const SPRITE_ATTRIBUTES = ['charisma', 'intuition', 'logic']
+
+const updateSpriteAttributes = () => {
+  const offsets = SPRITE_ATTRIBUTES.concat(['edge']).map(attr => `${attr}_offset`)
+  getAttrs(['sheet_type', 'level', 'mx_response_offset', 'mx_firewall_offset'].concat(offsets), v => {
+    if (v.sheet_type !== 'sprite') return
+    const level = parseInt(v.level) || 0
+    const update = {edge: level + (parseInt(v.edge_offset) || 0)}
+    SPRITE_ATTRIBUTES.forEach(attr => update[`${attr}_base`] = level + (parseInt(v[`${attr}_offset`]) || 0))
+    //- Response and Firewall = Level + offset, only for types whose offsets are known (SR4A p.242); empty offset = left to the GM
+    if (v.mx_response_offset !== undefined && v.mx_response_offset !== '') update.mx_response = level + (parseInt(v.mx_response_offset) || 0)
+    if (v.mx_firewall_offset !== undefined && v.mx_firewall_offset !== '') update.firewall = level + (parseInt(v.mx_firewall_offset) || 0)
+    setAttrs(update)
+  })
+}
+
+const applySpriteType = type => {
+  const sprite = SPRITE_TYPES[type]
+  if (!sprite) return
+  getAttrs(['sheet_type'], v => {
+    if (v.sheet_type !== 'sprite') return
+    const update = {
+      powers: sprite.powers, edge_offset: 0, sprite_init_mult: sprite.initMult, mx_passes: 3,
+      mx_response_offset: sprite.matrix ? sprite.matrix[0] : '', mx_firewall_offset: sprite.matrix ? sprite.matrix[1] : '',
+      sprite_info: `Skills (rating = Level): ${sprite.skills}. Complex forms: ${sprite.forms}. Optional: ${sprite.optionalForms}.`
+    }
+    SPRITE_ATTRIBUTES.forEach((attr, i) => update[`${attr}_offset`] = sprite.offsets[i])
+    setAttrs(update)
+    fillSpritePowers(sprite.powerList || [])
+  })
+}
+
+// ---------------------------------------------------------------- AI (sheet type "ai") AND TECHNOCRITTERS (emerged grunt)
+// AI (Runner's Companion, Unwired p.165-170): Rating = average of the four mental attributes, System = average of Intuition and Logic,
+// Firewall = average of Charisma and Willpower (all rounded up). Response and Signal are those of the node the AI occupies (typed by hand).
+// Matrix condition monitor = 8 + System / 2 (round up). The computed values can be overwritten by hand until a mental attribute changes.
+const updateAIAttributes = () => {
+  getAttrs(['sheet_type', 'charisma', 'intuition', 'logic', 'willpower'], v => {
+    if (v.sheet_type !== 'ai') return
+    v = processingFunctions.parseIntegers(v)
+    const system = Math.ceil((v.intuition + v.logic) / 2)
+    setAttrs({
+      ai_rating: Math.ceil((v.charisma + v.intuition + v.logic + v.willpower) / 4),
+      mx_system: system,
+      firewall: Math.ceil((v.charisma + v.willpower) / 2),
+      matrix_max: 8 + Math.ceil(system / 2)
+    })
+  })
+}
+
+// Mental attribute offsets from R (Unwired p.166-168): Charisma, Intuition, Logic, Willpower, Edge. R = reference rating (field ai_r).
+const AI_OFFSET_ATTRIBUTES = ['charisma', 'intuition', 'logic', 'willpower']
+
+const applyAIType = type => {
+  const ai = AI_TYPES[type]
+  if (!ai) return
+  getAttrs(['sheet_type', 'ai_r'], v => {
+    if (v.sheet_type !== 'ai') return
+    const programs = ai.programs ? ` Programs (R = rating): ${ai.programs}.` : ''
+    const skills = ai.skills ? ` Skills: ${ai.skills}.` : ''
+    const update = {
+      matrix_info: `${ai.group}: ${ai.notes}.${skills}${programs}`,
+      quality: ai.qualities,
+      mx_passes: 3,
+      matrix_mod_modifier: ai.initBonus || 0
+    }
+    const r = parseInt(v.ai_r) || 0
+    if (ai.offsets && r > 0) {
+      AI_OFFSET_ATTRIBUTES.forEach((attr, i) => update[`${attr}_base`] = Math.max(1, r + ai.offsets[i]))
+      update.edge = Math.max(1, r + ai.offsets[4])
+    }
+    setAttrs(update)
+  })
+}
+
+// Changing the reference rating R re-applies the attribute offsets of the chosen AI type
+const syncAIReferenceRating = () => {
+  getAttrs(['sheet_type', 'ai_type'], v => {
+    if (v.sheet_type !== 'ai' || !AI_TYPES[v.ai_type]) return
+    applyAIType(v.ai_type)
+  })
+}
+
+// Matrix condition monitor of a technocritter = 8 + System / 2, with System = Resonance
+const updateEmergedMatrixMax = () => {
+  getAttrs(['sheet_type', 'mx_system'], v => {
+    const system = parseInt(v.mx_system) || 0
+    if (v.sheet_type !== 'grunt' || system <= 0) return
+    setAttrs({matrix_max: 8 + Math.ceil(system / 2)})
+  })
+}
+
+// Technocritter (Running Wild p.189-193): Response, Signal, System, Firewall and Biofeedback Filter all equal Resonance.
+const setTechnocritterMatrix = resonance => ({
+  resonance: resonance, mx_response: resonance, mx_signal: resonance, mx_system: resonance, firewall: resonance, mx_biofeedback: resonance,
+  matrix_max: 8 + Math.ceil(resonance / 2)
+})
+
+const applyTechnocritterType = type => {
+  const critter = TECHNOCRITTER_TYPES[type]
+  if (!critter) return
+  getAttrs(['sheet_type'], v => {
+    if (v.sheet_type !== 'grunt') return
+    const update = setTechnocritterMatrix(critter.resonance)
+    update.flag_special = 'resonance'
+    update.mx_passes = critter.passes
+    update.matrix_info = `Matrix skills: ${critter.skills}. Complex forms: ${critter.forms}. +2 dice on Matrix Perception and on all full-VR Matrix tests; Fading resisted with Intuition + Resonance.`
+    update.emergent_powers = critter.powers
+    setAttrs(update)
+  })
+}
+
+// Changing Resonance on a technocritter keeps its Matrix statistics in line (they always equal Resonance)
+const syncTechnocritterResonance = () => {
+  getAttrs(['sheet_type', 'technocritter_type', 'resonance'], v => {
+    if (v.sheet_type !== 'grunt' || !TECHNOCRITTER_TYPES[v.technocritter_type]) return
+    setAttrs(setTechnocritterMatrix(parseInt(v.resonance) || 0))
   })
 }
 
@@ -3881,6 +5227,221 @@ const applySpiritType = type => {
     setAttrs(update)
   })
 }
+
+// Tradition (onglet Magie) : preremplit les attributs de resistance au drain et la liste des esprits.
+// "custom" ne modifie rien : le MJ peut creer sa propre tradition.
+const applyTradition = key => {
+  const tradition = TRADITIONS[key]
+  if (!tradition) return
+  const update = {tradition_spirits: tradition.spirits}
+  if (tradition.drain) {
+    update.drain_attribute_1 = `@{${tradition.drain[0]}}`
+    update.drain_attribute_2 = `@{${tradition.drain[1]}}`
+  }
+  setAttrs(update)
+}
+
+// Flux (onglet Matrice, technomanciens) : preremplit la resistance au Fading et la liste des sprites compilables.
+// "custom" ne modifie rien.
+const applyStream = key => {
+  const stream = STREAMS[key]
+  if (!stream) return
+  const update = {stream_sprites: stream.sprites}
+  if (stream.fade) {
+    update.fade_attribute_1 = `@{${stream.fade[0]}}`
+    update.fade_attribute_2 = `@{${stream.fade[1]}}`
+  }
+  setAttrs(update)
+}
+
+// ---------------------------------------------------------------- VEHICLE / DRONE CONTROL
+// Dice pools depend on who controls the vehicle: manual, remote control, jumped-in rigger, autonomous (Pilot).
+// Jumped-in: Control Rig bonus (+ Hot-sim bonus) added to every pool, threshold -1 (displayed only).
+// Manual with AR subscription: +1 die. Initiative: see the table in docs/VEHICULES.md.
+const VEHICLE_FIELDS = ['sheet_type', 'veh_mode', 'veh_interface', 'veh_ar', 'veh_response', 'veh_command', 'veh_op_reaction', 'veh_op_agility',
+  'veh_op_intuition', 'veh_op_init', 'veh_op_ip', 'veh_sk_piloting', 'veh_sk_gunnery', 'veh_sk_dodge', 'veh_sk_melee', 'veh_sk_perception',
+  'veh_sk_infiltration', 'veh_as_maneuver', 'veh_as_targeting', 'veh_as_defense', 'veh_as_clearsight', 'veh_as_covert', 'veh_bonus_rig',
+  'veh_bonus_hot', 'pilot', 'sensor', 'body', 'ballistic']
+
+const vehiclePools = v => {
+  const n = key => parseInt(v[key]) || 0
+  const mode = v.veh_mode || 'manual'
+  const hot = v.veh_interface === 'hot'
+  const jumped = mode === 'jumped'
+  const bonus = jumped ? n('veh_bonus_rig') + (hot ? n('veh_bonus_hot') : 0) : (mode === 'manual' && v.veh_ar === '1' ? 1 : 0)
+  const command = n('veh_command'), pilot = n('pilot'), sensor = n('sensor'), response = n('veh_response')
+  const reaction = n('veh_op_reaction'), agility = n('veh_op_agility'), intuition = n('veh_op_intuition')
+  // main attribute of each mode (before skill)
+  const drive = {manual: reaction, remote: command, jumped: response, autonomous: pilot}[mode]
+  const skill = key => n(`veh_sk_${key}`)
+  const pools = {
+    maneuver: mode === 'autonomous' ? pilot + n('veh_as_maneuver') : drive + skill('piloting'),
+    gunnery: {manual: agility, remote: command, jumped: sensor, autonomous: pilot}[mode] + (mode === 'autonomous' ? n('veh_as_targeting') : skill('gunnery')),
+    defense_ranged: drive,
+    defense_melee: drive + (mode === 'autonomous' ? n('veh_as_defense') : skill('melee')),
+    full_defense: drive + (mode === 'autonomous' ? n('veh_as_defense') : skill('dodge')),
+    perception: mode === 'autonomous' ? sensor + n('veh_as_clearsight')
+      : mode === 'manual' ? intuition + skill('perception')
+      : mode === 'jumped' ? sensor + Math.min(skill('perception'), intuition)
+      : sensor + skill('perception'),
+    infiltration: {manual: agility, remote: command, jumped: response, autonomous: pilot}[mode] + (mode === 'autonomous' ? n('veh_as_covert') : skill('infiltration')),
+    resist: n('body') + n('ballistic')
+  }
+  Object.keys(pools).forEach(key => {
+    // resistance tests do not use the control bonus
+    pools[key] = Math.max(0, pools[key] + (key.startsWith('resist') ? 0 : bonus))
+  })
+
+  let init, ip
+  if (mode === 'autonomous') { init = pilot + response; ip = 3 }
+  else if (mode === 'jumped') { init = response + intuition; ip = hot ? 3 : 2 }
+  else if (mode === 'remote') { init = n('veh_op_init'); ip = v.veh_interface === 'ar' ? n('veh_op_ip') : (hot ? 3 : 2) }
+  else { init = reaction + intuition; ip = n('veh_op_ip') }
+
+  const note = (jumped || mode === 'autonomous' ? 'Threshold -1. ' : '') + (jumped ? `Control: +${bonus} dice.` : (bonus ? `AR: +${bonus} die.` : ''))
+  return {pools, init, ip: Math.max(1, ip), note: note.trim()}
+}
+
+// Un véhicule n'a qu'un seul type de blindage : impact = balistique
+const updateVehicleArmor = () => {
+  getAttrs(['sheet_type', 'ballistic', 'impact'], v => {
+    if (v.sheet_type !== 'vehicle') return
+    const armor = parseInt(v.ballistic) || 0
+    if ((parseInt(v.impact) || 0) !== armor) setAttrs({impact: armor})
+  })
+}
+
+const updateVehicleControl = () => {
+  getAttrs(VEHICLE_FIELDS, v => {
+    if (v.sheet_type !== 'vehicle') return
+    const result = vehiclePools(v)
+    const update = {veh_init: result.init, veh_ip: result.ip, initiative_passes_base: result.ip, veh_note: result.note}
+    Object.keys(result.pools).forEach(key => update[`veh_pool_${key}`] = result.pools[key])
+    setAttrs(update)
+  })
+}
+
+// ---------------------------------------------------------------- MATRICE AVANCEE (technomancien PC) : echoes, paragon, widgets, Resonance Difference
+// Donnees generees (matrix-advanced-types.js) depuis data/*.json. Les lignes repetables remplissent leur texte depuis le menu choisi ("custom" = saisie libre).
+const ECHO_STATS = ['response', 'signal', 'system', 'firewall', 'biofeedback', 'passes']
+
+// Persona vivante (SR4A p.239) + bonus des echos : Pare-feu = Volonte, Reponse = Intuition (+1 en RV), Signal = Resonance/2 (sup.),
+// Systeme = Logique, Filtre de biofeedback = Charisme, Init. matricielle RV = Reponse + Intuition, 3 passes (+bonus d'Overclocking, plafond 4, 5 avec Advanced Overclocking).
+const echoBonuses = (rows) => {
+  const total = {}
+  ECHO_STATS.forEach(stat => total[stat] = 0)
+  rows.forEach(row => {
+    const echo = ECHOES[row.type]
+    if (!echo) return
+    const times = Math.min(Math.max(parseInt(row.times) || 1, 1), echo.max)
+    ECHO_STATS.forEach(stat => total[stat] += (echo.mods[stat] || 0) * times)
+  })
+  return total
+}
+
+const livingPersona = (v, bonus) => {
+  const n = key => parseInt(v[key]) || 0
+  const response = n('intuition') + 1 + bonus.response
+  const result = {
+    lp_firewall: n('willpower') + bonus.firewall,
+    lp_response: response,
+    lp_signal: Math.ceil(n('resonance') / 2) + bonus.signal,
+    lp_system: n('logic') + bonus.system,
+    lp_biofeedback: n('charisma') + bonus.biofeedback,
+    lp_init: n('intuition') + response,
+    lp_ip: Math.min(3 + bonus.passes, bonus.passes >= 2 ? 5 : 4)
+  }
+  const over = ['lp_firewall', 'lp_response', 'lp_signal', 'lp_system', 'lp_biofeedback'].some(key => result[key] > n('resonance') + n('submersion'))
+  result.lp_warning = over && n('resonance') > 0 ? 'Above Resonance: check the cap (SR4A p.239)' : ''
+  return result
+}
+
+const updateLivingPersona = () => {
+  getSectionIDs('echoes', ids => {
+    const fields = ['sheet_type', 'willpower', 'intuition', 'logic', 'charisma', 'resonance', 'submersion']
+    ids.forEach(id => fields.push(`repeating_echoes_${id}_echo_type`, `repeating_echoes_${id}_echo_times`))
+    getAttrs(fields, v => {
+      if (v.sheet_type !== 'pc') return
+      const rows = ids.map(id => ({type: v[`repeating_echoes_${id}_echo_type`], times: v[`repeating_echoes_${id}_echo_times`]}))
+      const bonus = echoBonuses(rows)
+      const update = livingPersona(v, bonus)
+      ECHO_STATS.forEach(stat => update[`echo_bonus_${stat}`] = bonus[stat])
+      setAttrs(update)
+    })
+  })
+}
+
+const applyEcho = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/echo_type$/, '')
+  getAttrs([sourceAttribute, `${prefix}echo_times`], v => {
+    const echo = ECHOES[v[sourceAttribute]]
+    if (!echo) return
+    const update = {[`${prefix}echo_name`]: echo.name, [`${prefix}echo_effect`]: echo.effect, [`${prefix}echo_source`]: echo.source, [`${prefix}echo_max`]: echo.max}
+    //- une valeur deja saisie (import) n'est pas ecrasee
+    if (!parseInt(v[`${prefix}echo_times`])) update[`${prefix}echo_times`] = 1
+    setAttrs(update)
+  })
+}
+
+const applyParagon = key => {
+  const paragon = PARAGONS[key]
+  if (!paragon) return
+  setAttrs({paragon_advantage: paragon.advantage, paragon_disadvantage: paragon.disadvantage, paragon_sprites: paragon.sprites, paragon_source: paragon.source})
+}
+
+// Widget (Unwired p.148-149) : creation = Threading (Indice x 2, 1 heure) etendu, Fading 2 x Indice, dure 8 heures.
+const applyWidget = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/widget_type$/, '')
+  getAttrs([sourceAttribute], v => {
+    const widget = WIDGETS[v[sourceAttribute]]
+    if (!widget) return
+    setAttrs({[`${prefix}widget_name`]: widget.name, [`${prefix}widget_effect`]: widget.effect, [`${prefix}widget_source`]: widget.source})
+  })
+}
+
+const updateWidgetRating = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/widget_rating$/, '')
+  getAttrs([sourceAttribute], v => {
+    const rating = parseInt(v[sourceAttribute]) || 0
+    setAttrs({[`${prefix}widget_threshold`]: rating * 2, [`${prefix}widget_fade`]: rating * 2})
+  })
+}
+
+// Option de table Resonance Difference (Unwired p.137-139)
+const updateResonanceDifference = () => {
+  getAttrs(['resonance_difference'], v => {
+    const on = v.resonance_difference === '1' || v.resonance_difference === 'on'
+    setAttrs({resdiff_info: on ? RESONANCE_DIFFERENCE : '', resdiff_defense: on ? 2 : 0})
+  })
+}
+
+// ---------------------------------------------------------------- POUVOIRS DE SPRITES (fiche sprite) : lignes repetables avec bouton de jet Niveau x 2
+const applySpritePower = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/sp_type$/, '')
+  getAttrs([sourceAttribute], v => {
+    const power = SPRITE_POWERS[v[sourceAttribute]]
+    if (!power) return
+    setAttrs({[`${prefix}sp_name`]: power.name, [`${prefix}sp_effect`]: power.effect, [`${prefix}sp_source`]: power.source})
+  })
+}
+
+// Remplace les pouvoirs de la fiche par ceux du type de sprite choisi (modifiables ensuite)
+const fillSpritePowers = list => {
+  getSectionIDs('spritepowers', ids => {
+    ids.forEach(id => removeRepeatingRow(`repeating_spritepowers_${id}`))
+    const update = {}
+    list.forEach(key => {
+      const power = SPRITE_POWERS[key]
+      if (!power) return
+      const prefix = `repeating_spritepowers_${generateRowID()}_`
+      update[`${prefix}sp_type`] = key
+      update[`${prefix}sp_name`] = power.name
+      update[`${prefix}sp_effect`] = power.effect
+      update[`${prefix}sp_source`] = power.source
+    })
+    if (Object.keys(update).length) setAttrs(update)
+  })
+}
   const versioning = version => {
   const versionLog = version => console.log(`%c Shadowrun 4th Edition versioning, ${version}`, "color: darkblue; font-weight:bold");
 
@@ -3903,6 +5464,12 @@ const applySpiritType = type => {
   on('clicked:shots_remove clicked:shots_add', eventinfo => updateShotsFired(eventinfo.triggerName))
 
 	on('clicked:primary_ammo', () => updateAmmoWithShotsFired())
+  // Recoil, shots and ammo per ranged weapon row (roll buttons also raise clicked events)
+  on('change:shots_pass change:recoil_bonus change:repeating_range:mode change:repeating_range:recoil change:repeating_range:shots_custom change:repeating_range:primary remove:repeating_range', () => updateRecoilPenalties())
+  on('clicked:repeating_range:range_weapon clicked:repeating_range:roll_range_weapon', eventinfo => fireRangeWeapon(eventinfo))
+  on('clicked:primary_range', () => firePrimaryRangeWeapon())
+  on('clicked:repeating_range:ammo_reload', eventinfo => reloadRangeWeapon(eventinfo))
+  on('clicked:new_pass', () => processingFunctions.setAttributes({shots_pass: 0}))
 
   on('clicked:reload', () => updateAmmoWithMax())
 
@@ -3964,7 +5531,7 @@ const applySpiritType = type => {
 
 	on('change:astral_dice_modifier change:edge_toggle', () => updateAstralInitiativeDice())
 
-	on('change:host_rating change:data_processing change:pilot change:intuition change:matrix_initiative_modifier change:level change:matrix_dice_modifier change:edge_toggle', () => updateMatrixInitiative())
+	on('change:host_rating change:data_processing change:veh_response change:pilot change:intuition change:matrix_initiative_modifier change:level change:sprite_init_mult change:sheet_type change:matrix_dice_modifier change:edge_toggle change:flag_special change:mx_response change:mx_passes', () => updateMatrixInitiative())
 
   on("clicked:cond_reset", () => resetNpcCondition()); 
 
@@ -3976,12 +5543,53 @@ const applySpiritType = type => {
 
   on("change:default_attribute", eventinfo => updateDefaultAttribute(eventinfo.newValue))
 
-  on('change:force change:sheet_type change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
+  on('change:force change:sheet_type change:spirit_state change:edge_offset ' + SPIRIT_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpiritAttributes())
 
-  on('change:sheet_type', eventinfo => { if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'}) })
+  on('change:level change:sheet_type change:edge_offset change:mx_response_offset change:mx_firewall_offset ' + SPRITE_ATTRIBUTES.map(attr => `change:${attr}_offset`).join(' '), () => updateSpriteAttributes())
+
+  on('change:sprite_type', eventinfo => applySpriteType(eventinfo.newValue))
+
+  on('change:charisma change:intuition change:logic change:willpower change:sheet_type', () => updateAIAttributes())
+
+  on('change:ai_type', eventinfo => applyAIType(eventinfo.newValue))
+
+  on('change:ai_r', () => syncAIReferenceRating())
+
+  on('change:technocritter_type', eventinfo => applyTechnocritterType(eventinfo.newValue))
+
+  on('change:resonance', () => syncTechnocritterResonance())
+
+  on('change:mx_system change:sheet_type', () => updateEmergedMatrixMax())
+
+  on('change:sheet_type', eventinfo => {
+    if (eventinfo.newValue === 'spirit') setAttrs({flag_special: 'magic'})
+    if (eventinfo.newValue === 'sprite' || eventinfo.newValue === 'ai') setAttrs({flag_special: 'resonance'})
+  })
 
   on(`change:${sheetAttributes.defense.join(' change:')} change:spirit_state change:sheet_type`, () => updateDefense())
 
   on('change:spirit_type', eventinfo => applySpiritType(eventinfo.newValue))
+
+  on('change:tradition', eventinfo => applyTradition(eventinfo.newValue))
+
+  on('change:stream', eventinfo => applyStream(eventinfo.newValue))
+
+  on('change:repeating_echoes:echo_type', eventinfo => applyEcho(eventinfo.sourceAttribute))
+
+  on('change:repeating_echoes:echo_type change:repeating_echoes:echo_times remove:repeating_echoes change:willpower change:intuition change:logic change:charisma change:resonance change:submersion change:sheet_type', () => updateLivingPersona())
+
+  on('change:paragon', eventinfo => applyParagon(eventinfo.newValue))
+
+  on('change:repeating_widgets:widget_type', eventinfo => applyWidget(eventinfo.sourceAttribute))
+
+  on('change:repeating_widgets:widget_rating', eventinfo => updateWidgetRating(eventinfo.sourceAttribute))
+
+  on('change:resonance_difference', () => updateResonanceDifference())
+
+  on('change:repeating_spritepowers:sp_type', eventinfo => applySpritePower(eventinfo.sourceAttribute))
+
+  on('change:ballistic change:sheet_type', () => updateVehicleArmor())
+
+  on(VEHICLE_FIELDS.map(attr => `change:${attr}`).join(' '), () => updateVehicleControl())
 
 </script>
