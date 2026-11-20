@@ -1575,6 +1575,101 @@
             <h3 data-i18n="metamagic">Metamagic</h3>
             <textarea name="attr_metamagic" placeholder="Metamagic" style="width: 90%" title="@{metamagic}"></textarea>
           </div>
+          <div class="row-long">
+            <h3 data-i18n="initiation_pp_option">Optional rule: +1 Power Point instead of a metamagic</h3>
+            <input name="attr_initiation_pp" placeholder="0" style="width: 15%" title="@{initiation_pp}" type="number"/>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="background_count">Background Count (signed)</h3>
+            <input name="attr_background_count" placeholder="0" style="width: 15%" title="@{background_count}" type="number"/><span name="attr_bc_summary"></span>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="mentor_spirit">Mentor Spirit</h3>
+            <input name="attr_mentor_spirit" style="width: 40%" title="@{mentor_spirit}" type="text"/>
+            <h3 data-i18n="mentor_advantage">Advantage</h3>
+            <input name="attr_mentor_advantage" style="width: 40%" title="@{mentor_advantage}" type="text"/>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="mentor_disadvantage">Disadvantage</h3>
+            <input name="attr_mentor_disadvantage" style="width: 90%" title="@{mentor_disadvantage}" type="text"/>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="magic_qualities">Magical qualities (Aptitude, Focused Concentration, Spirit Affinity, Aspected, Magic Resistance, Geas, Cursed, Way...)</h3>
+            <textarea name="attr_magic_qualities" style="width: 90%" title="@{magic_qualities}"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-row foci">
+      <div class="header right-header">
+        <h1 data-i18n="foci">Foci</h1>
+        <div class="right-tri"></div>
+      </div>
+      <div class="border-box">
+        <div class="pc-box medium-box">
+          <div class="row-long">
+            <h3 data-i18n="foci_bonded">Bonded</h3><span name="attr_foci_bonded_count"></span>
+            <h3 data-i18n="foci_force_total">Total Force</h3><span name="attr_foci_force_total"></span>
+            <h3 data-i18n="foci_active_count">Active</h3><span name="attr_foci_active_count"></span>
+          </div>
+          <div class="row-long">
+            <h3 data-i18n="foci_karma_total">Karma invested</h3><span name="attr_foci_karma_total"></span><span name="attr_foci_warning"></span>
+          </div>
+          <div class="row-long headers">
+            <h2 data-i18n="name">Name</h2>
+            <h2 class="center" data-i18n="force">Force</h2>
+          </div>
+          <div class="rows repeating-container foci">
+            <fieldset class="repeating_foci"><span name="attr_name"></span><span class="center" name="attr_force"></span>
+              <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
+              <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
+              <div class="collapse"><span name="attr_notes"></span></div>
+              <div class="settings">
+                <label data-i18n-title="name" title="name">
+                  <input name="attr_name" placeholder="name" title="@{repeating_foci_${x}_name}" type="text" value=""/>
+                </label>
+                <label data-i18n-title="type" title="type">
+                  <select name="attr_focus_type" title="@{repeating_foci_${x}_focus_type}">
+                    <option value="Qi">Qi</option>
+                    <option value="Power">Power</option>
+                    <option value="Spell (Spellcasting)">Spell (Spellcasting)</option>
+                    <option value="Spell (Counterspelling)">Spell (Counterspelling)</option>
+                    <option value="Spell (Ritual)">Spell (Ritual)</option>
+                    <option value="Spell (Health)">Spell (Health)</option>
+                    <option value="Spell (Detection)">Spell (Detection)</option>
+                    <option value="Spell (Combat)">Spell (Combat)</option>
+                    <option value="Spell (Illusion)">Spell (Illusion)</option>
+                    <option value="Spell (Manipulation)">Spell (Manipulation)</option>
+                    <option value="Spirit (Summoning)">Spirit (Summoning)</option>
+                    <option value="Spirit (Binding)">Spirit (Binding)</option>
+                    <option value="Banishing">Banishing</option>
+                    <option value="Sustaining">Sustaining</option>
+                    <option value="Weapon">Weapon</option>
+                    <option value="Symbolic">Symbolic</option>
+                    <option value="Anchoring">Anchoring</option>
+                    <option value="Centering">Centering</option>
+                    <option value="Masking">Masking</option>
+                    <option value="Shielding">Shielding</option>
+                    <option value="Infusion">Infusion</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label data-i18n-title="force" title="force">
+                  <input name="attr_force" placeholder="1" title="@{repeating_foci_${x}_force}" type="number" value="1" min="1"/>
+                </label>
+                <label data-i18n-title="bonded" title="bonded">
+                  <input name="attr_bonded" title="@{repeating_foci_${x}_bonded}" type="checkbox" value="1"/>
+                </label>
+                <label data-i18n-title="active" title="active">
+                  <input name="attr_active" title="@{repeating_foci_${x}_active}" type="checkbox" value="1"/>
+                </label><span name="attr_karma_cost"></span>
+                <h3 data-i18n="notes">notes</h3>
+                <label data-i18n-title="notes" title="notes">
+                  <textarea name="attr_notes" placeholder="Notes" title="@{repeating_foci_${x}_notes}" type="text" value=""></textarea>
+                </label>
+              </div>
+            </fieldset>
+          </div>
         </div>
       </div>
     </div>
@@ -1614,6 +1709,12 @@
           <label data-i18n-title="modifier" title="modifier">
             <input name="attr_adept_drain_modifier" title="@{adept_drain_modifier}" type="number" value="0"/>
           </label>
+          <div class="row-long">
+            <h3 data-i18n="pp_available">Power Points</h3>
+            <input name="attr_pp_mystic" placeholder="mystic adept: PP bought (blank = Magic)" style="width: 15%" title="@{pp_mystic}" type="number" step="0.25"/>
+            <h3 data-i18n="pp_used">Used</h3><span name="attr_pp_used"></span>
+            <h3 data-i18n="pp_left">Left</h3><span name="attr_pp_left"></span><span name="attr_pp_warning"></span>
+          </div>
           <div class="row-long headers">
             <h2 data-i18n="name">Name</h2>
             <h2 class="center" data-i18n="rating">Rating</h2>
@@ -1630,6 +1731,26 @@
                 <label data-i18n-title="rating" title="rating">
                   <input name="attr_rating" placeholder="rating" title="@{repeating_powers_${x}_rating}" type="number" value=""/>
                 </label>
+                <label data-i18n-title="pp_cost_per_level" title="PP per level">
+                  <input name="attr_pp_cost" placeholder="0.25" title="@{repeating_powers_${x}_pp_cost}" type="number" step="0.25" value=""/>
+                </label>
+                <label data-i18n-title="pp_favored" title="Favored (-25%)">
+                  <input name="attr_pp_favored" title="@{repeating_powers_${x}_pp_favored}" type="checkbox" value="1"/>
+                </label>
+                <label data-i18n-title="pp_flat" title="Flat cost (not per level)">
+                  <input name="attr_pp_flat" title="@{repeating_powers_${x}_pp_flat}" type="checkbox" value="1"/>
+                </label>
+                <label data-i18n-title="pp_mode" title="Mode">
+                  <select name="attr_pp_mode" title="@{repeating_powers_${x}_pp_mode}">
+                    <option value="passive">passive</option>
+                    <option value="situational">situational</option>
+                    <option value="toggle">activated</option>
+                    <option value="roll">roll</option>
+                  </select>
+                </label>
+                <label data-i18n-title="pp_test" title="Test">
+                  <input name="attr_pp_test" placeholder="Magic + Attribute Boost" title="@{repeating_powers_${x}_pp_test}" type="text" value=""/>
+                </label><span name="attr_pp_total"></span>
                 <h3 data-i18n="notes">notes</h3>
                 <label data-i18n-title="notes" title="notes">
                   <textarea name="attr_notes" placeholder="Notes" title="@{repeating_powers_${x}_notes}" type="text" value=""></textarea>
@@ -5440,6 +5561,73 @@ const fillSpritePowers = list => {
     if (Object.keys(update).length) setAttrs(update)
   })
 }
+
+// ---- Magic: foci, power points, background count (see data/foci.json, data/adept_powers.json)
+const FOCUS_KARMA_MULT = {'Symbolic':1,'Sustaining':2,'Counterspelling':3,'Spell (Counterspelling)':3,'Banishing':3,'Spirit (Binding)':3,'Weapon':3,'Spell (Spellcasting)':4,'Spell (Ritual)':4,'Spell (Health)':4,'Spell (Detection)':4,'Spell (Combat)':4,'Spell (Illusion)':4,'Spell (Manipulation)':4,'Spirit (Summoning)':4,'Qi':4,'Power':8,'Anchoring':6,'Centering':6,'Masking':6,'Shielding':6,'Infusion':4,'Other':4}
+
+const updateFoci = () => {
+  getSectionIDs('foci', ids => {
+    const fields = ['magic','logic','background_count']
+    ids.forEach(id => ['focus_type','force','bonded','active'].forEach(f => fields.push(`repeating_foci_${id}_${f}`)))
+    getAttrs(fields, a => {
+      const num = v => parseFloat(v) || 0
+      const out = {}
+      let bonded = 0, force = 0, active = 0, activeForce = 0, karma = 0
+      ids.forEach(id => {
+        const f = num(a[`repeating_foci_${id}_force`])
+        const cost = f * (FOCUS_KARMA_MULT[a[`repeating_foci_${id}_focus_type`]] || 4)
+        out[`repeating_foci_${id}_karma_cost`] = a[`repeating_foci_${id}_bonded`] == 1 ? cost : ''
+        if (a[`repeating_foci_${id}_bonded`] == 1) { bonded++; force += f; karma += cost }
+        if (a[`repeating_foci_${id}_active`] == 1) { active++; activeForce += f }
+      })
+      const magic = Math.max(0, num(a.magic) - Math.abs(num(a.background_count)))
+      const warn = []
+      if (bonded > magic) warn.push('bonded foci > Magic')
+      if (force > magic * 5) warn.push('total Force > Magic x5')
+      if (active > num(a.logic)) warn.push('active foci > Logic')
+      if (activeForce > 2 * magic) warn.push('Focus Addiction test (active Force > 2 x Magic)')
+      Object.assign(out, {foci_bonded_count: bonded, foci_force_total: force, foci_active_count: active, foci_karma_total: karma, foci_warning: warn.join(' | ')})
+      setAttrs(out, {silent: true})
+    })
+  })
+}
+
+const updatePowerPoints = () => {
+  getSectionIDs('powers', ids => {
+    const fields = ['magic','pp_mystic','initiation_pp','background_count']
+    ids.forEach(id => ['rating','pp_cost','pp_favored','pp_flat'].forEach(f => fields.push(`repeating_powers_${id}_${f}`)))
+    getAttrs(fields, a => {
+      const num = v => parseFloat(v) || 0
+      const out = {}
+      let used = 0
+      ids.forEach(id => {
+        const cost = num(a[`repeating_powers_${id}_pp_cost`])
+        if (!cost) return
+        const lvl = a[`repeating_powers_${id}_pp_flat`] == 1 ? 1 : Math.max(1, num(a[`repeating_powers_${id}_rating`]))
+        let t = cost * lvl
+        if (a[`repeating_powers_${id}_pp_favored`] == 1) t *= 0.75
+        out[`repeating_powers_${id}_pp_total`] = Math.round(t * 100) / 100
+        used += t
+      })
+      const bc = Math.abs(num(a.background_count))
+      const base = a.pp_mystic === undefined || a.pp_mystic === '' ? num(a.magic) : num(a.pp_mystic)
+      const avail = Math.max(0, base - bc) + num(a.initiation_pp)
+      used = Math.round(used * 100) / 100
+      out.pp_used = used
+      out.pp_left = Math.round((avail - used) * 100) / 100
+      out.pp_warning = used > avail ? 'Power Points exceeded' : ''
+      setAttrs(out, {silent: true})
+    })
+  })
+}
+
+const updateBackgroundCount = () => {
+  getAttrs(['background_count'], a => {
+    const bc = Math.abs(parseFloat(a.background_count) || 0)
+    setAttrs({bc_summary: bc ? `Magic -${bc}, Drain +${bc}, spirit Force -${bc}, adept PP -${bc}` : ''}, {silent: true})
+    updateFoci(); updatePowerPoints()
+  })
+}
   const versioning = version => {
   const versionLog = version => console.log(`%c Shadowrun 4th Edition versioning, ${version}`, "color: darkblue; font-weight:bold");
 
@@ -5577,6 +5765,10 @@ const fillSpritePowers = list => {
   on('change:repeating_echoes:echo_type change:repeating_echoes:echo_times remove:repeating_echoes change:willpower change:intuition change:logic change:charisma change:resonance change:submersion change:sheet_type', () => updateLivingPersona())
 
   on('change:paragon', eventinfo => applyParagon(eventinfo.newValue))
+
+  on('change:repeating_foci remove:repeating_foci change:magic change:logic', () => updateFoci())
+  on('change:repeating_powers remove:repeating_powers change:magic change:pp_mystic change:initiation_pp', () => updatePowerPoints())
+  on('change:background_count', () => updateBackgroundCount())
 
   on('change:repeating_widgets:widget_type', eventinfo => applyWidget(eventinfo.sourceAttribute))
 
