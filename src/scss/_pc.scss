@@ -1,3 +1,9 @@
+@use "abstracts/variables";
+@use "base/typography";
+@use "base/base";
+@use "components/tabs";
+@use "sheet";
+
 /***** PC ROWS & COLUMNS SETTINGS *****/
 	.sheet-pc-row {margin-bottom: 10px;}
 
@@ -85,11 +91,11 @@
 	}
 
 	div.sheet-triangle {
-    border-right: 30px solid $primary;
+    border-right: 30px solid variables.$primary;
   }
 
 	div.sheet-right-tri {
-    border-left: 30px solid $primary;
+    border-left: 30px solid variables.$primary;
   }
 
 	div.sheet-right-header {
@@ -401,10 +407,10 @@
 			}
 
 			span {
-				background-color: $lightgray;
+				background-color: variables.$lightgray;
 				border-radius   : 0px;
-				border          : 2px solid $secondary;
-				box-shadow      : inset 0px 0px 3px 1px $grayshadow;
+				border          : 2px solid variables.$secondary;
+				box-shadow      : inset 0px 0px 3px 1px variables.$grayshadow;
 				display         : inline-block;
 				margin-bottom   : -25px;
 				margin-right    : -7px;
@@ -578,16 +584,16 @@
 		span { white-space: pre-line; }
 
 		.sheet-desc { 
-			@extend %display-none;
+			// display (%display-none) : défini dans _hide.scss, section « Règles d'affichage des autres fichiers »
 
-			.sheet-display-flag:checked ~ & { @extend %display-inline; }
+			// .sheet-display-flag:checked ~ & : display (%display-inline) : défini dans _hide.scss, section « Règles d'affichage des autres fichiers »
 		}
 
 		.sheet-desc-lifestyle { 
-			@extend %display-none;
+			// display (%display-none) : défini dans _hide.scss, section « Règles d'affichage des autres fichiers »
 
 			.sheet-display-flag:checked ~ & {
-				@extend %display-inline-block;
+				// display (%display-inline-block) : défini dans _hide.scss, section « Règles d'affichage des autres fichiers »
 				width: 100%;
 			}
 		}
@@ -660,7 +666,7 @@
 
 				input[type='radio']:hover ~ h2 {
 					color      : #fff;
-					text-shadow: 1px 1px 2px black, 0 0 25px $accent, 0 0 5px $secondary;
+					text-shadow: 1px 1px 2px black, 0 0 25px variables.$accent, 0 0 5px variables.$secondary;
 				}
 
 				h2 {vertical-align: top;}
@@ -891,17 +897,17 @@
 		.sheet-edg-hex input[type='checkbox']:checked ~ .sheet-hexagon,
 		.sheet-con-hex input[type='radio']:checked ~ .sheet-hexagon,
 		.sheet-edge-zero[value='0'] ~ .sheet-hexagon {
-			background-color: $lightgray;}
+			background-color: variables.$lightgray;}
 
 		.sheet-edg-hex input[type='checkbox']:checked ~ .sheet-hexagon:before,
 		.sheet-con-hex input[type='radio']:checked ~ .sheet-hexagon:before,
 		.sheet-edge-zero[value='0'] ~ .sheet-hexagon:before  {
-			border-bottom-color: $lightgray;}
+			border-bottom-color: variables.$lightgray;}
 
 		.sheet-edg-hex input[type='checkbox']:checked ~ .sheet-hexagon:after,
 		.sheet-con-hex input[type='radio']:checked ~ .sheet-hexagon:after,
 		.sheet-edge-zero[value='0'] ~ .sheet-hexagon:after  {
-			border-top-color: $lightgray;}
+			border-top-color: variables.$lightgray;}
 
 		.sheet-edg-hex input[type='checkbox']:checked + .sheet-hexagon,
 		.sheet-con-hex input[type='radio'] + .sheet-hexagon,
@@ -1005,11 +1011,11 @@
     .sheet-optional-flag[value='0'] + .sheet-attr-header,
     .sheet-category + div,
     .sheet-category + div + div {
-       @extend %display-none;
+       // display (%display-none) : défini dans _hide.scss, section « Règles d'affichage des autres fichiers »
     }
 
     .sheet-optional-flag:not([value='0']) + .sheet-optional { 
-      @extend %display-inline-block; 
+      // display (%display-inline-block) : défini dans _hide.scss, section « Règles d'affichage des autres fichiers » 
     }
 
     .sheet-optional-flag:not([value='0']) + .sheet-textboxes {

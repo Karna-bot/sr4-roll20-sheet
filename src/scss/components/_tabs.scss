@@ -1,11 +1,13 @@
+@use "../abstracts/variables";
+
 .sheet-tabs {
   button {
     &[type='action'] {
-      box-shadow: inset 0px 0px 3px 1px $grayshadow;
-      color: $white;
+      box-shadow: inset 0px 0px 3px 1px variables.$grayshadow;
+      color: variables.$white;
     }
 
-    background-color: $blackish;
+    background-color: variables.$blackish;
     border-radius   : 2px;
     border          : 1px solid #000;
     font-size       : 1em;
@@ -25,8 +27,8 @@
       vertical-align: top;
 
       &:hover {
-        text-shadow: 1px 1px 2px black, 0 0 25px $accent, 0 0 5px $grayshadow;
-        color: $white;
+        text-shadow: 1px 1px 2px black, 0 0 25px variables.$accent, 0 0 5px variables.$grayshadow;
+        color: variables.$white;
       }
     }
   }

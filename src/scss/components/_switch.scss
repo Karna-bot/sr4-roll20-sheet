@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 /* The switch - the box around the slider */
 .sheet-switch {
   position: relative;
@@ -42,11 +44,11 @@
 }
 
 input:checked + .sheet-slider {
-  background-color: $blackish;
+  background-color: variables.$blackish;
 }
 
 input:focus + .sheet-slider {
-  box-shadow: 0 0 1px $blackish;
+  box-shadow: 0 0 1px variables.$blackish;
 }
 
 input:checked + .sheet-slider:before {

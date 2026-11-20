@@ -1,13 +1,15 @@
+@use "abstracts/variables";
+
 	.sheet-rolltemplate-rolls div.sheet-template-body {
-		border       : 2px solid $blacker !important;
+		border       : 2px solid variables.$blacker !important;
 		border-radius: 3px 3px 3px 3px;}
 
 	.sheet-rolltemplate-rolls .sheet-template-header {
-		background-color: $primary;
-		border          : 1px solid $blacker;
-		border-bottom   : 2px solid $blacker;
-		box-shadow      : inset 0px 0px 3px 1px $blacker;
-		color           : $blackish;
+		background-color: variables.$primary;
+		border          : 1px solid variables.$blacker;
+		border-bottom   : 2px solid variables.$blacker;
+		box-shadow      : inset 0px 0px 3px 1px variables.$blacker;
+		color           : variables.$blackish;
 		font-size       : 1.5em;
 		font-variant    : small-caps;
 		letter-spacing  : 2px;
@@ -18,7 +20,7 @@
 
     h1 {
       font-size: 0.8em;
-      color: $blackish;
+      color: variables.$blackish;
       line-height: 1em;
     }
 
@@ -31,11 +33,11 @@
   }
 
 	.sheet-rolltemplate-rolls .sheet-template-row {
-		color           : $white;
+		color           : variables.$white;
 		text-align      : center;
 		font-size       : 18px;
-		background-color: $blackish;
-		box-shadow      : inset 0px 0px 3px 1px $blacker;
+		background-color: variables.$blackish;
+		box-shadow      : inset 0px 0px 3px 1px variables.$blacker;
 		line-height     : 1.1em;
 		font-family     : 'helvetica';
 		padding         : 5px 5px 3px 5px;
@@ -49,24 +51,24 @@
       font-family: "dicefontd6";
       color: #1c1c1c;;
       border: none;
-      box-shadow: outset 0px 0px 3px 1px $blacker;
+      box-shadow: outset 0px 0px 3px 1px variables.$blacker;
       font-size: 1.8em;
       background: none !important;
       padding: 1px;
-      color: $white;
-      text-shadow: $text-shadow-dark;
+      color: variables.$white;
+      text-shadow: variables.$text-shadow-dark;
       
        &:hover, &:focus, &:active { 
         font-weight: bold; 
-        color: $white;
-        text-shadow: $text-shadow-red;
+        color: variables.$white;
+        text-shadow: variables.$text-shadow-red;
       }
     }
   }
 
 	.sheet-rolltemplate-rolls .inlinerollresult {
 		display         :inline-block;
-		color           : $white;
+		color           : variables.$white;
 		font-size       : 25px;
 		background-color: transparent;
 		border          : none;
@@ -77,9 +79,9 @@
 	.sheet-rolltemplate-rolls .inlinerollresult.importantroll {
 		border: none;}
 
-	.sheet-rolltemplate-rolls .inlinerollresult.fullfail {color: $primary;}
+	.sheet-rolltemplate-rolls .inlinerollresult.fullfail {color: variables.$primary;}
 
-	.sheet-rolltemplate-rolls .inlinerollresult.fullcrit {color: $white;}
+	.sheet-rolltemplate-rolls .inlinerollresult.fullcrit {color: variables.$white;}
 
 	.sheet-rolltemplate-rolls .sheet-template-desc {font-size: 0.8em;}
 

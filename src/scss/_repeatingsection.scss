@@ -1,3 +1,11 @@
+@use "abstracts/variables";
+@use "base/typography";
+@use "base/base";
+@use "components/tabs";
+@use "sheet";
+@use "pc";
+@use "npc";
+
 	.repcontainer .repitem {
 		margin-bottom: 5px;}
 
@@ -54,12 +62,12 @@
 
 		.sheet-npc .repcontrol .repcontrol_edit:after,
 		.sheet-npc .repcontrol .repcontrol_add:after {
-			color: $blackish;
+			color: variables.$blackish;
     }
 
 		.repcontrol .repcontrol_edit:hover:after,
 		.repcontrol .repcontrol_add:hover:after {
-			color           : $accent;
+			color           : variables.$accent;
 			background-color: none;
     }
 

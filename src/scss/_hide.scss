@@ -1,3 +1,5 @@
+@use "abstracts/variables";
+
 	%display-none { display: none; }
 	%display-inline { display: inline; }
 
@@ -11,7 +13,7 @@
 	}
 
 	/***** PC AND NPC *****/
-	@each $characterType in $characterTypes {
+	@each $characterType in variables.$characterTypes {
 		.sheet-#{$characterType} { @extend %display-none; }
 	}
 
@@ -21,7 +23,7 @@
 	}
 
 	/***** TABS *****/
-	@each $tab in $tabs {
+	@each $tab in variables.$tabs {
 		.sheet-#{$tab} { 
       @extend %display-none; 
     }
@@ -101,7 +103,7 @@
     input.sheet-settings-toggle[value='display'] ~ .sheet-settings { @extend %display-none;  }
     input.sheet-settings-toggle[value='settings'] ~ .sheet-settings { @extend %display-inline-block;  }
 
-	@each $specialAttribute in $specialCharacters {
+	@each $specialAttribute in variables.$specialCharacters {
 		//-PCs
 		.sheet-hide-#{$specialAttribute} { @extend %display-none;  }
 		.sheet-character-type[value='#{$specialAttribute}'] ~ .sheet-pc .sheet-pc-row .sheet-attr-col .sheet-hide-#{$specialAttribute} { 
@@ -127,7 +129,7 @@
 
 
 	/***** NPC TYPES *****/
-	@each $npcType in $npcTypes {
+	@each $npcType in variables.$npcTypes {
 		.sheet-#{$npcType}  { @extend %display-none; }
 
 		input[name='attr_sheet_type'][value='#{$npcType}'] ~ .sheet-npc .sheet-attribute.sheet-#{$npcType} { 
@@ -226,13 +228,118 @@
 	}
 
 
+// ---------------------------------------------------------------------------
+// Règles d'affichage des autres fichiers (_sheet, _pc, _npc)
+// Avec @use, un fichier ne peut étendre que les placeholders des modules qu'il charge.
+// Ces règles étaient des @extend %display-* écrits dans _sheet/_pc/_npc ; elles sont
+// regroupées ici pour que les déclarations display restent à cette position du CSS
+// (après la mise en page) et gardent la même priorité qu'avant la migration.
+// Ordre des groupes : none < inline < inline-grid < grid < inline-block.
+// ---------------------------------------------------------------------------
+
+// _sheet.scss (%display-inline-grid)
+.sheet-pc h2 {
+  @extend %display-inline-grid;
+}
+
+// _sheet.scss (%display-inline-grid)
+.sheet-pc h3 {
+  @extend %display-inline-grid;
+}
+
+// _sheet.scss (%display-inline-grid)
+.sheet-pc .sheet-tabs {
+  @extend %display-inline-grid;
+}
+
+// _sheet.scss (%highlight-button)
+.sheet-pc .sheet-tabs input[value*=arms] ~ button[name*=arms],
+.sheet-pc .sheet-tabs input[value*=augs] ~ button[name*=augs],
+.sheet-pc .sheet-tabs input[value*=core] ~ button[name*=core],
+.sheet-pc .sheet-tabs input[value*=gear] ~ button[name*=gear],
+.sheet-pc .sheet-tabs input[value*=options] ~ button[name*=options],
+.sheet-pc .sheet-tabs input[value*=social] ~ button[name*=social],
+.sheet-pc .sheet-tabs input[value*=magic] ~ button[name*=magic],
+.sheet-pc .sheet-tabs input[value*=matrix] ~ button[name*=matrix],
+.sheet-pc .sheet-tabs input[value*=vehicle] ~ button[name*=vehicle] {
+  @extend %highlight-button;
+}
+
+// _sheet.scss (%display-none)
+.sheet-pc div.sheet-skill-box input[name=attr_specialization][value=" "] ~ div.sheet-buttons button[name*=specialization],
+.sheet-pc div.sheet-skill-box input[name=attr_specialization][value=""] ~ div.sheet-buttons button[name*=specialization] {
+  @extend %display-none;
+}
+
+// _sheet.scss (%display-inline-grid)
+.sheet-pc div.sheet-skill-box div.sheet-row-long {
+  @extend %display-inline-grid;
+}
+
+// _sheet.scss (%display-none)
+.sheet-pc div.sheet-magic input.sheet-magic-toggle[value=rituals] ~ .sheet-headers h2:nth-of-type(1n+2) {
+  @extend %display-none;
+}
+
+// _pc.scss (%display-none)
+.sheet-collapsable .sheet-desc {
+  @extend %display-none;
+}
+
+// _pc.scss (%display-inline)
+.sheet-display-flag:checked ~ .sheet-collapsable .sheet-desc {
+  @extend %display-inline;
+}
+
+// _pc.scss (%display-none)
+.sheet-collapsable .sheet-desc-lifestyle {
+  @extend %display-none;
+}
+
+// _pc.scss (%display-inline-block)
+.sheet-display-flag:checked ~ .sheet-collapsable .sheet-desc-lifestyle {
+  @extend %display-inline-block;
+}
+
+// _pc.scss (%display-none)
+.sheet-matrix,
+.sheet-magic,
+.sheet-resonance,
+.sheet-optional,
+.sheet-textboxes,
+.sheet-optional-flag[value="0"] + .sheet-attr-header,
+.sheet-category + div,
+.sheet-category + div + div {
+  @extend %display-none;
+}
+
+// _pc.scss (%display-inline-block)
+.sheet-optional-flag:not([value="0"]) + .sheet-optional {
+  @extend %display-inline-block;
+}
+
+// _npc.scss (%display-inline-grid)
+.sheet-npc div.sheet-tabs {
+  @extend %display-inline-grid;
+}
+
+// _npc.scss (%display-inline-grid)
+.sheet-npc div.sheet-mid {
+  @extend %display-inline-grid;
+}
+
+// _npc.scss (%display-inline-block)
+.sheet-npc div.sheet-mid div.sheet-column {
+  @extend %display-inline-block;
+}
+
 	//- SHOW AND HIDE MATRIX DEVICE
 	input[name='attr_flag_matrix'][value='matrix'] ~ div.sheet-matrix {
 		@extend %display-inline-block;
 	}
 
 	%highlight-button {
-		background-color: $primary;
-		box-shadow      : inset 0px 0px 3px 1px $accent;
-		color           : $white;
+		background-color: variables.$primary;
+		box-shadow      : inset 0px 0px 3px 1px variables.$accent;
+		color           : variables.$white;
 	}

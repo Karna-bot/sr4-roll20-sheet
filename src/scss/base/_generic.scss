@@ -1,5 +1,7 @@
+@use "../abstracts/variables";
+
 .sheet-red {
-  color: $accent  
+  color: variables.$accent  
 }
 
 .sheet-eclipse {

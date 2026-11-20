@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 	* {
 	    box-sizing: border-box;
 	    font-family: sans-serif;
@@ -27,11 +29,11 @@
       &:focus, 
       &:active { 
         font-weight: bold;
-        background-color: $accent;
-        color: $white;
+        background-color: variables.$accent;
+        color: variables.$white;
 
         & > span {
-          color: $white;
+          color: variables.$white;
         }
       }
 
@@ -73,8 +75,8 @@
 		width: auto;}
 
 	input {
-		background-color: $graytrans;
-		color: $blacker;
+		background-color: variables.$graytrans;
+		color: variables.$blacker;
 		border: none;
 		cursor: auto;
 		font-weight: normal;
@@ -87,15 +89,15 @@
 			height    : 20px;
 
       &:placeholder-shown {
-        border: 1px dotted $gray;
-        background-color: $graytrans;
+        border: 1px dotted variables.$gray;
+        background-color: variables.$graytrans;
         color: white;
       }
 
 			&:hover, 
       &:focus {
-				background-color: $primary;
-				color: $blackish;
+				background-color: variables.$primary;
+				color: variables.$blackish;
 			}
 		}
 
@@ -108,18 +110,18 @@
 
 	select {
 		border-radius: 2px;
-		border: 1px solid $blackish;
-		box-shadow: inset 0px 0px 3px 1px $grayshadow;
+		border: 1px solid variables.$blackish;
+		box-shadow: inset 0px 0px 3px 1px variables.$grayshadow;
 		margin-bottom: 0px;
 		width: auto;
 
     &.sheet-attribute-select {
-      option:nth-of-type(1n+5) { color: $accent }
-      option:nth-of-type(1n+9) { color: $accent;  }
+      option:nth-of-type(1n+5) { color: variables.$accent }
+      option:nth-of-type(1n+9) { color: variables.$accent;  }
     }
 
     &.sheet-limit-select  {
-      option:nth-of-type(1n+5) { color: $accent }
+      option:nth-of-type(1n+5) { color: variables.$accent }
     }
   }
 
@@ -130,8 +132,8 @@
 
 	textarea {
 		border-radius: 2px;
-		border: 1px solid $blackish;
-		box-shadow: inset 0px 0px 3px 1px $grayshadow;
+		border: 1px solid variables.$blackish;
+		box-shadow: inset 0px 0px 3px 1px variables.$grayshadow;
 		height: 50px;
 		overflow-wrap: break-word;
 		overflow: hidden;
@@ -140,11 +142,11 @@
 		white-space: pre-line;}
 
 	.charsheet {
-    background: $primary;
-    background: linear-gradient(90deg, rgba($primary,1) 0%, rgba(245,245,245,1) 17%, rgba(255,255,255,1) 78%, rgba($primary,1) 100%);
+    background: variables.$primary;
+    background: linear-gradient(90deg, rgba(variables.$primary,1) 0%, rgba(245,245,245,1) 17%, rgba(255,255,255,1) 78%, rgba(variables.$primary,1) 100%);
     width: 850px; 
-    box-shadow: inset 0px 0px 3px 1px $grayshadow;
-    color: $blacker;
+    box-shadow: inset 0px 0px 3px 1px variables.$grayshadow;
+    color: variables.$blacker;
   }
 
 	input[name='attr_stats_toggle'],
