@@ -696,10 +696,61 @@
 					grid-template-columns: $powersGrid;
 					@include mixins.repeatingInformation(5, true);
 
-					div.sheet-settings { 
+					div.sheet-settings {
 						grid-column: 1 / 5;
 						grid-template-columns: $powersGrid;
 					}
+				}
+			}
+
+			/***** FOCI (même grille que les pouvoirs) *****/
+			div.sheet-foci {
+				$fociGrid: 1fr 3em 1em 1em;
+
+				div.sheet-headers { grid-template-columns: $fociGrid; }
+
+				div.repitem {
+					grid-template-columns: $fociGrid;
+					@include mixins.repeatingInformation(5, true);
+				}
+			}
+
+			/***** FOCI ET POUVOIRS : réglages en formulaire (libellé | case | libellé | case) *****/
+			div.sheet-foci, div.sheet-powers {
+				div.repitem input.sheet-settings-flag:checked ~ div.sheet-settings.sheet-magic-form { display: grid; }
+
+				div.repitem div.sheet-settings.sheet-magic-form {
+					align-items: center;
+					column-gap: 0.5em;
+					grid-column: 1 / 5;
+					grid-template-columns: max-content 1fr max-content 1fr;
+					row-gap: 3px;
+					padding: 3px 0;
+
+					span.sheet-form-label {
+						color: variables.$blacker;
+						font-size: 0.85em;
+						font-weight: bold;
+					}
+
+					label.sheet-form-wide { grid-column: span 3; }
+
+					label {
+						margin: 0;
+
+						input[type='text'], input[type='number'], select { width: 100%; }
+						input[type='checkbox'] { justify-self: start; }
+					}
+
+					span.sheet-form-help {
+						color: variables.$gray;
+						font-size: 0.8em;
+						font-style: italic;
+						grid-column: 1 / -1;
+					}
+
+					h3[data-i18n='notes'], label[data-i18n-title='notes'] { grid-column: 1 / -1; }
+					label[data-i18n-title='notes'] textarea { width: 100%; }
 				}
 			}
 		}

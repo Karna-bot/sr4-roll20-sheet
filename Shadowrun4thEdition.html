@@ -2139,11 +2139,11 @@
               <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
               <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
               <div class="collapse"><span name="attr_notes"></span></div>
-              <div class="settings">
-                <label data-i18n-title="name" title="name">
+              <div class="settings magic-form"><span class="form-label" data-i18n="name">Name</span>
+                <label class="form-wide" data-i18n-title="name" title="name">
                   <input name="attr_name" placeholder="name" title="@{repeating_foci_${x}_name}" type="text" value=""/>
-                </label>
-                <label data-i18n-title="type" title="type">
+                </label><span class="form-label" data-i18n="type">Type</span>
+                <label class="form-wide" data-i18n-title="type" title="type">
                   <select name="attr_focus_type" title="@{repeating_foci_${x}_focus_type}">
                     <option value="Qi">Qi</option>
                     <option value="Power">Power</option>
@@ -2168,16 +2168,16 @@
                     <option value="Infusion">Infusion</option>
                     <option value="Other">Other</option>
                   </select>
-                </label>
+                </label><span class="form-label" data-i18n="force">Force</span>
                 <label data-i18n-title="force" title="force">
                   <input name="attr_force" placeholder="1" title="@{repeating_foci_${x}_force}" type="number" value="1" min="1"/>
-                </label>
+                </label><span class="form-label" data-i18n="foci_karma_cost">Bonding cost (Karma)</span><span class="form-value" name="attr_karma_cost"></span><span class="form-label" data-i18n="bonded">Bonded</span>
                 <label data-i18n-title="bonded" title="bonded">
                   <input name="attr_bonded" title="@{repeating_foci_${x}_bonded}" type="checkbox" value="1"/>
-                </label>
+                </label><span class="form-label" data-i18n="active">Active</span>
                 <label data-i18n-title="active" title="active">
                   <input name="attr_active" title="@{repeating_foci_${x}_active}" type="checkbox" value="1"/>
-                </label><span name="attr_karma_cost"></span>
+                </label><span class="form-help" data-i18n="foci_help">Bonding cost = Force x multiplier of the type (Karma). Bonded foci at most Magic, total bonded Force at most Magic x 5, active foci at most Logic.</span>
                 <h3 data-i18n="notes">notes</h3>
                 <label data-i18n-title="notes" title="notes">
                   <textarea name="attr_notes" placeholder="Notes" title="@{repeating_foci_${x}_notes}" type="text" value=""></textarea>
@@ -2226,7 +2226,7 @@
           </label>
           <div class="row-long">
             <h3 data-i18n="pp_available">Power Points</h3>
-            <input name="attr_pp_mystic" placeholder="mystic adept: PP bought (blank = Magic)" style="width: 15%" title="@{pp_mystic}" type="number" step="0.25"/>
+            <input name="attr_pp_mystic" placeholder="mystic adept: PP bought (blank = Magic)" style="width: 15%" title="@{pp_mystic}" type="number" step="0.01"/>
             <h3 data-i18n="pp_used">Used</h3><span name="attr_pp_used"></span>
             <h3 data-i18n="pp_left">Left</h3><span name="attr_pp_left"></span><span name="attr_pp_warning"></span>
           </div>
@@ -2240,8 +2240,8 @@
               <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
               <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
               <div class="collapse"><span name="attr_notes"></span></div>
-              <div class="settings">
-                <label data-i18n-title="catalog" title="catalog">
+              <div class="settings magic-form"><span class="form-label" data-i18n="catalog">Catalog</span>
+                <label class="form-wide" data-i18n-title="catalog" title="catalog">
                   <select name="attr_power_type" title="@{repeating_powers_${x}_power_type}">
                     <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
                     <optgroup label="toggle">
@@ -2331,33 +2331,33 @@
                       <option value="unseen_hands">Unseen Hands (WotA)</option>
                     </optgroup>
                   </select>
-                </label>
-                <label data-i18n-title="name" title="name">
+                </label><span class="form-label" data-i18n="name">Name</span>
+                <label class="form-wide" data-i18n-title="name" title="name">
                   <input name="attr_name" placeholder="name" title="@{repeating_powers_${x}_name}" type="text" value=""/>
-                </label>
+                </label><span class="form-label" data-i18n="rating">Rating</span>
                 <label data-i18n-title="rating" title="rating">
-                  <input name="attr_rating" placeholder="rating" title="@{repeating_powers_${x}_rating}" type="number" value=""/>
-                </label>
+                  <input name="attr_rating" placeholder="1" title="@{repeating_powers_${x}_rating}" type="number" min="0" value=""/>
+                </label><span class="form-label" data-i18n="pp_cost_per_level">PP per level</span>
                 <label data-i18n-title="pp_cost_per_level" title="PP per level">
-                  <input name="attr_pp_cost" placeholder="0.25" title="@{repeating_powers_${x}_pp_cost}" type="number" step="0.25" value=""/>
-                </label>
-                <label data-i18n-title="pp_favored" title="Favored (-25%)">
-                  <input name="attr_pp_favored" title="@{repeating_powers_${x}_pp_favored}" type="checkbox" value="1"/>
-                </label>
+                  <input name="attr_pp_cost" placeholder="0.25" title="@{repeating_powers_${x}_pp_cost}" type="number" step="0.01" min="0" value=""/>
+                </label><span class="form-label" data-i18n="pp_flat">Flat cost (not per level)</span>
                 <label data-i18n-title="pp_flat" title="Flat cost (not per level)">
                   <input name="attr_pp_flat" title="@{repeating_powers_${x}_pp_flat}" type="checkbox" value="1"/>
-                </label>
-                <label data-i18n-title="pp_mode" title="Mode">
+                </label><span class="form-label" data-i18n="pp_favored">Favored (-25%)</span>
+                <label data-i18n-title="pp_favored" title="Favored (-25%)">
+                  <input name="attr_pp_favored" title="@{repeating_powers_${x}_pp_favored}" type="checkbox" value="1"/>
+                </label><span class="form-label" data-i18n="pp_mode">Mode</span>
+                <label class="form-wide" data-i18n-title="pp_mode" title="Mode">
                   <select name="attr_pp_mode" title="@{repeating_powers_${x}_pp_mode}">
-                    <option value="passive">passive</option>
-                    <option value="situational">situational</option>
-                    <option value="toggle">activated</option>
-                    <option value="roll">roll</option>
+                    <option value="passive" data-i18n="pp_mode_passive">passive (always on)</option>
+                    <option value="situational" data-i18n="pp_mode_situational">situational (bonus to some tests)</option>
+                    <option value="toggle" data-i18n="pp_mode_toggle">activated (action to switch on)</option>
+                    <option value="roll" data-i18n="pp_mode_roll">roll (has its own test)</option>
                   </select>
-                </label>
-                <label data-i18n-title="pp_test" title="Test">
+                </label><span class="form-label" data-i18n="pp_test">Test</span>
+                <label class="form-wide" data-i18n-title="pp_test" title="Test">
                   <input name="attr_pp_test" placeholder="Magic + Attribute Boost" title="@{repeating_powers_${x}_pp_test}" type="text" value=""/>
-                </label><span name="attr_pp_total"></span>
+                </label><span class="form-label" data-i18n="pp_total">Cost (PP)</span><span class="form-value" name="attr_pp_total"></span><span class="form-help" data-i18n="pp_help">Cost = PP per level x Rating (or the flat cost), -25% if favored, counted in 0.01 steps like Essence. Improved Reflexes uses its own table (1.5 / 2.5 / 4).</span>
                 <h3 data-i18n="notes">notes</h3>
                 <label data-i18n-title="notes" title="notes">
                   <textarea name="attr_notes" placeholder="Notes" title="@{repeating_powers_${x}_notes}" type="text" value=""></textarea>
@@ -6613,15 +6613,17 @@ const updatePowerPoints = () => {
         const lvl = a[`repeating_powers_${id}_pp_flat`] == 1 ? 1 : Math.max(1, num(a[`repeating_powers_${id}_rating`]))
         let t = table.length ? table[Math.min(lvl, table.length) - 1] : cost * lvl
         if (a[`repeating_powers_${id}_pp_favored`] == 1) t *= 0.75
-        out[`repeating_powers_${id}_pp_total`] = Math.round(t * 1000) / 1000
+        // points de pouvoir comptés au centième, comme l'Essence (0,375 -> 0,38)
+        t = Math.round(t * 100) / 100
+        out[`repeating_powers_${id}_pp_total`] = t
         used += t
       })
       const bc = Math.abs(num(a.background_count))
       const base = a.pp_mystic === undefined || a.pp_mystic === '' ? num(a.magic) : num(a.pp_mystic)
       const avail = Math.max(0, base - bc) + num(a.initiation_pp)
-      used = Math.round(used * 1000) / 1000
+      used = Math.round(used * 100) / 100
       out.pp_used = used
-      out.pp_left = Math.round((avail - used) * 1000) / 1000
+      out.pp_left = Math.round((avail - used) * 100) / 100
       out.pp_warning = used > avail ? 'Power Points exceeded' : ''
       setAttrs(out, {silent: true})
     })

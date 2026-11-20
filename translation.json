@@ -565,5 +565,13 @@
     "initiation_discount_both": "Group and ordeal (-40%)",
     "initiation_next_cost": "Next grade (Karma)",
     "magic_max": "Max Magic",
-    "metamagics": "Metamagics"
+    "metamagics": "Metamagics",
+    "foci_karma_cost": "Bonding cost (Karma)",
+    "foci_help": "Bonding cost = Force x multiplier of the type (Karma). Bonded foci at most Magic, total bonded Force at most Magic x 5, active foci at most Logic.",
+    "pp_total": "Cost (PP)",
+    "pp_help": "Cost = PP per level x Rating (or the flat cost), -25% if favored, counted in 0.01 steps like Essence. Improved Reflexes uses its own table (1.5 / 2.5 / 4).",
+    "pp_mode_passive": "passive (always on)",
+    "pp_mode_situational": "situational (bonus to some tests)",
+    "pp_mode_toggle": "activated (action to switch on)",
+    "pp_mode_roll": "roll (has its own test)"
 }

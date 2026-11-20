@@ -927,15 +927,17 @@ const updatePowerPoints = () => {
         const lvl = a[`repeating_powers_${id}_pp_flat`] == 1 ? 1 : Math.max(1, num(a[`repeating_powers_${id}_rating`]))
         let t = table.length ? table[Math.min(lvl, table.length) - 1] : cost * lvl
         if (a[`repeating_powers_${id}_pp_favored`] == 1) t *= 0.75
-        out[`repeating_powers_${id}_pp_total`] = Math.round(t * 1000) / 1000
+        // points de pouvoir comptés au centième, comme l'Essence (0,375 -> 0,38)
+        t = Math.round(t * 100) / 100
+        out[`repeating_powers_${id}_pp_total`] = t
         used += t
       })
       const bc = Math.abs(num(a.background_count))
       const base = a.pp_mystic === undefined || a.pp_mystic === '' ? num(a.magic) : num(a.pp_mystic)
       const avail = Math.max(0, base - bc) + num(a.initiation_pp)
-      used = Math.round(used * 1000) / 1000
+      used = Math.round(used * 100) / 100
       out.pp_used = used
-      out.pp_left = Math.round((avail - used) * 1000) / 1000
+      out.pp_left = Math.round((avail - used) * 100) / 100
       out.pp_warning = used > avail ? 'Power Points exceeded' : ''
       setAttrs(out, {silent: true})
     })

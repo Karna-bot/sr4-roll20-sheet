@@ -565,5 +565,13 @@
     "initiation_discount_both": "Groupe et ordalie (-40 %)",
     "initiation_next_cost": "Grade suivant (Karma)",
     "magic_max": "Magie max",
-    "metamagics": "Métamagies"
+    "metamagics": "Métamagies",
+    "foci_karma_cost": "Coût de lien (Karma)",
+    "foci_help": "Coût de lien = Force × multiplicateur du type (Karma). Foci liés ≤ Magie, Force liée totale ≤ Magie × 5, foci actifs ≤ Logique.",
+    "pp_total": "Coût (PP)",
+    "pp_help": "Coût = PP par niveau × Indice (ou coût fixe), −25 % si favori, compté au centième comme l'Essence. Réflexes améliorés suivent leur barème (1,5 / 2,5 / 4).",
+    "pp_mode_passive": "passif (toujours actif)",
+    "pp_mode_situational": "situationnel (bonus à certains jets)",
+    "pp_mode_toggle": "activé (action pour l'enclencher)",
+    "pp_mode_roll": "jet (a son propre test)"
 }

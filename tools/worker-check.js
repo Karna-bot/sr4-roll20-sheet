@@ -60,10 +60,10 @@ m.applyAdeptPower('repeating_powers_p1_power_type');m.applyAdeptPower('repeating
 check('IR catalogue',[attrs.repeating_powers_p1_name,attrs.repeating_powers_p1_pp_cost_table,attrs.repeating_powers_p1_pp_flat,attrs.repeating_powers_p1_rating],['Improved Reflexes','1.5,2.5,4',0,1]);
 attrs.repeating_powers_p1_rating=2;attrs.repeating_powers_p2_pp_favored=1;set={};m.updatePowerPoints();
 const kh=sandbox.ADEPT_POWERS||vm.runInContext('ADEPT_POWERS',sandbox);
-check('PP utilises',set.pp_used,2.5+kh.killing_hands.cost*0.75);
-check('PP restants',set.pp_left,5-set.pp_used);
+check('PP utilises',set.pp_used,Math.round((2.5+Math.round(kh.killing_hands.cost*0.75*100)/100)*100)/100);
+check('PP restants',set.pp_left,Math.round((5-set.pp_used)*100)/100);
 attrs.background_count=-2;set={};m.updatePowerPoints();
-check('PP avec background count',set.pp_left,3-(2.5+kh.killing_hands.cost*0.75));
+check('PP avec background count',set.pp_left,Math.round((3-set.pp_used)*100)/100);
 // sorts : valeurs compatibles avec les menus de la section
 set={};attrs={repeating_spell_s1_spell_catalog:'acid_stream'};m.applySpell('repeating_spell_s1_spell_catalog');
 check('sort',[set.repeating_spell_s1_name,set.repeating_spell_s1_type,set.repeating_spell_s1_range,set.repeating_spell_s1_duration,set.repeating_spell_s1_drain,set.repeating_spell_s1_category,set.repeating_spell_s1_combat_type],
