@@ -540,5 +540,21 @@
     "status_bound": "Bound",
     "status_free": "Free",
     "status_wild": "Wild",
-    "status_ally": "Ally"
+    "status_ally": "Ally",
+    "Ballistic": "Ballistic",
+    "Impact": "Impact",
+    "Electrical": "Electrical Protection",
+    "Radiation": "Radiation Protection",
+    "Augmentations": "Augmentations",
+    "Rating": "Rating",
+    "Essence": "Essence",
+    "Body": "Body",
+    "Agility": "Agility",
+    "Reaction": "Reaction",
+    "Strength": "Strength",
+    "Charisma": "Charisma",
+    "Intuition": "Intuition",
+    "Logic": "Logic",
+    "Willpower": "Willpower",
+    "matrixbonus": "Matrix bonus"
 }
