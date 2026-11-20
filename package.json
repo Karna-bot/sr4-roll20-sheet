@@ -11,9 +11,10 @@
     "compile:pug": "pug Shadowrun4thEdition.pug -o . -P",
     "compile:sass": "sass --no-source-map Shadowrun4thEdition.scss Shadowrun4thEdition.css",
     "generate:spirits": "node tools/generate-spirits.js",
+    "sync:translations": "node tools/sync-translations.js",
     "cse": "node tools/to-cse.js",
-    "build:legacy": "npm-run-all generate:spirits compile:pug compile:sass",
-    "build": "npm-run-all generate:spirits compile:pug compile:sass cse",
+    "build:legacy": "npm-run-all generate:spirits sync:translations compile:pug compile:sass",
+    "build": "npm-run-all generate:spirits sync:translations compile:pug compile:sass cse",
     "update": "git checkout -- Shadowrun4thEdition.html Shadowrun4thEdition.css && git pull && npm run build"
   }
 }

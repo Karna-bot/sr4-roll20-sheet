@@ -210,3 +210,13 @@ mixin repeatingSectionNotes(section)
     h3(data-i18n='notes') notes
     label(data-i18n-title='notes' title='notes')
         textarea(name='attr_notes' placeholder='Notes' title=`@{repeating_${section}_`+'${x}_notes}' type='text' value='')
+
+//- SHEET TYPE SELECT : un seul menu pour toutes les fiches (en-tete NPC et onglet Options), liste = sheetTypes dans _variables.pug
+mixin sheetSelect()
+    select(name='attr_sheet_type' title='@{sheet_type}' value='pc')
+        each val in sheetTypes
+            - const typeName = val.toLowerCase();
+            if val === 'PC'
+                option(value=typeName data-i18n=typeName selected) #{val}
+            else
+                option(value=typeName data-i18n=typeName) #{val}

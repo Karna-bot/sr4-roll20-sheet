@@ -31,3 +31,6 @@ Les pouvoirs de sprite sont remplis par la fiche à la sélection du type : pas 
 ## Compilation et pull
 - `npm run update` : jette les html/css modifiés par une compilation précédente, fait `git pull`, puis recompile. À utiliser à la place de `git pull`.
 - GitHub Actions (`.github/workflows/build.yml`) recompile et commit html/css à chaque push de sources sur `non-legacy` : le dépôt contient alors toujours la fiche compilée. Dans ce cas, `git checkout -- Shadowrun4thEdition.html Shadowrun4thEdition.css && git pull` suffit, sans compiler en local.
+
+## Ajouter un type de fiche
+Un seul endroit : `sheetTypes` dans `src/pug/_variables.pug`. Le mixin `sheetSelect()` (`_mixins.pug`) génère le menu de l'en-tête NPC et celui de l'onglet Options. Ajouter aussi la clé de traduction dans `translation.json` et `translations/fr.json` ; `npm run build` complète les autres langues avec le texte anglais (`tools/sync-translations.js`).

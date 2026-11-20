@@ -11,13 +11,7 @@
 				input.whisper-toggle(name='attr_'+key+'_toggle' type='checkbox' value=val)
 				span.slider
 		button(name='d6' title='Roll D6s' type='roll' value='@{gm_toggle} &{template:rolls}{{header=^{d6}}}{{base=^{d6}}}{{dice=[[(?{d6s|0}d6>5)]]}}') L
-		select(name='attr_sheet_type' title='Sheet Type' value='pc')
-			each val in sheetTypes
-				- const attrName = val.toLowerCase();
-				if val === 'PC'
-					option(value=attrName data-i18n=attrName selected) #{val}
-				else
-					option(value=attrName data-i18n=attrName) #{val}
+		+sheetSelect()
 		input(name='attr_stats_toggle' type='checkbox' value='settings' checked)
 		span.pictos y
 	input(name='attr_stats_toggle' type='hidden' value='settings')
