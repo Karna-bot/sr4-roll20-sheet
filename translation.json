@@ -1,4 +1,4 @@
-{ 
+{
     "a": "A",
     "accel": "Accel",
     "acceleration": "Acceleration",
@@ -260,8 +260,8 @@
     "overflow": "Overflow",
     "overflowmodifier": "Overflow Modifier",
     "p": "P",
-    "high pain tolerance":"high pain tolerance",
-    "low pain tolerance":"low pain tolerance",
+    "high pain tolerance": "high pain tolerance",
+    "low pain tolerance": "low pain tolerance",
     "damage compensators": "Damage Compensators (P/S): ",
     "paintolerance": "Pain Tolerance",
     "palming": "Palming",
@@ -286,7 +286,7 @@
     "power": "Power",
     "powers": "Powers",
     "pr": "Professional Rating",
-    "prep":"Prep...",
+    "prep": "Prep...",
     "primary": "Primary",
     "primaryarmor": "Primary Armor",
     "primarylifestyle": "Primary Lifestyle",
@@ -311,7 +311,7 @@
     "reaction": "Reaction",
     "recoil": "Recoil",
     "registering": "Registering",
-    "relatedlifestyle": "Related Lifestyles", 
+    "relatedlifestyle": "Related Lifestyles",
     "resonance": "Resonance",
     "resonanceskills": "Resonance Skills",
     "rituals": "Rituals",
@@ -391,128 +391,154 @@
     "importer": "Importer",
     "importecharacter": "Import Character",
     "apply": "Apply",
-    "importertext": "You can import a character with a JSON from Chummer. The game owner must set a Compendium in the Game Settings. It does not matter which one you pick. Charactermancer software simply requires one be picked."
-    ,"character name":"character name"
-    ,"player name":"player name"
-    ,"walk modifier": "walk modifier"
-    ,"run modifier": "run modifier"
-    ,"movement modifier": "movement modifier"
-    ,"preperations": "preperations"
-    ,"force": "Force"
-    ,"potency": "potency"
-    ,"trigger": "trigger"
-    ,"command": "command"
-    ,"contact": "contact"
-    ,"time":"time"
-    ,"adeptpowers": "Adept Powers or Other Abilities"
-    ,"whisper rolls to gm":"whisper rolls to gm"
-    ,"dodge":"Dodge"
-    ,"climbing":"Climbing"
-    ,"infiltration":"Infiltration"
-    ,"shadowing":"Shadowing"
-    ,"enchanting":"Enchanting"
-    ,"mechanicalgroup":"Mechanical Group"
-    ,"datasearch":"Data Search"
-    ,"pilotanthroform":"Pilot Anthroform"
-    ,"freefall": "Freefall"
-    ,"Initiative Passes":"Initiative Passes"
-    ,"ballistic":"Ballistic"
-    ,"impact":"Impact"
-    ,"Laser Protection":"Laser Protection"
-    ,"Gause Round Armor": "Gause Round Armor"
-    ,"Gause":"Gause"
-    ,"Laser":"Laser"
-    ,"Falling Protection": "Falling Protection"
-    ,"system":"system"
-    ,"os":"os"
-    ,"response":"response"
-    ,"signal":"signal"
-    ,"spirit": "Spirit"
-    ,"spiritstate": "State"
-    ,"astral": "Astral"
-    ,"materialized": "Materialized"
-    ,"otherstate": "Other"
-    ,"spirittype": "Type"
-    ,"customtype": "Custom"
-    ,"vh_control": "Control"
-    ,"vh_controlmode": "Control mode"
-    ,"vh_manual": "Manual"
-    ,"vh_remote": "Remote control"
-    ,"vh_jumped": "Jumped-in rigger"
-    ,"vh_autonomous": "Autonomous (Pilot)"
-    ,"vh_interface": "Interface"
-    ,"vh_ar": "AR"
-    ,"vh_cold": "VR cold-sim"
-    ,"vh_hot": "VR hot-sim"
-    ,"vh_arsubscribed": "AR subscribed (manual)"
-    ,"vh_ip": "IP"
-    ,"vh_controlstats": "Control statistics"
-    ,"vh_command": "Command program"
-    ,"vh_op_reaction": "Operator Reaction"
-    ,"vh_op_agility": "Operator Agility"
-    ,"vh_op_intuition": "Operator Intuition"
-    ,"vh_op_init": "Operator Initiative"
-    ,"vh_op_ip": "Operator IP (manual/AR)"
-    ,"vh_sk_piloting": "Piloting skill"
-    ,"vh_sk_melee": "Melee skill"
-    ,"vh_as_maneuver": "Autosoft Maneuver"
-    ,"vh_as_targeting": "Autosoft Targeting"
-    ,"vh_as_defense": "Autosoft Defense"
-    ,"vh_as_clearsight": "Autosoft Clearsight"
-    ,"vh_as_covert": "Autosoft Covert Ops"
-    ,"vh_bonus_rig": "Control Rig bonus (jumped-in)"
-    ,"vh_bonus_hot": "Hot-sim bonus (jumped-in)"
-    ,"vh_maneuver": "Maneuver"
-    ,"vh_gunnery": "Gunnery"
-    ,"vh_defense_ranged": "Defense (ranged)"
-    ,"vh_defense_melee": "Defense (melee)"
-    ,"vh_full_defense": "Full defense"
-    ,"vh_perception": "Perception (sensors)"
-    ,"vh_infiltration": "Infiltration"
-    ,"vh_resist": "Resist damage"
-    ,"vh_driver": "Linked character"
-    ,"vh_pilotskill": "Piloting skill used"
-    ,"vh_pilot_auto": "Best Pilot skill"
-    ,"tradition": "Tradition"
-    ,"initiation": "Initiation"
-    ,"submersionechoes": "Submersion and Echoes"
-    ,"stream": "Stream"
-    ,"services": "Services"
-    ,"spritetype": "Type"
-    ,"spriteinit": "Initiative = Level x"
-    ,"leveloffsets": "Attribute = Level +"
-    ,"spriteinfo": "Skills and Forms"
-    ,"forceoffsets": "Attribute = Force +"
-    ,"ai": "AI"
-    ,"ai_rating": "Rating"
-    ,"mx_response": "Response"
-    ,"mx_signal": "Signal"
-    ,"mx_system": "System"
-    ,"mx_biofeedback": "Biofeedback Filter"
-    ,"mx_passes": "Matrix IP"
-    ,"technocritter": "Technocritter"
-    ,"emergentpowers": "Emergent Powers"
-    ,"ai_home": "Home node"
-    ,"realign": "Realign"
-    ,"ai_r": "Reference rating R"
-    ,"livingpersona": "Living Persona"
-    ,"paragon": "Paragon"
-    ,"advantage": "Advantage"
-    ,"disadvantage": "Disadvantage"
-    ,"paragonsprites": "Sprite bonus"
-    ,"resonancedifference": "Resonance Difference (optional rule)"
-    ,"defensebonus": "Defense vs Attack"
-    ,"widgets": "Widgets"
-    ,"widget": "Widget"
-    ,"widget_create": "Create widget (Threading)"
-    ,"widget_fade": "Widget Fading"
-    ,"times": "Times"
-    ,"threshold": "Threshold (Rating x 2, 1 h)"
-    ,"initiativepasses": "Initiative passes"
-    ,"sp_name": "Power"
-    ,"biofeedback": "Biofeedback Filter"
-    ,"Electronics Group": "Electronics Group"
-    ,"Gause Round": "Gauss Round"
-    ,"damage compensators physical": "Damage compensators (physical)"
-    ,"damage compensators stun": "Damage compensators (stun)"
+    "importertext": "You can import a character with a JSON from Chummer. The game owner must set a Compendium in the Game Settings. It does not matter which one you pick. Charactermancer software simply requires one be picked.",
+    "character name": "character name",
+    "player name": "player name",
+    "walk modifier": "walk modifier",
+    "run modifier": "run modifier",
+    "movement modifier": "movement modifier",
+    "preperations": "preperations",
+    "force": "Force",
+    "potency": "potency",
+    "trigger": "trigger",
+    "command": "command",
+    "contact": "contact",
+    "time": "time",
+    "adeptpowers": "Adept Powers or Other Abilities",
+    "whisper rolls to gm": "whisper rolls to gm",
+    "dodge": "Dodge",
+    "climbing": "Climbing",
+    "infiltration": "Infiltration",
+    "shadowing": "Shadowing",
+    "enchanting": "Enchanting",
+    "mechanicalgroup": "Mechanical Group",
+    "datasearch": "Data Search",
+    "pilotanthroform": "Pilot Anthroform",
+    "freefall": "Freefall",
+    "Initiative Passes": "Initiative Passes",
+    "ballistic": "Ballistic",
+    "impact": "Impact",
+    "Laser Protection": "Laser Protection",
+    "Gause Round Armor": "Gause Round Armor",
+    "Gause": "Gause",
+    "Laser": "Laser",
+    "Falling Protection": "Falling Protection",
+    "system": "system",
+    "os": "os",
+    "response": "response",
+    "signal": "signal",
+    "spirit": "Spirit",
+    "spiritstate": "State",
+    "astral": "Astral",
+    "materialized": "Materialized",
+    "otherstate": "Other",
+    "spirittype": "Type",
+    "customtype": "Custom",
+    "vh_control": "Control",
+    "vh_controlmode": "Control mode",
+    "vh_manual": "Manual",
+    "vh_remote": "Remote control",
+    "vh_jumped": "Jumped-in rigger",
+    "vh_autonomous": "Autonomous (Pilot)",
+    "vh_interface": "Interface",
+    "vh_ar": "AR",
+    "vh_cold": "VR cold-sim",
+    "vh_hot": "VR hot-sim",
+    "vh_arsubscribed": "AR subscribed (manual)",
+    "vh_ip": "IP",
+    "vh_controlstats": "Control statistics",
+    "vh_command": "Command program",
+    "vh_op_reaction": "Operator Reaction",
+    "vh_op_agility": "Operator Agility",
+    "vh_op_intuition": "Operator Intuition",
+    "vh_op_init": "Operator Initiative",
+    "vh_op_ip": "Operator IP (manual/AR)",
+    "vh_sk_piloting": "Piloting skill",
+    "vh_sk_melee": "Melee skill",
+    "vh_as_maneuver": "Autosoft Maneuver",
+    "vh_as_targeting": "Autosoft Targeting",
+    "vh_as_defense": "Autosoft Defense",
+    "vh_as_clearsight": "Autosoft Clearsight",
+    "vh_as_covert": "Autosoft Covert Ops",
+    "vh_bonus_rig": "Control Rig bonus (jumped-in)",
+    "vh_bonus_hot": "Hot-sim bonus (jumped-in)",
+    "vh_maneuver": "Maneuver",
+    "vh_gunnery": "Gunnery",
+    "vh_defense_ranged": "Defense (ranged)",
+    "vh_defense_melee": "Defense (melee)",
+    "vh_full_defense": "Full defense",
+    "vh_perception": "Perception (sensors)",
+    "vh_infiltration": "Infiltration",
+    "vh_resist": "Resist damage",
+    "vh_driver": "Linked character",
+    "vh_pilotskill": "Piloting skill used",
+    "vh_pilot_auto": "Best Pilot skill",
+    "tradition": "Tradition",
+    "initiation": "Initiation",
+    "submersionechoes": "Submersion and Echoes",
+    "stream": "Stream",
+    "services": "Services",
+    "spritetype": "Type",
+    "spriteinit": "Initiative = Level x",
+    "leveloffsets": "Attribute = Level +",
+    "spriteinfo": "Skills and Forms",
+    "forceoffsets": "Attribute = Force +",
+    "ai": "AI",
+    "ai_rating": "Rating",
+    "mx_response": "Response",
+    "mx_signal": "Signal",
+    "mx_system": "System",
+    "mx_biofeedback": "Biofeedback Filter",
+    "mx_passes": "Matrix IP",
+    "technocritter": "Technocritter",
+    "emergentpowers": "Emergent Powers",
+    "ai_home": "Home node",
+    "realign": "Realign",
+    "ai_r": "Reference rating R",
+    "livingpersona": "Living Persona",
+    "paragon": "Paragon",
+    "advantage": "Advantage",
+    "disadvantage": "Disadvantage",
+    "paragonsprites": "Sprite bonus",
+    "resonancedifference": "Resonance Difference (optional rule)",
+    "defensebonus": "Defense vs Attack",
+    "widgets": "Widgets",
+    "widget": "Widget",
+    "widget_create": "Create widget (Threading)",
+    "widget_fade": "Widget Fading",
+    "times": "Times",
+    "threshold": "Threshold (Rating x 2, 1 h)",
+    "initiativepasses": "Initiative passes",
+    "sp_name": "Power",
+    "biofeedback": "Biofeedback Filter",
+    "Electronics Group": "Electronics Group",
+    "Gause Round": "Gauss Round",
+    "damage compensators physical": "Damage compensators (physical)",
+    "damage compensators stun": "Damage compensators (stun)",
+    "initiation_pp_option": "Optional rule: +1 Power Point instead of a metamagic",
+    "background_count": "Background Count (signed)",
+    "mentor_spirit": "Mentor Spirit",
+    "mentor_advantage": "Advantage",
+    "mentor_disadvantage": "Disadvantage",
+    "magic_qualities": "Magical qualities (Aptitude, Focused Concentration, Spirit Affinity, Aspected, Magic Resistance, Geas, Cursed, Way...)",
+    "foci": "Foci",
+    "foci_bonded": "Bonded",
+    "foci_force_total": "Total Force",
+    "foci_active_count": "Active",
+    "foci_karma_total": "Karma invested",
+    "bonded": "bonded",
+    "pp_available": "Power Points",
+    "pp_used": "Used",
+    "pp_left": "Left",
+    "pp_cost_per_level": "PP per level",
+    "pp_favored": "Favored (-25%)",
+    "pp_flat": "Flat cost (not per level)",
+    "pp_mode": "Mode",
+    "pp_test": "Test",
+    "spirit_status": "Status",
+    "status_summoned": "Summoned",
+    "status_bound": "Bound",
+    "status_free": "Free",
+    "status_wild": "Wild",
+    "status_ally": "Ally"
 }

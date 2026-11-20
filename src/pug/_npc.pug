@@ -315,6 +315,14 @@
 				h2(data-i18n='bound') Bound
 				input(name='attr_bound' title='@{bound}' type='checkbox' value='1')
 			.rows.spirit
+				h2(data-i18n='spirit_status') Status
+				select(name='attr_spirit_status' title='@{spirit_status}')
+					option(value='summoned' data-i18n='status_summoned' selected) Summoned
+					option(value='bound' data-i18n='status_bound') Bound
+					option(value='free' data-i18n='status_free') Free
+					option(value='wild' data-i18n='status_wild') Wild
+					option(value='ally' data-i18n='status_ally') Ally
+			.rows.spirit
 				h2(data-i18n='forceoffsets') Attribute = Force +
 			each val in coreAttributeArray.concat(['Edge'])
 				- const attrName = val.toLowerCase();
