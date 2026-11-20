@@ -1,0 +1,27 @@
+# Recompile la fiche (html/css) a chaque push de sources sur non-legacy et commit le resultat :
+# les fichiers compiles sont toujours a jour dans le depot, plus besoin de compiler en local pour un pull.
+name: build-sheet
+on:
+  push:
+    branches: [non-legacy]
+    paths-ignore:
+      - Shadowrun4thEdition.html
+      - Shadowrun4thEdition.css
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - name: Commit compiled sheet
+        run: |
+          git config user.name "build-sheet"
+          git config user.email "actions@users.noreply.github.com"
+          git add Shadowrun4thEdition.html Shadowrun4thEdition.css
+          git diff --cached --quiet || (git commit -m "Build: html/css compiles [skip ci]" && git push)

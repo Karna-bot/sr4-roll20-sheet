@@ -27,3 +27,7 @@ Les pouvoirs de sprite sont remplis par la fiche à la sélection du type : pas 
 - La mise en forme (SCSS) des nouveaux blocs reprend les classes existantes ; un ajustement visuel peut être nécessaire.
 - Plafond de la persona vivante (Résonance, grade de submersion) non appliqué : avertissement seulement.
 - Échos « Mesh Reality », « Resonance Exchange », etc. : texte uniquement.
+
+## Compilation et pull
+- `npm run update` : jette les html/css modifiés par une compilation précédente, fait `git pull`, puis recompile. À utiliser à la place de `git pull`.
+- GitHub Actions (`.github/workflows/build.yml`) recompile et commit html/css à chaque push de sources sur `non-legacy` : le dépôt contient alors toujours la fiche compilée. Dans ce cas, `git checkout -- Shadowrun4thEdition.html Shadowrun4thEdition.css && git pull` suffit, sans compiler en local.

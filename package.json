@@ -13,6 +13,7 @@
     "generate:spirits": "node tools/generate-spirits.js",
     "cse": "node tools/to-cse.js",
     "build:legacy": "npm-run-all generate:spirits compile:pug compile:sass",
-    "build": "npm-run-all generate:spirits compile:pug compile:sass cse"
+    "build": "npm-run-all generate:spirits compile:pug compile:sass cse",
+    "update": "git checkout -- Shadowrun4thEdition.html Shadowrun4thEdition.css && git pull && npm run build"
   }
 }
