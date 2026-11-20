@@ -1344,7 +1344,8 @@
                 <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
                 <div class="collapse"><span name="attr_notes"></span></div>
                 <div class="settings">
-                  <label data-i18n-title="catalog" title="catalog">
+                  <div class="sr-row catalog-row">
+                    <h3 data-i18n="catalog">Catalog</h3>
                     <select name="attr_spell_catalog" title="@{repeating_spell_${x}_spell_catalog}">
                       <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
                       <optgroup label="Combat">
@@ -1566,7 +1567,7 @@
                         <option value="turn_to_goo">Turn to Goo (SR4A)</option>
                       </optgroup>
                     </select>
-                  </label>
+                  </div>
                   <label data-i18n-title="name" title="Name">
                     <input name="attr_name" placeholder="Fireball" title="@{repeating_spell_${x}_name}" type="text"/>
                   </label>
@@ -1642,7 +1643,8 @@
                 <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
                 <div class="collapse"><span name="attr_notes"></span></div>
                 <div class="settings">
-                  <label data-i18n-title="catalog" title="catalog">
+                  <div class="sr-row catalog-row">
+                    <h3 data-i18n="catalog">Catalog</h3>
                     <select name="attr_spell_catalog" title="@{repeating_preps_${x}_spell_catalog}">
                       <option value="custom" data-i18n="customtype" selected="selected">Custom</option>
                       <optgroup label="Combat">
@@ -1864,7 +1866,7 @@
                         <option value="turn_to_goo">Turn to Goo (SR4A)</option>
                       </optgroup>
                     </select>
-                  </label>
+                  </div>
                   <label data-i18n-title="name" title="Name">
                     <input name="attr_name" placeholder="Fireball" title="@{repeating_preps_${x}_name}" type="text"/>
                   </label>

@@ -1159,6 +1159,13 @@
 .ui-dialog .tab-content .charsheet .pc div.magic div.spellsForumlas div.repitem div.sr-row {
   grid-column: 1/6;
 }
+.ui-dialog .tab-content .charsheet .pc div.magic div.spellsForumlas div.repitem div.sr-row.catalog-row {
+  grid-column: 1/8;
+}
+.ui-dialog .tab-content .charsheet .pc div.magic div.spellsForumlas div.repitem div.sr-row.catalog-row select {
+  margin-left: 0.5em;
+  width: 60%;
+}
 .ui-dialog .tab-content .charsheet .pc div.magic div.spellsForumlas div.repitem div.settings {
   grid-column: 1/8;
   grid-template-columns: 30% 1.5fr 1.5fr 2fr 2em 1em 1em;

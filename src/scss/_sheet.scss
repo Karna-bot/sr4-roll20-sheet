@@ -623,7 +623,16 @@
 
 					div.sheet-row { grid-column: 1 / 6; }
 
-					div.sheet-settings { 
+					div.sheet-row.sheet-catalog-row {
+						grid-column: 1 / 8;
+
+						select {
+							margin-left: 0.5em;
+							width: 60%;
+						}
+					}
+
+					div.sheet-settings {
 						grid-column: 1 / 8;
 						grid-template-columns: $magicGrid;
 					}

@@ -136,7 +136,9 @@ mixin pcSpells(type)
         .collapse
             span(name='attr_notes')
         .settings
-            label(data-i18n-title='catalog' title='catalog')
+            //- catalogue sur sa propre ligne : la grille suivante (nom, type, portee, duree, drain) garde ses colonnes
+            .row.catalog-row
+                h3(data-i18n='catalog') Catalog
                 select(name='attr_spell_catalog' title=`${repeatingSection}_spell_catalog}`)
                     option(value='custom' data-i18n='customtype' selected) Custom
                     each grp in spellCatalog
