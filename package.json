@@ -1,20 +1,22 @@
 {
   "name": "sr4-sheet",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
-    "pug": "^3.0.2",
-    "pug-cli": "^1.0.0-alpha6",
-    "sass": "^1.77.0",
-    "npm-run-all": "^4.1.5"
+    "pug": "^3.0.4",
+    "sass": "^1.108.1"
   },
   "scripts": {
-    "compile:pug": "pug Shadowrun4thEdition.pug -o . -P",
-    "compile:sass": "sass --no-source-map Shadowrun4thEdition.scss Shadowrun4thEdition.css",
     "generate:spirits": "node tools/generate-spirits.js",
     "sync:translations": "node tools/sync-translations.js",
+    "compile:pug": "node tools/compile-pug.js",
+    "compile:sass": "sass --no-source-map Shadowrun4thEdition.scss Shadowrun4thEdition.css",
     "cse": "node tools/to-cse.js",
-    "build:legacy": "npm-run-all generate:spirits sync:translations compile:pug compile:sass",
-    "build": "npm-run-all generate:spirits sync:translations compile:pug compile:sass cse",
-    "update": "git checkout -- Shadowrun4thEdition.html Shadowrun4thEdition.css && git pull && npm run build"
+    "build:legacy": "npm run generate:spirits && npm run sync:translations && npm run compile:pug && npm run compile:sass",
+    "build": "npm run build:legacy && npm run cse",
+    "test": "node tools/to-cse.test.js && node tools/worker-check.js",
+    "update": "node tools/update.js"
   }
 }
