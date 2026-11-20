@@ -142,7 +142,7 @@
   vertical-align: top;
   white-space: pre-line;
 }
-.ui-dialog .tab-content .charsheet .charsheet {
+.ui-dialog .tab-content .charsheet {
   background: rgb(175, 211, 226);
   background: linear-gradient(90deg, #afd3e2 0%, rgb(245, 245, 245) 17%, rgb(255, 255, 255) 78%, #afd3e2 100%);
   width: 850px;
@@ -3382,34 +3382,34 @@
 .ui-dialog .tab-content .charsheet input[type=number] {
   -moz-appearance: textfield;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-whisper,
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-toggles {
+.ui-dialog .tab-content .charsheet.lang-fr .tab-whisper,
+.ui-dialog .tab-content .charsheet.lang-fr .tab-toggles {
   margin-right: 2%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tabs input[type=checkbox]:nth-of-type(2) {
+.ui-dialog .tab-content .charsheet.lang-fr .tabs input[type=checkbox]:nth-of-type(2) {
   width: 11%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio] {
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio] {
   width: 4.5%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(4),
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(5),
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(6),
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(7) {
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(4),
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(5),
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(6),
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(7) {
   width: 6%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-whisper input[type=radio],
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(8),
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-toggles input[type=checkbox]:nth-of-type(1) {
+.ui-dialog .tab-content .charsheet.lang-fr .tab-whisper input[type=radio],
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(8),
+.ui-dialog .tab-content .charsheet.lang-fr .tab-toggles input[type=checkbox]:nth-of-type(1) {
   width: 8%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(9) {
+.ui-dialog .tab-content .charsheet.lang-fr .tab-col input[type=radio]:nth-of-type(9) {
   width: 2.5%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .pd-meta input[type=text] {
+.ui-dialog .tab-content .charsheet.lang-fr .pd-meta input[type=text] {
   width: 30%;
 }
-.ui-dialog .tab-content .charsheet .charsheet.lang-fr .skill-box h3:first-child {
+.ui-dialog .tab-content .charsheet.lang-fr .skill-box h3:first-child {
   margin-right: 51%;
   width: 20%;
 }

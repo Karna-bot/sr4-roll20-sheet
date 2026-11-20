@@ -11,4 +11,7 @@ const css = processCss(stripComments("/* c */ .sheet-a, .sheet-b > .sheet-col { 
 assert(css.includes(`${P} .a,\n${P} .b > .sr-col {`) && css.includes(`@media (min-width: 1px) {\n${P} .c {`) && css.includes("@font-face"));
 const html = convertHtml('<div class="row pc-col"></div><rolltemplate class="sheet-rolltemplate-x"><div class="sheet-template-row"></div></rolltemplate><span class=\'col\'>');
 assert(html.includes('class="sr-row pc-col"') && html.includes('sheet-template-row') && html.includes("class='sr-col'"));
+assert.strictEqual(convertSelector(".charsheet"), P);
+assert.strictEqual(convertSelector(".charsheet.lang-fr .sheet-tab-whisper"), `${P}.lang-fr .tab-whisper`);
+assert.strictEqual(convertSelector(".charsheet-x"), `${P} .charsheet-x`);
 console.log("to-cse : OK");

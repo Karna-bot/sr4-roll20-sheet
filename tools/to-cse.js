@@ -41,6 +41,8 @@ const convertSelector = sel => {
         }
         out += c;
     }
+    //- ".charsheet" est deja la racine de la fiche : ne pas la doubler (".charsheet", ".charsheet.lang-fr ...")
+    if (/^\.charsheet(?![\w-])/.test(out)) return PREFIX + out.slice(".charsheet".length);
     return `${PREFIX} ${out}`;
 };
 
