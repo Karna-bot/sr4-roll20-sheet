@@ -563,5 +563,7 @@
     "initiation_discount_both": "Group and ordeal (-40%)",
     "initiation_next_cost": "Next grade (Karma)",
     "magic_max": "Max Magic",
-    "metamagics": "Metamagics"
+    "metamagics": "Metamagics",
+    "vh_tests": "Tests",
+    "vehicle_notes": "Notes"
 }

@@ -3219,29 +3219,25 @@
     <label class="settings" data-i18n-title="hand" title="Hand">
       <input name="attr_handling" placeholder="3" title="@{handling}" type="number" value=""/>
     </label>
-    <h1 data-i18n="handoff">Hand (Off)</h1><span name="attr_handling_offroad"></span>
-    <label class="settings" data-i18n-title="handoff" title="Hand (Off)">
-      <input name="attr_handling_offroad" placeholder="3" title="@{handling_offroad}" type="number" value=""/>
+    <h1 data-i18n="accel">Accel</h1><span name="attr_acceleration"></span>
+    <label class="settings" data-i18n-title="accel" title="Accel">
+      <input name="attr_acceleration" placeholder="10/25" title="@{acceleration}" type="text" value=""/>
     </label>
     <h1 data-i18n="speed">Speed</h1><span name="attr_speed"></span>
     <label class="settings" data-i18n-title="speed" title="Speed">
       <input name="attr_speed" placeholder="3" title="@{speed}" type="number" value=""/>
     </label>
-    <h1 data-i18n="speedoff">Speed (Off)</h1><span name="attr_speed_offroad"></span>
-    <label class="settings" data-i18n-title="speedoff" title="Speed (Off)">
-      <input name="attr_speed_offroad" placeholder="3" title="@{speed_offroad}" type="number" value=""/>
-    </label>
-    <h1 data-i18n="accel">Accel</h1><span name="attr_acceleration"></span>
-    <label class="settings" data-i18n-title="accel" title="Accel">
-      <input name="attr_acceleration" placeholder="3" title="@{acceleration}" type="number" value=""/>
+    <button data-i18n="pilot" name="roll_pilot" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{pilot}}}{{base=^{pilot}}}{{dice=[[((@{pilot}+@{pilot})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">pilot</button><span name="attr_pilot"></span>
+    <label class="settings" data-i18n-title="pilot" title="Pilot">
+      <input name="attr_pilot" placeholder="3" title="@{pilot}" type="number" value=""/>
     </label>
     <h1 data-i18n="body">Body</h1><span name="attr_body"></span>
     <label class="settings" data-i18n-title="body" title="Body">
       <input name="attr_body" placeholder="3" title="@{body}" type="number" value=""/>
     </label>
-    <button data-i18n="pilot" name="roll_pilot" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{pilot}}}{{base=^{pilot}}}{{dice=[[((@{pilot}+@{pilot})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">pilot</button><span name="attr_pilot"></span>
-    <label class="settings" data-i18n-title="pilot" title="Pilot">
-      <input name="attr_pilot" placeholder="3" title="@{pilot}" type="number" value=""/>
+    <h1 data-i18n="armor">Armor</h1><span name="attr_ballistic"></span>
+    <label class="settings" data-i18n-title="armor" title="Armor">
+      <input name="attr_ballistic" placeholder="3" title="@{ballistic}" type="number" value=""/>
     </label>
     <h1 data-i18n="sensor">Sensor</h1><span name="attr_sensor"></span>
     <label class="settings" data-i18n-title="sensor" title="Sensor">
@@ -3498,218 +3494,6 @@
         <label class="settings" data-i18n-title="mx_passes" title="Matrix initiative passes">
           <input name="attr_mx_passes" placeholder="3" title="@{mx_passes}" type="number" value="3"/>
         </label><span name="attr_mx_passes"></span>
-      </div>
-      <div class="rows vehicle">
-        <h1 data-i18n="vh_control">Control</h1>
-      </div>
-      <div class="rows vehicle">
-        <h2 data-i18n="vh_driver">Linked character</h2>
-        <input name="attr_veh_driver_id" type="hidden" value=""/><span name="attr_veh_driver_name"></span>
-      </div>
-      <div class="rows vehicle settings">
-        <h2 class="settings" data-i18n="vh_pilotskill">Piloting skill used</h2>
-        <select class="settings" name="attr_veh_pilot_skill" title="@{veh_pilot_skill}">
-          <option value="auto" data-i18n="vh_pilot_auto" selected="selected">Best Pilot skill</option>
-          <option value="Pilot Aerospace" data-i18n="pilotaerospace">Pilot Aerospace</option>
-          <option value="Pilot Aircraft" data-i18n="pilotaircraft">Pilot Aircraft</option>
-          <option value="Pilot Anthroform" data-i18n="pilotanthroform">Pilot Anthroform</option>
-          <option value="Pilot Exotic Vehicle" data-i18n="pilotexoticvehicle">Pilot Exotic Vehicle</option>
-          <option value="Pilot Ground Craft" data-i18n="pilotgroundcraft">Pilot Ground Craft</option>
-          <option value="Pilot Watercraft" data-i18n="pilotwatercraft">Pilot Watercraft</option>
-        </select>
-      </div>
-      <div class="rows vehicle">
-        <h2 data-i18n="vh_controlmode">Control mode</h2>
-        <select name="attr_veh_mode" title="@{veh_mode}">
-          <option value="manual" data-i18n="vh_manual">Manual</option>
-          <option value="remote" data-i18n="vh_remote">Remote control</option>
-          <option value="jumped" data-i18n="vh_jumped">Jumped-in rigger</option>
-          <option value="autonomous" data-i18n="vh_autonomous">Autonomous (Pilot)</option>
-        </select>
-      </div>
-      <div class="rows vehicle">
-        <h2 data-i18n="vh_interface">Interface</h2>
-        <select name="attr_veh_interface" title="@{veh_interface}">
-          <option value="ar" data-i18n="vh_ar">AR</option>
-          <option value="cold" data-i18n="vh_cold">VR cold-sim</option>
-          <option value="hot" data-i18n="vh_hot">VR hot-sim</option>
-        </select>
-      </div>
-      <div class="rows vehicle">
-        <h2 data-i18n="vh_arsubscribed">AR subscribed (manual)</h2>
-        <label data-i18n-title="vh_arsubscribed" title="AR subscribed">
-          <input name="attr_veh_ar" title="@{veh_ar}" type="checkbox" value="1"/>
-        </label>
-      </div>
-      <div class="rows vehicle"><span name="attr_veh_note"></span></div>
-      <div class="rows vehicle">
-        <button name="roll_vh_initiative" type="roll" value="@{gm_toggle} &{template:rolls}{{header=^{initiative}}}{{base=^{base}}}{{dice=[[((@{veh_init}+@{modifiers_toggle})d6>5cf0)+(@{veh_init})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}">Initiative</button><span name="attr_veh_init"></span><span>+</span>
-        <input name="attr_veh_ip" type="hidden" value="1"/><span name="attr_veh_ip"></span><span data-i18n="vh_ip">IP</span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_maneuver" name="roll_vh_maneuver" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_maneuver}}}{{base=^{base}}}{{dice=[[((@{veh_pool_maneuver})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_maneuver</button><span name="attr_veh_pool_maneuver"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_gunnery" name="roll_vh_gunnery" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_gunnery}}}{{base=^{base}}}{{dice=[[((@{veh_pool_gunnery})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_gunnery</button><span name="attr_veh_pool_gunnery"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_defense_ranged" name="roll_vh_defense_ranged" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_defense_ranged}}}{{base=^{base}}}{{dice=[[((@{veh_pool_defense_ranged})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_defense_ranged</button><span name="attr_veh_pool_defense_ranged"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_defense_melee" name="roll_vh_defense_melee" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_defense_melee}}}{{base=^{base}}}{{dice=[[((@{veh_pool_defense_melee})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_defense_melee</button><span name="attr_veh_pool_defense_melee"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_full_defense" name="roll_vh_full_defense" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_full_defense}}}{{base=^{base}}}{{dice=[[((@{veh_pool_full_defense})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_full_defense</button><span name="attr_veh_pool_full_defense"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_perception" name="roll_vh_perception" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_perception}}}{{base=^{base}}}{{dice=[[((@{veh_pool_perception})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_perception</button><span name="attr_veh_pool_perception"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_infiltration" name="roll_vh_infiltration" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_infiltration}}}{{base=^{base}}}{{dice=[[((@{veh_pool_infiltration})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_infiltration</button><span name="attr_veh_pool_infiltration"></span>
-      </div>
-      <div class="rows vehicle">
-        <button data-i18n="vh_resist" name="roll_vh_resist" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_resist}}}{{base=^{base}}}{{dice=[[((@{veh_pool_resist})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_resist</button><span name="attr_veh_pool_resist"></span>
-      </div>
-      <div class="rows vehicle">
-        <h1 class="settings" data-i18n="vh_controlstats">Control statistics</h1>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="response">Response</h2>
-        <label class="settings" data-i18n-title="response" title="Response">
-          <input name="attr_veh_response" placeholder="0" title="@{veh_response}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="system">System</h2>
-        <label class="settings" data-i18n-title="system" title="System">
-          <input name="attr_veh_system" placeholder="0" title="@{veh_system}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="signal">Signal</h2>
-        <label class="settings" data-i18n-title="signal" title="Signal">
-          <input name="attr_veh_signal" placeholder="0" title="@{veh_signal}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="firewall">Firewall</h2>
-        <label class="settings" data-i18n-title="firewall" title="Firewall">
-          <input name="attr_veh_firewall" placeholder="0" title="@{veh_firewall}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_command">Command program</h2>
-        <label class="settings" data-i18n-title="vh_command" title="Command program">
-          <input name="attr_veh_command" placeholder="0" title="@{veh_command}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_op_reaction">Operator Reaction</h2>
-        <label class="settings" data-i18n-title="vh_op_reaction" title="Operator Reaction">
-          <input name="attr_veh_op_reaction" placeholder="0" title="@{veh_op_reaction}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_op_agility">Operator Agility</h2>
-        <label class="settings" data-i18n-title="vh_op_agility" title="Operator Agility">
-          <input name="attr_veh_op_agility" placeholder="0" title="@{veh_op_agility}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_op_intuition">Operator Intuition</h2>
-        <label class="settings" data-i18n-title="vh_op_intuition" title="Operator Intuition">
-          <input name="attr_veh_op_intuition" placeholder="0" title="@{veh_op_intuition}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_op_init">Operator Initiative</h2>
-        <label class="settings" data-i18n-title="vh_op_init" title="Operator Initiative">
-          <input name="attr_veh_op_init" placeholder="0" title="@{veh_op_init}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_op_ip">Operator IP (manual/AR)</h2>
-        <label class="settings" data-i18n-title="vh_op_ip" title="Operator IP (manual/AR)">
-          <input name="attr_veh_op_ip" placeholder="0" title="@{veh_op_ip}" type="number" value="1"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_sk_piloting">Piloting skill</h2>
-        <label class="settings" data-i18n-title="vh_sk_piloting" title="Piloting skill">
-          <input name="attr_veh_sk_piloting" placeholder="0" title="@{veh_sk_piloting}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="gunnery">Gunnery skill</h2>
-        <label class="settings" data-i18n-title="gunnery" title="Gunnery skill">
-          <input name="attr_veh_sk_gunnery" placeholder="0" title="@{veh_sk_gunnery}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="dodge">Dodge skill</h2>
-        <label class="settings" data-i18n-title="dodge" title="Dodge skill">
-          <input name="attr_veh_sk_dodge" placeholder="0" title="@{veh_sk_dodge}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_sk_melee">Melee skill</h2>
-        <label class="settings" data-i18n-title="vh_sk_melee" title="Melee skill">
-          <input name="attr_veh_sk_melee" placeholder="0" title="@{veh_sk_melee}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="perception">Perception skill</h2>
-        <label class="settings" data-i18n-title="perception" title="Perception skill">
-          <input name="attr_veh_sk_perception" placeholder="0" title="@{veh_sk_perception}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="infiltration">Infiltration skill</h2>
-        <label class="settings" data-i18n-title="infiltration" title="Infiltration skill">
-          <input name="attr_veh_sk_infiltration" placeholder="0" title="@{veh_sk_infiltration}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_as_maneuver">Autosoft Maneuver</h2>
-        <label class="settings" data-i18n-title="vh_as_maneuver" title="Autosoft Maneuver">
-          <input name="attr_veh_as_maneuver" placeholder="0" title="@{veh_as_maneuver}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_as_targeting">Autosoft Targeting</h2>
-        <label class="settings" data-i18n-title="vh_as_targeting" title="Autosoft Targeting">
-          <input name="attr_veh_as_targeting" placeholder="0" title="@{veh_as_targeting}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_as_defense">Autosoft Defense</h2>
-        <label class="settings" data-i18n-title="vh_as_defense" title="Autosoft Defense">
-          <input name="attr_veh_as_defense" placeholder="0" title="@{veh_as_defense}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_as_clearsight">Autosoft Clearsight</h2>
-        <label class="settings" data-i18n-title="vh_as_clearsight" title="Autosoft Clearsight">
-          <input name="attr_veh_as_clearsight" placeholder="0" title="@{veh_as_clearsight}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_as_covert">Autosoft Covert Ops</h2>
-        <label class="settings" data-i18n-title="vh_as_covert" title="Autosoft Covert Ops">
-          <input name="attr_veh_as_covert" placeholder="0" title="@{veh_as_covert}" type="number" value="0"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_bonus_rig">Control Rig bonus (jumped-in)</h2>
-        <label class="settings" data-i18n-title="vh_bonus_rig" title="Control Rig bonus (jumped-in)">
-          <input name="attr_veh_bonus_rig" placeholder="0" title="@{veh_bonus_rig}" type="number" value="2"/>
-        </label>
-      </div>
-      <div class="rows vehicle">
-        <h2 class="settings" data-i18n="vh_bonus_hot">Hot-sim bonus (jumped-in)</h2>
-        <label class="settings" data-i18n-title="vh_bonus_hot" title="Hot-sim bonus (jumped-in)">
-          <input name="attr_veh_bonus_hot" placeholder="0" title="@{veh_bonus_hot}" type="number" value="2"/>
-        </label>
       </div>
       <div class="grunt pain-tolerance">
         <div class="rows settings">
@@ -4097,6 +3881,233 @@
         </label>
       </div>
     </div>
+    <div class="column vehicle-panel">
+      <div class="vehicle-grid">
+        <div class="vehicle-col">
+          <div class="rows vehicle">
+            <h1 data-i18n="vh_control">Control</h1>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_driver">Linked character</h2>
+            <input name="attr_veh_driver_id" type="hidden" value=""/><span class="vh-value" name="attr_veh_driver_name"></span>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_controlmode">Control mode</h2>
+            <select name="attr_veh_mode" title="@{veh_mode}">
+              <option value="manual" data-i18n="vh_manual">Manual</option>
+              <option value="remote" data-i18n="vh_remote">Remote control</option>
+              <option value="jumped" data-i18n="vh_jumped">Jumped-in rigger</option>
+              <option value="autonomous" data-i18n="vh_autonomous">Autonomous (Pilot)</option>
+            </select>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_interface">Interface</h2>
+            <select name="attr_veh_interface" title="@{veh_interface}">
+              <option value="ar" data-i18n="vh_ar">AR</option>
+              <option value="cold" data-i18n="vh_cold">VR cold-sim</option>
+              <option value="hot" data-i18n="vh_hot">VR hot-sim</option>
+            </select>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_pilotskill">Piloting skill used</h2>
+            <select name="attr_veh_pilot_skill" title="@{veh_pilot_skill}">
+              <option value="auto" data-i18n="vh_pilot_auto" selected="selected">Best Pilot skill</option>
+              <option value="Pilot Aerospace" data-i18n="pilotaerospace">Pilot Aerospace</option>
+              <option value="Pilot Aircraft" data-i18n="pilotaircraft">Pilot Aircraft</option>
+              <option value="Pilot Anthroform" data-i18n="pilotanthroform">Pilot Anthroform</option>
+              <option value="Pilot Exotic Vehicle" data-i18n="pilotexoticvehicle">Pilot Exotic Vehicle</option>
+              <option value="Pilot Ground Craft" data-i18n="pilotgroundcraft">Pilot Ground Craft</option>
+              <option value="Pilot Watercraft" data-i18n="pilotwatercraft">Pilot Watercraft</option>
+            </select>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_arsubscribed">AR subscribed (manual)</h2>
+            <label data-i18n-title="vh_arsubscribed" title="AR subscribed">
+              <input name="attr_veh_ar" title="@{veh_ar}" type="checkbox" value="1"/>
+            </label>
+          </div>
+          <div class="rows vehicle vh-note"><span name="attr_veh_note"></span></div>
+        </div>
+        <div class="vehicle-col">
+          <div class="rows vehicle">
+            <h1 data-i18n="vh_tests">Tests</h1>
+          </div>
+          <div class="rows vehicle">
+            <button name="roll_vh_initiative" type="roll" data-i18n="initiative" value="@{gm_toggle} &{template:rolls}{{header=^{initiative}}}{{base=^{base}}}{{dice=[[((@{veh_init}+@{modifiers_toggle})d6>5cf0)+(@{veh_init})+(@{wounds_toggle}) &{tracker}]]}}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}">Initiative</button><span class="vh-value"><span name="attr_veh_init"></span><span> +</span>
+              <input name="attr_veh_ip" type="hidden" value="1"/><span name="attr_veh_ip"></span><span data-i18n="vh_ip">IP</span></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_maneuver" name="roll_vh_maneuver" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_maneuver}}}{{base=^{base}}}{{dice=[[((@{veh_pool_maneuver})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_maneuver</button><span class="vh-value" name="attr_veh_pool_maneuver"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_gunnery" name="roll_vh_gunnery" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_gunnery}}}{{base=^{base}}}{{dice=[[((@{veh_pool_gunnery})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_gunnery</button><span class="vh-value" name="attr_veh_pool_gunnery"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_defense_ranged" name="roll_vh_defense_ranged" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_defense_ranged}}}{{base=^{base}}}{{dice=[[((@{veh_pool_defense_ranged})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_defense_ranged</button><span class="vh-value" name="attr_veh_pool_defense_ranged"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_defense_melee" name="roll_vh_defense_melee" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_defense_melee}}}{{base=^{base}}}{{dice=[[((@{veh_pool_defense_melee})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_defense_melee</button><span class="vh-value" name="attr_veh_pool_defense_melee"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_full_defense" name="roll_vh_full_defense" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_full_defense}}}{{base=^{base}}}{{dice=[[((@{veh_pool_full_defense})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_full_defense</button><span class="vh-value" name="attr_veh_pool_full_defense"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_perception" name="roll_vh_perception" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_perception}}}{{base=^{base}}}{{dice=[[((@{veh_pool_perception})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_perception</button><span class="vh-value" name="attr_veh_pool_perception"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_infiltration" name="roll_vh_infiltration" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_infiltration}}}{{base=^{base}}}{{dice=[[((@{veh_pool_infiltration})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_infiltration</button><span class="vh-value" name="attr_veh_pool_infiltration"></span>
+          </div>
+          <div class="rows vehicle">
+            <button data-i18n="vh_resist" name="roll_vh_resist" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=^{vh_resist}}}{{base=^{base}}}{{dice=[[((@{veh_pool_resist})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}">vh_resist</button><span class="vh-value" name="attr_veh_pool_resist"></span>
+          </div>
+        </div>
+      </div>
+      <div class="settings">
+        <div class="rows vehicle">
+          <h1 data-i18n="vh_controlstats">Control statistics</h1>
+        </div>
+        <div class="vehicle-stats">
+          <div class="rows vehicle">
+            <h2 data-i18n="response">Response</h2>
+            <label data-i18n-title="response" title="Response">
+              <input name="attr_veh_response" placeholder="0" title="@{veh_response}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="system">System</h2>
+            <label data-i18n-title="system" title="System">
+              <input name="attr_veh_system" placeholder="0" title="@{veh_system}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="signal">Signal</h2>
+            <label data-i18n-title="signal" title="Signal">
+              <input name="attr_veh_signal" placeholder="0" title="@{veh_signal}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="firewall">Firewall</h2>
+            <label data-i18n-title="firewall" title="Firewall">
+              <input name="attr_veh_firewall" placeholder="0" title="@{veh_firewall}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_command">Command program</h2>
+            <label data-i18n-title="vh_command" title="Command program">
+              <input name="attr_veh_command" placeholder="0" title="@{veh_command}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_op_reaction">Operator Reaction</h2>
+            <label data-i18n-title="vh_op_reaction" title="Operator Reaction">
+              <input name="attr_veh_op_reaction" placeholder="0" title="@{veh_op_reaction}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_op_agility">Operator Agility</h2>
+            <label data-i18n-title="vh_op_agility" title="Operator Agility">
+              <input name="attr_veh_op_agility" placeholder="0" title="@{veh_op_agility}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_op_intuition">Operator Intuition</h2>
+            <label data-i18n-title="vh_op_intuition" title="Operator Intuition">
+              <input name="attr_veh_op_intuition" placeholder="0" title="@{veh_op_intuition}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_op_init">Operator Initiative</h2>
+            <label data-i18n-title="vh_op_init" title="Operator Initiative">
+              <input name="attr_veh_op_init" placeholder="0" title="@{veh_op_init}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_op_ip">Operator IP (manual/AR)</h2>
+            <label data-i18n-title="vh_op_ip" title="Operator IP (manual/AR)">
+              <input name="attr_veh_op_ip" placeholder="0" title="@{veh_op_ip}" type="number" value="1"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_sk_piloting">Piloting skill</h2>
+            <label data-i18n-title="vh_sk_piloting" title="Piloting skill">
+              <input name="attr_veh_sk_piloting" placeholder="0" title="@{veh_sk_piloting}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="gunnery">Gunnery skill</h2>
+            <label data-i18n-title="gunnery" title="Gunnery skill">
+              <input name="attr_veh_sk_gunnery" placeholder="0" title="@{veh_sk_gunnery}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="dodge">Dodge skill</h2>
+            <label data-i18n-title="dodge" title="Dodge skill">
+              <input name="attr_veh_sk_dodge" placeholder="0" title="@{veh_sk_dodge}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_sk_melee">Melee skill</h2>
+            <label data-i18n-title="vh_sk_melee" title="Melee skill">
+              <input name="attr_veh_sk_melee" placeholder="0" title="@{veh_sk_melee}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="perception">Perception skill</h2>
+            <label data-i18n-title="perception" title="Perception skill">
+              <input name="attr_veh_sk_perception" placeholder="0" title="@{veh_sk_perception}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="infiltration">Infiltration skill</h2>
+            <label data-i18n-title="infiltration" title="Infiltration skill">
+              <input name="attr_veh_sk_infiltration" placeholder="0" title="@{veh_sk_infiltration}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_as_maneuver">Autosoft Maneuver</h2>
+            <label data-i18n-title="vh_as_maneuver" title="Autosoft Maneuver">
+              <input name="attr_veh_as_maneuver" placeholder="0" title="@{veh_as_maneuver}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_as_targeting">Autosoft Targeting</h2>
+            <label data-i18n-title="vh_as_targeting" title="Autosoft Targeting">
+              <input name="attr_veh_as_targeting" placeholder="0" title="@{veh_as_targeting}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_as_defense">Autosoft Defense</h2>
+            <label data-i18n-title="vh_as_defense" title="Autosoft Defense">
+              <input name="attr_veh_as_defense" placeholder="0" title="@{veh_as_defense}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_as_clearsight">Autosoft Clearsight</h2>
+            <label data-i18n-title="vh_as_clearsight" title="Autosoft Clearsight">
+              <input name="attr_veh_as_clearsight" placeholder="0" title="@{veh_as_clearsight}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_as_covert">Autosoft Covert Ops</h2>
+            <label data-i18n-title="vh_as_covert" title="Autosoft Covert Ops">
+              <input name="attr_veh_as_covert" placeholder="0" title="@{veh_as_covert}" type="number" value="0"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_bonus_rig">Control Rig bonus (jumped-in)</h2>
+            <label data-i18n-title="vh_bonus_rig" title="Control Rig bonus (jumped-in)">
+              <input name="attr_veh_bonus_rig" placeholder="0" title="@{veh_bonus_rig}" type="number" value="2"/>
+            </label>
+          </div>
+          <div class="rows vehicle">
+            <h2 data-i18n="vh_bonus_hot">Hot-sim bonus (jumped-in)</h2>
+            <label data-i18n-title="vh_bonus_hot" title="Hot-sim bonus (jumped-in)">
+              <input name="attr_veh_bonus_hot" placeholder="0" title="@{veh_bonus_hot}" type="number" value="2"/>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="end body">
     <input name="attr_quality" type="hidden" value=""/>
@@ -4132,6 +4143,13 @@
       <h1 data-i18n="modifications">key</h1><span name="attr_modifications"></span>
       <label class="settings" data-i18n-title="modifications" title="Modifications">
         <textarea name="attr_modifications" placeholder="Modifications" title="@{modifications}"></textarea>
+      </label>
+    </div>
+    <input name="attr_vehicle_notes" type="hidden" value=""/>
+    <div class="textrow vehicle">
+      <h1 data-i18n="vehicle_notes">key</h1><span name="attr_vehicle_notes"></span>
+      <label class="settings" data-i18n-title="vehicle_notes" title="Notes">
+        <textarea name="attr_vehicle_notes" placeholder="Notes" title="@{vehicle_notes}"></textarea>
       </label>
     </div>
     <input name="attr_powers" type="hidden" value=""/>
