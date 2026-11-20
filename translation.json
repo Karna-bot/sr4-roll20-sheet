@@ -510,4 +510,9 @@
     ,"threshold": "Threshold (Rating x 2, 1 h)"
     ,"initiativepasses": "Initiative passes"
     ,"sp_name": "Power"
+    ,"biofeedback": "Biofeedback Filter"
+    ,"Electronics Group": "Electronics Group"
+    ,"Gause Round": "Gauss Round"
+    ,"damage compensators physical": "Damage compensators (physical)"
+    ,"damage compensators stun": "Damage compensators (stun)"
 }

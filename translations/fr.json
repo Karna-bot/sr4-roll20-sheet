@@ -509,5 +509,10 @@
     "times": "Fois",
     "threshold": "Seuil (Indice x 2, 1 h)",
     "initiativepasses": "Passes d'initiative",
-    "sp_name": "Pouvoir"
+    "sp_name": "Pouvoir",
+    "biofeedback": "Filtre de biofeedback",
+    "Electronics Group": "Groupe Électronique",
+    "Gause Round": "Munition Gauss",
+    "damage compensators physical": "Compensateurs de dégâts (physiques)",
+    "damage compensators stun": "Compensateurs de dégâts (étourdissants)"
 }
