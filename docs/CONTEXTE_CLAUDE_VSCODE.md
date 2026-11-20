@@ -1,13 +1,13 @@
 # Contexte à donner à Claude (instance VS Code) — projet « Outils Shadowrun 4 »
 
-À lire en entier au début d'une session. Mis à jour le 2026-11-20 (fin de la session « magie »). Le MJ parle français : **répondre en français**. Les suppléments compilés (`sr4-convert2md`) sont en anglais.
+À lire en entier au début d'une session. Mis à jour le 2026-11-20 (fin de la session « magie », complété avec le dépôt chummer4). Le MJ parle français : **répondre en français**. Les suppléments compilés (`sr4-convert2md`) sont en anglais.
 
 ## 1. Ce qu'est le projet
 Ensemble d'outils pour jouer à Shadowrun 4e édition sur Roll20 :
 - **Fiche de personnage Roll20** (`sr4-roll20-sheet`, Pug + SCSS + JS, une seule fiche avec `attr_sheet_type` : `pc`, `grunt`, `spirit`, `sprite`, `ai`, `vehicle`…).
 - **Scripts API Roll20** (`sr4-roll20-scripts` : `importer`, `conjuror`, `vehicle-link`, `combat-management`).
 - **Livres convertis en Markdown + suppléments thématiques** (`sr4-convert2md` : `books/`, `supplements/magic/00–30`, `supplements/matrix/…`).
-- Modifications **Chummer 4** (dépôt `chummer4`, en pause) et **scripts Python de calcul** (explosifs, etc., à venir).
+- **Chummer 4 modifié** (dépôt `chummer4`, **actif** : export Roll20, voir §2bis) et **scripts Python de calcul** (explosifs, etc., à venir).
 
 Décision du 2026-11-20 : **les rituels/wards/loges et l'alchimie ne seront PAS dans la fiche** ; ce sera un script Python ou une appli téléphone (hors fiche). Ne pas les ajouter à la fiche.
 
@@ -16,9 +16,24 @@ Décision du 2026-11-20 : **les rituels/wards/loges et l'alchimie ne seront PAS 
 |---|---|---|
 | `sr4-roll20-sheet` | **`non-legacy`** (mode CSE, `sheet.json` `legacy:false`) | `main` = ancienne base ; `spirit-type` = ancienne branche, fusionnée |
 | `sr4-roll20-scripts` | `main` | `feuille-originale` = scripts de la fiche d'origine, ne pas mélanger |
+| `chummer4` | `main` | Chummer 4 (C#, .NET Framework 4.8) modifié pour exporter en JSON « contrat v2 » vers la fiche/l'importeur Roll20 |
 | `sr4-convert2md` | `main` | contient aussi le PDF Running Wild (`books/Shadowrun 4E - Running Wild.pdf`) et les `books/extract/*` |
 
 Pages imprimées = page PDF − 2 pour SR4A, SM, Arsenal, RC, RW ; décalage 0 pour DG, WotA, Parageology, Parabotany.
+
+## 2bis. Dépôt `chummer4` (Chummer modifié pour l'export Roll20)
+- Base : copie de ordith/ChummerGenSR4 @ `856457e` (2017). Retargeté .NET Framework 4.8. **Se compile sous Windows** (VS Build Tools) : tâche VS Code « build chummer (debug) » = `.vscode/build.ps1` (MSBuild via vswhere, Debug AnyCPU) → `bin/ChummerGenSR4_Debug.exe`.
+- **Export Roll20** :
+  - `bin/sheets/Roll20 JSON.xsl` (PJ, type `pc`, XSLT 1.0 en sortie texte, marqueur `<!-- ext:json -->`, 357 lignes) et `bin/sheets/Roll20 JSON Vehicles.xsl` (un tableau de véhicules/drones, type `vehicle`). Le PJ exporte aussi `vehicles[]`.
+  - `bin/export/Debug XML.xsl` : transformation identité pour inspecter le XML d'impression.
+  - Menu **Fichier > Exporter vers Roll20** dans `Chummer/frmCareer.cs` (région « Roll20 export », `InitRoll20ExportMenu`) : personnage ou véhicules, presse-papiers ou fichier, nom suggéré, dossier mémorisé.
+  - Le visualiseur d'impression enregistre les feuilles texte (JSON) en `.json` exact.
+  - Correctif : plantage à l'ouverture d'anciens persos (capacité de forme complexe vide, `TechProgram.CalculatedCapacity`).
+  - `package-players.bat` : fabrique `dist\ChummerRoll20_AAAAMMJJ.zip` pour les joueurs (bin sans ancien exe/.pdb/saves, dossier saves vide + LISEZMOI).
+- Contrat de données : `claude/CONTRAT_V2.md` (projet Claude) ; le JSON est lu par `sr4-roll20-scripts/importer/Importer.js`. Toute modification de champ côté XSL doit être répercutée dans l'importeur et la fiche (noms `attr_*`).
+- Règles perso envisagées (non faites) : adeptes −25 % (`powers.xml` `<points>` ×0,75 ; `Power.Load` relit `pointsperlevel` du `.chum`), passes d'initiative des esprits 3 astral / 2 matérialisé. Les nouveaux champs magie de la fiche (focus, PP, background count, mentor, statut d'esprit) **ne sont pas encore exportés par Chummer ni lus par l'importeur** : à ajouter ensemble.
+- `.gitignore` exclut `*.exe`/`*.zip` mais le dépôt les suit : `git add -f` pour les nouveaux fichiers de ces types.
+- Historique amont non repris : `git remote add upstream https://github.com/ordith/ChummerGenSR4`.
 
 ## 3. Compiler, tester, publier
 - `npm install` puis `npm run build` = `generate:spirits` (esprits, traditions, sprites, IA… depuis `data/*.json` → `src/js/*-types.js`, `src/pug/_*-types.pug`) → `sync:translations` → `compile:pug` → `compile:sass` → `cse` (`tools/to-cse.js`, **non rejouable deux fois sans recompiler**).
@@ -55,7 +70,7 @@ Référence seulement (pas encore branchées sur la fiche) : **`adept_powers.jso
 2. **Brancher les catalogues** : liste déroulante de pouvoirs d'adepte remplissant `pp_cost`, `pp_mode`, `pp_test`, bonus automatiques des pouvoirs passifs (Improved Reflexes, Attribute, Mystic Armor…) ; menu de métamagies et calcul de Magie max / coût d'initiation (10 + 3×grade, −20 %/−40 %) ; **catalogue de sorts** dans la section sorts (DV = Force/2 + `dvMod`, Drain physique si Force > Magie, Force ≤ 2×Magie, bouton de jet Drain).
 3. Appliquer vraiment le **background count** (Drain, Force des esprits, perte de pouvoirs d'adepte) et le statut d'esprit.
 4. Esprits manquants (Street Magic / `supplements/magic/18–19, 29`) : ombre (muse, nightmare, shade, succubus, wraith), sang, shedim ; la Chasse Sauvage (stats fixes) ; `data/critter_powers.json` depuis `supplements/magic/28` (type M/P, action, portée, durée) pour infobulles. Conserver `verified:false` quand la source est incertaine.
-5. Importeur : branches `pc`, `sprite`, `vehicle`, connaissances/langues (voir `claude/CONTEXTE.md` du projet Claude).
+5. **Export Chummer → fiche** : ajouter au XSL et à l'importeur les foci, points de pouvoir, background count, mentor, métamagies (`attr_foci`, `pp_*`, `background_count`…). Importeur : branches `pc`, `sprite`, `vehicle`, connaissances/langues (voir `claude/CONTEXTE.md` du projet Claude).
 6. Hors fiche : script Python / appli téléphone pour rituels, wards, loges, alchimie (sources : `supplements/magic/17, 26, 27, 14`) et explosifs.
 
 ## 8. Règles de jeu utiles (rappels vérifiés)
