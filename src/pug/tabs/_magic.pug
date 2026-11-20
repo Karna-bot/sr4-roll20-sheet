@@ -101,6 +101,36 @@
           h3(data-i18n='initiate') Initiate
           input(name='attr_initiate' placeholder='0' style='width: 15%' title='@{initiate}' type='number')
         .row-long
+          h3(data-i18n='initiation_discount') Discount
+          select(name='attr_initiation_discount' title='@{initiation_discount}')
+            option(value='0' data-i18n='none' selected) None
+            option(value='0.2' data-i18n='initiation_discount_one') Group or ordeal (-20%)
+            option(value='0.4' data-i18n='initiation_discount_both') Group and ordeal (-40%)
+          h3(data-i18n='initiation_next_cost') Next grade (Karma)
+          span(name='attr_initiation_next_cost')
+          h3(data-i18n='magic_max') Max Magic
+          span(name='attr_magic_max')
+        .row-long
+          span(name='attr_metamagic_warning')
+        .rows.repeating-container.metamagics
+          h2(data-i18n='metamagics') Metamagics
+          fieldset(class='repeating_metamagics')
+            span(name='attr_metamagic_name')
+            +repeatingSectionFlags()
+            .settings
+              label(data-i18n-title='catalog' title='catalog')
+                select(name='attr_metamagic_type' title='@{repeating_metamagics_${x}_metamagic_type}')
+                  option(value='custom' data-i18n='customtype' selected) Custom
+                  each grp in metamagicCatalog
+                    optgroup(label=grp[0])
+                      each val in grp[1]
+                        option(value=val[0]) #{val[1]}
+              label(data-i18n-title='name' title='name')
+                input(name='attr_metamagic_name' placeholder='name' title='@{repeating_metamagics_${x}_metamagic_name}' type='text' value='')
+              textarea(name='attr_metamagic_effect' placeholder='Effect' title='@{repeating_metamagics_${x}_metamagic_effect}')
+              input(name='attr_metamagic_source' placeholder='Source' title='@{repeating_metamagics_${x}_metamagic_source}' type='text' value='')
+              +repeatingSectionNotes('metamagics')
+        .row-long
           h3(data-i18n='metamagic') Metamagic
           textarea(name='attr_metamagic' placeholder='Metamagic' style='width: 90%' title='@{metamagic}')
         .row-long
@@ -183,10 +213,18 @@
           h2.center(data-i18n='rating') Rating
         .rows.repeating-container.powers
           fieldset(class=`repeating_powers`)
+            input(name='attr_pp_cost_table' type='hidden' value='')
             span(name='attr_name')
             span.center(name='attr_rating')
             +repeatingSectionFlags()
             .settings
+              label(data-i18n-title='catalog' title='catalog')
+                select(name='attr_power_type' title='@{repeating_powers_${x}_power_type}')
+                  option(value='custom' data-i18n='customtype' selected) Custom
+                  each grp in adeptPowerCatalog
+                    optgroup(label=grp[0])
+                      each val in grp[1]
+                        option(value=val[0]) #{val[1]}
               label(data-i18n-title='name' title='name')
                 input(name='attr_name' placeholder='name' title='@{repeating_powers_${x}_name}' type='text' value='')
               label(data-i18n-title='rating' title='rating')

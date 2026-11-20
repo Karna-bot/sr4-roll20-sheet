@@ -37,7 +37,7 @@ Pages imprimées = page PDF − 2 pour SR4A, SM, Arsenal, RC, RW ; décalage 0 p
 
 ## 3. Compiler, tester, publier
 - `npm install` puis `npm run build` = `generate:spirits` (esprits, traditions, sprites, IA… depuis `data/*.json` → `src/js/*-types.js`, `src/pug/_*-types.pug`) → `sync:translations` → `compile:pug` → `compile:sass` → `cse` (`tools/to-cse.js`, **non rejouable deux fois sans recompiler**).
-- `npm run update` : jette les html/css compilés locaux, `git pull`, rebuild (la CI commit « Build: html/css compiles [skip ci] » sur la branche : **toujours `git pull --rebase` avant de pousser**).
+- `npm run update` (`tools/update.js`) : remet à zéro tous les fichiers générés (html, css, `src/js/*-types.js`, `src/pug/_*-types.pug`), `git pull --rebase`, rebuild. `npm test` : `to-cse.test.js` + `worker-check.js` (assertions magie ; lancé aussi par la CI). Outillage sans `pug-cli` ni `npm-run-all` (`tools/compile-pug.js`, Pug 3) ; Sass en modules `@use` (voir l'en-tête de `src/scss/_hide.scss`) ; `.gitattributes` force LF (la CI commit « Build: html/css compiles [skip ci] » sur la branche : **toujours `git pull --rebase` avant de pousser**).
 - Roll20 : coller `Shadowrun4thEdition.html` + `.css` dans l'éditeur de feuille de la partie ; **décocher** « Legacy Sanitization ».
 - Traductions : `translation.json` = clés anglaises de référence, `translations/fr.json` tenu à la main, les autres langues complétées par `tools/sync-translations.js` (ajoute les clés manquantes en anglais). Tout `data-i18n` / `data-i18n-title` nouveau doit être ajouté à `translation.json` + `fr.json`.
 - Tests existants : `node tools/to-cse.test.js`, `tools/worker-check.js`.
@@ -54,7 +54,7 @@ Procédure conseillée : `npm install && npm run build`, corriger les erreurs Pu
 
 ## 5. Données (`data/`) — voir `data/README.md`
 Consommées par le générateur : `spirits.json` (44 types), `traditions.json`, `sprites.json`, `ai.json`, `echoes.json`, `paragons.json`, `widgets.json`, `sprite_powers.json`, `technomancer_rules.json`, `programming_table.json`.
-Référence seulement (pas encore branchées sur la fiche) : **`adept_powers.json`** (78 pouvoirs, mode passive/situational/toggle/roll, test, bonus[], coûts), **`foci.json`** (multiplicateurs Karma, dupliqués en dur dans `updateFoci`), **`spells.json`** (208 sorts : SR4A, SM, DG, WAR ; `dvMod` = modificateur de Force/2 ; modèles avec `[Object]`, `[Attribute]`, `[Metatype/Species]`), **`metamagics.json`** (28 techniques, prérequis, `adeptAllowed`).
+Branchées en menus « Catalogue » (2026-11-20, `src/js/magic-catalog-types.js`) : **`adept_powers.json`** (78 pouvoirs, mode passive/situational/toggle/roll, test, bonus[], coûts), **`foci.json`** (multiplicateurs Karma, dupliqués en dur dans `updateFoci`), **`spells.json`** (208 sorts : SR4A, SM, DG, WAR ; `dvMod` = modificateur de Force/2 ; modèles avec `[Object]`, `[Attribute]`, `[Metatype/Species]`), **`metamagics.json`** (28 techniques, prérequis, `adeptAllowed`). `foci.json` reste dupliqué en dur dans `updateFoci`.
 
 ## 6. Travail « magie » du 2026-11-20 (non compilé)
 - **Onglet Magie PJ** (`src/pug/tabs/_magic.pug`, workers dans `src/js/scripts.js` en fin de fichier, événements dans `src/js/eventhandlers.js`) :
@@ -67,7 +67,7 @@ Référence seulement (pas encore branchées sur la fiche) : **`adept_powers.jso
 
 ## 7. À faire (par priorité suggérée)
 1. Compiler et corriger tout le §4 ; ajuster le SCSS.
-2. **Brancher les catalogues** : liste déroulante de pouvoirs d'adepte remplissant `pp_cost`, `pp_mode`, `pp_test`, bonus automatiques des pouvoirs passifs (Improved Reflexes, Attribute, Mystic Armor…) ; menu de métamagies et calcul de Magie max / coût d'initiation (10 + 3×grade, −20 %/−40 %) ; **catalogue de sorts** dans la section sorts (DV = Force/2 + `dvMod`, Drain physique si Force > Magie, Force ≤ 2×Magie, bouton de jet Drain).
+2. **Catalogues (fait le 2026-11-20)** : menus pouvoirs d'adepte / sorts (sorts et préparations) / métamagies, barème Improved Reflexes, coût du grade suivant (10 + 3×grade, −20 %/−40 %), Magie max (6 + grade), avertissements (métamagies + PP > grade, grade > Magie), Drain du jet de sort ≥ 1. **Reste** : bonus automatiques des pouvoirs passifs (Improved Reflexes, Attribute Boost, Mystic Armor…), Drain physique si Force > Magie et avertissement Force > 2×Magie dans le jet, tester dans Roll20.
 3. Appliquer vraiment le **background count** (Drain, Force des esprits, perte de pouvoirs d'adepte) et le statut d'esprit.
 4. Esprits manquants (Street Magic / `supplements/magic/18–19, 29`) : ombre (muse, nightmare, shade, succubus, wraith), sang, shedim ; la Chasse Sauvage (stats fixes) ; `data/critter_powers.json` depuis `supplements/magic/28` (type M/P, action, portée, durée) pour infobulles. Conserver `verified:false` quand la source est incertaine.
 5. **Export Chummer → fiche** : ajouter au XSL et à l'importeur les foci, points de pouvoir, background count, mentor, métamagies (`attr_foci`, `pp_*`, `background_count`…). Importeur : branches `pc`, `sprite`, `vehicle`, connaissances/langues (voir `claude/CONTEXTE.md` du projet Claude).

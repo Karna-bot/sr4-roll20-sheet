@@ -27,5 +27,6 @@ Générées/complétées à partir des suppléments Matrice du dépôt `sr4-conv
 `echoes.json` : champ `mods` (response, signal, system, firewall, biofeedback, passes par prise) lu par la fiche PC. `echoes.json`, `paragons.json`, `widgets.json`, `sprite_powers.json` et `technomancer_rules.json` alimentent les menus et textes de l'onglet Matrice et des pouvoirs de sprites (voir docs/MATRICE_AVANCEE.md).
 
 ## Magie (référence, non générée)
-- `adept_powers.json` : 78 pouvoirs d'adepte (SR4A, SM, DG, WAR, WotA) avec `mode` (passive / situational / toggle / roll), `test`, `bonus[]`, coût PP. Les coûts alimentent les champs `pp_cost` de la section pouvoirs de la fiche (saisie manuelle pour l'instant).
+- `adept_powers.json` : 78 pouvoirs d'adepte (SR4A, SM, DG, WAR, WotA) avec `mode` (passive / situational / toggle / roll), `test`, `bonus[]`, coût PP. Branché sur la fiche : menu « Catalogue » de la section pouvoirs (remplit nom, `pp_cost`, barème `costByLevel`, coût fixe/par niveau, mode, test, notes) via `src/js/magic-catalog-types.js` (généré). Les `bonus[]` ne sont pas encore appliqués automatiquement (affichés dans les notes).
 - `foci.json` : multiplicateurs Karma des focus (utilisés en dur dans `updateFoci`, scripts.js).
+- `spells.json` et `metamagics.json` : menus « Catalogue » des sections sorts/préparations et métamagies (onglet Magie), même fichier généré.

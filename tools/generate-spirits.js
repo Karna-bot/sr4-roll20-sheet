@@ -156,3 +156,49 @@ fs.writeFileSync(path.join(root, 'src', 'pug', '_matrix-advanced-types.pug'),
   '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
   `- const echoTypes = ${opt(echoData)};\n- const paragonTypes = ${opt(paragonData)};\n- const widgetTypes = ${opt(widgetData, true)};\n- const spritePowerTypes = ${opt(powerData)};\n`)
 console.log(`matrice avancee : ${Object.keys(echoData).length} echos, ${Object.keys(paragonData).length} paragons, ${widgetEntries.length} widgets, ${Object.keys(powerData).length} pouvoirs de sprites`)
+
+// ---- CATALOGUES DE MAGIE (onglet Magie PC) : pouvoirs d'adepte, sorts, metamagies
+// data/adept_powers.json, spells.json, metamagics.json -> src/js/magic-catalog-types.js, src/pug/_magic-catalog-types.pug
+const adeptPowers = readData('adept_powers.json').powers
+const spellList = readData('spells.json').spells
+const metamagicList = readData('metamagics.json').metamagics
+const byId = (list, fn) => '{\n' + list.map(x => `  ${JSON.stringify(x.id)}: ${JSON.stringify(fn(x))}`).join(',\n') + '\n}'
+// Valeurs des menus existants de la section sorts (src/pug/_variables.pug : spellTypes, spellRanges...)
+const SPELL_TYPE = {P: 'Physical', M: 'Mana'}
+const SPELL_RANGE = {'LOS': 'LOS', 'LOS (A)': 'LOS (A)', 'LOS(A)': 'LOS (A)', 'T': 'T', 'Touch': 'T', 'T (A)': 'T (A)'}
+const SPELL_DURATION = {I: 'Instant', S: 'Sustained', P: 'Permanent'}
+const spellCombat = s => s.category !== 'combat' ? 'Force ' : /^direct/i.test(s.kind) ? 'Direct, Force ' : /^indirect/i.test(s.kind) ? 'Indirect, Force ?{Force|}, AP -' : 'Force '
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1)
+const bonusText = b => b.map(x => `${x.value > 0 ? '+' : ''}${x.value} ${x.target.replace(/_/g, ' ')}${x.perLevel ? '/level' : ''}`).join(', ')
+fs.writeFileSync(path.join(root, 'src', 'js', 'magic-catalog-types.js'), [
+  '// FICHIER GENERE par tools/generate-spirits.js depuis data/adept_powers.json, spells.json, metamagics.json : ne pas modifier a la main.',
+  '// ADEPT_POWERS : cost = PP (par niveau si perLevel), costTable = cout total par niveau (Improved Reflexes...), max = niveau max.',
+  'const ADEPT_POWERS = ' + byId(adeptPowers, p => ({
+    name: p.name, cost: p.cost == null ? '' : p.cost, perLevel: !!p.perLevel, costTable: (p.costByLevel || []).join(','),
+    max: p.maxLevel == null ? '' : String(p.maxLevel), mode: p.mode, test: p.test || '',
+    notes: [p.note, p.bonus.length ? `Bonus: ${bonusText(p.bonus)}` : '', p.action ? `Action: ${p.action}` : '', p.maxLevel != null ? `Max level: ${p.maxLevel}` : '', p.source].filter(Boolean).join('\n')
+  })),
+  '// SPELLS : valeurs deja converties pour les menus de la section sorts ; drain = modificateur de DV (DV = Force/2 + drain).',
+  'const SPELLS = ' + byId(spellList, s => ({
+    name: s.name, type: SPELL_TYPE[s.type] || '', range: SPELL_RANGE[s.range] || 'Special', duration: SPELL_DURATION[s.duration.charAt(0)] || 'Special',
+    drain: typeof s.dvMod === 'number' ? s.dvMod : '', category: cap(s.category), combat_type: spellCombat(s), damage: s.damage || '',
+    notes: [s.kind, `DV ${s.dv}`, s.notes, s.source].filter(Boolean).join('\n')
+  })),
+  '// METAMAGICS : adept = utilisable par un adepte (adeptAllowed).',
+  'const METAMAGICS = ' + byId(metamagicList, m => ({
+    name: m.name, adept: !!m.adeptAllowed, effect: m.effect, source: [m.prerequisite ? `Prerequisite: ${m.prerequisite}` : '', m.source].filter(Boolean).join(' | ')
+  })),
+  ''
+].join('\n'))
+const group = (list, keyFn, labelFn) => {
+  const g = {}
+  list.forEach(x => (g[keyFn(x)] = g[keyFn(x)] || []).push([x.id, labelFn(x)]))
+  return Object.entries(g).map(([k, v]) => [k, v.sort((a, b) => a[1].localeCompare(b[1]))])
+}
+const book = src => (src || '').split(' ')[0]
+fs.writeFileSync(path.join(root, 'src', 'pug', '_magic-catalog-types.pug'),
+  '//- FICHIER GENERE par tools/generate-spirits.js : ne pas modifier a la main.\n' +
+  `- const adeptPowerCatalog = ${JSON.stringify(group(adeptPowers, p => p.mode, p => `${p.name} (${book(p.source)})`))};\n` +
+  `- const spellCatalog = ${JSON.stringify(group(spellList, s => cap(s.category), s => `${s.name} (${book(s.source)})`))};\n` +
+  `- const metamagicCatalog = ${JSON.stringify(group(metamagicList, m => m.adeptOnly ? 'Adept' : m.tier, m => `${m.name}${m.adeptAllowed && !m.adeptOnly ? ' *' : ''}`))};\n`)
+console.log(`catalogues magie : ${adeptPowers.length} pouvoirs d'adepte, ${spellList.length} sorts, ${metamagicList.length} metamagies`)

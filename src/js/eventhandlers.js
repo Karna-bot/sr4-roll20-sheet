@@ -127,6 +127,12 @@
   on('change:repeating_powers remove:repeating_powers change:magic change:pp_mystic change:initiation_pp', () => updatePowerPoints())
   on('change:background_count', () => updateBackgroundCount())
 
+  // Catalogues de magie : pouvoirs d'adepte, sorts (sorts et préparations), métamagies, initiation
+  on('change:repeating_powers:power_type', eventinfo => applyAdeptPower(eventinfo.sourceAttribute))
+  on('change:repeating_spell:spell_catalog change:repeating_preps:spell_catalog', eventinfo => applySpell(eventinfo.sourceAttribute))
+  on('change:repeating_metamagics:metamagic_type', eventinfo => applyMetamagic(eventinfo.sourceAttribute))
+  on('change:initiate change:initiation_discount change:initiation_pp change:magic change:repeating_metamagics remove:repeating_metamagics', () => updateInitiation())
+
   on('change:repeating_widgets:widget_type', eventinfo => applyWidget(eventinfo.sourceAttribute))
 
   on('change:repeating_widgets:widget_rating', eventinfo => updateWidgetRating(eventinfo.sourceAttribute))

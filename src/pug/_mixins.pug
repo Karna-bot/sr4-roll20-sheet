@@ -125,7 +125,7 @@ mixin pcSpells(type)
     .rows.repeating-container
       fieldset(class=`repeating_${type}`)
         input(name='attr_dicepool' type='hidden' value='0')
-        button(name=`roll_${type}}` type='roll' value!=rollBeginging+'{{header=@{name}}}{{base=^{magic}}}{{dice=[[((@{skill}+@{dicepool}+@{magic})'+rollEnding+'{{desc=@{combat_type} ?{Force|}}}{{drain=[[floor(?{Force|}/2)+(@{drain})]]}}')
+        button(name=`roll_${type}}` type='roll' value!=rollBeginging+'{{header=@{name}}}{{base=^{magic}}}{{dice=[[((@{skill}+@{dicepool}+@{magic})'+rollEnding+'{{desc=@{combat_type} ?{Force|}}}{{drain=[[{floor(?{Force|}/2)+(@{drain}),1}kh1]]}}')
             span(name='attr_name')
         each val in ['type', 'range', 'duration', 'drain']
             span.center(name='attr_'+val)
@@ -136,6 +136,13 @@ mixin pcSpells(type)
         .collapse
             span(name='attr_notes')
         .settings
+            label(data-i18n-title='catalog' title='catalog')
+                select(name='attr_spell_catalog' title=`${repeatingSection}_spell_catalog}`)
+                    option(value='custom' data-i18n='customtype' selected) Custom
+                    each grp in spellCatalog
+                        optgroup(label=grp[0])
+                            each val in grp[1]
+                                option(value=val[0]) #{val[1]}
             each val, key in pcCoreSpellObject
                 - const translationKey = key.toLowerCase();
                 - const attrName = key.toLowerCase();

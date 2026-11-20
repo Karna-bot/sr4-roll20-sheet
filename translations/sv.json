@@ -556,5 +556,12 @@
     "Intuition": "Intuition",
     "Logic": "Logic",
     "Willpower": "Willpower",
-    "matrixbonus": "Matrix bonus"
+    "matrixbonus": "Matrix bonus",
+    "catalog": "Catalog",
+    "initiation_discount": "Discount",
+    "initiation_discount_one": "Group or ordeal (-20%)",
+    "initiation_discount_both": "Group and ordeal (-40%)",
+    "initiation_next_cost": "Next grade (Karma)",
+    "magic_max": "Max Magic",
+    "metamagics": "Metamagics"
 }

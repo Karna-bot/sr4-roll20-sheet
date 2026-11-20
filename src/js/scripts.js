@@ -914,26 +914,28 @@ const updateFoci = () => {
 const updatePowerPoints = () => {
   getSectionIDs('powers', ids => {
     const fields = ['magic','pp_mystic','initiation_pp','background_count']
-    ids.forEach(id => ['rating','pp_cost','pp_favored','pp_flat'].forEach(f => fields.push(`repeating_powers_${id}_${f}`)))
+    ids.forEach(id => ['rating','pp_cost','pp_favored','pp_flat','pp_cost_table'].forEach(f => fields.push(`repeating_powers_${id}_${f}`)))
     getAttrs(fields, a => {
       const num = v => parseFloat(v) || 0
       const out = {}
       let used = 0
       ids.forEach(id => {
         const cost = num(a[`repeating_powers_${id}_pp_cost`])
-        if (!cost) return
+        // barème non linéaire (Improved Reflexes 1.5 / 2.5 / 4) : coût total du niveau atteint
+        const table = (a[`repeating_powers_${id}_pp_cost_table`] || '').split(',').map(parseFloat).filter(x => !isNaN(x))
+        if (!cost && !table.length) return
         const lvl = a[`repeating_powers_${id}_pp_flat`] == 1 ? 1 : Math.max(1, num(a[`repeating_powers_${id}_rating`]))
-        let t = cost * lvl
+        let t = table.length ? table[Math.min(lvl, table.length) - 1] : cost * lvl
         if (a[`repeating_powers_${id}_pp_favored`] == 1) t *= 0.75
-        out[`repeating_powers_${id}_pp_total`] = Math.round(t * 100) / 100
+        out[`repeating_powers_${id}_pp_total`] = Math.round(t * 1000) / 1000
         used += t
       })
       const bc = Math.abs(num(a.background_count))
       const base = a.pp_mystic === undefined || a.pp_mystic === '' ? num(a.magic) : num(a.pp_mystic)
       const avail = Math.max(0, base - bc) + num(a.initiation_pp)
-      used = Math.round(used * 100) / 100
+      used = Math.round(used * 1000) / 1000
       out.pp_used = used
-      out.pp_left = Math.round((avail - used) * 100) / 100
+      out.pp_left = Math.round((avail - used) * 1000) / 1000
       out.pp_warning = used > avail ? 'Power Points exceeded' : ''
       setAttrs(out, {silent: true})
     })
@@ -945,5 +947,60 @@ const updateBackgroundCount = () => {
     const bc = Math.abs(parseFloat(a.background_count) || 0)
     setAttrs({bc_summary: bc ? `Magic -${bc}, Drain +${bc}, spirit Force -${bc}, adept PP -${bc}` : ''}, {silent: true})
     updateFoci(); updatePowerPoints()
+  })
+}
+
+// ---- Catalogues de magie (src/js/magic-catalog-types.js, généré depuis data/)
+// Choisir une entrée remplit la ligne ; les champs restent modifiables à la main.
+const applyAdeptPower = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/power_type$/, '')
+  getAttrs([sourceAttribute, `${prefix}rating`], v => {
+    const p = ADEPT_POWERS[v[sourceAttribute]]
+    if (!p) return
+    const update = {
+      [`${prefix}name`]: p.name, [`${prefix}pp_cost`]: p.cost, [`${prefix}pp_cost_table`]: p.costTable,
+      [`${prefix}pp_flat`]: p.perLevel || p.costTable ? 0 : 1, [`${prefix}pp_mode`]: p.mode, [`${prefix}pp_test`]: p.test, [`${prefix}notes`]: p.notes
+    }
+    if (!parseInt(v[`${prefix}rating`])) update[`${prefix}rating`] = 1
+    setAttrs(update)
+  })
+}
+
+const applySpell = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/spell_catalog$/, '')
+  getAttrs([sourceAttribute], v => {
+    const s = SPELLS[v[sourceAttribute]]
+    if (!s) return
+    const update = {}
+    ;['name', 'type', 'range', 'duration', 'drain', 'category', 'combat_type', 'damage', 'notes'].forEach(f => update[`${prefix}${f}`] = s[f])
+    setAttrs(update)
+  })
+}
+
+const applyMetamagic = sourceAttribute => {
+  const prefix = sourceAttribute.replace(/metamagic_type$/, '')
+  getAttrs([sourceAttribute], v => {
+    const m = METAMAGICS[v[sourceAttribute]]
+    if (!m) return
+    setAttrs({[`${prefix}metamagic_name`]: m.name, [`${prefix}metamagic_effect`]: m.effect, [`${prefix}metamagic_source`]: `${m.source}${m.adept ? ' | adept OK' : ''}`})
+  })
+}
+
+// Initiation (SR4A p.198) : grade suivant = 10 + 3 x grade Karma, -20 % groupe ou ordalie, -40 % les deux ;
+// Magie max = 6 + grade ; une métamagie (ou +1 PP en règle optionnelle) par grade ; grade <= Magie.
+const updateInitiation = () => {
+  getSectionIDs('metamagics', ids => {
+    getAttrs(['initiate', 'initiation_discount', 'initiation_pp', 'magic'], a => {
+      const grade = parseInt(a.initiate) || 0
+      const discount = parseFloat(a.initiation_discount) || 0
+      const warn = []
+      if (ids.length + (parseInt(a.initiation_pp) || 0) > grade) warn.push('metamagics + PP > grade')
+      if (grade > (parseInt(a.magic) || 0)) warn.push('grade > Magic')
+      setAttrs({
+        initiation_next_cost: Math.ceil((10 + 3 * (grade + 1)) * (1 - discount)),
+        magic_max: 6 + grade,
+        metamagic_warning: warn.join(' | ')
+      }, {silent: true})
+    })
   })
 }
