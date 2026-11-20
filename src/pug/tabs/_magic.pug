@@ -103,6 +103,65 @@
         .row-long
           h3(data-i18n='metamagic') Metamagic
           textarea(name='attr_metamagic' placeholder='Metamagic' style='width: 90%' title='@{metamagic}')
+        .row-long
+          h3(data-i18n='initiation_pp_option') Optional rule: +1 Power Point instead of a metamagic
+          input(name='attr_initiation_pp' placeholder='0' style='width: 15%' title='@{initiation_pp}' type='number')
+        .row-long
+          h3(data-i18n='background_count') Background Count (signed)
+          input(name='attr_background_count' placeholder='0' style='width: 15%' title='@{background_count}' type='number')
+          span(name='attr_bc_summary')
+        .row-long
+          h3(data-i18n='mentor_spirit') Mentor Spirit
+          input(name='attr_mentor_spirit' style='width: 40%' title='@{mentor_spirit}' type='text')
+          h3(data-i18n='mentor_advantage') Advantage
+          input(name='attr_mentor_advantage' style='width: 40%' title='@{mentor_advantage}' type='text')
+        .row-long
+          h3(data-i18n='mentor_disadvantage') Disadvantage
+          input(name='attr_mentor_disadvantage' style='width: 90%' title='@{mentor_disadvantage}' type='text')
+        .row-long
+          h3(data-i18n='magic_qualities') Magical qualities (Aptitude, Focused Concentration, Spirit Affinity, Aspected, Magic Resistance, Geas, Cursed, Way...)
+          textarea(name='attr_magic_qualities' style='width: 90%' title='@{magic_qualities}')
+
+  .pc-row.foci
+    .header.right-header
+      h1(data-i18n='foci') Foci
+      .right-tri
+    .border-box
+      .pc-box.medium-box
+        .row-long
+          h3(data-i18n='foci_bonded') Bonded
+          span(name='attr_foci_bonded_count')
+          h3(data-i18n='foci_force_total') Total Force
+          span(name='attr_foci_force_total')
+          h3(data-i18n='foci_active_count') Active
+          span(name='attr_foci_active_count')
+        .row-long
+          h3(data-i18n='foci_karma_total') Karma invested
+          span(name='attr_foci_karma_total')
+          span(name='attr_foci_warning')
+        .row-long.headers
+          h2(data-i18n='name') Name
+          h2.center(data-i18n='force') Force
+        .rows.repeating-container.foci
+          fieldset(class='repeating_foci')
+            span(name='attr_name')
+            span.center(name='attr_force')
+            +repeatingSectionFlags()
+            .settings
+              label(data-i18n-title='name' title='name')
+                input(name='attr_name' placeholder='name' title='@{repeating_foci_${x}_name}' type='text' value='')
+              label(data-i18n-title='type' title='type')
+                select(name='attr_focus_type' title='@{repeating_foci_${x}_focus_type}')
+                  each t in ['Qi','Power','Spell (Spellcasting)','Spell (Counterspelling)','Spell (Ritual)','Spell (Health)','Spell (Detection)','Spell (Combat)','Spell (Illusion)','Spell (Manipulation)','Spirit (Summoning)','Spirit (Binding)','Banishing','Sustaining','Weapon','Symbolic','Anchoring','Centering','Masking','Shielding','Infusion','Other']
+                    option(value=t)= t
+              label(data-i18n-title='force' title='force')
+                input(name='attr_force' placeholder='1' title='@{repeating_foci_${x}_force}' type='number' value='1' min='1')
+              label(data-i18n-title='bonded' title='bonded')
+                input(name='attr_bonded' title='@{repeating_foci_${x}_bonded}' type='checkbox' value='1')
+              label(data-i18n-title='active' title='active')
+                input(name='attr_active' title='@{repeating_foci_${x}_active}' type='checkbox' value='1')
+              span(name='attr_karma_cost')
+              +repeatingSectionNotes('foci')
 
   .pc-row.powers
     .header.right-header
@@ -111,6 +170,14 @@
     .border-box
       .pc-box.medium-box
         +fadeDrainSection('drain', true)
+        .row-long
+          h3(data-i18n='pp_available') Power Points
+          input(name='attr_pp_mystic' placeholder='mystic adept: PP bought (blank = Magic)' style='width: 15%' title='@{pp_mystic}' type='number' step='0.25')
+          h3(data-i18n='pp_used') Used
+          span(name='attr_pp_used')
+          h3(data-i18n='pp_left') Left
+          span(name='attr_pp_left')
+          span(name='attr_pp_warning')
         .row-long.headers
           h2(data-i18n='name') Name
           h2.center(data-i18n='rating') Rating
@@ -124,4 +191,19 @@
                 input(name='attr_name' placeholder='name' title='@{repeating_powers_${x}_name}' type='text' value='')
               label(data-i18n-title='rating' title='rating')
                 input(name='attr_rating' placeholder='rating' title='@{repeating_powers_${x}_rating}' type='number' value='')
+              label(data-i18n-title='pp_cost_per_level' title='PP per level')
+                input(name='attr_pp_cost' placeholder='0.25' title='@{repeating_powers_${x}_pp_cost}' type='number' step='0.25' value='')
+              label(data-i18n-title='pp_favored' title='Favored (-25%)')
+                input(name='attr_pp_favored' title='@{repeating_powers_${x}_pp_favored}' type='checkbox' value='1')
+              label(data-i18n-title='pp_flat' title='Flat cost (not per level)')
+                input(name='attr_pp_flat' title='@{repeating_powers_${x}_pp_flat}' type='checkbox' value='1')
+              label(data-i18n-title='pp_mode' title='Mode')
+                select(name='attr_pp_mode' title='@{repeating_powers_${x}_pp_mode}')
+                  option(value='passive') passive
+                  option(value='situational') situational
+                  option(value='toggle') activated
+                  option(value='roll') roll
+              label(data-i18n-title='pp_test' title='Test')
+                input(name='attr_pp_test' placeholder='Magic + Attribute Boost' title='@{repeating_powers_${x}_pp_test}' type='text' value='')
+              span(name='attr_pp_total')
               +repeatingSectionNotes('powers')

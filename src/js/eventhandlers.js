@@ -123,6 +123,10 @@
 
   on('change:paragon', eventinfo => applyParagon(eventinfo.newValue))
 
+  on('change:repeating_foci remove:repeating_foci change:magic change:logic', () => updateFoci())
+  on('change:repeating_powers remove:repeating_powers change:magic change:pp_mystic change:initiation_pp', () => updatePowerPoints())
+  on('change:background_count', () => updateBackgroundCount())
+
   on('change:repeating_widgets:widget_type', eventinfo => applyWidget(eventinfo.sourceAttribute))
 
   on('change:repeating_widgets:widget_rating', eventinfo => updateWidgetRating(eventinfo.sourceAttribute))

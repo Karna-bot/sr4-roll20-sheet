@@ -1,0 +1,1318 @@
+{
+ "_comment": "Adept powers catalogue (SR4A p.195-197, SM p.174-180, DG p.17-18, WAR, WotA p.14-15). mode: passive = permanent bonus; situational = bonus only in a given circumstance; toggle = activated (see action); roll = a test is made when used (see test). cost is PP per level when perLevel else flat; costByLevel overrides; maxLevel 'Magic' = adept's Magic. bonus[] items: type attr|skill|derived|pool, target, value (x level if perLevel or implicit for perLevel powers). Source supplements/magic files 05,22,23,24,30.",
+ "powers": [
+  {
+   "name": "Astral Perception",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Free (shift)",
+   "test": "",
+   "bonus": [],
+   "source": "SR4A p.195",
+   "note": "Perceive the astral plane (dual-natured perception, astral perception rules p.191).",
+   "id": "astral_perception"
+  },
+  {
+   "name": "Attribute Boost",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "roll",
+   "action": "Simple",
+   "test": "Magic + Attribute Boost",
+   "bonus": [],
+   "source": "SR4A p.195",
+   "note": "Per Physical attribute (Agility, Body, Reaction, Strength). Hits = +attribute for 2 x hits Combat Turns; resist Drain = rating (Willpower + Body, Stun).",
+   "choose": [
+    "Agility",
+    "Body",
+    "Reaction",
+    "Strength"
+   ],
+   "drain": "rating (Stun, Willpower+Body)",
+   "id": "attribute_boost"
+  },
+  {
+   "name": "Combat Sense",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "reaction_surprise_defense",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.195",
+   "note": "+1 die/level to Reaction on Surprise tests and when defending vs ranged and melee.",
+   "id": "combat_sense"
+  },
+  {
+   "name": "Critical Strike",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "With attack",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "unarmed_dv",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.195",
+   "note": "+1 DV/level to unarmed damage (and astral combat).",
+   "id": "critical_strike"
+  },
+  {
+   "name": "Enhanced Perception",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Intuition",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "perception",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.195",
+   "note": "+1 die/level on Perception tests incl. Assensing, max Intuition.",
+   "id": "enhanced_perception"
+  },
+  {
+   "name": "Great Leap",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "skill",
+     "target": "gymnastics_jump",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.195",
+   "note": "+1 die/level to Jumping tests and +level to Agility for jump distance.",
+   "id": "great_leap"
+  },
+  {
+   "name": "Improved Ability",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "1.5x skill",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "skill",
+     "target": "CHOOSE_SKILL",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.196",
+   "note": "+1/level to one active skill (not group); max 1.5 x base rating. 0.5 PP/level for Combat skills, 0.25 for Physical/Social/Technical/Vehicle.",
+   "choose": "skill",
+   "costAlt": {
+    "combat": 0.5,
+    "other": 0.25
+   },
+   "id": "improved_ability"
+  },
+  {
+   "name": "Improved Physical Attribute",
+   "cost": 0.75,
+   "perLevel": true,
+   "maxLevel": "natural max",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "CHOOSE_ATTR",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.196",
+   "note": "+1/level to Agility, Body, Reaction or Strength. Over natural max costs 1.5 PP/level. Reaction also affects Initiative.",
+   "choose": [
+    "Agility",
+    "Body",
+    "Reaction",
+    "Strength"
+   ],
+   "costOver": 1.5,
+   "id": "improved_physical_attribute"
+  },
+  {
+   "name": "Improved Reflexes",
+   "cost": null,
+   "perLevel": false,
+   "maxLevel": 3,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "reaction",
+     "value": 1,
+     "perLevel": true
+    },
+    {
+     "type": "derived",
+     "target": "initiative_passes",
+     "value": 1,
+     "perLevel": true
+    }
+   ],
+   "source": "SR4A p.196",
+   "note": "+1 Reaction and +1 Initiative Pass per level (max 3). Not combinable with tech/other magical IP.",
+   "costByLevel": [
+    1.5,
+    2.5,
+    4
+   ],
+   "id": "improved_reflexes"
+  },
+  {
+   "name": "Improved Sense",
+   "cost": 0.25,
+   "perLevel": false,
+   "maxLevel": null,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "SR4A p.196",
+   "note": "One sense improvement per purchase (low-light, thermographic, hearing ranges, direction sense, improved scent/taste, flare comp., sound damping).",
+   "choose": "text",
+   "id": "improved_sense"
+  },
+  {
+   "name": "Killing Hands",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "With attack",
+   "test": "",
+   "bonus": [],
+   "source": "SR4A p.196",
+   "note": "Unarmed attacks may deal Physical instead of Stun; works vs Immunity to Normal Weapons and in astral combat.",
+   "id": "killing_hands"
+  },
+  {
+   "name": "Kinesics",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": 3,
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "social_nonverbal",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.196",
+   "note": "+1/level on Social tests made/resisted and on truthfulness/emotion tests; silent code with other Kinesics adepts.",
+   "id": "kinesics"
+  },
+  {
+   "name": "Missile Parry",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "roll",
+   "action": "Free",
+   "test": "Reaction + Missile Parry (+Dodge on full defense)",
+   "bonus": [],
+   "source": "SR4A p.196",
+   "note": "Catch slow missiles; need at least equal hits to the ranged attack.",
+   "id": "missile_parry"
+  },
+  {
+   "name": "Mystic Armor",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "armor_ballistic",
+     "value": 1,
+     "perLevel": true
+    },
+    {
+     "type": "derived",
+     "target": "armor_impact",
+     "value": 1,
+     "perLevel": true
+    }
+   ],
+   "source": "SR4A p.196",
+   "note": "+1 Ballistic and Impact armor per level, cumulative with worn armor; also in astral combat.",
+   "id": "mystic_armor"
+  },
+  {
+   "name": "Natural Immunity",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_toxin_disease",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.196",
+   "note": "+1 die/level to resist toxins and diseases.",
+   "id": "natural_immunity"
+  },
+  {
+   "name": "Pain Resistance",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "ignore_wound_boxes",
+     "value": 1,
+     "perLevel": true
+    }
+   ],
+   "source": "SR4A p.197",
+   "note": "Subtract level from current damage before wound modifiers; +2 dice/level vs pain effects.",
+   "id": "pain_resistance"
+  },
+  {
+   "name": "Rapid Healing",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "healing_test",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.197",
+   "note": "+1 die/level to Body for Healing Tests.",
+   "id": "rapid_healing"
+  },
+  {
+   "name": "Spell Resistance",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_spells",
+     "value": 1
+    }
+   ],
+   "source": "SR4A p.197",
+   "note": "+1 die/level to resist spells (and Innate Spell/Spellcasting by critters).",
+   "id": "spell_resistance"
+  },
+  {
+   "name": "Voice Control",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Con + Charisma vs recognition / Perception + Intuition",
+   "bonus": [],
+   "source": "SR4A p.197",
+   "note": "Mimic voices/sounds; throw the voice up to Magic x 2 m.",
+   "id": "voice_control"
+  },
+  {
+   "name": "Analytics",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "analysis",
+     "value": 1
+    }
+   ],
+   "source": "SM p.174",
+   "note": "+1 die/level to pattern recognition, evidence analysis, puzzles.",
+   "id": "analytics"
+  },
+  {
+   "name": "Animal Empathy",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "animal_handling",
+     "value": 1
+    }
+   ],
+   "source": "SM p.174",
+   "note": "+1 die/level handling non-sapient animals.",
+   "id": "animal_empathy"
+  },
+  {
+   "name": "Berserk",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Free",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "physical_all",
+     "value": 1
+    },
+    {
+     "type": "attr",
+     "target": "mental_all",
+     "value": -1
+    }
+   ],
+   "source": "SM p.175",
+   "note": "+1 all Physical, -1 all Mental (min 1) for Magic minutes.",
+   "id": "berserk"
+  },
+  {
+   "name": "Blind Fighting",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "darkness_penalty",
+     "value": 2
+    }
+   ],
+   "source": "SM p.175",
+   "note": "Full-darkness penalty -4 instead of -6.",
+   "id": "blind_fighting"
+  },
+  {
+   "name": "Cloak",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_detection_spells",
+     "value": 1
+    }
+   ],
+   "source": "SM p.175",
+   "note": "+level dice vs active Detection spells / Search power.",
+   "id": "cloak"
+  },
+  {
+   "name": "Commanding Voice",
+   "cost": 0.25,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Leadership + Charisma vs Willpower + Leadership",
+   "bonus": [],
+   "source": "SM p.175",
+   "note": "Command of 5 words or fewer; extra targets give +1 each (max +5).",
+   "id": "commanding_voice"
+  },
+  {
+   "name": "Cool Resolve",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_social",
+     "value": 1
+    }
+   ],
+   "source": "SM p.175",
+   "note": "+level dice to opposed Social tests where the adept defends.",
+   "id": "cool_resolve"
+  },
+  {
+   "name": "Counterstrike",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "After parry/block",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "next_melee_attack",
+     "value": 1
+    }
+   ],
+   "source": "SM p.176",
+   "note": "After a successful parry/block add level + net hits of the defense to the next melee attack.",
+   "id": "counterstrike"
+  },
+  {
+   "name": "Distance Strike",
+   "cost": 2,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Unarmed attack (defender resists as ranged)",
+   "bonus": [],
+   "source": "SM p.176",
+   "note": "Unarmed attack up to Magic metres; no Reach; not with Elemental Strike.",
+   "id": "distance_strike"
+  },
+  {
+   "name": "Eidetic Sense Memory",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.176",
+   "note": "Perfect memory of all senses.",
+   "id": "eidetic_sense_memory"
+  },
+  {
+   "name": "Elemental Strike",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Simple",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.176",
+   "note": "Requires Killing Hands; adds an elemental effect for Magic Combat Turns; not with Distance Strike.",
+   "choose": "text",
+   "id": "elemental_strike"
+  },
+  {
+   "name": "Empathic Healing",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex (2 turns/box)",
+   "test": "Magic + Willpower",
+   "bonus": [],
+   "source": "SM p.176",
+   "note": "Transfer 1 box Physical damage per hit from target to adept.",
+   "id": "empathic_healing"
+  },
+  {
+   "name": "Enthralling Performance",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Artistic skill + Magic",
+   "bonus": [],
+   "source": "SM p.177",
+   "note": "Hits become threshold modifier for audience Perception; one skill per purchase.",
+   "choose": "skill",
+   "id": "enthralling_performance"
+  },
+  {
+   "name": "Facial Sculpt",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "roll",
+   "action": "Complex",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.177",
+   "note": "+level dice to Disguise; reshape face for Magic hours.",
+   "id": "facial_sculpt"
+  },
+  {
+   "name": "Flexibility",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "escape_artist",
+     "value": 1
+    }
+   ],
+   "source": "SM p.177",
+   "note": "+level dice to Escape Artist.",
+   "id": "flexibility"
+  },
+  {
+   "name": "Freefall",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "fall_distance_reduction_m",
+     "value": 2,
+     "perLevel": true
+    }
+   ],
+   "source": "SM p.177",
+   "note": "Effective fall distance reduced by 2 m/level.",
+   "id": "freefall"
+  },
+  {
+   "name": "Gliding",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Move",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.177",
+   "note": "Run up to Magic metres across surfaces that cannot bear weight; -3 dice for acrobatics.",
+   "id": "gliding"
+  },
+  {
+   "name": "Inertia Strike",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Free",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.177",
+   "note": "Add half Strength to damage boxes for Knockdown only.",
+   "id": "inertia_strike"
+  },
+  {
+   "name": "Iron Gut",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_ingested",
+     "value": 1
+    }
+   ],
+   "source": "SM p.177",
+   "note": "+level dice vs ingested toxins.",
+   "id": "iron_gut"
+  },
+  {
+   "name": "Iron Lungs",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "body_strength_fatigue",
+     "value": 1
+    }
+   ],
+   "source": "SM p.177",
+   "note": "+10 Combat Turns holding breath/level; +level dice to fatigue tests.",
+   "id": "iron_lungs"
+  },
+  {
+   "name": "Iron Will",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_mental_manipulation",
+     "value": 1
+    }
+   ],
+   "source": "SM p.177",
+   "note": "+level dice vs magical mind control.",
+   "id": "iron_will"
+  },
+  {
+   "name": "Linguistics",
+   "cost": 0.25,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Time",
+   "test": "Intuition + Logic vs threshold",
+   "bonus": [],
+   "source": "SM p.177",
+   "note": "Learn a language rating 1 after (10 - Magic) hours of exposure.",
+   "id": "linguistics"
+  },
+  {
+   "name": "Living Focus",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "all_actions_while_sustaining",
+     "value": -2
+    }
+   ],
+   "source": "SM p.178",
+   "note": "Sustain one self-spell (Force <= Magic) with -2 dice to all actions.",
+   "id": "living_focus"
+  },
+  {
+   "name": "Magic Sense",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.178",
+   "note": "Senses magic within Magic x 10 m (as Detect Magic, Force = Magic).",
+   "id": "magic_sense"
+  },
+  {
+   "name": "Melanin Control",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Complex per grade",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.178",
+   "note": "Alter hair/skin color for Magic hours.",
+   "id": "melanin_control"
+  },
+  {
+   "name": "Metabolic Control",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Complex",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.178",
+   "note": "Trance slowing metabolism by Magic factor; auto at overflow.",
+   "id": "metabolic_control"
+  },
+  {
+   "name": "Missile Mastery",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "thrown_dv",
+     "value": 1
+    }
+   ],
+   "source": "SM p.178",
+   "note": "+1 DV to non-explosive thrown weapons.",
+   "id": "missile_mastery"
+  },
+  {
+   "name": "Motion Sense",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Perception + Magic vs threshold",
+   "bonus": [],
+   "source": "SM p.178",
+   "note": "Detect moving things within Magic metres; visibility modifiers -2.",
+   "id": "motion_sense"
+  },
+  {
+   "name": "Multi-Tasking",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.178",
+   "note": "Observe in Detail is a Free Action; two Free Actions per pass out of combat.",
+   "id": "multi_tasking"
+  },
+  {
+   "name": "Nerve Strike",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Unarmed attack",
+   "bonus": [],
+   "source": "SM p.179",
+   "note": "Each net hit -1 Agility or Reaction (1 pt regained/minute).",
+   "id": "nerve_strike"
+  },
+  {
+   "name": "Nimble Fingers",
+   "cost": 0.25,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "palming",
+     "value": 1
+    }
+   ],
+   "source": "SM p.179",
+   "note": "+1 die to Palming; small object manipulations are Free Actions.",
+   "id": "nimble_fingers"
+  },
+  {
+   "name": "Pain Relief",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex (5 min/box)",
+   "test": "Magic + Agility (2)",
+   "bonus": [],
+   "source": "SM p.179",
+   "note": "Heal Stun boxes = net hits on another.",
+   "id": "pain_relief"
+  },
+  {
+   "name": "Penetrating Strike",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": 3,
+   "mode": "situational",
+   "action": "With attack",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "unarmed_ap",
+     "value": -1
+    }
+   ],
+   "source": "SM p.179",
+   "note": "AP -level on unarmed strikes (max 3).",
+   "id": "penetrating_strike"
+  },
+  {
+   "name": "Piercing Senses",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_illusion",
+     "value": 1
+    }
+   ],
+   "source": "SM p.179",
+   "note": "+level dice to resist Illusion spells and illusion powers.",
+   "id": "piercing_senses"
+  },
+  {
+   "name": "Power Throw",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "strength_thrown",
+     "value": 2
+    }
+   ],
+   "source": "SM p.179",
+   "note": "+2 Strength/level for thrown range and damage.",
+   "id": "power_throw"
+  },
+  {
+   "name": "Quick Draw",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Free/Simple",
+   "test": "Weapon skill + Reaction (2)",
+   "bonus": [],
+   "source": "SM p.179",
+   "note": "Draw and attack in one action with any weapon.",
+   "id": "quick_draw"
+  },
+  {
+   "name": "Rooting",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "toggle",
+   "action": "Simple",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "body_knockdown",
+     "value": 1
+    }
+   ],
+   "source": "SM p.179",
+   "note": "+level to Body vs knockdown; no dodge, -3 to parry/block.",
+   "id": "rooting"
+  },
+  {
+   "name": "Smashing Blow",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "situational",
+   "action": "With attack",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "unarmed_dv_vs_structures",
+     "value": 2
+    }
+   ],
+   "source": "SM p.179",
+   "note": "Base DV x2 vs barriers/structures.",
+   "id": "smashing_blow"
+  },
+  {
+   "name": "Sustenance",
+   "cost": 0.25,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.179",
+   "note": "3 h sleep + one meal = 8 h sleep + 3 meals.",
+   "id": "sustenance"
+  },
+  {
+   "name": "Temperature Tolerance",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_temperature",
+     "value": 1
+    }
+   ],
+   "source": "SM p.180",
+   "note": "+level dice vs heat/cold and elemental fire/cold magic.",
+   "id": "temperature_tolerance"
+  },
+  {
+   "name": "Three-Dimensional Memory",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "Magic + Perception (recall)",
+   "bonus": [],
+   "source": "SM p.180",
+   "note": "Memorize areas up to Magic x Magic m3.",
+   "id": "three_dimensional_memory"
+  },
+  {
+   "name": "Traceless Walk",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "SM p.180",
+   "note": "No traces or noise; hearing detection -4.",
+   "id": "traceless_walk"
+  },
+  {
+   "name": "Wall Running",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Move",
+   "test": "Strength + Running",
+   "bonus": [],
+   "source": "SM p.180",
+   "note": "Hits = metres climbed; Gymnastics -2 during it.",
+   "id": "wall_running"
+  },
+  {
+   "name": "Elemental Resistance",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "DG p.17",
+   "note": "Requires Mystic Armor; full rating vs one elemental attack type.",
+   "choose": "text",
+   "id": "elemental_resistance"
+  },
+  {
+   "name": "Heightened Concentration",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Complex",
+   "test": "",
+   "bonus": [],
+   "source": "DG p.17",
+   "note": "Ignore one situational negative modifier up to Magic.",
+   "id": "heightened_concentration"
+  },
+  {
+   "name": "Memory Displacement",
+   "cost": 0.25,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Complex",
+   "test": "",
+   "bonus": [],
+   "source": "DG p.17",
+   "note": "Remove a chosen group of memories for a time.",
+   "id": "memory_displacement"
+  },
+  {
+   "name": "Power Swimming",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "DG p.18",
+   "note": "Double swimming rate; +2 m per hit.",
+   "id": "power_swimming"
+  },
+  {
+   "name": "Supernatural Toughness",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "condition_physical_or_stun",
+     "value": 1,
+     "perLevel": true
+    }
+   ],
+   "source": "DG p.18",
+   "note": "+1 Physical or Stun box per level.",
+   "choose": [
+    "Physical",
+    "Stun"
+   ],
+   "id": "supernatural_toughness"
+  },
+  {
+   "name": "Indomitable Will",
+   "cost": 0.25,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "pool",
+     "target": "resist_intimidation_fear",
+     "value": 1
+    }
+   ],
+   "source": "DG p.18",
+   "note": "+level dice vs Intimidation and fear powers/spells.",
+   "id": "indomitable_will"
+  },
+  {
+   "name": "Mind Over Matter",
+   "cost": 1.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "WAR",
+   "note": "Use one Mental attribute in place of one Physical (fixed at purchase).",
+   "choose": "text",
+   "id": "mind_over_matter"
+  },
+  {
+   "name": "Rush",
+   "cost": 0.5,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "toggle",
+   "action": "Free (first pass)",
+   "test": "",
+   "bonus": [],
+   "source": "WAR",
+   "note": "+1 Initiative Pass for the turn; resist Physical Drain = 2 x IPs that turn (Willpower + Body).",
+   "id": "rush"
+  },
+  {
+   "name": "Confidence Man",
+   "cost": 1,
+   "perLevel": false,
+   "maxLevel": 1,
+   "mode": "roll",
+   "action": "Full",
+   "test": "Charisma + Leadership vs ally's test threshold",
+   "bonus": [],
+   "source": "WotA p.14",
+   "note": "Speaker's Way: ally moves one column up the Buying Hits table.",
+   "way": "Speaker",
+   "id": "confidence_man"
+  },
+  {
+   "name": "Creative Eye",
+   "cost": 0.75,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "intuition",
+     "value": 1,
+     "perLevel": true
+    }
+   ],
+   "source": "WotA p.14",
+   "note": "Artist's Way: +1 Intuition/level.",
+   "way": "Artist",
+   "id": "creative_eye"
+  },
+  {
+   "name": "Keen Wits",
+   "cost": 0.75,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "attr",
+     "target": "logic",
+     "value": 1,
+     "perLevel": true
+    }
+   ],
+   "source": "WotA p.14",
+   "note": "Artisan's Way: +1 Logic/level.",
+   "way": "Artisan",
+   "id": "keen_wits"
+  },
+  {
+   "name": "Natural Survivors",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "WotA p.14",
+   "note": "Totem's Way: +1/level to Navigation/Survival/Tracking or Shadowing/Survival/Street Knowledge.",
+   "way": "Totem",
+   "id": "natural_survivors"
+  },
+  {
+   "name": "Prodigious Physicality",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": 3,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "WotA p.14",
+   "note": "Athlete's Way: +1/level to Climbing, Gymnastics, Running or Swimming.",
+   "way": "Athlete",
+   "id": "prodigious_physicality"
+  },
+  {
+   "name": "Sorcerous Parry",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "WotA p.15",
+   "note": "Magician's Way: +1 Counterspelling rating/level (max 1.5 x base).",
+   "way": "Magician",
+   "id": "sorcerous_parry"
+  },
+  {
+   "name": "Swift and Terrible",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": "Magic",
+   "mode": "situational",
+   "action": "Auto",
+   "test": "",
+   "bonus": [
+    {
+     "type": "derived",
+     "target": "initiative_next_round",
+     "value": 1
+    }
+   ],
+   "source": "WotA p.15",
+   "note": "Warrior's Way: +1 Initiative per enemy beaten in close combat (limit = levels), next round only.",
+   "way": "Warrior",
+   "id": "swift_and_terrible"
+  },
+  {
+   "name": "Unseen Hands",
+   "cost": 0.5,
+   "perLevel": true,
+   "maxLevel": 3,
+   "mode": "passive",
+   "action": "Auto",
+   "test": "",
+   "bonus": [],
+   "source": "WotA p.15",
+   "note": "Invisible Way: +1/level to Disguise, Infiltration, Palming or Shadowing.",
+   "way": "Invisible",
+   "id": "unseen_hands"
+  }
+ ]
+}

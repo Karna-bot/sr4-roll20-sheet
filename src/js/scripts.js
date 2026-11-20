@@ -880,3 +880,70 @@ const fillSpritePowers = list => {
     if (Object.keys(update).length) setAttrs(update)
   })
 }
+
+// ---- Magic: foci, power points, background count (see data/foci.json, data/adept_powers.json)
+const FOCUS_KARMA_MULT = {'Symbolic':1,'Sustaining':2,'Counterspelling':3,'Spell (Counterspelling)':3,'Banishing':3,'Spirit (Binding)':3,'Weapon':3,'Spell (Spellcasting)':4,'Spell (Ritual)':4,'Spell (Health)':4,'Spell (Detection)':4,'Spell (Combat)':4,'Spell (Illusion)':4,'Spell (Manipulation)':4,'Spirit (Summoning)':4,'Qi':4,'Power':8,'Anchoring':6,'Centering':6,'Masking':6,'Shielding':6,'Infusion':4,'Other':4}
+
+const updateFoci = () => {
+  getSectionIDs('foci', ids => {
+    const fields = ['magic','logic','background_count']
+    ids.forEach(id => ['focus_type','force','bonded','active'].forEach(f => fields.push(`repeating_foci_${id}_${f}`)))
+    getAttrs(fields, a => {
+      const num = v => parseFloat(v) || 0
+      const out = {}
+      let bonded = 0, force = 0, active = 0, activeForce = 0, karma = 0
+      ids.forEach(id => {
+        const f = num(a[`repeating_foci_${id}_force`])
+        const cost = f * (FOCUS_KARMA_MULT[a[`repeating_foci_${id}_focus_type`]] || 4)
+        out[`repeating_foci_${id}_karma_cost`] = a[`repeating_foci_${id}_bonded`] == 1 ? cost : ''
+        if (a[`repeating_foci_${id}_bonded`] == 1) { bonded++; force += f; karma += cost }
+        if (a[`repeating_foci_${id}_active`] == 1) { active++; activeForce += f }
+      })
+      const magic = Math.max(0, num(a.magic) - Math.abs(num(a.background_count)))
+      const warn = []
+      if (bonded > magic) warn.push('bonded foci > Magic')
+      if (force > magic * 5) warn.push('total Force > Magic x5')
+      if (active > num(a.logic)) warn.push('active foci > Logic')
+      if (activeForce > 2 * magic) warn.push('Focus Addiction test (active Force > 2 x Magic)')
+      Object.assign(out, {foci_bonded_count: bonded, foci_force_total: force, foci_active_count: active, foci_karma_total: karma, foci_warning: warn.join(' | ')})
+      setAttrs(out, {silent: true})
+    })
+  })
+}
+
+const updatePowerPoints = () => {
+  getSectionIDs('powers', ids => {
+    const fields = ['magic','pp_mystic','initiation_pp','background_count']
+    ids.forEach(id => ['rating','pp_cost','pp_favored','pp_flat'].forEach(f => fields.push(`repeating_powers_${id}_${f}`)))
+    getAttrs(fields, a => {
+      const num = v => parseFloat(v) || 0
+      const out = {}
+      let used = 0
+      ids.forEach(id => {
+        const cost = num(a[`repeating_powers_${id}_pp_cost`])
+        if (!cost) return
+        const lvl = a[`repeating_powers_${id}_pp_flat`] == 1 ? 1 : Math.max(1, num(a[`repeating_powers_${id}_rating`]))
+        let t = cost * lvl
+        if (a[`repeating_powers_${id}_pp_favored`] == 1) t *= 0.75
+        out[`repeating_powers_${id}_pp_total`] = Math.round(t * 100) / 100
+        used += t
+      })
+      const bc = Math.abs(num(a.background_count))
+      const base = a.pp_mystic === undefined || a.pp_mystic === '' ? num(a.magic) : num(a.pp_mystic)
+      const avail = Math.max(0, base - bc) + num(a.initiation_pp)
+      used = Math.round(used * 100) / 100
+      out.pp_used = used
+      out.pp_left = Math.round((avail - used) * 100) / 100
+      out.pp_warning = used > avail ? 'Power Points exceeded' : ''
+      setAttrs(out, {silent: true})
+    })
+  })
+}
+
+const updateBackgroundCount = () => {
+  getAttrs(['background_count'], a => {
+    const bc = Math.abs(parseFloat(a.background_count) || 0)
+    setAttrs({bc_summary: bc ? `Magic -${bc}, Drain +${bc}, spirit Force -${bc}, adept PP -${bc}` : ''}, {silent: true})
+    updateFoci(); updatePowerPoints()
+  })
+}

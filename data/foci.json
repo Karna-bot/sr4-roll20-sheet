@@ -1,0 +1,80 @@
+{
+ "_comment": "Foci Karma multipliers (SR4A p.200). Bonded Karma = Force x multiplier. Limits: bonded foci <= Magic; total bonded Force <= Magic x5; active foci <= Logic; only one focus adds Force per pool; Focus Addiction test (DG) if active Force > 2 x Magic. Descriptions of some entries are summaries; verify against supplements/magic/ files before relying on them.",
+ "foci": [
+  {
+   "type": "Qi",
+   "karmaMultiplier": 4,
+   "note": "Adept: adds Force to dice for one Physical/Social skill or Attribute test (Qi focus grants a power)"
+  },
+  {
+   "type": "Power",
+   "karmaMultiplier": 8,
+   "note": "Adds Force to Magic for tests/Drain resistance? — à vérifier dans supplements/magic/01 (non utilisé par la fiche)"
+  },
+  {
+   "type": "Spell (category)",
+   "karmaMultiplier": 4,
+   "note": "Adds Force dice to casting one spell category"
+  },
+  {
+   "type": "Spell (Counterspelling)",
+   "karmaMultiplier": 3,
+   "note": "Adds Force dice to Counterspelling"
+  },
+  {
+   "type": "Spirit (Summoning)",
+   "karmaMultiplier": 4,
+   "note": "Adds Force dice to summoning one spirit type"
+  },
+  {
+   "type": "Spirit (Binding)",
+   "karmaMultiplier": 3,
+   "note": "Adds Force dice to binding one spirit type"
+  },
+  {
+   "type": "Banishing",
+   "karmaMultiplier": 3,
+   "note": "Adds Force dice to Banishing"
+  },
+  {
+   "type": "Sustaining",
+   "karmaMultiplier": 2,
+   "note": "Sustains one spell (Force of focus >= spell Force, no -2 penalty)"
+  },
+  {
+   "type": "Weapon",
+   "karmaMultiplier": 3,
+   "note": "Arme focus : Reach/DV selon règle SR4A p.200, à vérifier"
+  },
+  {
+   "type": "Symbolic",
+   "karmaMultiplier": 1,
+   "note": "Ritual link / symbolic link focus"
+  },
+  {
+   "type": "Anchoring",
+   "karmaMultiplier": 6,
+   "note": "Anchors one spell"
+  },
+  {
+   "type": "Centering",
+   "karmaMultiplier": 6,
+   "note": "Metamagic: reduces Drain"
+  },
+  {
+   "type": "Masking",
+   "karmaMultiplier": 6,
+   "note": "Metamagic: hides aura"
+  },
+  {
+   "type": "Shielding",
+   "karmaMultiplier": 6,
+   "note": "Metamagic: shields aura/spirit from astral"
+  },
+  {
+   "type": "Infusion",
+   "karmaMultiplier": 4,
+   "note": "DG: 0.25 PP per Force for adepts"
+  }
+ ]
+}

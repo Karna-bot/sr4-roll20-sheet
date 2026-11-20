@@ -25,3 +25,7 @@ Générées/complétées à partir des suppléments Matrice du dépôt `sr4-conv
 
 ## Matrice avancée
 `echoes.json` : champ `mods` (response, signal, system, firewall, biofeedback, passes par prise) lu par la fiche PC. `echoes.json`, `paragons.json`, `widgets.json`, `sprite_powers.json` et `technomancer_rules.json` alimentent les menus et textes de l'onglet Matrice et des pouvoirs de sprites (voir docs/MATRICE_AVANCEE.md).
+
+## Magie (référence, non générée)
+- `adept_powers.json` : 78 pouvoirs d'adepte (SR4A, SM, DG, WAR, WotA) avec `mode` (passive / situational / toggle / roll), `test`, `bonus[]`, coût PP. Les coûts alimentent les champs `pp_cost` de la section pouvoirs de la fiche (saisie manuelle pour l'instant).
+- `foci.json` : multiplicateurs Karma des focus (utilisés en dur dans `updateFoci`, scripts.js).
