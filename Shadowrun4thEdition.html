@@ -2323,18 +2323,15 @@
 					<hr />
 					<div>
 						<h2 data-i18n="sheetselect">Sheet Select</h2><br />
-						<select name="attr_sheet_type" title="@{sheet_type}" value='pc'>
-							<option value="pc" data-i18n="pc" selected>PC</option>
-							<option value="grunt" data-i18n="grunt">grunt</option>
-							<option value="spirit" data-i18n="spirit">Spirit</option>
-							<option value="sprite" data-i18n="sprite">Sprite</option>
-							<option value="ai" data-i18n="ai">AI</option>
-							<option value="vehicle" data-i18n="vehicle">Vehicle</option>
-							<!---<option value="host" data-i18n="host">Host</option>
-							<option value="sprite" data-i18n="sprite">Sprite</option>
-							<option value="vehicle" data-i18n="vehicle">Vehicle</option>-->
-						</select>
-					</div>
+
+  <select name="attr_sheet_type" title="@{sheet_type}" value="pc">
+    <option value="grunt" data-i18n="grunt">Grunt</option>
+    <option value="spirit" data-i18n="spirit">Spirit</option>
+    <option value="sprite" data-i18n="sprite">Sprite</option>
+    <option value="ai" data-i18n="ai">AI</option>
+    <option value="vehicle" data-i18n="vehicle">Vehicle</option>
+    <option value="pc" data-i18n="pc" selected="selected">PC</option>
+  </select>					</div>
 					<hr />
 				</div>
 				<div class="op-col">
@@ -2382,7 +2379,7 @@
       <input class="whisper-toggle" name="attr_edge_toggle" type="checkbox" value="@{edge}"/><span class="slider"></span>
     </label>
     <button name="d6" title="Roll D6s" type="roll" value="@{gm_toggle} &amp;{template:rolls}{{header=^{d6}}}{{base=^{d6}}}{{dice=[[(?{d6s|0}d6&gt;5)]]}}">L</button>
-    <select name="attr_sheet_type" title="Sheet Type" value="pc">
+    <select name="attr_sheet_type" title="@{sheet_type}" value="pc">
       <option value="grunt" data-i18n="grunt">Grunt</option>
       <option value="spirit" data-i18n="spirit">Spirit</option>
       <option value="sprite" data-i18n="sprite">Sprite</option>
