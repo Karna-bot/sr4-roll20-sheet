@@ -1339,7 +1339,7 @@
             <div class="rows repeating-container">
               <fieldset class="repeating_spell">
                 <input name="attr_dicepool" type="hidden" value="0"/>
-                <button name="roll_spell}" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=@{name}}}{{base=^{magic}}}{{dice=[[((@{skill}+@{dicepool}+@{magic})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type} ?{Force|}}}{{drain=[[{floor(?{Force|}/2)+(@{drain}),1}kh1]]}}"><span name="attr_name"></span></button><span class="center" name="attr_type"></span><span class="center" name="attr_range"></span><span class="center" name="attr_duration"></span><span class="center" name="attr_drain"></span>
+                <button name="act_cast" type="action" title="Cast: spellcasting test, Drain value, Drain resistance and Drain taken"><span name="attr_name"></span></button><span class="center" name="attr_type"></span><span class="center" name="attr_range"></span><span class="center" name="attr_duration"></span><span class="center" name="attr_drain"></span>
                 <input class="collapse-flag" name="attr_display_flag" type="checkbox" checked="checked"/><span class="pictos">i</span>
                 <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
                 <div class="collapse"><span name="attr_notes"></span></div>
@@ -1638,7 +1638,7 @@
             <div class="rows repeating-container">
               <fieldset class="repeating_preps">
                 <input name="attr_dicepool" type="hidden" value="0"/>
-                <button name="roll_preps}" type="roll" value="@{gm_toggle} &{template:rolls}{{mod=[[@{modifiers_toggle}]]}}{{wound=[[@{wounds_toggle}]]}}{{edge=[[@{edge_toggle}]]}}{{header=@{name}}}{{base=^{magic}}}{{dice=[[((@{skill}+@{dicepool}+@{magic})+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}}{{desc=@{combat_type} ?{Force|}}}{{drain=[[{floor(?{Force|}/2)+(@{drain}),1}kh1]]}}"><span name="attr_name"></span></button><span class="center" name="attr_type"></span><span class="center" name="attr_range"></span><span class="center" name="attr_duration"></span><span class="center" name="attr_drain"></span>
+                <button name="act_cast" type="action" title="Cast: spellcasting test, Drain value, Drain resistance and Drain taken"><span name="attr_name"></span></button><span class="center" name="attr_type"></span><span class="center" name="attr_range"></span><span class="center" name="attr_duration"></span><span class="center" name="attr_drain"></span>
                 <input class="collapse-flag" name="attr_display_flag" type="checkbox" checked="checked"/><span class="pictos">i</span>
                 <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
                 <div class="collapse"><span name="attr_notes"></span></div>
@@ -2183,6 +2183,51 @@
                 <h3 data-i18n="notes">notes</h3>
                 <label data-i18n-title="notes" title="notes">
                   <textarea name="attr_notes" placeholder="Notes" title="@{repeating_foci_${x}_notes}" type="text" value=""></textarea>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-row boundspirits">
+      <div class="header right-header">
+        <h1 data-i18n="bound_spirits">Bound spirits</h1>
+        <div class="right-tri"></div>
+      </div>
+      <div class="border-box">
+        <div class="pc-box medium-box">
+          <div class="row-long headers">
+            <h2 data-i18n="name">Name</h2>
+            <h2 class="center" data-i18n="force">Force</h2>
+          </div>
+          <div class="rows repeating-container boundspirits">
+            <fieldset class="repeating_boundspirits"><span name="attr_name"></span><span class="center" name="attr_force"></span>
+              <input class="collapse-flag" name="attr_display_flag" type="checkbox"/><span class="pictos">i</span>
+              <input class="settings-flag" name="attr_flag" title="Settings toggle" type="checkbox" checked="checked"/><span class="pictos">x</span>
+              <div class="collapse"><span name="attr_notes"></span></div>
+              <div class="settings magic-form"><span class="form-label" data-i18n="name">Name</span>
+                <label class="form-wide" data-i18n-title="name" title="name">
+                  <input name="attr_name" placeholder="Harmozel" title="@{repeating_boundspirits_${x}_name}" type="text" value=""/>
+                </label><span class="form-label" data-i18n="spirittype">Type</span>
+                <label class="form-wide" data-i18n-title="spirittype" title="type">
+                  <input name="attr_spirit_type" placeholder="Guidance Spirit" title="@{repeating_boundspirits_${x}_spirit_type}" type="text" value=""/>
+                </label><span class="form-label" data-i18n="force">Force</span>
+                <label data-i18n-title="force" title="force">
+                  <input name="attr_force" placeholder="4" title="@{repeating_boundspirits_${x}_force}" type="number" min="1" value=""/>
+                </label><span class="form-label" data-i18n="services">Services</span>
+                <label data-i18n-title="services" title="services">
+                  <input name="attr_services" placeholder="1" title="@{repeating_boundspirits_${x}_services}" type="number" min="0" value=""/>
+                </label><span class="form-label" data-i18n="spirit_status">Status</span>
+                <label class="form-wide" data-i18n-title="spirit_status" title="status">
+                  <select name="attr_status" title="@{repeating_boundspirits_${x}_status}">
+                    <option value="bound" data-i18n="status_bound" selected="selected">Bound</option>
+                    <option value="summoned" data-i18n="status_summoned">Summoned</option>
+                  </select>
+                </label>
+                <h3 data-i18n="notes">notes</h3>
+                <label data-i18n-title="notes" title="notes">
+                  <textarea name="attr_notes" placeholder="Notes" title="@{repeating_boundspirits_${x}_notes}" type="text" value=""></textarea>
                 </label>
               </div>
             </fieldset>
@@ -4680,7 +4725,23 @@
         {{#rollGreater() mod 0}}<span> ♦ </span><span data-i18n="modifier"></span>{{/rollGreater() mod 0}}
         {{#rollGreater() edge 0}}<span> ♦ </span><span data-i18n="edge"></span>{{/rollGreater() edge 0}}
       </div>
-      <div class="sheet-template-body">{{#dice}}
+      <div class="sheet-template-body">{{#spellhits}}
+        <div class="sheet-template-row"><span class="sheet-template-label" data-i18n="tpl_spellhits">Spell hits</span><span class="inlinerollresult">{{spellhits}}</span></div>
+        <div class="sheet-template-row sheet-template-small"><span data-i18n="force">Force</span> {{spellforce}}
+          {{#spelldesc}}<span> ♦ {{spelldesc}}</span>{{/spelldesc}}
+        </div>
+        <div class="sheet-template-row sheet-template-small"><span data-i18n="tpl_drainvalue">Drain value</span> {{dv}}
+          {{#rollGreater() drainphys 0}}<span data-i18n="tpl_physical">(Physical: Force > Magic)</span>{{/rollGreater() drainphys 0}}
+          {{#^rollGreater() drainphys 0}}<span data-i18n="tpl_stun">(Stun)</span>{{/^rollGreater() drainphys 0}}
+        </div>
+        <div class="sheet-template-row sheet-template-small"><span data-i18n="tpl_drainres">Drain resistance hits</span> {{drainres}}</div>
+        <div class="sheet-template-row"><span class="sheet-template-label" data-i18n="tpl_draintaken">Drain taken</span><span class="inlinerollresult">{{computed::drainnet}}</span>{{#rollTotal() computed::drainnet 0}}<span class="sheet-template-desc" data-i18n="tpl_nodamage">no damage</span>{{/rollTotal() computed::drainnet 0}}
+          {{#rollGreater() computed::drainnet 0}}
+          {{#rollGreater() drainphys 0}}<span class="sheet-template-desc" data-i18n="tpl_boxesphysical">Physical box(es)</span>{{/rollGreater() drainphys 0}}
+          {{#^rollGreater() drainphys 0}}<span class="sheet-template-desc" data-i18n="tpl_boxesstun">Stun box(es)</span>{{/^rollGreater() drainphys 0}}
+          {{/rollGreater() computed::drainnet 0}}
+        </div>{{/spellhits}}
+        {{#dice}}
         <div class="sheet-template-row"><span class="inlinerollresult">{{dice}}</span></div>{{/dice}}
         {{#desc}}
         <div class="sheet-template-row"><span class="sheet-template-desc">
@@ -6632,6 +6693,33 @@ const updatePowerPoints = () => {
   })
 }
 
+// Jet de sort complet (sorts et préparations) : lancement, Force, valeur de Drain (Force/2 + modificateur, minimum 1,
+// physique si Force > Magie), résistance au Drain (attributs de la tradition + modificateur) et Drain restant.
+// Le Drain restant est calculé ici (custom roll parsing) puis affiché par le modèle de jet "rolls".
+const SPELL_FORCE_QUERY = '?{Force|}'
+const castSpell = triggerName => {
+  const match = /^clicked:(repeating_[a-z]+)_(.+)_cast$/i.exec(triggerName || '')
+  if (!match) return
+  const p = `${match[1]}_${match[2]}_`
+  const F = SPELL_FORCE_QUERY
+  const roll = '@{gm_toggle} &{template:rolls} ' +
+    `{{header=@{${p}name}}} {{base=^{spellcasting}}} ` +
+    '{{mod=[[@{modifiers_toggle}]]}} {{wound=[[@{wounds_toggle}]]}} {{edge=[[@{edge_toggle}]]}} ' +
+    `{{spellforce=[[${F}]]}} ` +
+    `{{spellhits=[[(@{${p}skill}+@{${p}dicepool}+@{magic}+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}} ` +
+    `{{spelldesc=@{${p}combat_type}}} ` +
+    `{{dv=[[{floor(${F}/2)+(@{${p}drain}),1}kh1]]}} ` +
+    `{{drainphys=[[{${F}-@{magic},0}kh1]]}} ` +
+    '{{drainres=[[(@{drain_attribute_1}+@{drain_attribute_2}+@{drain_modifier})d6>5]]}} ' +
+    '{{drainnet=[[99]]}}'
+  startRoll(roll, results => {
+    const r = results.results
+    const dv = r.dv ? r.dv.result : 0
+    const resisted = r.drainres ? r.drainres.result : 0
+    finishRoll(results.rollId, {drainnet: Math.max(0, dv - resisted)})
+  })
+}
+
 const updateBackgroundCount = () => {
   getAttrs(['background_count'], a => {
     const bc = Math.abs(parseFloat(a.background_count) || 0)
@@ -6839,6 +6927,7 @@ const updateInitiation = () => {
   // Catalogues de magie : pouvoirs d'adepte, sorts (sorts et préparations), métamagies, initiation
   on('change:repeating_powers:power_type', eventinfo => applyAdeptPower(eventinfo.sourceAttribute))
   on('change:repeating_spell:spell_catalog change:repeating_preps:spell_catalog', eventinfo => applySpell(eventinfo.sourceAttribute))
+  on('clicked:repeating_spell:cast clicked:repeating_preps:cast', eventinfo => castSpell(eventinfo.triggerName))
   on('change:repeating_metamagics:metamagic_type', eventinfo => applyMetamagic(eventinfo.sourceAttribute))
   on('change:initiate change:initiation_discount change:initiation_pp change:magic change:repeating_metamagics remove:repeating_metamagics', () => updateInitiation())
 

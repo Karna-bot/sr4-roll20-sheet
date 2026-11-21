@@ -713,7 +713,7 @@
 			}
 
 			/***** FOCI (même grille que les pouvoirs) *****/
-			div.sheet-foci {
+			div.sheet-foci, div.sheet-boundspirits {
 				$fociGrid: 1fr 3em 1em 1em;
 
 				div.sheet-headers { grid-template-columns: $fociGrid; }
@@ -725,7 +725,7 @@
 			}
 
 			/***** FOCI ET POUVOIRS : réglages en formulaire (libellé | case | libellé | case) *****/
-			div.sheet-foci, div.sheet-powers {
+			div.sheet-foci, div.sheet-boundspirits, div.sheet-powers {
 				div.repitem input.sheet-settings-flag:checked ~ div.sheet-settings.sheet-magic-form { display: grid; }
 
 				div.repitem div.sheet-settings.sheet-magic-form {

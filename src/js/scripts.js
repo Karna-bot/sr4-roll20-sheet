@@ -944,6 +944,33 @@ const updatePowerPoints = () => {
   })
 }
 
+// Jet de sort complet (sorts et préparations) : lancement, Force, valeur de Drain (Force/2 + modificateur, minimum 1,
+// physique si Force > Magie), résistance au Drain (attributs de la tradition + modificateur) et Drain restant.
+// Le Drain restant est calculé ici (custom roll parsing) puis affiché par le modèle de jet "rolls".
+const SPELL_FORCE_QUERY = '?{Force|}'
+const castSpell = triggerName => {
+  const match = /^clicked:(repeating_[a-z]+)_(.+)_cast$/i.exec(triggerName || '')
+  if (!match) return
+  const p = `${match[1]}_${match[2]}_`
+  const F = SPELL_FORCE_QUERY
+  const roll = '@{gm_toggle} &{template:rolls} ' +
+    `{{header=@{${p}name}}} {{base=^{spellcasting}}} ` +
+    '{{mod=[[@{modifiers_toggle}]]}} {{wound=[[@{wounds_toggle}]]}} {{edge=[[@{edge_toggle}]]}} ' +
+    `{{spellforce=[[${F}]]}} ` +
+    `{{spellhits=[[(@{${p}skill}+@{${p}dicepool}+@{magic}+@{wounds_toggle}+@{modifiers_toggle}+@{edge_toggle})d6>5@{explode_toggle}]]}} ` +
+    `{{spelldesc=@{${p}combat_type}}} ` +
+    `{{dv=[[{floor(${F}/2)+(@{${p}drain}),1}kh1]]}} ` +
+    `{{drainphys=[[{${F}-@{magic},0}kh1]]}} ` +
+    '{{drainres=[[(@{drain_attribute_1}+@{drain_attribute_2}+@{drain_modifier})d6>5]]}} ' +
+    '{{drainnet=[[99]]}}'
+  startRoll(roll, results => {
+    const r = results.results
+    const dv = r.dv ? r.dv.result : 0
+    const resisted = r.drainres ? r.drainres.result : 0
+    finishRoll(results.rollId, {drainnet: Math.max(0, dv - resisted)})
+  })
+}
+
 const updateBackgroundCount = () => {
   getAttrs(['background_count'], a => {
     const bc = Math.abs(parseFloat(a.background_count) || 0)

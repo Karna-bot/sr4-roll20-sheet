@@ -27,6 +27,44 @@
         | {{/rollGreater() edge 0}}
       //- Display the dice roll in the template -
       .sheet-template-body
+        //- Jet de sort complet (castSpell) : succes du sort, Force, Drain (valeur, resistance, restant)
+        | {{#spellhits}}
+        .sheet-template-row
+          span.sheet-template-label(data-i18n="tpl_spellhits") Spell hits
+          span.inlinerollresult {{spellhits}}
+        .sheet-template-row.sheet-template-small
+          span(data-i18n="force") Force
+          |  {{spellforce}}
+          | {{#spelldesc}}
+          span  ♦ {{spelldesc}}
+          | {{/spelldesc}}
+        .sheet-template-row.sheet-template-small
+          span(data-i18n="tpl_drainvalue") Drain value
+          |  {{dv}}
+          | {{#rollGreater() drainphys 0}}
+          span(data-i18n="tpl_physical") (Physical: Force > Magic)
+          | {{/rollGreater() drainphys 0}}
+          | {{#^rollGreater() drainphys 0}}
+          span(data-i18n="tpl_stun") (Stun)
+          | {{/^rollGreater() drainphys 0}}
+        .sheet-template-row.sheet-template-small
+          span(data-i18n="tpl_drainres") Drain resistance hits
+          |  {{drainres}}
+        .sheet-template-row
+          span.sheet-template-label(data-i18n="tpl_draintaken") Drain taken
+          span.inlinerollresult {{computed::drainnet}}
+          | {{#rollTotal() computed::drainnet 0}}
+          span.sheet-template-desc(data-i18n="tpl_nodamage") no damage
+          | {{/rollTotal() computed::drainnet 0}}
+          | {{#rollGreater() computed::drainnet 0}}
+          | {{#rollGreater() drainphys 0}}
+          span.sheet-template-desc(data-i18n="tpl_boxesphysical") Physical box(es)
+          | {{/rollGreater() drainphys 0}}
+          | {{#^rollGreater() drainphys 0}}
+          span.sheet-template-desc(data-i18n="tpl_boxesstun") Stun box(es)
+          | {{/^rollGreater() drainphys 0}}
+          | {{/rollGreater() computed::drainnet 0}}
+        | {{/spellhits}}
         | {{#dice}}
         .sheet-template-row
           span.inlinerollresult {{dice}}

@@ -201,6 +201,41 @@
               span.form-help(data-i18n='foci_help') Bonding cost = Force x multiplier of the type (Karma). Bonded foci at most Magic, total bonded Force at most Magic x 5, active foci at most Logic.
               +repeatingSectionNotes('foci')
 
+  //- ESPRITS LIES (remplis par l'importeur depuis Chummer ; chaque esprit a aussi sa propre fiche "spirit")
+  .pc-row.boundspirits
+    .header.right-header
+      h1(data-i18n='bound_spirits') Bound spirits
+      .right-tri
+    .border-box
+      .pc-box.medium-box
+        .row-long.headers
+          h2(data-i18n='name') Name
+          h2.center(data-i18n='force') Force
+        .rows.repeating-container.boundspirits
+          fieldset(class='repeating_boundspirits')
+            span(name='attr_name')
+            span.center(name='attr_force')
+            +repeatingSectionFlags()
+            .settings.magic-form
+              span.form-label(data-i18n='name') Name
+              label.form-wide(data-i18n-title='name' title='name')
+                input(name='attr_name' placeholder='Harmozel' title='@{repeating_boundspirits_${x}_name}' type='text' value='')
+              span.form-label(data-i18n='spirittype') Type
+              label.form-wide(data-i18n-title='spirittype' title='type')
+                input(name='attr_spirit_type' placeholder='Guidance Spirit' title='@{repeating_boundspirits_${x}_spirit_type}' type='text' value='')
+              span.form-label(data-i18n='force') Force
+              label(data-i18n-title='force' title='force')
+                input(name='attr_force' placeholder='4' title='@{repeating_boundspirits_${x}_force}' type='number' min='1' value='')
+              span.form-label(data-i18n='services') Services
+              label(data-i18n-title='services' title='services')
+                input(name='attr_services' placeholder='1' title='@{repeating_boundspirits_${x}_services}' type='number' min='0' value='')
+              span.form-label(data-i18n='spirit_status') Status
+              label.form-wide(data-i18n-title='spirit_status' title='status')
+                select(name='attr_status' title='@{repeating_boundspirits_${x}_status}')
+                  option(value='bound' data-i18n='status_bound' selected) Bound
+                  option(value='summoned' data-i18n='status_summoned') Summoned
+              +repeatingSectionNotes('boundspirits')
+
   .pc-row.powers
     .header.right-header
       h1(data-i18n='adeptpowers') Adept Powers or Other Abilities

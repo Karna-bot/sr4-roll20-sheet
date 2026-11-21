@@ -43,7 +43,7 @@ setTimeout(()=>console.log('sprite powers',Object.keys(set).filter(k=>k.endsWith
 
 setTimeout(()=>{ // apres les tests asynchrones ci-dessus
 // ---- Magie : assertions (un echec fait sortir avec le code 1, donc echouer npm test et la CI)
-vm.runInContext('globalThis.__m={updateFoci,updatePowerPoints,updateBackgroundCount,applyAdeptPower,applySpell,applyMetamagic,updateInitiation}',sandbox);
+vm.runInContext('globalThis.__m={updateFoci,updatePowerPoints,updateBackgroundCount,applyAdeptPower,applySpell,applyMetamagic,updateInitiation,castSpell}',sandbox);
 const m=sandbox.__m;
 let failures=0;
 const check=(label,actual,expected)=>{if(JSON.stringify(actual)!==JSON.stringify(expected)){failures++;console.error(`ECHEC ${label}: obtenu ${JSON.stringify(actual)}, attendu ${JSON.stringify(expected)}`)}};
@@ -77,6 +77,16 @@ global.__rows={metamagics:['a','b']};set={};attrs={initiate:1,initiation_discoun
 check('initiation',[set.initiation_next_cost,set.magic_max,set.metamagic_warning],[13,7,'metamagics + PP > grade']);
 global.__rows={metamagics:[]};set={};attrs={initiate:0,initiation_discount:'0',magic:3};m.updateInitiation();
 check('initiation grade 1',[set.initiation_next_cost,set.metamagic_warning],[13,'']);
+// jet de sort complet : chaine de jet et Drain restant (startRoll / finishRoll simules)
+let rollStr='',finished=null;
+sandbox.finishRoll=(id,c)=>{finished=[id,c]};
+sandbox.startRoll=(str,cb)=>{rollStr=str;cb({rollId:'R1',results:{dv:{result:4},drainres:{result:1}}})};
+m.castSpell('clicked:repeating_spell_-abc_cast');
+check('sort jet',[rollStr.includes('@{repeating_spell_-abc_skill}'),rollStr.includes('@{drain_attribute_1}'),rollStr.includes('{floor(?{Force|}/2)+(@{repeating_spell_-abc_drain}),1}kh1'),rollStr.includes('{{drainphys=[[{?{Force|}-@{magic},0}kh1]]}}')],[true,true,true,true]);
+check('sort drain restant',finished,['R1',{drainnet:3}]);
+sandbox.startRoll=(str,cb)=>cb({rollId:'R2',results:{dv:{result:2},drainres:{result:5}}});
+m.castSpell('clicked:repeating_preps_-x_cast');
+check('sort drain resiste',finished,['R2',{drainnet:0}]);
 console.log(failures?`magie : ${failures} echec(s)`:'magie : OK');
 if(failures)process.exitCode=1;
 },5);

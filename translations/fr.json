@@ -573,5 +573,15 @@
     "pp_mode_passive": "passif (toujours actif)",
     "pp_mode_situational": "situationnel (bonus à certains jets)",
     "pp_mode_toggle": "activé (action pour l'enclencher)",
-    "pp_mode_roll": "jet (a son propre test)"
+    "pp_mode_roll": "jet (a son propre test)",
+    "tpl_spellhits": "Succès du sort",
+    "tpl_drainvalue": "Valeur de Drain",
+    "tpl_physical": "(physique : Force > Magie)",
+    "tpl_stun": "(étourdissant)",
+    "tpl_drainres": "Succès de résistance au Drain",
+    "tpl_draintaken": "Drain subi",
+    "tpl_nodamage": "aucun dommage",
+    "tpl_boxesphysical": "case(s) physique(s)",
+    "tpl_boxesstun": "case(s) étourdissante(s)",
+    "bound_spirits": "Esprits liés"
 }

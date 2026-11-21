@@ -573,5 +573,15 @@
     "pp_mode_passive": "passive (always on)",
     "pp_mode_situational": "situational (bonus to some tests)",
     "pp_mode_toggle": "activated (action to switch on)",
-    "pp_mode_roll": "roll (has its own test)"
+    "pp_mode_roll": "roll (has its own test)",
+    "tpl_spellhits": "Spell hits",
+    "tpl_drainvalue": "Drain value",
+    "tpl_physical": "(Physical: Force > Magic)",
+    "tpl_stun": "(Stun)",
+    "tpl_drainres": "Drain resistance hits",
+    "tpl_draintaken": "Drain taken",
+    "tpl_nodamage": "no damage",
+    "tpl_boxesphysical": "Physical box(es)",
+    "tpl_boxesstun": "Stun box(es)",
+    "bound_spirits": "Bound spirits"
 }

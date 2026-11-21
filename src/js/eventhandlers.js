@@ -130,6 +130,7 @@
   // Catalogues de magie : pouvoirs d'adepte, sorts (sorts et préparations), métamagies, initiation
   on('change:repeating_powers:power_type', eventinfo => applyAdeptPower(eventinfo.sourceAttribute))
   on('change:repeating_spell:spell_catalog change:repeating_preps:spell_catalog', eventinfo => applySpell(eventinfo.sourceAttribute))
+  on('clicked:repeating_spell:cast clicked:repeating_preps:cast', eventinfo => castSpell(eventinfo.triggerName))
   on('change:repeating_metamagics:metamagic_type', eventinfo => applyMetamagic(eventinfo.sourceAttribute))
   on('change:initiate change:initiation_discount change:initiation_pp change:magic change:repeating_metamagics remove:repeating_metamagics', () => updateInitiation())
 

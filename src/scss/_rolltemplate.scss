@@ -86,3 +86,14 @@
 	.sheet-rolltemplate-rolls .sheet-template-desc {font-size: 0.8em;}
 
 	.sheet-rolltemplate-rolls span.sheet-template-desc .inlinerollresult {font-size: 14px;}
+	// Jet de sort complet : libelles et lignes secondaires (Force, valeur de Drain, resistance)
+	.sheet-rolltemplate-rolls .sheet-template-label {
+		font-size   : 0.8em;
+		margin-right: 0.5em;
+	}
+
+	.sheet-rolltemplate-rolls .sheet-template-row.sheet-template-small {
+		font-size: 14px;
+
+		.inlinerollresult { font-size: 16px; }
+	}

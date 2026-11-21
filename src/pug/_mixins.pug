@@ -125,7 +125,8 @@ mixin pcSpells(type)
     .rows.repeating-container
       fieldset(class=`repeating_${type}`)
         input(name='attr_dicepool' type='hidden' value='0')
-        button(name=`roll_${type}}` type='roll' value!=rollBeginging+'{{header=@{name}}}{{base=^{magic}}}{{dice=[[((@{skill}+@{dicepool}+@{magic})'+rollEnding+'{{desc=@{combat_type} ?{Force|}}}{{drain=[[{floor(?{Force|}/2)+(@{drain}),1}kh1]]}}')
+        //- jet complet (lancement + Drain) : bouton d'action, calcul par le sheet worker castSpell (scripts.js)
+        button(name='act_cast' type='action' title='Cast: spellcasting test, Drain value, Drain resistance and Drain taken')
             span(name='attr_name')
         each val in ['type', 'range', 'duration', 'drain']
             span.center(name='attr_'+val)
